@@ -42,18 +42,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BITACORA.cs" />
+    <Compile Include="CATEGORIA.cs" />
+    <Compile Include="CLIENTE.cs" />
     <Compile Include="COMPONENTE.cs" />
+    <Compile Include="CONTRATO.cs" />
     <Compile Include="HISTORIAL_PRODUCTO.cs" />
     <Compile Include="HISTORIAL_USUARIO.cs" />
     <Compile Include="IDIOMA.cs" />
     <Compile Include="IObservable.cs" />
     <Compile Include="IObserver.cs" />
+    <Compile Include="MANTENIMIENTO.cs" />
     <Compile Include="PERMISO_COMPUESTO.cs" />
     <Compile Include="PERMISO_SIMPLE.cs" />
     <Compile Include="PRODUCTO.cs" />
+    <Compile Include="RESERVA.cs" />
+    <Compile Include="SUCURSAL.cs" />
     <Compile Include="TRADUCCION.cs" />
     <Compile Include="USUARIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VEHICULO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -43,15 +43,21 @@
   <ItemGroup>
     <Compile Include="AUDITORIA.cs" />
     <Compile Include="BITACORA.cs" />
+    <Compile Include="CATEGORIA.cs" />
+    <Compile Include="CLIENTE.cs" />
+    <Compile Include="CONTRATO.cs" />
     <Compile Include="DIGITO_VERIFICADOR.cs" />
     <Compile Include="HISTORIAL_PRODUCTO.cs" />
     <Compile Include="HISTORIAL_USUARIO.cs" />
     <Compile Include="IDIOMA.cs" />
     <Compile Include="PERMISO.cs" />
     <Compile Include="PRODUCTO.cs" />
+    <Compile Include="PROMOCION.cs" />
+    <Compile Include="RESERVA.cs" />
     <Compile Include="RESTAURACION.cs" />
     <Compile Include="USUARIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VEHICULO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

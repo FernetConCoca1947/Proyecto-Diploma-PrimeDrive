@@ -45,13 +45,19 @@
     <Compile Include="MAPPER.cs" />
     <Compile Include="MP_BACKUP.cs" />
     <Compile Include="MP_BITACORA.cs" />
+    <Compile Include="MP_CATEGORIA.cs" />
+    <Compile Include="MP_CLIENTE.cs" />
+    <Compile Include="MP_CONTRATO.cs" />
     <Compile Include="MP_DIGITO_VERIFICADOR.cs" />
     <Compile Include="MP_HISTORIAL_PRODUCTO.cs" />
     <Compile Include="MP_HISTORIAL_USUARIO.cs" />
     <Compile Include="MP_IDIOMA.cs" />
     <Compile Include="MP_PERMISO.cs" />
     <Compile Include="MP_PRODUCTO.cs" />
+    <Compile Include="MP_PROMOCION.cs" />
+    <Compile Include="MP_RESERVA.cs" />
     <Compile Include="MP_USUARIO.cs" />
+    <Compile Include="MP_VEHICULO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
