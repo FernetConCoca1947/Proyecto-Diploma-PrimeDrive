@@ -9,12 +9,12 @@ namespace DAL
 {
     public class MP_RESERVA : MAPPER<BE.RESERVA>
     {
-        public override void Alta(RESERVA obj)
+        public override void Alta(RESERVA reserva)
         {
             throw new NotImplementedException();
         }
 
-        public override void Baja(RESERVA obj)
+        public override void Baja(RESERVA reserva)
         {
             throw new NotImplementedException();
         }
@@ -24,12 +24,12 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public override void Modificar(RESERVA obj)
+        public override void Modificar(RESERVA reserva)
         {
             throw new NotImplementedException();
         }
 
-        public override bool Verificar(RESERVA obj)
+        public override bool Verificar(RESERVA reserva)
         {
             throw new NotImplementedException();
         }

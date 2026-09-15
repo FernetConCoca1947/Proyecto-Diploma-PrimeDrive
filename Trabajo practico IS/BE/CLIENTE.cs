@@ -13,9 +13,10 @@ namespace BE
         public string Apellido { get; set; }
         public int DNI { get; set; }
         public string Email { get; set; }
-        public string Telefono {  get; set; }
+        public int Telefono {  get; set; }
         public DateTime FechaVencimientoLicencia { get; set; }
         public string NumeroLicenciaConducir { get; set; }
+        public bool Activo { get; set; }
 
     }
 }

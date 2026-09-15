@@ -1,6 +1,8 @@
 ﻿using BE;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -19,8 +21,9 @@ namespace DAL
             parametros.Add(acceso.CrearParametro("@dni", cliente.DNI));
             parametros.Add(acceso.CrearParametro("@email", cliente.Email));
             parametros.Add(acceso.CrearParametro("@telefono", cliente.Telefono));
-            parametros.Add(acceso.CrearParametro("@fechaLicencia", cliente.FechaVencimientoLicencia));
-            parametros.Add(acceso.CrearParametro("@numeroLicencia", cliente.NumeroLicenciaConducir));
+            parametros.Add(acceso.CrearParametro("@licencia", cliente.NumeroLicenciaConducir));
+            parametros.Add(acceso.CrearParametro("@vencimiento", cliente.FechaVencimientoLicencia));
+
 
             cliente.Id = acceso.LeerEscalar("INSERTAR_CLIENTE", parametros);
             acceso.Cerrar();
@@ -37,7 +40,27 @@ namespace DAL
 
         public override List<BE.CLIENTE> Listar()
         {
-            throw new NotImplementedException();
+            acceso.Abrir();
+            DataTable tabla = acceso.Leer("LISTAR_CLIENTES");
+            acceso.Cerrar();
+
+            List <BE.CLIENTE> productos = new List<BE.CLIENTE>();
+            foreach (DataRow registro in tabla.Rows)
+            {
+                BE.CLIENTE cliente = new BE.CLIENTE();
+                cliente.Id = int.Parse(registro["ID_CLIENTE"].ToString());
+                cliente.Nombre = registro["NOMBRE"].ToString();
+                cliente.Apellido = registro["APELLIDO"].ToString();
+                cliente.DNI = int.Parse(registro["DNI"].ToString());
+                cliente.Email = registro["EMAIL"].ToString();
+                cliente.Telefono = int.Parse(registro["TELEFONO"].ToString());
+                cliente.NumeroLicenciaConducir = registro["LICENCIA"].ToString();
+                cliente.FechaVencimientoLicencia = DateTime.Parse(registro["VENCIMIENTO_LICENCIA"].ToString());
+                cliente.Activo = Convert.ToBoolean(registro["ACTIVO"]);
+
+                productos.Add(cliente);
+            }
+            return productos;
         }
 
         public override void Modificar(BE.CLIENTE cliente)

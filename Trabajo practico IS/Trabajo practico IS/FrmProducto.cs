@@ -13,7 +13,6 @@ namespace Trabajo_practico_IS
     public partial class FrmProducto : Form, BE.IObserver
     {
         BLL.PRODUCTO GestorProductos = new BLL.PRODUCTO();
-        BLL.IDIOMA GestorIdioma = new BLL.IDIOMA();
         BLL.BITACORA GestorBitacora = new BLL.BITACORA();
         BE.PRODUCTO productoSeleccionado = null;
         BLL.IDIOMA gestorIdioma = new BLL.IDIOMA();

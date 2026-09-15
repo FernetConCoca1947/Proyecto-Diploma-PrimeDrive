@@ -234,6 +234,14 @@ namespace Trabajo_practico_IS
         {
             ActualizarIdioma();
         }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FrmCTRLCliente frmClientes = new FrmCTRLCliente();
+            frmClientes.ShowDialog();
+            this.Show();
+        }
     }
 }
 

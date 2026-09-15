@@ -43,6 +43,12 @@
             this.LBLbienvenida = new System.Windows.Forms.Label();
             this.CBXidiomas = new System.Windows.Forms.ComboBox();
             this.LBLidioma = new System.Windows.Forms.Label();
+            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alquileresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDeFlotaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reservasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +58,7 @@
             this.BtnCerrarSesion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCerrarSesion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BtnCerrarSesion.Location = new System.Drawing.Point(606, 386);
-            this.BtnCerrarSesion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCerrarSesion.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCerrarSesion.Name = "BtnCerrarSesion";
             this.BtnCerrarSesion.Size = new System.Drawing.Size(145, 33);
             this.BtnCerrarSesion.TabIndex = 0;
@@ -64,6 +70,9 @@
             // 
             this.menuStrip1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.alquileresToolStripMenuItem,
+            this.gestionDeFlotaToolStripMenuItem,
+            this.clientesToolStripMenuItem,
             this.AdministracionMenuItem,
             this.BitacoraToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -83,13 +92,13 @@
             this.historialDeCambiosToolStripMenuItem,
             this.productosToolStripMenuItem});
             this.AdministracionMenuItem.Name = "AdministracionMenuItem";
-            this.AdministracionMenuItem.Size = new System.Drawing.Size(116, 21);
+            this.AdministracionMenuItem.Size = new System.Drawing.Size(128, 24);
             this.AdministracionMenuItem.Text = "Administración";
             // 
             // controlDeUsuariosToolStripMenuItem
             // 
             this.controlDeUsuariosToolStripMenuItem.Name = "controlDeUsuariosToolStripMenuItem";
-            this.controlDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.controlDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(252, 24);
             this.controlDeUsuariosToolStripMenuItem.Tag = "ABM_USUARIO";
             this.controlDeUsuariosToolStripMenuItem.Text = "Control de usuarios";
             this.controlDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.controlDeUsuariosToolStripMenuItem_Click);
@@ -97,7 +106,7 @@
             // controlDePermisosToolStripMenuItem
             // 
             this.controlDePermisosToolStripMenuItem.Name = "controlDePermisosToolStripMenuItem";
-            this.controlDePermisosToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.controlDePermisosToolStripMenuItem.Size = new System.Drawing.Size(252, 24);
             this.controlDePermisosToolStripMenuItem.Tag = "ABM_PERMISOS";
             this.controlDePermisosToolStripMenuItem.Text = "Control de permisos";
             this.controlDePermisosToolStripMenuItem.Click += new System.EventHandler(this.controlDePermisosToolStripMenuItem_Click);
@@ -105,7 +114,7 @@
             // controlDeIdiomasToolStripMenuItem
             // 
             this.controlDeIdiomasToolStripMenuItem.Name = "controlDeIdiomasToolStripMenuItem";
-            this.controlDeIdiomasToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.controlDeIdiomasToolStripMenuItem.Size = new System.Drawing.Size(252, 24);
             this.controlDeIdiomasToolStripMenuItem.Tag = "ABM_IDIOMAS";
             this.controlDeIdiomasToolStripMenuItem.Text = "Control de idiomas";
             this.controlDeIdiomasToolStripMenuItem.Click += new System.EventHandler(this.controlDeIdiomasToolStripMenuItem_Click);
@@ -113,7 +122,7 @@
             // restauracionDeBaseToolStripMenuItem
             // 
             this.restauracionDeBaseToolStripMenuItem.Name = "restauracionDeBaseToolStripMenuItem";
-            this.restauracionDeBaseToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.restauracionDeBaseToolStripMenuItem.Size = new System.Drawing.Size(252, 24);
             this.restauracionDeBaseToolStripMenuItem.Tag = "RESTAURACION_BASE";
             this.restauracionDeBaseToolStripMenuItem.Text = "Control de restauracion";
             this.restauracionDeBaseToolStripMenuItem.Click += new System.EventHandler(this.restauracionDeBaseToolStripMenuItem_Click);
@@ -121,7 +130,7 @@
             // historialDeCambiosToolStripMenuItem
             // 
             this.historialDeCambiosToolStripMenuItem.Name = "historialDeCambiosToolStripMenuItem";
-            this.historialDeCambiosToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.historialDeCambiosToolStripMenuItem.Size = new System.Drawing.Size(252, 24);
             this.historialDeCambiosToolStripMenuItem.Tag = "HISTORIAL_CAMBIOS";
             this.historialDeCambiosToolStripMenuItem.Text = "Historial de cambios";
             this.historialDeCambiosToolStripMenuItem.Click += new System.EventHandler(this.historialDeCambiosToolStripMenuItem_Click);
@@ -129,7 +138,7 @@
             // productosToolStripMenuItem
             // 
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            this.productosToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.productosToolStripMenuItem.Size = new System.Drawing.Size(252, 24);
             this.productosToolStripMenuItem.Tag = "ABM_PRODUCTOS";
             this.productosToolStripMenuItem.Text = "Productos";
             this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
@@ -137,7 +146,7 @@
             // BitacoraToolStripMenuItem
             // 
             this.BitacoraToolStripMenuItem.Name = "BitacoraToolStripMenuItem";
-            this.BitacoraToolStripMenuItem.Size = new System.Drawing.Size(74, 21);
+            this.BitacoraToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
             this.BitacoraToolStripMenuItem.Tag = "BITACORA";
             this.BitacoraToolStripMenuItem.Text = "Bitacora";
             this.BitacoraToolStripMenuItem.Click += new System.EventHandler(this.BitacoraToolStripMenuItem_Click);
@@ -164,7 +173,7 @@
             this.CBXidiomas.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBXidiomas.FormattingEnabled = true;
             this.CBXidiomas.Location = new System.Drawing.Point(607, 64);
-            this.CBXidiomas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CBXidiomas.Margin = new System.Windows.Forms.Padding(4);
             this.CBXidiomas.Name = "CBXidiomas";
             this.CBXidiomas.Size = new System.Drawing.Size(140, 25);
             this.CBXidiomas.TabIndex = 10;
@@ -181,6 +190,48 @@
             this.LBLidioma.TabIndex = 11;
             this.LBLidioma.Text = "Idiomas";
             // 
+            // clientesToolStripMenuItem
+            // 
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
+            this.clientesToolStripMenuItem.Tag = "ABM_CLIENTES";
+            this.clientesToolStripMenuItem.Text = "Clientes";
+            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
+            // 
+            // alquileresToolStripMenuItem
+            // 
+            this.alquileresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reservasToolStripMenuItem,
+            this.checkoutToolStripMenuItem,
+            this.checkinToolStripMenuItem});
+            this.alquileresToolStripMenuItem.Name = "alquileresToolStripMenuItem";
+            this.alquileresToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
+            this.alquileresToolStripMenuItem.Text = "Alquileres";
+            // 
+            // gestionDeFlotaToolStripMenuItem
+            // 
+            this.gestionDeFlotaToolStripMenuItem.Name = "gestionDeFlotaToolStripMenuItem";
+            this.gestionDeFlotaToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
+            this.gestionDeFlotaToolStripMenuItem.Text = "Gestión de flota";
+            // 
+            // reservasToolStripMenuItem
+            // 
+            this.reservasToolStripMenuItem.Name = "reservasToolStripMenuItem";
+            this.reservasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.reservasToolStripMenuItem.Text = "Reservas";
+            // 
+            // checkoutToolStripMenuItem
+            // 
+            this.checkoutToolStripMenuItem.Name = "checkoutToolStripMenuItem";
+            this.checkoutToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.checkoutToolStripMenuItem.Text = "Check-out";
+            // 
+            // checkinToolStripMenuItem
+            // 
+            this.checkinToolStripMenuItem.Name = "checkinToolStripMenuItem";
+            this.checkinToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.checkinToolStripMenuItem.Text = "Check-in";
+            // 
             // FrmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -194,10 +245,10 @@
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Bibliotech";
+            this.Text = "Prime Drive";
             this.Activated += new System.EventHandler(this.FrmMenuPrincipal_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -224,6 +275,12 @@
         private System.Windows.Forms.ToolStripMenuItem restauracionDeBaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem historialDeCambiosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem alquileresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reservasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem checkoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem checkinToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestionDeFlotaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
     }
 }
 

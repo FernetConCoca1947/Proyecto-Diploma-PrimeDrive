@@ -112,6 +112,9 @@
     <EmbeddedResource Include="FrmBitacora.resx">
       <DependentUpon>FrmBitacora.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCTRLCliente.resx">
+      <DependentUpon>FrmCTRLCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCTRLPermiso.resx">
       <DependentUpon>FrmCTRLPermiso.cs</DependentUpon>
     </EmbeddedResource>
