@@ -51,6 +51,7 @@
             this.BTNCtrlCliBaja = new System.Windows.Forms.Button();
             this.BTNCtrlCliModificar = new System.Windows.Forms.Button();
             this.BTNCtrlCliReactivar = new System.Windows.Forms.Button();
+            this.CKXmostrarInactivos = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_CtrlCliClientes)).BeginInit();
             this.GB_Clientes.SuspendLayout();
             this.GB_DatosCliente.SuspendLayout();
@@ -115,7 +116,7 @@
             this.GB_DatosCliente.Controls.Add(this.LBLdni);
             this.GB_DatosCliente.Controls.Add(this.LBLemail);
             this.GB_DatosCliente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GB_DatosCliente.Location = new System.Drawing.Point(13, 41);
+            this.GB_DatosCliente.Location = new System.Drawing.Point(13, 33);
             this.GB_DatosCliente.Margin = new System.Windows.Forms.Padding(4);
             this.GB_DatosCliente.Name = "GB_DatosCliente";
             this.GB_DatosCliente.Padding = new System.Windows.Forms.Padding(4);
@@ -254,7 +255,7 @@
             this.BTNCtrlCliAlta.BackColor = System.Drawing.SystemColors.HotTrack;
             this.BTNCtrlCliAlta.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCtrlCliAlta.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCtrlCliAlta.Location = new System.Drawing.Point(353, 400);
+            this.BTNCtrlCliAlta.Location = new System.Drawing.Point(338, 424);
             this.BTNCtrlCliAlta.Margin = new System.Windows.Forms.Padding(4);
             this.BTNCtrlCliAlta.Name = "BTNCtrlCliAlta";
             this.BTNCtrlCliAlta.Size = new System.Drawing.Size(145, 33);
@@ -268,7 +269,7 @@
             this.BTNCtrlCliBaja.BackColor = System.Drawing.SystemColors.HotTrack;
             this.BTNCtrlCliBaja.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCtrlCliBaja.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCtrlCliBaja.Location = new System.Drawing.Point(506, 400);
+            this.BTNCtrlCliBaja.Location = new System.Drawing.Point(491, 424);
             this.BTNCtrlCliBaja.Margin = new System.Windows.Forms.Padding(4);
             this.BTNCtrlCliBaja.Name = "BTNCtrlCliBaja";
             this.BTNCtrlCliBaja.Size = new System.Drawing.Size(145, 33);
@@ -282,7 +283,7 @@
             this.BTNCtrlCliModificar.BackColor = System.Drawing.SystemColors.HotTrack;
             this.BTNCtrlCliModificar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCtrlCliModificar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCtrlCliModificar.Location = new System.Drawing.Point(659, 400);
+            this.BTNCtrlCliModificar.Location = new System.Drawing.Point(644, 424);
             this.BTNCtrlCliModificar.Margin = new System.Windows.Forms.Padding(4);
             this.BTNCtrlCliModificar.Name = "BTNCtrlCliModificar";
             this.BTNCtrlCliModificar.Size = new System.Drawing.Size(145, 33);
@@ -296,7 +297,7 @@
             this.BTNCtrlCliReactivar.BackColor = System.Drawing.SystemColors.HotTrack;
             this.BTNCtrlCliReactivar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCtrlCliReactivar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCtrlCliReactivar.Location = new System.Drawing.Point(814, 400);
+            this.BTNCtrlCliReactivar.Location = new System.Drawing.Point(797, 424);
             this.BTNCtrlCliReactivar.Margin = new System.Windows.Forms.Padding(4);
             this.BTNCtrlCliReactivar.Name = "BTNCtrlCliReactivar";
             this.BTNCtrlCliReactivar.Size = new System.Drawing.Size(145, 33);
@@ -305,11 +306,25 @@
             this.BTNCtrlCliReactivar.UseVisualStyleBackColor = false;
             this.BTNCtrlCliReactivar.Click += new System.EventHandler(this.BTNCtrlCliReactivar_Click);
             // 
+            // CKXmostrarInactivos
+            // 
+            this.CKXmostrarInactivos.AutoSize = true;
+            this.CKXmostrarInactivos.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CKXmostrarInactivos.Location = new System.Drawing.Point(338, 395);
+            this.CKXmostrarInactivos.Margin = new System.Windows.Forms.Padding(4);
+            this.CKXmostrarInactivos.Name = "CKXmostrarInactivos";
+            this.CKXmostrarInactivos.Size = new System.Drawing.Size(136, 21);
+            this.CKXmostrarInactivos.TabIndex = 30;
+            this.CKXmostrarInactivos.Text = "Mostrar Inactivos";
+            this.CKXmostrarInactivos.UseVisualStyleBackColor = true;
+            this.CKXmostrarInactivos.CheckedChanged += new System.EventHandler(this.CKXmostrarInactivos_CheckedChanged);
+            // 
             // FrmCTRLCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1133, 511);
+            this.Controls.Add(this.CKXmostrarInactivos);
             this.Controls.Add(this.BTNCtrlCliReactivar);
             this.Controls.Add(this.BTNCtrlCliModificar);
             this.Controls.Add(this.BTNCtrlCliBaja);
@@ -358,5 +373,6 @@
         private System.Windows.Forms.Label LBLVencimiento;
         private System.Windows.Forms.TextBox TXT_CtrlCliLicencia;
         private System.Windows.Forms.Label LBLLicencia;
+        private System.Windows.Forms.CheckBox CKXmostrarInactivos;
     }
 }

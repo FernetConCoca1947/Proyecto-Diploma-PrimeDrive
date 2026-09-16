@@ -1,5 +1,6 @@
 ﻿using BE;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -67,13 +68,14 @@ namespace DAL
         {
             acceso.Abrir();
             List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("@id", cliente.Id));
             parametros.Add(acceso.CrearParametro("@nombre", cliente.Nombre));
             parametros.Add(acceso.CrearParametro("@apellido", cliente.Apellido));
-            parametros.Add(acceso.CrearParametro("@dni", cliente.DNI));
             parametros.Add(acceso.CrearParametro("@email", cliente.Email));
             parametros.Add(acceso.CrearParametro("@telefono", cliente.Telefono));
-            parametros.Add(acceso.CrearParametro("@fechaLicencia", cliente.FechaVencimientoLicencia));
-            parametros.Add(acceso.CrearParametro("@numeroLicencia", cliente.NumeroLicenciaConducir));
+            parametros.Add(acceso.CrearParametro("@licencia", cliente.NumeroLicenciaConducir));
+            parametros.Add(acceso.CrearParametro("@vencimiento", cliente.FechaVencimientoLicencia));
+            parametros.Add(acceso.CrearParametro("@activo", cliente.Activo));
             int res = acceso.Escribir("MODIFICAR_CLIENTE", parametros);
         }
 
@@ -84,6 +86,35 @@ namespace DAL
             parametros.Add(acceso.CrearParametro("@id", cliente.Id));
             acceso.Escribir("REACTIVAR_CLIENTE", parametros);
             acceso.Cerrar();
+        }
+
+        public BE.CLIENTE ObtenerPorDNI(int dni)
+        {
+            acceso.Abrir();
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@dni", dni));
+            DataTable tabla = acceso.Leer("OBTENER_CLIENTE_POR_DNI", parametros);
+            acceso.Cerrar();
+
+            if (tabla.Rows.Count > 0)
+            {
+                DataRow fila = tabla.Rows[0];
+                BE.CLIENTE clienteEncontrado = new BE.CLIENTE();
+
+                clienteEncontrado.Id = Convert.ToInt32(fila["ID_CLIENTE"]);
+                clienteEncontrado.Nombre = fila["NOMBRE"].ToString();
+                clienteEncontrado.Apellido = fila["APELLIDO"].ToString();
+                clienteEncontrado.DNI = Convert.ToInt32(fila["DNI"]);
+                clienteEncontrado.Email = fila["EMAIL"].ToString();
+                clienteEncontrado.Telefono = Convert.ToInt32(fila["TELEFONO"]);
+                clienteEncontrado.NumeroLicenciaConducir = fila["LICENCIA"].ToString();
+                clienteEncontrado.FechaVencimientoLicencia = Convert.ToDateTime(fila["VENCIMIENTO_LICENCIA"]);
+                clienteEncontrado.Activo = Convert.ToBoolean(fila["ACTIVO"]);
+
+                return clienteEncontrado;
+            }
+
+            return null;
         }
 
         public override bool Verificar(CLIENTE cliente)

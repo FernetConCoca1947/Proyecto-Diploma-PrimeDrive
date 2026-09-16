@@ -11,5 +11,10 @@ namespace BE
         public int Id { get; set; }
         public string Nombre { get; set; }
         public decimal TarifaDiaria { get; set; }
+        public bool Activo {  get; set; }
+        public override string ToString()
+        {
+            return $"{Nombre} - ${TarifaDiaria:N2} /día";
+        }
     }
 }

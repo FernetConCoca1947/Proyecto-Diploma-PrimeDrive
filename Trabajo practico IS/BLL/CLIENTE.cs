@@ -1,5 +1,6 @@
 ﻿using BE;
 using DAL;
+using Servicios.Excepciones;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,72 +17,73 @@ namespace BLL
 
         public void Insertar(BE.CLIENTE cliente)
         {
-            if (string.IsNullOrWhiteSpace(cliente.Nombre))
-                throw new Exception("El nombre del producto no puede estar vacío.");
 
-            //if (producto.Precio <= 0)
-            //    throw new Exception("El precio debe ser mayor a cero.");
+            if (cliente.FechaVencimientoLicencia < DateTime.Now.Date)
+            {
+                throw new Exception("La licencia de conducir ingresada ya se encuentra vencida.");
+            }
 
-            //if (producto.Stock < 0)
-            //    throw new Exception("El stock no puede ser negativo.");
-
-            //var todos = mapper.Listar();
-            //if (todos.Any(p => p.Nombre.Equals(producto.Nombre, StringComparison.OrdinalIgnoreCase) && p.Activo == true))
-            //    throw new Exception("Ya existe un producto con ese nombre.");
+            BE.CLIENTE clienteExistente = mapper.ObtenerPorDNI(cliente.DNI);
+            if (clienteExistente != null)
+            {
+                throw new Exception("El cliente con el DNI ingresado ya existe en el sistema.");
+            }
 
             mapper.Alta(cliente);
-            GestorBitacora.RegistrarEvento("Inventario", $"Se dio de alta el producto {cliente.Nombre}, {cliente.Apellido}", 2);
+            GestorBitacora.RegistrarEvento("Clientes", $"Se dio de alta el cliente {cliente.Nombre}, {cliente.Apellido}", 2);
         }
 
         public void Borrar(BE.CLIENTE cliente)
         {
             cliente.Activo = false;
             mapper.Baja(cliente);
-            GestorBitacora.RegistrarEvento("Inventario", $"Se dio de baja el producto {cliente.Nombre}, {cliente.Apellido}", 2);
+            GestorBitacora.RegistrarEvento("Clientes", $"Se dio de baja el cliente {cliente.Nombre}, {cliente.Apellido}", 2);
         }
 
         public void Modificar(BE.CLIENTE cliente)
         {
+            if (cliente.FechaVencimientoLicencia < DateTime.Now.Date)
+            {
+                throw new Exception("La licencia de conducir ingresada ya se encuentra vencida.");
+            }
 
+            mapper.Modificar(cliente);
+            GestorBitacora.RegistrarEvento("Inventario", $"Se modificó el cliente {cliente.Nombre}, {cliente.Apellido}", 2);
         }
         public List<BE.CLIENTE> Listar()
         {
             return mapper.Listar();
         }
-        public void Reactivar(BE.CLIENTE cliente)
+        public void Reactivar(BE.CLIENTE cliente)  //VER ESTO
         {
-            List<BE.CLIENTE> todosLosProductos = mapper.Listar();
+            List<BE.CLIENTE> todosLosClientes = mapper.Listar();
 
-            bool productoExistente = todosLosProductos.Any(p =>
-                p.Id != cliente.Id &&
-                p.Activo == true &&
-                p.DNI == cliente.DNI
+            bool ClienteExistente = todosLosClientes.Any(c =>
+                c.Id != cliente.Id &&
+                c.Activo == true &&
+                c.DNI == cliente.DNI
                 );
 
-            if (productoExistente)
+            if (ClienteExistente)
             {
-                throw new Exception("Operación Denegada: Ya existe un cliente activo en el catálogo con este mismo nombre.");
+                throw new Exception("Ya existe un cliente activo con este mismo nombre.");
             }
 
             cliente.Activo = true;
             mapper.Reactivar(cliente);
 
-            GestorBitacora.RegistrarEvento("Inventario", $"Se reactivó el cliente: {cliente.Nombre}, {cliente.Apellido}", 3);
+            GestorBitacora.RegistrarEvento("Clientes", $"Se reactivó el cliente: {cliente.Nombre}, {cliente.Apellido}", 3);
         }
         public BE.CLIENTE ObtenerInactivoDuplicado(BE.CLIENTE cliente)
         {
-            List<BE.CLIENTE> todosLosProductos = mapper.Listar();
+            BE.CLIENTE clienteEncontrado = mapper.ObtenerPorDNI(cliente.DNI);
 
-            return todosLosProductos.FirstOrDefault(p =>
-                p.Activo == false &&
-                p.DNI == cliente.DNI      
-                );
-        }
-        private string ObtenerResponsable()
-        {
-            return Servicios.SESION.GetInstancia().usuactual != null
-                ? Servicios.SESION.GetInstancia().usuactual.Usuario
-                : "SISTEMA";
+            if (clienteEncontrado != null && clienteEncontrado.Activo == false)
+            {
+                return clienteEncontrado;
+            }
+
+            return null;
         }
     }
 }
