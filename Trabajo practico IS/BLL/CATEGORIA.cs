@@ -51,5 +51,10 @@ namespace BLL
             mapper.Reactivar(categoria);
             GestorBitacora.RegistrarEvento("Flota", $"Se dio de reactivo la categoría: {categoria.Nombre}", 2);
         }
+
+        public BE.CATEGORIA ObtenerInactivoDuplicado(BE.CATEGORIA categoria)
+        {
+            return null;
+        }
     }
 }

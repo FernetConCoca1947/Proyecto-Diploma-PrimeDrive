@@ -242,6 +242,14 @@ namespace Trabajo_practico_IS
             frmClientes.ShowDialog();
             this.Show();
         }
+
+        private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FrmCategoria frmCategorias = new FrmCategoria();
+            frmCategorias.ShowDialog();
+            this.Show();
+        }
     }
 }
 

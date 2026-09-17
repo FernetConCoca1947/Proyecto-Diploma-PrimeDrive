@@ -31,6 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.BtnCerrarSesion = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.alquileresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reservasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDeFlotaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdministracionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.controlDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.controlDePermisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,12 +49,8 @@
             this.LBLbienvenida = new System.Windows.Forms.Label();
             this.CBXidiomas = new System.Windows.Forms.ComboBox();
             this.LBLidioma = new System.Windows.Forms.Label();
-            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.alquileresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionDeFlotaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reservasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vehiculosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,6 +83,51 @@
             this.menuStrip1.Size = new System.Drawing.Size(762, 28);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // alquileresToolStripMenuItem
+            // 
+            this.alquileresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reservasToolStripMenuItem,
+            this.checkoutToolStripMenuItem,
+            this.checkinToolStripMenuItem});
+            this.alquileresToolStripMenuItem.Name = "alquileresToolStripMenuItem";
+            this.alquileresToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
+            this.alquileresToolStripMenuItem.Text = "Alquileres";
+            // 
+            // reservasToolStripMenuItem
+            // 
+            this.reservasToolStripMenuItem.Name = "reservasToolStripMenuItem";
+            this.reservasToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
+            this.reservasToolStripMenuItem.Text = "Reservas";
+            // 
+            // checkoutToolStripMenuItem
+            // 
+            this.checkoutToolStripMenuItem.Name = "checkoutToolStripMenuItem";
+            this.checkoutToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
+            this.checkoutToolStripMenuItem.Text = "Check-out";
+            // 
+            // checkinToolStripMenuItem
+            // 
+            this.checkinToolStripMenuItem.Name = "checkinToolStripMenuItem";
+            this.checkinToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
+            this.checkinToolStripMenuItem.Text = "Check-in";
+            // 
+            // gestionDeFlotaToolStripMenuItem
+            // 
+            this.gestionDeFlotaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.vehiculosToolStripMenuItem,
+            this.categoriasToolStripMenuItem});
+            this.gestionDeFlotaToolStripMenuItem.Name = "gestionDeFlotaToolStripMenuItem";
+            this.gestionDeFlotaToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
+            this.gestionDeFlotaToolStripMenuItem.Text = "Gestión de flota";
+            // 
+            // clientesToolStripMenuItem
+            // 
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
+            this.clientesToolStripMenuItem.Tag = "ABM_CLIENTES";
+            this.clientesToolStripMenuItem.Text = "Clientes";
+            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // AdministracionMenuItem
             // 
@@ -190,47 +237,19 @@
             this.LBLidioma.TabIndex = 11;
             this.LBLidioma.Text = "Idiomas";
             // 
-            // clientesToolStripMenuItem
+            // vehiculosToolStripMenuItem
             // 
-            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
-            this.clientesToolStripMenuItem.Tag = "ABM_CLIENTES";
-            this.clientesToolStripMenuItem.Text = "Clientes";
-            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
+            this.vehiculosToolStripMenuItem.Name = "vehiculosToolStripMenuItem";
+            this.vehiculosToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.vehiculosToolStripMenuItem.Text = "Vehículos";
             // 
-            // alquileresToolStripMenuItem
+            // categoriasToolStripMenuItem
             // 
-            this.alquileresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reservasToolStripMenuItem,
-            this.checkoutToolStripMenuItem,
-            this.checkinToolStripMenuItem});
-            this.alquileresToolStripMenuItem.Name = "alquileresToolStripMenuItem";
-            this.alquileresToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
-            this.alquileresToolStripMenuItem.Text = "Alquileres";
-            // 
-            // gestionDeFlotaToolStripMenuItem
-            // 
-            this.gestionDeFlotaToolStripMenuItem.Name = "gestionDeFlotaToolStripMenuItem";
-            this.gestionDeFlotaToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
-            this.gestionDeFlotaToolStripMenuItem.Text = "Gestión de flota";
-            // 
-            // reservasToolStripMenuItem
-            // 
-            this.reservasToolStripMenuItem.Name = "reservasToolStripMenuItem";
-            this.reservasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.reservasToolStripMenuItem.Text = "Reservas";
-            // 
-            // checkoutToolStripMenuItem
-            // 
-            this.checkoutToolStripMenuItem.Name = "checkoutToolStripMenuItem";
-            this.checkoutToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.checkoutToolStripMenuItem.Text = "Check-out";
-            // 
-            // checkinToolStripMenuItem
-            // 
-            this.checkinToolStripMenuItem.Name = "checkinToolStripMenuItem";
-            this.checkinToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.checkinToolStripMenuItem.Text = "Check-in";
+            this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.categoriasToolStripMenuItem.Tag = "ABM_CATEGORIAS";
+            this.categoriasToolStripMenuItem.Text = "Categorías";
+            this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);
             // 
             // FrmMenuPrincipal
             // 
@@ -281,6 +300,8 @@
         private System.Windows.Forms.ToolStripMenuItem checkinToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionDeFlotaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vehiculosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
     }
 }
 
