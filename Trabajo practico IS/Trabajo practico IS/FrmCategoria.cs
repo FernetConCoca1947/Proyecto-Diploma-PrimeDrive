@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Trabajo_practico_IS
 {
-    public partial class FrmCategoria : Form
+    public partial class FrmCategoria : Form, BE.IObserver
     {
         BLL.CATEGORIA GestorCategoria = new BLL.CATEGORIA();
         BLL.IDIOMA GestorIdiomas = new BLL.IDIOMA();
@@ -23,11 +23,38 @@ namespace Trabajo_practico_IS
 
         private void FrmCategoria_Load(object sender, EventArgs e)
         {
-
+            Servicios.IDIOMAS.GetInstancia().Suscribir(this);
+            CBXidiomas.SelectedIndexChanged -= CBXidiomas_SelectedIndexChanged;
+            CBXidiomas.DataSource = GestorIdiomas.Listar();
+            CBXidiomas.DisplayMember = "Nombre";
+            CBXidiomas.ValueMember = "Id";
+            CBXidiomas.SelectedValue = Servicios.IDIOMAS.GetInstancia().IdIdiomaActual;
+            CBXidiomas.SelectedIndexChanged += CBXidiomas_SelectedIndexChanged;
 
             EnlazarCategorias();
         }
 
+        public void TraducirControles(Control.ControlCollection controles, Dictionary<string, string> traducciones)
+        {
+            foreach (Control control in controles)
+            {
+                string clave = $"{this.Name}_{control.Name}";
+                if (traducciones.TryGetValue(clave, out string textoTraducido)) control.Text = textoTraducido;
+                if (control.HasChildren) TraducirControles(control.Controls, traducciones);
+            }
+        }
+        public void ActualizarIdioma()
+        {
+            var traducciones = Servicios.IDIOMAS.GetInstancia().Traducciones;
+            TraducirControles(this.Controls, traducciones);
+            if (traducciones.TryGetValue($"{this.Name}_Titulo", out string textoTitulo)) this.Text = textoTitulo;
+            if (CBXidiomas.Items.Count > 0)
+            {
+                CBXidiomas.SelectedIndexChanged -= CBXidiomas_SelectedIndexChanged;
+                CBXidiomas.SelectedValue = Servicios.IDIOMAS.GetInstancia().IdIdiomaActual;
+                CBXidiomas.SelectedIndexChanged += CBXidiomas_SelectedIndexChanged;
+            }
+        }
         public void EnlazarCategorias()
         {
             var categorias = GestorCategoria.Listar().AsEnumerable();
@@ -95,7 +122,7 @@ namespace Trabajo_practico_IS
                         GestorCategoria.Reactivar(inactivoDuplicado);
                         MessageBox.Show("El cliente ha sido reactivado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         EnlazarCategorias();
-                        //LimpiarControles();
+                        LimpiarControles();
                         return;
                     }
                     else
@@ -108,7 +135,7 @@ namespace Trabajo_practico_IS
 
                 MessageBox.Show("categoria registrada exitosamente.", "Alta Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 EnlazarCategorias();
-                //LimpiarControles();
+                LimpiarControles();
             }
             catch (Exception ex)
             {
@@ -127,7 +154,7 @@ namespace Trabajo_practico_IS
                     {
                         GestorCategoria.Borrar(CategoriaSeleccionada);
                         EnlazarCategorias();
-                        //LimpiarControles();
+                        LimpiarControles();
                         CategoriaSeleccionada = null;
                         //ActualizarEstadoBotones();
                     }
@@ -150,9 +177,28 @@ namespace Trabajo_practico_IS
 
         private void BTNCategoriaReactivar_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (CategoriaSeleccionada != null && CategoriaSeleccionada.Activo == false)
+                {
+                    var result = MessageBox.Show($"¿Desea reactivar el producto: {CategoriaSeleccionada.Nombre}?", "Confirmar Reactivación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        GestorCategoria.Reactivar(CategoriaSeleccionada);
+                        EnlazarCategorias();
+                        LimpiarControles();
+                        CategoriaSeleccionada = null;
+                        //ActualizarEstadoBotones();
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error al Reactivar", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
-
+        private void LimpiarControles()
+        {
+            TXT_CtrlCatNombre.Text = "";
+            TXT_CtrlCatTarifa.Text = "";
+        }
         private void DGV_Categorias_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -167,6 +213,37 @@ namespace Trabajo_practico_IS
                 }
 
             }
+        }
+
+        private void CBXidiomas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CBXidiomas.SelectedValue != null && int.TryParse(CBXidiomas.SelectedValue.ToString(), out int idIdioma))
+                {
+                    BLL.IDIOMA gestorIdioma = new BLL.IDIOMA();
+                    var traducciones = gestorIdioma.ObtenerTraducciones(idIdioma);
+                    Servicios.IDIOMAS.GetInstancia().CambiarIdioma(idIdioma, traducciones);
+
+                    if (Servicios.SESION.GetInstancia().usuactual != null)
+                    {
+                        BLL.USUARIO gestorUsu = new BLL.USUARIO();
+                        gestorUsu.ActualizarIdiomaUsuario(Servicios.SESION.GetInstancia().usuactual, idIdioma);
+                        Servicios.SESION.GetInstancia().usuactual.IdIdioma = idIdioma;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void CKXmostrarInactivos_CheckedChanged(object sender, EventArgs e)
+        {
+            EnlazarCategorias();
+            LimpiarControles();
+            CategoriaSeleccionada = null;
         }
     }
 }

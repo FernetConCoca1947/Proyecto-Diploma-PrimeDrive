@@ -110,6 +110,7 @@
             this.CKXmostrarInactivos.TabIndex = 36;
             this.CKXmostrarInactivos.Text = "Mostrar Inactivas";
             this.CKXmostrarInactivos.UseVisualStyleBackColor = true;
+            this.CKXmostrarInactivos.CheckedChanged += new System.EventHandler(this.CKXmostrarInactivos_CheckedChanged);
             // 
             // BTNCategoriaReactivar
             // 
@@ -207,6 +208,7 @@
             this.CBXidiomas.Name = "CBXidiomas";
             this.CBXidiomas.Size = new System.Drawing.Size(135, 25);
             this.CBXidiomas.TabIndex = 37;
+            this.CBXidiomas.SelectedIndexChanged += new System.EventHandler(this.CBXidiomas_SelectedIndexChanged);
             // 
             // FrmCategoria
             // 
@@ -223,8 +225,9 @@
             this.Controls.Add(this.GB_Categorias);
             this.Controls.Add(this.GB_DatosCategoria);
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmCategoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmCategoria";
             this.Load += new System.EventHandler(this.FrmCategoria_Load);
             this.GB_DatosCategoria.ResumeLayout(false);

@@ -33,7 +33,7 @@ namespace DAL
         public override void Baja(BE.CATEGORIA categoria)
         {
             List<SqlParameter> parametros = new List<SqlParameter>();
-            parametros.Add(acceso.CrearParametro("@idCategoria", categoria.Id));
+            parametros.Add(acceso.CrearParametro("@id", categoria.Id));
 
             try
             {
