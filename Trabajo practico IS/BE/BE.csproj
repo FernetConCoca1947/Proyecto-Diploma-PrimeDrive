@@ -46,6 +46,7 @@
     <Compile Include="CLIENTE.cs" />
     <Compile Include="COMPONENTE.cs" />
     <Compile Include="CONTRATO.cs" />
+    <Compile Include="ESTADO.cs" />
     <Compile Include="HISTORIAL_PRODUCTO.cs" />
     <Compile Include="HISTORIAL_USUARIO.cs" />
     <Compile Include="IDIOMA.cs" />
