@@ -179,7 +179,7 @@ namespace Trabajo_practico_IS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
             }
         }
 

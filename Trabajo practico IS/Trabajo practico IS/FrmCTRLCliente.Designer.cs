@@ -260,6 +260,7 @@
             this.BTNCtrlCliAlta.Name = "BTNCtrlCliAlta";
             this.BTNCtrlCliAlta.Size = new System.Drawing.Size(145, 33);
             this.BTNCtrlCliAlta.TabIndex = 26;
+            this.BTNCtrlCliAlta.Tag = "";
             this.BTNCtrlCliAlta.Text = "Alta";
             this.BTNCtrlCliAlta.UseVisualStyleBackColor = false;
             this.BTNCtrlCliAlta.Click += new System.EventHandler(this.BTNCtrlCliAlta_Click);

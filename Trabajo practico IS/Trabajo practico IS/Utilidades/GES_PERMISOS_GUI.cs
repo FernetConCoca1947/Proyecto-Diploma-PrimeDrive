@@ -35,6 +35,7 @@ namespace Trabajo_practico_IS.Utilidades
             {
                 if (ctrl.Tag != null && !string.IsNullOrWhiteSpace(ctrl.Tag.ToString()))
                 {
+                    //ctrl.Enabled = usuario.TienePermiso(ctrl.Tag.ToString());
                     ctrl.Visible = usuario.TienePermiso(ctrl.Tag.ToString());
                 }
 
@@ -50,6 +51,7 @@ namespace Trabajo_practico_IS.Utilidades
         {
             if (item.Tag != null && !string.IsNullOrWhiteSpace(item.Tag.ToString()))
             {
+                //item.Enabled = usuario.TienePermiso(item.Tag.ToString());
                 item.Visible = usuario.TienePermiso(item.Tag.ToString());
             }
 

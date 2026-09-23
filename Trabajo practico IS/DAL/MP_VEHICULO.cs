@@ -11,7 +11,7 @@ namespace DAL
 {
     public class MP_VEHICULO : MAPPER<BE.VEHICULO>
     {
-        public override void Alta(VEHICULO vehiculo)
+        public override void Alta(BE.VEHICULO vehiculo)
         {
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(acceso.CrearParametro("@patente", vehiculo.Patente));
@@ -33,7 +33,7 @@ namespace DAL
             }
         }
 
-        public override void Baja(VEHICULO vehiculo)
+        public override void Baja(BE.VEHICULO vehiculo)
         {
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(acceso.CrearParametro("@idVehiculo", vehiculo.Id));
@@ -50,7 +50,7 @@ namespace DAL
             }
         }
 
-        public override List<VEHICULO> Listar()
+        public override List<BE.VEHICULO> Listar()
         {
             List<BE.VEHICULO> listaVehiculos = new List<BE.VEHICULO>();
 
@@ -84,7 +84,7 @@ namespace DAL
             return listaVehiculos;
         }
 
-        public override void Modificar(VEHICULO vehiculo)
+        public override void Modificar(BE.VEHICULO vehiculo)
         {
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(acceso.CrearParametro("@idVehiculo", vehiculo.Id));
@@ -115,7 +115,6 @@ namespace DAL
             try
             {
                 acceso.Abrir();
-                // Este SP deberá hacer: UPDATE VEHICULO SET ID_ESTADO = 1 WHERE ID_VEHICULO = @idVehiculo
                 acceso.Escribir("REACTIVAR_VEHICULO", parametros);
             }
             finally
@@ -124,7 +123,42 @@ namespace DAL
             }
         }
 
-        public override bool Verificar(VEHICULO vehiculo)
+        public BE.VEHICULO ObtenerInactivoDuplicado(string patente)
+        {
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("@patente", patente));
+
+            try
+            {
+                acceso.Abrir();
+                DataTable tabla = acceso.Leer("OBTENER_VEHICULO_INACTIVO_DUPLICADO", parametros);
+
+                if (tabla.Rows.Count > 0)
+                {
+                    DataRow fila = tabla.Rows[0];
+                    BE.VEHICULO veh = new BE.VEHICULO();
+
+                    veh.Id = Convert.ToInt32(fila["ID_VEHICULO"]);
+                    veh.Patente = fila["PATENTE"].ToString();
+                    veh.Marca = fila["MARCA"].ToString();
+                    veh.Modelo = fila["MODELO"].ToString();
+                    veh.KmActual = Convert.ToInt32(fila["KM_ACTUAL"]);
+                    veh.Estado = new BE.ESTADO { IdEstado = Convert.ToInt32(fila["ID_ESTADO"]) };
+                    veh.Categoria = new BE.CATEGORIA { Id = Convert.ToInt32(fila["ID_CATEGORIA"]) };
+                    veh.Sucursal = new BE.SUCURSAL { Id = Convert.ToInt32(fila["ID_SUCURSAL"]) };
+
+                    return veh;
+                }
+
+                return null;
+            }
+            finally
+            {
+                acceso.Cerrar();
+            }
+        }
+
+        public override bool Verificar(BE.VEHICULO vehiculo)
         {
             throw new NotImplementedException();
         }

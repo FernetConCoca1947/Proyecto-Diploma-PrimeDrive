@@ -36,6 +36,8 @@
             this.checkoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDeFlotaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vehiculosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdministracionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.controlDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,8 +51,6 @@
             this.LBLbienvenida = new System.Windows.Forms.Label();
             this.CBXidiomas = new System.Windows.Forms.ComboBox();
             this.LBLidioma = new System.Windows.Forms.Label();
-            this.vehiculosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,6 +120,22 @@
             this.gestionDeFlotaToolStripMenuItem.Name = "gestionDeFlotaToolStripMenuItem";
             this.gestionDeFlotaToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
             this.gestionDeFlotaToolStripMenuItem.Text = "Gestión de flota";
+            // 
+            // vehiculosToolStripMenuItem
+            // 
+            this.vehiculosToolStripMenuItem.Name = "vehiculosToolStripMenuItem";
+            this.vehiculosToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.vehiculosToolStripMenuItem.Tag = "ABM_VEHICULOS";
+            this.vehiculosToolStripMenuItem.Text = "Vehículos";
+            this.vehiculosToolStripMenuItem.Click += new System.EventHandler(this.vehiculosToolStripMenuItem_Click);
+            // 
+            // categoriasToolStripMenuItem
+            // 
+            this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.categoriasToolStripMenuItem.Tag = "ABM_CATEGORIAS";
+            this.categoriasToolStripMenuItem.Text = "Categorías";
+            this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
             // 
@@ -236,20 +252,6 @@
             this.LBLidioma.Size = new System.Drawing.Size(59, 17);
             this.LBLidioma.TabIndex = 11;
             this.LBLidioma.Text = "Idiomas";
-            // 
-            // vehiculosToolStripMenuItem
-            // 
-            this.vehiculosToolStripMenuItem.Name = "vehiculosToolStripMenuItem";
-            this.vehiculosToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.vehiculosToolStripMenuItem.Text = "Vehículos";
-            // 
-            // categoriasToolStripMenuItem
-            // 
-            this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.categoriasToolStripMenuItem.Tag = "ABM_CATEGORIAS";
-            this.categoriasToolStripMenuItem.Text = "Categorías";
-            this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);
             // 
             // FrmMenuPrincipal
             // 

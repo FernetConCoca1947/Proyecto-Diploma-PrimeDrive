@@ -49,6 +49,7 @@
     <Compile Include="MP_CLIENTE.cs" />
     <Compile Include="MP_CONTRATO.cs" />
     <Compile Include="MP_DIGITO_VERIFICADOR.cs" />
+    <Compile Include="MP_ESTADO.cs" />
     <Compile Include="MP_HISTORIAL_PRODUCTO.cs" />
     <Compile Include="MP_HISTORIAL_USUARIO.cs" />
     <Compile Include="MP_IDIOMA.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="MP_PRODUCTO.cs" />
     <Compile Include="MP_PROMOCION.cs" />
     <Compile Include="MP_RESERVA.cs" />
+    <Compile Include="MP_SUCURSAL.cs" />
     <Compile Include="MP_USUARIO.cs" />
     <Compile Include="MP_VEHICULO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

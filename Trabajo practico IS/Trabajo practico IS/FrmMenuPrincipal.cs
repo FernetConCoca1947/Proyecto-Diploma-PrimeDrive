@@ -250,6 +250,14 @@ namespace Trabajo_practico_IS
             frmCategorias.ShowDialog();
             this.Show();
         }
+
+        private void vehiculosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FrmCTRLVehiculo FrmVehiculos = new FrmCTRLVehiculo();
+            FrmVehiculos.ShowDialog();
+            this.Show();
+        }
     }
 }
 
