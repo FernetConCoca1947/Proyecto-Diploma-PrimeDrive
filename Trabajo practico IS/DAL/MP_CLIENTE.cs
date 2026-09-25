@@ -54,7 +54,7 @@ namespace DAL
                 cliente.Apellido = registro["APELLIDO"].ToString();
                 cliente.DNI = int.Parse(registro["DNI"].ToString());
                 cliente.Email = registro["EMAIL"].ToString();
-                cliente.Telefono = int.Parse(registro["TELEFONO"].ToString());
+                cliente.Telefono = registro["TELEFONO"].ToString();
                 cliente.NumeroLicenciaConducir = registro["LICENCIA"].ToString();
                 cliente.FechaVencimientoLicencia = DateTime.Parse(registro["VENCIMIENTO_LICENCIA"].ToString());
                 cliente.Activo = Convert.ToBoolean(registro["ACTIVO"]);
@@ -106,7 +106,7 @@ namespace DAL
                 clienteEncontrado.Apellido = fila["APELLIDO"].ToString();
                 clienteEncontrado.DNI = Convert.ToInt32(fila["DNI"]);
                 clienteEncontrado.Email = fila["EMAIL"].ToString();
-                clienteEncontrado.Telefono = Convert.ToInt32(fila["TELEFONO"]);
+                clienteEncontrado.Telefono = fila["TELEFONO"].ToString();
                 clienteEncontrado.NumeroLicenciaConducir = fila["LICENCIA"].ToString();
                 clienteEncontrado.FechaVencimientoLicencia = Convert.ToDateTime(fila["VENCIMIENTO_LICENCIA"]);
                 clienteEncontrado.Activo = Convert.ToBoolean(fila["ACTIVO"]);

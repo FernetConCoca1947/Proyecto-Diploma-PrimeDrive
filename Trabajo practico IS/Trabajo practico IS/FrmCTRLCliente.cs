@@ -142,10 +142,9 @@ namespace Trabajo_practico_IS
                 nuevoCliente.Apellido = TXT_CtrlCliApellido.Text;
                 nuevoCliente.DNI = int.Parse(TXT_CtrlCliDNI.Text);
                 nuevoCliente.Email = TXT_CtrlCliEmail.Text;
-                nuevoCliente.Telefono = int.Parse(TXT_CtrlCliTelefono.Text);
+                nuevoCliente.Telefono = TXT_CtrlCliTelefono.Text;
                 nuevoCliente.NumeroLicenciaConducir = TXT_CtrlCliLicencia.Text;
                 nuevoCliente.FechaVencimientoLicencia = dateTimeVencimiento.Value.Date;
-                nuevoCliente.Activo = true;
 
                 BE.CLIENTE inactivoDuplicado = GestorClientes.ObtenerInactivoDuplicado(nuevoCliente);
 
@@ -252,7 +251,7 @@ namespace Trabajo_practico_IS
                 ClienteSeleccionado.Nombre = TXT_CtrlCLiNombre.Text;
                 ClienteSeleccionado.Apellido = TXT_CtrlCliApellido.Text;
                 ClienteSeleccionado.Email = TXT_CtrlCliEmail.Text;
-                ClienteSeleccionado.Telefono = int.Parse(TXT_CtrlCliTelefono.Text);
+                ClienteSeleccionado.Telefono = TXT_CtrlCliTelefono.Text;
                 ClienteSeleccionado.NumeroLicenciaConducir = TXT_CtrlCliLicencia.Text;
                 ClienteSeleccionado.FechaVencimientoLicencia = dateTimeVencimiento.Value.Date;
 

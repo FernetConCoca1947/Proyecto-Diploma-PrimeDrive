@@ -11,8 +11,13 @@ namespace BE
         public int Id { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
-        public string Estado { get; set; }
+        public ESTADO Estado { get; set; }
         public CLIENTE Cliente { get; set; }
         public CATEGORIA Categoria { get; set; }
+
+        public override string ToString()
+        {
+            return $"Reserva #{Id} - {Cliente.Apellido} - {Categoria.Nombre}";
+        }
     }
 }
