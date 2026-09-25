@@ -42,6 +42,7 @@
             this.DGV_Categorias = new System.Windows.Forms.DataGridView();
             this.LBLidiomas = new System.Windows.Forms.Label();
             this.CBXidiomas = new System.Windows.Forms.ComboBox();
+            this.BTNvolveralmenu = new System.Windows.Forms.Button();
             this.GB_DatosCategoria.SuspendLayout();
             this.GB_Categorias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Categorias)).BeginInit();
@@ -210,11 +211,26 @@
             this.CBXidiomas.TabIndex = 37;
             this.CBXidiomas.SelectedIndexChanged += new System.EventHandler(this.CBXidiomas_SelectedIndexChanged);
             // 
+            // BTNvolveralmenu
+            // 
+            this.BTNvolveralmenu.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNvolveralmenu.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNvolveralmenu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTNvolveralmenu.Location = new System.Drawing.Point(665, 424);
+            this.BTNvolveralmenu.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNvolveralmenu.Name = "BTNvolveralmenu";
+            this.BTNvolveralmenu.Size = new System.Drawing.Size(145, 33);
+            this.BTNvolveralmenu.TabIndex = 39;
+            this.BTNvolveralmenu.Text = "Volver al menu";
+            this.BTNvolveralmenu.UseVisualStyleBackColor = false;
+            this.BTNvolveralmenu.Click += new System.EventHandler(this.BTNvolveralmenu_Click);
+            // 
             // FrmCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 439);
+            this.ClientSize = new System.Drawing.Size(823, 470);
+            this.Controls.Add(this.BTNvolveralmenu);
             this.Controls.Add(this.LBLidiomas);
             this.Controls.Add(this.CBXidiomas);
             this.Controls.Add(this.CKXmostrarInactivos);
@@ -229,6 +245,7 @@
             this.Name = "FrmCategoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmCategoria";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCategoria_FormClosing);
             this.Load += new System.EventHandler(this.FrmCategoria_Load);
             this.GB_DatosCategoria.ResumeLayout(false);
             this.GB_DatosCategoria.PerformLayout();
@@ -255,5 +272,6 @@
         private System.Windows.Forms.DataGridView DGV_Categorias;
         private System.Windows.Forms.Label LBLidiomas;
         private System.Windows.Forms.ComboBox CBXidiomas;
+        private System.Windows.Forms.Button BTNvolveralmenu;
     }
 }

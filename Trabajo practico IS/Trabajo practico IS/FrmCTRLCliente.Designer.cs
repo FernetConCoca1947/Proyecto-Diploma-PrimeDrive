@@ -52,6 +52,7 @@
             this.BTNCtrlCliModificar = new System.Windows.Forms.Button();
             this.BTNCtrlCliReactivar = new System.Windows.Forms.Button();
             this.CKXmostrarInactivos = new System.Windows.Forms.CheckBox();
+            this.BTNvolveralmenu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_CtrlCliClientes)).BeginInit();
             this.GB_Clientes.SuspendLayout();
             this.GB_DatosCliente.SuspendLayout();
@@ -320,11 +321,26 @@
             this.CKXmostrarInactivos.UseVisualStyleBackColor = true;
             this.CKXmostrarInactivos.CheckedChanged += new System.EventHandler(this.CKXmostrarInactivos_CheckedChanged);
             // 
+            // BTNvolveralmenu
+            // 
+            this.BTNvolveralmenu.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNvolveralmenu.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNvolveralmenu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTNvolveralmenu.Location = new System.Drawing.Point(966, 472);
+            this.BTNvolveralmenu.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNvolveralmenu.Name = "BTNvolveralmenu";
+            this.BTNvolveralmenu.Size = new System.Drawing.Size(145, 33);
+            this.BTNvolveralmenu.TabIndex = 31;
+            this.BTNvolveralmenu.Text = "Volver al menu";
+            this.BTNvolveralmenu.UseVisualStyleBackColor = false;
+            this.BTNvolveralmenu.Click += new System.EventHandler(this.BTNvolveralmenu_Click);
+            // 
             // FrmCTRLCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1133, 511);
+            this.Controls.Add(this.BTNvolveralmenu);
             this.Controls.Add(this.CKXmostrarInactivos);
             this.Controls.Add(this.BTNCtrlCliReactivar);
             this.Controls.Add(this.BTNCtrlCliModificar);
@@ -339,6 +355,7 @@
             this.Name = "FrmCTRLCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCTRLCliente";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCTRLCliente_FormClosing);
             this.Load += new System.EventHandler(this.FrmCTRLCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_CtrlCliClientes)).EndInit();
             this.GB_Clientes.ResumeLayout(false);
@@ -375,5 +392,6 @@
         private System.Windows.Forms.TextBox TXT_CtrlCliLicencia;
         private System.Windows.Forms.Label LBLLicencia;
         private System.Windows.Forms.CheckBox CKXmostrarInactivos;
+        private System.Windows.Forms.Button BTNvolveralmenu;
     }
 }

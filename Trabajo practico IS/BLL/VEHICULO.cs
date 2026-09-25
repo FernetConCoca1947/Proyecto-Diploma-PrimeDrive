@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace BLL
 {
@@ -79,6 +80,11 @@ namespace BLL
             // 1. Validación de cadenas de texto (Textos en blanco)
             if (string.IsNullOrWhiteSpace(vehiculo.Patente))
                 throw new Exception("La patente es obligatoria.");
+
+            bool formatoValido = Regex.IsMatch(vehiculo.Patente,@"^[A-Z]{2}\s?[0-9]{3}\s?[A-Z]{2}$");
+
+            if (!formatoValido)
+                throw new Exception("El formato de la patente es incorrecto. Debe respetar el formato 'AA 123 AA'.");
 
             if (string.IsNullOrWhiteSpace(vehiculo.Marca))
                 throw new Exception("La marca del vehículo es obligatoria.");

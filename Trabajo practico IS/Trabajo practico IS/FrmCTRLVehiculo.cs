@@ -18,8 +18,9 @@ namespace Trabajo_practico_IS
         private BLL.CATEGORIA GestorCategoria = new BLL.CATEGORIA();
         private BLL.SUCURSAL GestorSucursales= new BLL.SUCURSAL();
         private BLL.ESTADO GestorEstados = new BLL.ESTADO();
-        BLL.IDIOMA gestorIdioma = new BLL.IDIOMA();
+        private BLL.IDIOMA gestorIdioma = new BLL.IDIOMA();
         private BE.VEHICULO vehiculoSeleccionado = null;
+        private List<BE.VEHICULO> listaVehiculosOriginal;
         public FrmCTRLVehiculo()
         {
             InitializeComponent();
@@ -34,26 +35,59 @@ namespace Trabajo_practico_IS
             CBXidiomas.SelectedValue = Servicios.IDIOMAS.GetInstancia().IdIdiomaActual;
             CBXidiomas.SelectedIndexChanged += CBXidiomas_SelectedIndexChanged;
             ActualizarIdioma();
+            CargarFiltros();
+            CargarComboBoxes();
             EnlazarVehiculos();
         }
 
         public void EnlazarVehiculos()
         {
-            var vehiculos = GestorVehiculos.Listar().AsEnumerable();
+            try
+            {
+                listaVehiculosOriginal = GestorVehiculos.Listar();
 
-            //if (CKXmostrarInactivos.Checked == false)
-            //{
-            //    vehiculos = vehiculos.Where(cc => c. == true);
-            //}
+                AplicarFiltros();
+
+                if (DGV_Vehiculos.Columns["Id"] != null) DGV_Vehiculos.Columns["Id"].Visible = false;
+                if (DGV_Vehiculos.Columns["Activo"] != null) DGV_Vehiculos.Columns["Activo"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la flota: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void AplicarFiltros()
+        {
+            if (listaVehiculosOriginal == null) return;
+
+            var listaFiltrada = listaVehiculosOriginal.AsEnumerable();
+
+            string busquedaPatente = TXT_FiltroPatente.Text.Trim().ToUpper();
+            if (!string.IsNullOrWhiteSpace(busquedaPatente))
+            {
+                listaFiltrada = listaFiltrada.Where(v => v.Patente.Contains(busquedaPatente));
+            }
+
+            if (CBX_FiltroEstadoVeh.SelectedIndex > 0)
+            {
+                var estadoSel = (BE.ESTADO)CBX_FiltroEstadoVeh.SelectedItem;
+                listaFiltrada = listaFiltrada.Where(v => v.Estado.IdEstado == estadoSel.IdEstado);
+            }
+
+            if (CBX_FiltroCategoriaVeh.SelectedIndex > 0)
+            {
+                var categoriaSel = (BE.CATEGORIA)CBX_FiltroCategoriaVeh.SelectedItem;
+                listaFiltrada = listaFiltrada.Where(v => v.Categoria.Id == categoriaSel.Id);
+            }
 
             DGV_Vehiculos.DataSource = null;
-            DGV_Vehiculos.DataSource = vehiculos.ToList();
-            DGV_Vehiculos.ReadOnly = true;
+            DGV_Vehiculos.DataSource = listaFiltrada.ToList();
 
-            if (DGV_Vehiculos.Columns["Id"] != null) DGV_Vehiculos.Columns["Id"].Visible = false;
-            if (DGV_Vehiculos.Columns["Activo"] != null) DGV_Vehiculos.Columns["Activo"].Visible = false;
-            //ActualizarEstadoBotones();
+            DGV_Vehiculos.ClearSelection();
+            ActualizarEstadoBotones();
         }
+
 
         public void ActualizarIdioma()
         {
@@ -150,6 +184,7 @@ namespace Trabajo_practico_IS
                         MessageBox.Show("El vehículo ha sido reactivado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         EnlazarVehiculos();
                         LimpiarControles();
+                        ActualizarEstadoBotones();
                         return;
                     }
                     else
@@ -161,6 +196,7 @@ namespace Trabajo_practico_IS
                 GestorVehiculos.Insertar(nuevoVehiculo);
                 EnlazarVehiculos();
                 LimpiarControles();
+                ActualizarEstadoBotones();
             }
             catch(Exception ex)
             {
@@ -181,7 +217,7 @@ namespace Trabajo_practico_IS
                         EnlazarVehiculos();
                         LimpiarControles();
                         vehiculoSeleccionado = null;
-                        //ActualizarEstadoBotones();
+                        ActualizarEstadoBotones();
                     }
                 }
                 else
@@ -205,19 +241,19 @@ namespace Trabajo_practico_IS
                     return;
                 }
 
-                BE.VEHICULO nuevoVehiculo = new BE.VEHICULO();
-                nuevoVehiculo.Patente = TXT_CtrlVehPatente.Text;
-                nuevoVehiculo.Marca = TXT_CtrlVehMarca.Text.Trim();
-                nuevoVehiculo.Modelo = TXT_CtrlVehModelo.Text.Trim();
-                nuevoVehiculo.KmActual = (int)NUM_KmActual.Value;
-                nuevoVehiculo.Categoria = (BE.CATEGORIA)CBX_Categoria.SelectedItem;
-                nuevoVehiculo.Sucursal = (BE.SUCURSAL)CBX_Sucursal.SelectedItem;
-                nuevoVehiculo.Estado = (BE.ESTADO)CBX_Estado.SelectedItem;
+                vehiculoSeleccionado.Patente = TXT_CtrlVehPatente.Text;
+                vehiculoSeleccionado.Marca = TXT_CtrlVehMarca.Text.Trim();
+                vehiculoSeleccionado.Modelo = TXT_CtrlVehModelo.Text.Trim();
+                vehiculoSeleccionado.KmActual = (int)NUM_KmActual.Value;
+                vehiculoSeleccionado.Categoria = (BE.CATEGORIA)CBX_Categoria.SelectedItem;
+                vehiculoSeleccionado.Sucursal = (BE.SUCURSAL)CBX_Sucursal.SelectedItem;
+                vehiculoSeleccionado.Estado = (BE.ESTADO)CBX_Estado.SelectedItem;
 
                 GestorVehiculos.Modificar(vehiculoSeleccionado);
 
                 EnlazarVehiculos();
                 LimpiarControles();
+                ActualizarEstadoBotones();
             }
             catch (Exception ex)
             {
@@ -238,7 +274,7 @@ namespace Trabajo_practico_IS
                         EnlazarVehiculos();
                         LimpiarControles();
                         vehiculoSeleccionado = null;
-                        //ActualizarEstadoBotones();
+                        ActualizarEstadoBotones();
                     }
                 }
             }
@@ -260,19 +296,111 @@ namespace Trabajo_practico_IS
                     AsignarComboBox(CBX_Sucursal, vehiculoSeleccionado.Sucursal.Id);
                     AsignarComboBox(CBX_Estado, vehiculoSeleccionado.Estado.IdEstado);
 
-                    //ActualizarEstadoBotones();
+                    ActualizarEstadoBotones();
                 }
 
             }
+        }
+
+        private void CargarComboBoxes()
+        {
+            CBX_Categoria.DataSource = GestorCategoria.Listar();
+
+            CBX_Sucursal.DataSource = GestorSucursales.Listar();
+
+            CBX_Estado.DataSource = GestorEstados.ListarPorAmbito("Vehiculo");
         }
         private void AsignarComboBox(ComboBox combo, int idBuscado)
         {
             foreach (var item in combo.Items)
             {
-                // Reflexión básica para comparar IDs genéricamente, o casteos explícitos
                 if (item is BE.CATEGORIA cat && cat.Id == idBuscado) combo.SelectedItem = item;
                 else if (item is BE.SUCURSAL suc && suc.Id == idBuscado) combo.SelectedItem = item;
                 else if (item is BE.ESTADO est && est.IdEstado == idBuscado) combo.SelectedItem = item;
+            }
+        }
+
+        private void ActualizarEstadoBotones()
+        {
+
+            if (vehiculoSeleccionado == null)
+            {
+                BTNCtrlVehAlta.Enabled = true;
+
+                BTNCtrlVehModificar.Enabled = false;
+                BTNCtrlVehBaja.Enabled = false;
+                BTNCtrlVehReactivar.Enabled = false;
+            }
+            else
+            {
+
+                if (vehiculoSeleccionado.Estado.IdEstado == 4)
+                {
+                    BTNCtrlVehReactivar.Enabled = true;
+
+                    BTNCtrlVehAlta.Enabled = false;
+                    BTNCtrlVehModificar.Enabled = false;
+                    BTNCtrlVehBaja.Enabled = false;
+                }
+
+                else
+                {
+                    BTNCtrlVehModificar.Enabled = true;
+                    BTNCtrlVehBaja.Enabled = true;
+
+                    BTNCtrlVehAlta.Enabled = false;
+                    BTNCtrlVehReactivar.Enabled = false;
+                }
+            }
+        }
+        private void CargarFiltros()
+        {
+            List<BE.ESTADO> listaEstados = GestorEstados.ListarPorAmbito("Vehiculo");
+
+            listaEstados.Insert(0, new BE.ESTADO { IdEstado = 0, Nombre = "Todos" });
+
+            CBX_FiltroEstadoVeh.DataSource = listaEstados;
+            CBX_FiltroEstadoVeh.DisplayMember = "Nombre";
+            CBX_FiltroEstadoVeh.ValueMember = "IdEstado";
+            CBX_FiltroEstadoVeh.SelectedIndex = 0;
+
+            List<BE.CATEGORIA> listaCategorias = GestorCategoria.Listar();
+            listaCategorias.Insert(0, new BE.CATEGORIA { Id = 0, Nombre = "Todas" });
+
+            CBX_FiltroCategoriaVeh.DataSource = listaCategorias;
+            CBX_FiltroCategoriaVeh.DisplayMember = "Nombre";
+            CBX_FiltroCategoriaVeh.ValueMember = "Id";
+            CBX_FiltroCategoriaVeh.SelectedIndex = 0;
+        }
+
+        private void FrmCTRLVehiculo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Servicios.IDIOMAS.GetInstancia().Desuscribir(this);
+        }
+
+        private void TXT_FiltroPatente_TextChanged(object sender, EventArgs e)
+        {
+            AplicarFiltros();
+        }
+
+        private void CBX_FiltroEstadoVeh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AplicarFiltros();
+        }
+
+        private void CBX_FiltroCategoriaVeh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AplicarFiltros();
+        }
+
+        private void BTNvolveralmenu_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("¿Desea volver al menu principal?", "Atención",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
             }
         }
     }

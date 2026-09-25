@@ -38,6 +38,10 @@
             this.GB_Vehiculos = new System.Windows.Forms.GroupBox();
             this.DGV_Vehiculos = new System.Windows.Forms.DataGridView();
             this.GB_DatosVehiculo = new System.Windows.Forms.GroupBox();
+            this.CBX_Estado = new System.Windows.Forms.ComboBox();
+            this.CBX_Sucursal = new System.Windows.Forms.ComboBox();
+            this.CBX_Categoria = new System.Windows.Forms.ComboBox();
+            this.NUM_KmActual = new System.Windows.Forms.NumericUpDown();
             this.LBLestado = new System.Windows.Forms.Label();
             this.LBLsucursal = new System.Windows.Forms.Label();
             this.TXT_CtrlVehPatente = new System.Windows.Forms.TextBox();
@@ -48,10 +52,10 @@
             this.LBLmarca = new System.Windows.Forms.Label();
             this.LBLmodelo = new System.Windows.Forms.Label();
             this.LBLkmActual = new System.Windows.Forms.Label();
-            this.NUM_KmActual = new System.Windows.Forms.NumericUpDown();
-            this.CBX_Categoria = new System.Windows.Forms.ComboBox();
-            this.CBX_Sucursal = new System.Windows.Forms.ComboBox();
-            this.CBX_Estado = new System.Windows.Forms.ComboBox();
+            this.TXT_FiltroPatente = new System.Windows.Forms.TextBox();
+            this.CBX_FiltroEstadoVeh = new System.Windows.Forms.ComboBox();
+            this.CBX_FiltroCategoriaVeh = new System.Windows.Forms.ComboBox();
+            this.BTNvolveralmenu = new System.Windows.Forms.Button();
             this.GB_Vehiculos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Vehiculos)).BeginInit();
             this.GB_DatosVehiculo.SuspendLayout();
@@ -62,7 +66,7 @@
             // 
             this.LBLidiomas.AutoSize = true;
             this.LBLidiomas.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBLidiomas.Location = new System.Drawing.Point(782, 9);
+            this.LBLidiomas.Location = new System.Drawing.Point(1124, 10);
             this.LBLidiomas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBLidiomas.Name = "LBLidiomas";
             this.LBLidiomas.Size = new System.Drawing.Size(74, 17);
@@ -73,7 +77,7 @@
             // 
             this.CBXidiomas.Font = new System.Drawing.Font("Century Gothic", 9F);
             this.CBXidiomas.FormattingEnabled = true;
-            this.CBXidiomas.Location = new System.Drawing.Point(782, 28);
+            this.CBXidiomas.Location = new System.Drawing.Point(1124, 29);
             this.CBXidiomas.Name = "CBXidiomas";
             this.CBXidiomas.Size = new System.Drawing.Size(135, 25);
             this.CBXidiomas.TabIndex = 39;
@@ -83,7 +87,7 @@
             // 
             this.CKXmostrarInactivos.AutoSize = true;
             this.CKXmostrarInactivos.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CKXmostrarInactivos.Location = new System.Drawing.Point(270, 449);
+            this.CKXmostrarInactivos.Location = new System.Drawing.Point(12, 408);
             this.CKXmostrarInactivos.Margin = new System.Windows.Forms.Padding(4);
             this.CKXmostrarInactivos.Name = "CKXmostrarInactivos";
             this.CKXmostrarInactivos.Size = new System.Drawing.Size(136, 21);
@@ -96,7 +100,7 @@
             this.BTNCtrlVehReactivar.BackColor = System.Drawing.SystemColors.HotTrack;
             this.BTNCtrlVehReactivar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCtrlVehReactivar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCtrlVehReactivar.Location = new System.Drawing.Point(423, 522);
+            this.BTNCtrlVehReactivar.Location = new System.Drawing.Point(623, 408);
             this.BTNCtrlVehReactivar.Margin = new System.Windows.Forms.Padding(4);
             this.BTNCtrlVehReactivar.Name = "BTNCtrlVehReactivar";
             this.BTNCtrlVehReactivar.Size = new System.Drawing.Size(145, 33);
@@ -110,7 +114,7 @@
             this.BTNCtrlVehModificar.BackColor = System.Drawing.SystemColors.HotTrack;
             this.BTNCtrlVehModificar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCtrlVehModificar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCtrlVehModificar.Location = new System.Drawing.Point(270, 522);
+            this.BTNCtrlVehModificar.Location = new System.Drawing.Point(470, 408);
             this.BTNCtrlVehModificar.Margin = new System.Windows.Forms.Padding(4);
             this.BTNCtrlVehModificar.Name = "BTNCtrlVehModificar";
             this.BTNCtrlVehModificar.Size = new System.Drawing.Size(145, 33);
@@ -124,7 +128,7 @@
             this.BTNCtrlVehBaja.BackColor = System.Drawing.SystemColors.HotTrack;
             this.BTNCtrlVehBaja.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCtrlVehBaja.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCtrlVehBaja.Location = new System.Drawing.Point(423, 481);
+            this.BTNCtrlVehBaja.Location = new System.Drawing.Point(317, 408);
             this.BTNCtrlVehBaja.Margin = new System.Windows.Forms.Padding(4);
             this.BTNCtrlVehBaja.Name = "BTNCtrlVehBaja";
             this.BTNCtrlVehBaja.Size = new System.Drawing.Size(145, 33);
@@ -138,7 +142,7 @@
             this.BTNCtrlVehAlta.BackColor = System.Drawing.SystemColors.HotTrack;
             this.BTNCtrlVehAlta.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCtrlVehAlta.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCtrlVehAlta.Location = new System.Drawing.Point(270, 481);
+            this.BTNCtrlVehAlta.Location = new System.Drawing.Point(164, 408);
             this.BTNCtrlVehAlta.Margin = new System.Windows.Forms.Padding(4);
             this.BTNCtrlVehAlta.Name = "BTNCtrlVehAlta";
             this.BTNCtrlVehAlta.Size = new System.Drawing.Size(145, 33);
@@ -153,7 +157,7 @@
             this.GB_Vehiculos.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.GB_Vehiculos.Location = new System.Drawing.Point(12, 76);
             this.GB_Vehiculos.Name = "GB_Vehiculos";
-            this.GB_Vehiculos.Size = new System.Drawing.Size(680, 320);
+            this.GB_Vehiculos.Size = new System.Drawing.Size(940, 320);
             this.GB_Vehiculos.TabIndex = 41;
             this.GB_Vehiculos.TabStop = false;
             this.GB_Vehiculos.Text = "Vehiculos";
@@ -164,7 +168,8 @@
             this.DGV_Vehiculos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV_Vehiculos.Location = new System.Drawing.Point(12, 30);
             this.DGV_Vehiculos.Name = "DGV_Vehiculos";
-            this.DGV_Vehiculos.Size = new System.Drawing.Size(652, 274);
+            this.DGV_Vehiculos.ReadOnly = true;
+            this.DGV_Vehiculos.Size = new System.Drawing.Size(911, 274);
             this.DGV_Vehiculos.TabIndex = 0;
             this.DGV_Vehiculos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Vehiculos_CellClick);
             // 
@@ -185,7 +190,7 @@
             this.GB_DatosVehiculo.Controls.Add(this.LBLmodelo);
             this.GB_DatosVehiculo.Controls.Add(this.LBLkmActual);
             this.GB_DatosVehiculo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GB_DatosVehiculo.Location = new System.Drawing.Point(713, 69);
+            this.GB_DatosVehiculo.Location = new System.Drawing.Point(959, 76);
             this.GB_DatosVehiculo.Margin = new System.Windows.Forms.Padding(4);
             this.GB_DatosVehiculo.Name = "GB_DatosVehiculo";
             this.GB_DatosVehiculo.Padding = new System.Windows.Forms.Padding(4);
@@ -193,6 +198,45 @@
             this.GB_DatosVehiculo.TabIndex = 47;
             this.GB_DatosVehiculo.TabStop = false;
             this.GB_DatosVehiculo.Text = "Datos del vehiculos";
+            // 
+            // CBX_Estado
+            // 
+            this.CBX_Estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBX_Estado.FormattingEnabled = true;
+            this.CBX_Estado.Location = new System.Drawing.Point(11, 387);
+            this.CBX_Estado.Name = "CBX_Estado";
+            this.CBX_Estado.Size = new System.Drawing.Size(264, 25);
+            this.CBX_Estado.TabIndex = 34;
+            // 
+            // CBX_Sucursal
+            // 
+            this.CBX_Sucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBX_Sucursal.FormattingEnabled = true;
+            this.CBX_Sucursal.Location = new System.Drawing.Point(11, 330);
+            this.CBX_Sucursal.Name = "CBX_Sucursal";
+            this.CBX_Sucursal.Size = new System.Drawing.Size(264, 25);
+            this.CBX_Sucursal.TabIndex = 33;
+            // 
+            // CBX_Categoria
+            // 
+            this.CBX_Categoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBX_Categoria.FormattingEnabled = true;
+            this.CBX_Categoria.Location = new System.Drawing.Point(11, 271);
+            this.CBX_Categoria.Name = "CBX_Categoria";
+            this.CBX_Categoria.Size = new System.Drawing.Size(264, 25);
+            this.CBX_Categoria.TabIndex = 32;
+            // 
+            // NUM_KmActual
+            // 
+            this.NUM_KmActual.Location = new System.Drawing.Point(12, 215);
+            this.NUM_KmActual.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.NUM_KmActual.Name = "NUM_KmActual";
+            this.NUM_KmActual.Size = new System.Drawing.Size(263, 23);
+            this.NUM_KmActual.TabIndex = 31;
             // 
             // LBLestado
             // 
@@ -288,45 +332,55 @@
             this.LBLkmActual.TabIndex = 8;
             this.LBLkmActual.Text = "Km Actual";
             // 
-            // NUM_KmActual
+            // TXT_FiltroPatente
             // 
-            this.NUM_KmActual.Location = new System.Drawing.Point(12, 215);
-            this.NUM_KmActual.Name = "NUM_KmActual";
-            this.NUM_KmActual.Size = new System.Drawing.Size(263, 23);
-            this.NUM_KmActual.TabIndex = 31;
+            this.TXT_FiltroPatente.Location = new System.Drawing.Point(12, 49);
+            this.TXT_FiltroPatente.Name = "TXT_FiltroPatente";
+            this.TXT_FiltroPatente.Size = new System.Drawing.Size(115, 21);
+            this.TXT_FiltroPatente.TabIndex = 48;
+            this.TXT_FiltroPatente.TextChanged += new System.EventHandler(this.TXT_FiltroPatente_TextChanged);
             // 
-            // CBX_Categoria
+            // CBX_FiltroEstadoVeh
             // 
-            this.CBX_Categoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBX_Categoria.FormattingEnabled = true;
-            this.CBX_Categoria.Location = new System.Drawing.Point(11, 271);
-            this.CBX_Categoria.Name = "CBX_Categoria";
-            this.CBX_Categoria.Size = new System.Drawing.Size(264, 25);
-            this.CBX_Categoria.TabIndex = 32;
+            this.CBX_FiltroEstadoVeh.FormattingEnabled = true;
+            this.CBX_FiltroEstadoVeh.Location = new System.Drawing.Point(156, 49);
+            this.CBX_FiltroEstadoVeh.Name = "CBX_FiltroEstadoVeh";
+            this.CBX_FiltroEstadoVeh.Size = new System.Drawing.Size(162, 24);
+            this.CBX_FiltroEstadoVeh.TabIndex = 49;
+            this.CBX_FiltroEstadoVeh.SelectedIndexChanged += new System.EventHandler(this.CBX_FiltroEstadoVeh_SelectedIndexChanged);
             // 
-            // CBX_Sucursal
+            // CBX_FiltroCategoriaVeh
             // 
-            this.CBX_Sucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBX_Sucursal.FormattingEnabled = true;
-            this.CBX_Sucursal.Location = new System.Drawing.Point(11, 330);
-            this.CBX_Sucursal.Name = "CBX_Sucursal";
-            this.CBX_Sucursal.Size = new System.Drawing.Size(264, 25);
-            this.CBX_Sucursal.TabIndex = 33;
+            this.CBX_FiltroCategoriaVeh.FormattingEnabled = true;
+            this.CBX_FiltroCategoriaVeh.Location = new System.Drawing.Point(347, 49);
+            this.CBX_FiltroCategoriaVeh.Name = "CBX_FiltroCategoriaVeh";
+            this.CBX_FiltroCategoriaVeh.Size = new System.Drawing.Size(162, 24);
+            this.CBX_FiltroCategoriaVeh.TabIndex = 50;
+            this.CBX_FiltroCategoriaVeh.SelectedIndexChanged += new System.EventHandler(this.CBX_FiltroCategoriaVeh_SelectedIndexChanged);
             // 
-            // CBX_Estado
+            // BTNvolveralmenu
             // 
-            this.CBX_Estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBX_Estado.FormattingEnabled = true;
-            this.CBX_Estado.Location = new System.Drawing.Point(11, 387);
-            this.CBX_Estado.Name = "CBX_Estado";
-            this.CBX_Estado.Size = new System.Drawing.Size(264, 25);
-            this.CBX_Estado.TabIndex = 34;
+            this.BTNvolveralmenu.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNvolveralmenu.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNvolveralmenu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTNvolveralmenu.Location = new System.Drawing.Point(1114, 525);
+            this.BTNvolveralmenu.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNvolveralmenu.Name = "BTNvolveralmenu";
+            this.BTNvolveralmenu.Size = new System.Drawing.Size(145, 33);
+            this.BTNvolveralmenu.TabIndex = 51;
+            this.BTNvolveralmenu.Text = "Volver al menu";
+            this.BTNvolveralmenu.UseVisualStyleBackColor = false;
+            this.BTNvolveralmenu.Click += new System.EventHandler(this.BTNvolveralmenu_Click);
             // 
             // FrmCTRLVehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1026, 602);
+            this.ClientSize = new System.Drawing.Size(1272, 564);
+            this.Controls.Add(this.BTNvolveralmenu);
+            this.Controls.Add(this.CBX_FiltroCategoriaVeh);
+            this.Controls.Add(this.CBX_FiltroEstadoVeh);
+            this.Controls.Add(this.TXT_FiltroPatente);
             this.Controls.Add(this.GB_DatosVehiculo);
             this.Controls.Add(this.CKXmostrarInactivos);
             this.Controls.Add(this.BTNCtrlVehReactivar);
@@ -337,9 +391,11 @@
             this.Controls.Add(this.LBLidiomas);
             this.Controls.Add(this.CBXidiomas);
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmCTRLVehiculo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCTRLVehiculo";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCTRLVehiculo_FormClosing);
             this.Load += new System.EventHandler(this.FrmCTRLVehiculo_Load);
             this.GB_Vehiculos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Vehiculos)).EndInit();
@@ -377,5 +433,9 @@
         private System.Windows.Forms.ComboBox CBX_Estado;
         private System.Windows.Forms.ComboBox CBX_Sucursal;
         private System.Windows.Forms.ComboBox CBX_Categoria;
+        private System.Windows.Forms.TextBox TXT_FiltroPatente;
+        private System.Windows.Forms.ComboBox CBX_FiltroEstadoVeh;
+        private System.Windows.Forms.ComboBox CBX_FiltroCategoriaVeh;
+        private System.Windows.Forms.Button BTNvolveralmenu;
     }
 }

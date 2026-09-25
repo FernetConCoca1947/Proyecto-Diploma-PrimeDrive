@@ -68,10 +68,23 @@ namespace DAL
                     veh.Modelo = fila["MODELO"].ToString();
                     veh.KmActual = Convert.ToInt32(fila["KM_ACTUAL"]);
 
-                    // Instanciamos los objetos compuestos solo con su ID para mantener la referencia
-                    veh.Estado = new BE.ESTADO { IdEstado = Convert.ToInt32(fila["ID_ESTADO"]) };
-                    veh.Categoria = new BE.CATEGORIA { Id = Convert.ToInt32(fila["ID_CATEGORIA"]) };
-                    veh.Sucursal = new BE.SUCURSAL { Id = Convert.ToInt32(fila["ID_SUCURSAL"]) };
+                    veh.Estado = new BE.ESTADO
+                    {
+                        IdEstado = Convert.ToInt32(fila["ID_ESTADO"]),
+                        Nombre = fila["ESTADO_NOMBRE"].ToString()
+                    };
+
+                    veh.Categoria = new BE.CATEGORIA
+                    {
+                        Id = Convert.ToInt32(fila["ID_CATEGORIA"]),
+                        Nombre = fila["CATEGORIA_NOMBRE"].ToString()
+                    };
+
+                    veh.Sucursal = new BE.SUCURSAL
+                    {
+                        Id = Convert.ToInt32(fila["ID_SUCURSAL"]),
+                        Nombre = fila["SUCURSAL_NOMBRE"].ToString()
+                    };
 
                     listaVehiculos.Add(veh);
                 }
