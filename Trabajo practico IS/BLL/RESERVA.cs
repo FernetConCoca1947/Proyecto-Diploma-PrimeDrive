@@ -18,12 +18,12 @@ namespace BLL
             ValidarFechas(reserva.FechaInicio, reserva.FechaFin);
 
             // Regla crítica: Comprobar stock de la categoría para ese rango de fechas
-            if (!ValidarDisponibilidad(reserva.Categoria.Id, reserva.FechaInicio, reserva.FechaFin))
+            if (!ValidarDisponibilidad(reserva.Categoria.Id, reserva.FechaInicio, reserva.FechaFin,reserva.SucursalRetiro.Id))
             {
                 throw new Exception($"No hay vehículos de la categoría {reserva.Categoria.Nombre} disponibles para las fechas seleccionadas.");
             }
 
-            reserva.Estado = new BE.ESTADO { IdEstado = 1, Nombre = "Pendiente" };
+            //reserva.Estado = new BE.ESTADO { IdEstado = 5, Nombre = "Pendiente" };
             mapper.Alta(reserva);
 
             GestorBitacora.RegistrarEvento("Reservas", $"Nueva reserva generada para el cliente DNI {reserva.Cliente.DNI}", 2);
@@ -31,18 +31,23 @@ namespace BLL
 
         public void CancelarReserva(BE.RESERVA reserva)
         {
-            if (reserva.Estado.IdEstado == 3)
+            if (reserva.Estado.IdEstado == 7)
                 throw new Exception("La reserva ya se encuentra cancelada.");
 
-            reserva.Estado = new BE.ESTADO { IdEstado = 3, Nombre = "Cancelada" };
+            reserva.Estado = new BE.ESTADO { IdEstado = 7, Nombre = "Cancelada" };
             mapper.ModificarEstado(reserva);
             GestorBitacora.RegistrarEvento("Reservas", $"Reserva #{reserva.Id} cancelada", 2);
         }
 
-        private bool ValidarDisponibilidad(int idCategoria, DateTime inicio, DateTime fin)
+        public List<BE.RESERVA> Listar()
         {
-            int totalFlota = mapper.ContarVehiculosPorCategoria(idCategoria);
-            int reservasSolapadas = mapper.ContarReservasActivas(idCategoria, inicio, fin);
+            return mapper.Listar();
+        }
+
+        private bool ValidarDisponibilidad(int idCategoria, DateTime inicio, DateTime fin,int idSucursalRetiro)
+        {
+            int totalFlota = mapper.ContarVehiculosPorCategoria(idCategoria,idSucursalRetiro);
+            int reservasSolapadas = mapper.ContarReservasActivas(idCategoria, inicio, fin,idSucursalRetiro);
 
             return (totalFlota - reservasSolapadas) > 0;
         }

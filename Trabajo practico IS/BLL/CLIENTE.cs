@@ -88,6 +88,23 @@ namespace BLL
             return null;
         }
 
+        public BE.CLIENTE ObtenerPorDNI(int dni)
+        {
+            if (dni <= 0)
+            {
+                throw new Exception("El DNI ingresado no es válido.");
+            }
+
+            BE.CLIENTE clienteEncontrado = mapper.ObtenerPorDNI(dni);
+
+            if (clienteEncontrado == null)
+            {
+                return null;
+            }
+
+            return clienteEncontrado;
+        }
+
         private void ValidarDatosObligatorios(BE.CLIENTE cliente)
         {
             // 1. Validar que los campos de texto esenciales no estén nulos ni compuestos de puros espacios.

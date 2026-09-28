@@ -97,19 +97,21 @@
             // reservasToolStripMenuItem
             // 
             this.reservasToolStripMenuItem.Name = "reservasToolStripMenuItem";
-            this.reservasToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
+            this.reservasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.reservasToolStripMenuItem.Tag = "RESERVAS";
             this.reservasToolStripMenuItem.Text = "Reservas";
+            this.reservasToolStripMenuItem.Click += new System.EventHandler(this.reservasToolStripMenuItem_Click);
             // 
             // checkoutToolStripMenuItem
             // 
             this.checkoutToolStripMenuItem.Name = "checkoutToolStripMenuItem";
-            this.checkoutToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
+            this.checkoutToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.checkoutToolStripMenuItem.Text = "Check-out";
             // 
             // checkinToolStripMenuItem
             // 
             this.checkinToolStripMenuItem.Name = "checkinToolStripMenuItem";
-            this.checkinToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
+            this.checkinToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.checkinToolStripMenuItem.Text = "Check-in";
             // 
             // gestionDeFlotaToolStripMenuItem

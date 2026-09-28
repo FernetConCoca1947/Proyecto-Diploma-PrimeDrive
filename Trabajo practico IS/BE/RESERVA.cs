@@ -14,6 +14,8 @@ namespace BE
         public ESTADO Estado { get; set; }
         public CLIENTE Cliente { get; set; }
         public CATEGORIA Categoria { get; set; }
+        public SUCURSAL SucursalRetiro { get; set; }
+        public SUCURSAL SucursalDevolucion { get; set; }
 
         public override string ToString()
         {

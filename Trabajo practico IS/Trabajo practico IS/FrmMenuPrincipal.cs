@@ -254,8 +254,16 @@ namespace Trabajo_practico_IS
         private void vehiculosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FrmCTRLVehiculo FrmVehiculos = new FrmCTRLVehiculo();
-            FrmVehiculos.ShowDialog();
+            FrmCTRLVehiculo frmVehiculos = new FrmCTRLVehiculo();
+            frmVehiculos.ShowDialog();
+            this.Show();
+        }
+
+        private void reservasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FrmCTRLReserva frmReservas = new FrmCTRLReserva();
+            frmReservas.ShowDialog();
             this.Show();
         }
     }
