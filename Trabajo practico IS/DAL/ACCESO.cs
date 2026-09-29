@@ -11,6 +11,10 @@ namespace DAL
     public class ACCESO
     {
         SqlConnection conexion;
+        public SqlConnection Conexion
+        {
+            get { return conexion; }
+        }
 
         public void Abrir()
         {
@@ -134,6 +138,45 @@ namespace DAL
             return reader;
         }
 
+        public int EscribirTransaccional(string query, List<SqlParameter> parametros, SqlTransaction transaccion)
+        {
+            SqlCommand cmd = CrearComando(query, parametros);
+
+            cmd.Transaction = transaccion;
+
+            int filas = 0;
+
+            try
+            {
+                filas = cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                filas = -1;
+                throw;
+            }
+
+            cmd.Parameters.Clear();
+            cmd = null;
+            return filas;
+        }
+        public int LeerEscalarTransaccional(string query, List<SqlParameter> parametros, SqlTransaction transaccion)
+        {
+            SqlCommand cmd = CrearComando(query, parametros);
+            cmd.Transaction = transaccion;
+
+            int res = 0;
+            object resultado = cmd.ExecuteScalar();
+
+            if (resultado != null)
+            {
+                res = int.Parse(resultado.ToString());
+            }
+
+            cmd.Parameters.Clear();
+            cmd = null;
+            return res;
+        }
 
     }
 }

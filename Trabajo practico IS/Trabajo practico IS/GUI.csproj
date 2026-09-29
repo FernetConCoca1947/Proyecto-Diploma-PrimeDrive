@@ -58,6 +58,12 @@
     <Compile Include="FrmCategoria.Designer.cs">
       <DependentUpon>FrmCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCTRLCheckOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCTRLCheckOut.Designer.cs">
+      <DependentUpon>FrmCTRLCheckOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCTRLCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCategoria.resx">
       <DependentUpon>FrmCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCTRLCheckOut.resx">
+      <DependentUpon>FrmCTRLCheckOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCTRLCliente.resx">
       <DependentUpon>FrmCTRLCliente.cs</DependentUpon>

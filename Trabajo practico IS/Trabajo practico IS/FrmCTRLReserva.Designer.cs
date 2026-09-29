@@ -29,28 +29,30 @@
         private void InitializeComponent()
         {
             this.GB_DatosNuevaReserva = new System.Windows.Forms.GroupBox();
+            this.CBX_SucursalDevolucion = new System.Windows.Forms.ComboBox();
+            this.LBLSucursalDevolucion = new System.Windows.Forms.Label();
+            this.CBX_SucursalRetiro = new System.Windows.Forms.ComboBox();
+            this.LBLSucursalRetiro = new System.Windows.Forms.Label();
+            this.BTNCtrlResGenerar = new System.Windows.Forms.Button();
+            this.CBX_Categoria = new System.Windows.Forms.ComboBox();
+            this.dateTimeDevolucion = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeRetiro = new System.Windows.Forms.DateTimePicker();
+            this.LBLCategoriaRes = new System.Windows.Forms.Label();
+            this.LBLFechaDevolucion = new System.Windows.Forms.Label();
+            this.LBLFechaRetiro = new System.Windows.Forms.Label();
+            this.LBLDatosCliente = new System.Windows.Forms.Label();
+            this.LBLClienteSeleccionado = new System.Windows.Forms.Label();
             this.BTNCtrlResBuscar = new System.Windows.Forms.Button();
             this.TXT_CtrlResDNI = new System.Windows.Forms.TextBox();
             this.LBLdniCliente = new System.Windows.Forms.Label();
-            this.LBLClienteSeleccionado = new System.Windows.Forms.Label();
-            this.LBLDatosCliente = new System.Windows.Forms.Label();
-            this.LBLFechaRetiro = new System.Windows.Forms.Label();
-            this.LBLFechaDevolucion = new System.Windows.Forms.Label();
-            this.LBLCategoriaRes = new System.Windows.Forms.Label();
-            this.dateTimeRetiro = new System.Windows.Forms.DateTimePicker();
-            this.dateTimeDevolucion = new System.Windows.Forms.DateTimePicker();
-            this.CBX_Categoria = new System.Windows.Forms.ComboBox();
             this.BTNvolveralmenu = new System.Windows.Forms.Button();
             this.LBLidiomas = new System.Windows.Forms.Label();
             this.CBXidiomas = new System.Windows.Forms.ComboBox();
             this.GB_Reservas = new System.Windows.Forms.GroupBox();
             this.DGV_CtrlResReservas = new System.Windows.Forms.DataGridView();
-            this.BTNCtrlResGenerar = new System.Windows.Forms.Button();
             this.BTNCtrlResCancelar = new System.Windows.Forms.Button();
-            this.CBX_SucursalRetiro = new System.Windows.Forms.ComboBox();
-            this.LBLSucursalRetiro = new System.Windows.Forms.Label();
-            this.CBX_SucursalDevolucion = new System.Windows.Forms.ComboBox();
-            this.LBLSucursalDevolucion = new System.Windows.Forms.Label();
+            this.BTNCtrlResConfirmar = new System.Windows.Forms.Button();
+            this.BTNCtrlResVerificar = new System.Windows.Forms.Button();
             this.GB_DatosNuevaReserva.SuspendLayout();
             this.GB_Reservas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_CtrlResReservas)).BeginInit();
@@ -58,6 +60,7 @@
             // 
             // GB_DatosNuevaReserva
             // 
+            this.GB_DatosNuevaReserva.Controls.Add(this.BTNCtrlResVerificar);
             this.GB_DatosNuevaReserva.Controls.Add(this.CBX_SucursalDevolucion);
             this.GB_DatosNuevaReserva.Controls.Add(this.LBLSucursalDevolucion);
             this.GB_DatosNuevaReserva.Controls.Add(this.CBX_SucursalRetiro);
@@ -77,10 +80,136 @@
             this.GB_DatosNuevaReserva.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GB_DatosNuevaReserva.Location = new System.Drawing.Point(12, 34);
             this.GB_DatosNuevaReserva.Name = "GB_DatosNuevaReserva";
-            this.GB_DatosNuevaReserva.Size = new System.Drawing.Size(472, 544);
+            this.GB_DatosNuevaReserva.Size = new System.Drawing.Size(472, 561);
             this.GB_DatosNuevaReserva.TabIndex = 0;
             this.GB_DatosNuevaReserva.TabStop = false;
             this.GB_DatosNuevaReserva.Text = "Nueva reserva";
+            // 
+            // CBX_SucursalDevolucion
+            // 
+            this.CBX_SucursalDevolucion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBX_SucursalDevolucion.FormattingEnabled = true;
+            this.CBX_SucursalDevolucion.Location = new System.Drawing.Point(12, 353);
+            this.CBX_SucursalDevolucion.Name = "CBX_SucursalDevolucion";
+            this.CBX_SucursalDevolucion.Size = new System.Drawing.Size(264, 25);
+            this.CBX_SucursalDevolucion.TabIndex = 42;
+            // 
+            // LBLSucursalDevolucion
+            // 
+            this.LBLSucursalDevolucion.AutoSize = true;
+            this.LBLSucursalDevolucion.Location = new System.Drawing.Point(12, 331);
+            this.LBLSucursalDevolucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLSucursalDevolucion.Name = "LBLSucursalDevolucion";
+            this.LBLSucursalDevolucion.Size = new System.Drawing.Size(157, 17);
+            this.LBLSucursalDevolucion.TabIndex = 41;
+            this.LBLSucursalDevolucion.Text = "Sucursal de devolucion";
+            // 
+            // CBX_SucursalRetiro
+            // 
+            this.CBX_SucursalRetiro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBX_SucursalRetiro.FormattingEnabled = true;
+            this.CBX_SucursalRetiro.Location = new System.Drawing.Point(12, 303);
+            this.CBX_SucursalRetiro.Name = "CBX_SucursalRetiro";
+            this.CBX_SucursalRetiro.Size = new System.Drawing.Size(264, 25);
+            this.CBX_SucursalRetiro.TabIndex = 40;
+            // 
+            // LBLSucursalRetiro
+            // 
+            this.LBLSucursalRetiro.AutoSize = true;
+            this.LBLSucursalRetiro.Location = new System.Drawing.Point(12, 283);
+            this.LBLSucursalRetiro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLSucursalRetiro.Name = "LBLSucursalRetiro";
+            this.LBLSucursalRetiro.Size = new System.Drawing.Size(117, 17);
+            this.LBLSucursalRetiro.TabIndex = 39;
+            this.LBLSucursalRetiro.Text = "Sucursal de retiro";
+            // 
+            // BTNCtrlResGenerar
+            // 
+            this.BTNCtrlResGenerar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNCtrlResGenerar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNCtrlResGenerar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTNCtrlResGenerar.Location = new System.Drawing.Point(11, 498);
+            this.BTNCtrlResGenerar.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNCtrlResGenerar.Name = "BTNCtrlResGenerar";
+            this.BTNCtrlResGenerar.Size = new System.Drawing.Size(145, 51);
+            this.BTNCtrlResGenerar.TabIndex = 38;
+            this.BTNCtrlResGenerar.Tag = "";
+            this.BTNCtrlResGenerar.Text = "Validar y generar reserva";
+            this.BTNCtrlResGenerar.UseVisualStyleBackColor = false;
+            this.BTNCtrlResGenerar.Click += new System.EventHandler(this.BTNCtrlResGenerar_Click);
+            // 
+            // CBX_Categoria
+            // 
+            this.CBX_Categoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBX_Categoria.FormattingEnabled = true;
+            this.CBX_Categoria.Location = new System.Drawing.Point(11, 464);
+            this.CBX_Categoria.Name = "CBX_Categoria";
+            this.CBX_Categoria.Size = new System.Drawing.Size(264, 25);
+            this.CBX_Categoria.TabIndex = 37;
+            // 
+            // dateTimeDevolucion
+            // 
+            this.dateTimeDevolucion.Location = new System.Drawing.Point(12, 248);
+            this.dateTimeDevolucion.Name = "dateTimeDevolucion";
+            this.dateTimeDevolucion.Size = new System.Drawing.Size(263, 23);
+            this.dateTimeDevolucion.TabIndex = 36;
+            // 
+            // dateTimeRetiro
+            // 
+            this.dateTimeRetiro.Location = new System.Drawing.Point(12, 193);
+            this.dateTimeRetiro.Name = "dateTimeRetiro";
+            this.dateTimeRetiro.Size = new System.Drawing.Size(263, 23);
+            this.dateTimeRetiro.TabIndex = 35;
+            // 
+            // LBLCategoriaRes
+            // 
+            this.LBLCategoriaRes.AutoSize = true;
+            this.LBLCategoriaRes.Location = new System.Drawing.Point(11, 444);
+            this.LBLCategoriaRes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLCategoriaRes.Name = "LBLCategoriaRes";
+            this.LBLCategoriaRes.Size = new System.Drawing.Size(136, 17);
+            this.LBLCategoriaRes.TabIndex = 34;
+            this.LBLCategoriaRes.Text = "Categoria deseada";
+            // 
+            // LBLFechaDevolucion
+            // 
+            this.LBLFechaDevolucion.AutoSize = true;
+            this.LBLFechaDevolucion.Location = new System.Drawing.Point(12, 228);
+            this.LBLFechaDevolucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLFechaDevolucion.Name = "LBLFechaDevolucion";
+            this.LBLFechaDevolucion.Size = new System.Drawing.Size(145, 17);
+            this.LBLFechaDevolucion.TabIndex = 33;
+            this.LBLFechaDevolucion.Text = "Fecha de devolución";
+            // 
+            // LBLFechaRetiro
+            // 
+            this.LBLFechaRetiro.AutoSize = true;
+            this.LBLFechaRetiro.Location = new System.Drawing.Point(12, 173);
+            this.LBLFechaRetiro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLFechaRetiro.Name = "LBLFechaRetiro";
+            this.LBLFechaRetiro.Size = new System.Drawing.Size(105, 17);
+            this.LBLFechaRetiro.TabIndex = 32;
+            this.LBLFechaRetiro.Text = "Fecha de retiro";
+            // 
+            // LBLDatosCliente
+            // 
+            this.LBLDatosCliente.AutoSize = true;
+            this.LBLDatosCliente.Location = new System.Drawing.Point(10, 138);
+            this.LBLDatosCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLDatosCliente.Name = "LBLDatosCliente";
+            this.LBLDatosCliente.Size = new System.Drawing.Size(92, 17);
+            this.LBLDatosCliente.TabIndex = 31;
+            this.LBLDatosCliente.Text = "datos cliente";
+            // 
+            // LBLClienteSeleccionado
+            // 
+            this.LBLClienteSeleccionado.AutoSize = true;
+            this.LBLClienteSeleccionado.Location = new System.Drawing.Point(10, 112);
+            this.LBLClienteSeleccionado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLClienteSeleccionado.Name = "LBLClienteSeleccionado";
+            this.LBLClienteSeleccionado.Size = new System.Drawing.Size(149, 17);
+            this.LBLClienteSeleccionado.TabIndex = 30;
+            this.LBLClienteSeleccionado.Text = "Cliente seleccionado:";
             // 
             // BTNCtrlResBuscar
             // 
@@ -114,79 +243,6 @@
             this.LBLdniCliente.Size = new System.Drawing.Size(78, 17);
             this.LBLdniCliente.TabIndex = 28;
             this.LBLdniCliente.Text = "DNI cliente";
-            // 
-            // LBLClienteSeleccionado
-            // 
-            this.LBLClienteSeleccionado.AutoSize = true;
-            this.LBLClienteSeleccionado.Location = new System.Drawing.Point(10, 112);
-            this.LBLClienteSeleccionado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LBLClienteSeleccionado.Name = "LBLClienteSeleccionado";
-            this.LBLClienteSeleccionado.Size = new System.Drawing.Size(149, 17);
-            this.LBLClienteSeleccionado.TabIndex = 30;
-            this.LBLClienteSeleccionado.Text = "Cliente seleccionado:";
-            // 
-            // LBLDatosCliente
-            // 
-            this.LBLDatosCliente.AutoSize = true;
-            this.LBLDatosCliente.Location = new System.Drawing.Point(10, 138);
-            this.LBLDatosCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LBLDatosCliente.Name = "LBLDatosCliente";
-            this.LBLDatosCliente.Size = new System.Drawing.Size(92, 17);
-            this.LBLDatosCliente.TabIndex = 31;
-            this.LBLDatosCliente.Text = "datos cliente";
-            // 
-            // LBLFechaRetiro
-            // 
-            this.LBLFechaRetiro.AutoSize = true;
-            this.LBLFechaRetiro.Location = new System.Drawing.Point(12, 188);
-            this.LBLFechaRetiro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LBLFechaRetiro.Name = "LBLFechaRetiro";
-            this.LBLFechaRetiro.Size = new System.Drawing.Size(105, 17);
-            this.LBLFechaRetiro.TabIndex = 32;
-            this.LBLFechaRetiro.Text = "Fecha de retiro";
-            // 
-            // LBLFechaDevolucion
-            // 
-            this.LBLFechaDevolucion.AutoSize = true;
-            this.LBLFechaDevolucion.Location = new System.Drawing.Point(12, 245);
-            this.LBLFechaDevolucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LBLFechaDevolucion.Name = "LBLFechaDevolucion";
-            this.LBLFechaDevolucion.Size = new System.Drawing.Size(145, 17);
-            this.LBLFechaDevolucion.TabIndex = 33;
-            this.LBLFechaDevolucion.Text = "Fecha de devolución";
-            // 
-            // LBLCategoriaRes
-            // 
-            this.LBLCategoriaRes.AutoSize = true;
-            this.LBLCategoriaRes.Location = new System.Drawing.Point(11, 307);
-            this.LBLCategoriaRes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LBLCategoriaRes.Name = "LBLCategoriaRes";
-            this.LBLCategoriaRes.Size = new System.Drawing.Size(136, 17);
-            this.LBLCategoriaRes.TabIndex = 34;
-            this.LBLCategoriaRes.Text = "Categoria deseada";
-            // 
-            // dateTimeRetiro
-            // 
-            this.dateTimeRetiro.Location = new System.Drawing.Point(13, 208);
-            this.dateTimeRetiro.Name = "dateTimeRetiro";
-            this.dateTimeRetiro.Size = new System.Drawing.Size(263, 23);
-            this.dateTimeRetiro.TabIndex = 35;
-            // 
-            // dateTimeDevolucion
-            // 
-            this.dateTimeDevolucion.Location = new System.Drawing.Point(12, 265);
-            this.dateTimeDevolucion.Name = "dateTimeDevolucion";
-            this.dateTimeDevolucion.Size = new System.Drawing.Size(263, 23);
-            this.dateTimeDevolucion.TabIndex = 36;
-            // 
-            // CBX_Categoria
-            // 
-            this.CBX_Categoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBX_Categoria.FormattingEnabled = true;
-            this.CBX_Categoria.Location = new System.Drawing.Point(11, 327);
-            this.CBX_Categoria.Name = "CBX_Categoria";
-            this.CBX_Categoria.Size = new System.Drawing.Size(264, 25);
-            this.CBX_Categoria.TabIndex = 37;
             // 
             // BTNvolveralmenu
             // 
@@ -244,21 +300,6 @@
             this.DGV_CtrlResReservas.TabIndex = 0;
             this.DGV_CtrlResReservas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_CtrlResReservas_CellClick);
             // 
-            // BTNCtrlResGenerar
-            // 
-            this.BTNCtrlResGenerar.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.BTNCtrlResGenerar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNCtrlResGenerar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCtrlResGenerar.Location = new System.Drawing.Point(13, 469);
-            this.BTNCtrlResGenerar.Margin = new System.Windows.Forms.Padding(4);
-            this.BTNCtrlResGenerar.Name = "BTNCtrlResGenerar";
-            this.BTNCtrlResGenerar.Size = new System.Drawing.Size(145, 51);
-            this.BTNCtrlResGenerar.TabIndex = 38;
-            this.BTNCtrlResGenerar.Tag = "";
-            this.BTNCtrlResGenerar.Text = "Validar y generar reserva";
-            this.BTNCtrlResGenerar.UseVisualStyleBackColor = false;
-            this.BTNCtrlResGenerar.Click += new System.EventHandler(this.BTNCtrlResGenerar_Click);
-            // 
             // BTNCtrlResCancelar
             // 
             this.BTNCtrlResCancelar.BackColor = System.Drawing.SystemColors.HotTrack;
@@ -274,49 +315,42 @@
             this.BTNCtrlResCancelar.UseVisualStyleBackColor = false;
             this.BTNCtrlResCancelar.Click += new System.EventHandler(this.BTNCtrlResCancelar_Click);
             // 
-            // CBX_SucursalRetiro
+            // BTNCtrlResConfirmar
             // 
-            this.CBX_SucursalRetiro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBX_SucursalRetiro.FormattingEnabled = true;
-            this.CBX_SucursalRetiro.Location = new System.Drawing.Point(11, 378);
-            this.CBX_SucursalRetiro.Name = "CBX_SucursalRetiro";
-            this.CBX_SucursalRetiro.Size = new System.Drawing.Size(264, 25);
-            this.CBX_SucursalRetiro.TabIndex = 40;
+            this.BTNCtrlResConfirmar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNCtrlResConfirmar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNCtrlResConfirmar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTNCtrlResConfirmar.Location = new System.Drawing.Point(678, 472);
+            this.BTNCtrlResConfirmar.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNCtrlResConfirmar.Name = "BTNCtrlResConfirmar";
+            this.BTNCtrlResConfirmar.Size = new System.Drawing.Size(145, 51);
+            this.BTNCtrlResConfirmar.TabIndex = 40;
+            this.BTNCtrlResConfirmar.Tag = "";
+            this.BTNCtrlResConfirmar.Text = "Confirmar reserva";
+            this.BTNCtrlResConfirmar.UseVisualStyleBackColor = false;
+            this.BTNCtrlResConfirmar.Click += new System.EventHandler(this.BTNCtrlResConfirmar_Click);
             // 
-            // LBLSucursalRetiro
+            // BTNCtrlResVerificar
             // 
-            this.LBLSucursalRetiro.AutoSize = true;
-            this.LBLSucursalRetiro.Location = new System.Drawing.Point(11, 358);
-            this.LBLSucursalRetiro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LBLSucursalRetiro.Name = "LBLSucursalRetiro";
-            this.LBLSucursalRetiro.Size = new System.Drawing.Size(117, 17);
-            this.LBLSucursalRetiro.TabIndex = 39;
-            this.LBLSucursalRetiro.Text = "Sucursal de retiro";
-            // 
-            // CBX_SucursalDevolucion
-            // 
-            this.CBX_SucursalDevolucion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBX_SucursalDevolucion.FormattingEnabled = true;
-            this.CBX_SucursalDevolucion.Location = new System.Drawing.Point(11, 428);
-            this.CBX_SucursalDevolucion.Name = "CBX_SucursalDevolucion";
-            this.CBX_SucursalDevolucion.Size = new System.Drawing.Size(264, 25);
-            this.CBX_SucursalDevolucion.TabIndex = 42;
-            // 
-            // LBLSucursalDevolucion
-            // 
-            this.LBLSucursalDevolucion.AutoSize = true;
-            this.LBLSucursalDevolucion.Location = new System.Drawing.Point(11, 408);
-            this.LBLSucursalDevolucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LBLSucursalDevolucion.Name = "LBLSucursalDevolucion";
-            this.LBLSucursalDevolucion.Size = new System.Drawing.Size(157, 17);
-            this.LBLSucursalDevolucion.TabIndex = 41;
-            this.LBLSucursalDevolucion.Text = "Sucursal de devolucion";
+            this.BTNCtrlResVerificar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNCtrlResVerificar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNCtrlResVerificar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTNCtrlResVerificar.Location = new System.Drawing.Point(11, 385);
+            this.BTNCtrlResVerificar.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNCtrlResVerificar.Name = "BTNCtrlResVerificar";
+            this.BTNCtrlResVerificar.Size = new System.Drawing.Size(145, 33);
+            this.BTNCtrlResVerificar.TabIndex = 43;
+            this.BTNCtrlResVerificar.Tag = "";
+            this.BTNCtrlResVerificar.Text = "Verificar";
+            this.BTNCtrlResVerificar.UseVisualStyleBackColor = false;
+            this.BTNCtrlResVerificar.Click += new System.EventHandler(this.BTNCtrlResVerificar_Click);
             // 
             // FrmCTRLReserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1277, 608);
+            this.Controls.Add(this.BTNCtrlResConfirmar);
             this.Controls.Add(this.BTNCtrlResCancelar);
             this.Controls.Add(this.GB_Reservas);
             this.Controls.Add(this.BTNvolveralmenu);
@@ -324,7 +358,7 @@
             this.Controls.Add(this.CBXidiomas);
             this.Controls.Add(this.GB_DatosNuevaReserva);
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmCTRLReserva";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCTRLReserva";
@@ -364,5 +398,7 @@
         private System.Windows.Forms.Label LBLSucursalDevolucion;
         private System.Windows.Forms.ComboBox CBX_SucursalRetiro;
         private System.Windows.Forms.Label LBLSucursalRetiro;
+        private System.Windows.Forms.Button BTNCtrlResConfirmar;
+        private System.Windows.Forms.Button BTNCtrlResVerificar;
     }
 }

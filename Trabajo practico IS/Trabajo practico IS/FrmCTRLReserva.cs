@@ -36,9 +36,13 @@ namespace Trabajo_practico_IS
             CBXidiomas.ValueMember = "Id";
             CBXidiomas.SelectedValue = Servicios.IDIOMAS.GetInstancia().IdIdiomaActual;
             CBXidiomas.SelectedIndexChanged += CBXidiomas_SelectedIndexChanged;
-            CBX_Categoria.DataSource = GestorCategorias.Listar();
-            CBX_Categoria.DisplayMember = "Nombre";
-            CBX_Categoria.ValueMember = "Id";
+            //CBX_Categoria.DataSource = GestorCategorias.Listar();
+            //CBX_Categoria.DisplayMember = "Nombre";
+            //CBX_Categoria.ValueMember = "Id";
+            
+            CBX_Categoria.Enabled = false;
+            BTNCtrlResGenerar.Enabled = false;
+
             dateTimeRetiro.Value = DateTime.Now.Date;
             dateTimeDevolucion.Value = DateTime.Now.Date.AddDays(1);
             var listaSucursales = GestorSucursales.Listar();
@@ -155,6 +159,9 @@ namespace Trabajo_practico_IS
 
             ReservaSeleccionada = null;
             ActualizarEstadoBotones();
+            CBX_Categoria.DataSource = null;
+            CBX_Categoria.Enabled = false;
+            BTNCtrlResGenerar.Enabled = false;
         }
 
         private void BTNCtrlResBuscar_Click(object sender, EventArgs e)
@@ -226,7 +233,7 @@ namespace Trabajo_practico_IS
                     SucursalDevolucion = (BE.SUCURSAL)CBX_SucursalDevolucion.SelectedItem,
                     FechaInicio = dateTimeRetiro.Value.Date,
                     FechaFin = dateTimeDevolucion.Value.Date,
-                    Estado = new BE.ESTADO { IdEstado = 5, Nombre = "Pendiente" }
+                    Estado = new BE.ESTADO { IdEstado = 6, Nombre = "Confirmada" }
                 };
 
                 GestorReservas.GenerarReserva(nuevaReserva);
@@ -267,6 +274,30 @@ namespace Trabajo_practico_IS
             }
         }
 
+        private void BTNCtrlResConfirmar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ReservaSeleccionada == null) return;
+
+                DialogResult result = MessageBox.Show($"¿Desea confirmar la reserva del cliente {ReservaSeleccionada.Cliente.Nombre} {ReservaSeleccionada.Cliente.Apellido}?", "Confirmar Cancelación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    GestorReservas.ConfirmarReserva(ReservaSeleccionada);
+                    MessageBox.Show("La reserva ha sido confirmada.", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    EnlazarReservas();
+                    ReservaSeleccionada = null;
+                    //LBL_ReservaSeleccionada.Text = "Ninguna";
+                    ActualizarEstadoBotones();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al cancelar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void BTNvolveralmenu_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("¿Desea volver al menu principal?", "Atención",
@@ -281,6 +312,41 @@ namespace Trabajo_practico_IS
         private void FrmCTRLReserva_FormClosing(object sender, FormClosingEventArgs e)
         {
             Servicios.IDIOMAS.GetInstancia().Desuscribir(this);
+        }
+
+        private void BTNCtrlResVerificar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BE.SUCURSAL sucursalRetiro = (BE.SUCURSAL)CBX_SucursalRetiro.SelectedItem;
+                if (sucursalRetiro == null) throw new Exception("Debe seleccionar una sucursal de retiro.");
+
+                var categoriasLibres = GestorReservas.ValidarFechasYBuscarAlternativas(dateTimeRetiro.Value.Date, dateTimeDevolucion.Value.Date, sucursalRetiro.Id);
+
+                if (categoriasLibres.Count == 0)
+                {
+                    MessageBox.Show("No hay disponibilidad de ninguna categoría para las fechas y sucursal solicitadas. Intente con otras fechas.", "Sin Stock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    // Apagamos los controles
+                    CBX_Categoria.DataSource = null;
+                    CBX_Categoria.Enabled = false;
+                    BTNCtrlResGenerar.Enabled = false;
+                }
+                else
+                {
+                    // Encendemos y cargamos solo lo disponible
+                    CBX_Categoria.DataSource = categoriasLibres;
+                    CBX_Categoria.DisplayMember = "Nombre";
+                    CBX_Categoria.ValueMember = "Id";
+
+                    CBX_Categoria.Enabled = true;
+                    BTNCtrlResGenerar.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

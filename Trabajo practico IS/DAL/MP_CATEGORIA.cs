@@ -108,6 +108,31 @@ namespace DAL
             }
         }
 
+        public List<BE.CATEGORIA> ListarDisponibles(DateTime inicio, DateTime fin, int idSucursalRetiro)
+        {
+            acceso.Abrir();
+            List<SqlParameter> parametros = new List<SqlParameter>
+            {
+                acceso.CrearParametro("@fechaInicio", inicio),
+                acceso.CrearParametro("@fechaFin", fin),
+                acceso.CrearParametro("@idSucursalRetiro", idSucursalRetiro)
+            };
+
+            DataTable tabla = acceso.Leer("BUSCAR_CATEGORIAS_DISPONIBLES", parametros);
+            acceso.Cerrar();
+
+            List<BE.CATEGORIA> lista = new List<BE.CATEGORIA>();
+            foreach (DataRow fila in tabla.Rows)
+            {
+                lista.Add(new BE.CATEGORIA
+                {
+                    Id = Convert.ToInt32(fila["ID_CATEGORIA"]),
+                    Nombre = fila["NOMBRE"].ToString()
+                });
+            }
+            return lista;
+        }
+
         public override bool Verificar(CATEGORIA categoria)
         {
             throw new NotImplementedException();

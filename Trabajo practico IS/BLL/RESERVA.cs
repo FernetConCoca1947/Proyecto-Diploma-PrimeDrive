@@ -11,19 +11,21 @@ namespace BLL
     {
         private MP_RESERVA mapper = new MP_RESERVA();
         private BLL.BITACORA GestorBitacora = new BLL.BITACORA();
+        private BLL.CATEGORIA GestorCategoria = new BLL.CATEGORIA();
 
         public void GenerarReserva(BE.RESERVA reserva)
         {
             ValidarDatosObligatorios(reserva);
             ValidarFechas(reserva.FechaInicio, reserva.FechaFin);
 
-            // Regla crítica: Comprobar stock de la categoría para ese rango de fechas
-            if (!ValidarDisponibilidad(reserva.Categoria.Id, reserva.FechaInicio, reserva.FechaFin,reserva.SucursalRetiro.Id))
+            var categoriasLibres = GestorCategoria.ConsultarDisponibles(reserva.FechaInicio, reserva.FechaFin, reserva.SucursalRetiro.Id);
+
+            if (!categoriasLibres.Any(c => c.Id == reserva.Categoria.Id))
             {
-                throw new Exception($"No hay vehículos de la categoría {reserva.Categoria.Nombre} disponibles para las fechas seleccionadas.");
+                throw new Exception($"La categoría {reserva.Categoria.Nombre} acaba de ser reservada por otro usuario. Vuelva a verificar disponibilidad.");
             }
 
-            //reserva.Estado = new BE.ESTADO { IdEstado = 5, Nombre = "Pendiente" };
+            //reserva.Estado = new BE.ESTADO { IdEstado = 6, Nombre = "Pendiente" };
             mapper.Alta(reserva);
 
             GestorBitacora.RegistrarEvento("Reservas", $"Nueva reserva generada para el cliente DNI {reserva.Cliente.DNI}", 2);
@@ -39,18 +41,48 @@ namespace BLL
             GestorBitacora.RegistrarEvento("Reservas", $"Reserva #{reserva.Id} cancelada", 2);
         }
 
+        public void ConfirmarReserva(BE.RESERVA reserva)
+        {
+            if (reserva.Estado.IdEstado == 6)
+                throw new Exception("La reserva ya se encuentra confirmada.");
+
+            reserva.Estado = new BE.ESTADO { IdEstado = 6, Nombre = "Confirmada" };
+            mapper.ModificarEstado(reserva);
+            GestorBitacora.RegistrarEvento("Reservas", $"Reserva #{reserva.Id} confirmada", 2);
+        }
+
         public List<BE.RESERVA> Listar()
         {
             return mapper.Listar();
         }
 
-        private bool ValidarDisponibilidad(int idCategoria, DateTime inicio, DateTime fin,int idSucursalRetiro)
+        public List<BE.CATEGORIA> ValidarFechasYBuscarAlternativas(DateTime inicio, DateTime fin, int idSucursalRetiro)
         {
-            int totalFlota = mapper.ContarVehiculosPorCategoria(idCategoria,idSucursalRetiro);
-            int reservasSolapadas = mapper.ContarReservasActivas(idCategoria, inicio, fin,idSucursalRetiro);
-
-            return (totalFlota - reservasSolapadas) > 0;
+            ValidarFechas(inicio, fin);
+            return GestorCategoria.ConsultarDisponibles(inicio, fin, idSucursalRetiro);
         }
+
+        //private bool ValidarDisponibilidad(int idCategoria, DateTime inicio, DateTime fin,int idSucursalRetiro)
+        //{
+        //    int totalFlota = mapper.ContarVehiculosPorCategoria(idCategoria,idSucursalRetiro);
+        //    int reservasSolapadas = mapper.ContarReservasActivas(idCategoria, inicio, fin,idSucursalRetiro);
+
+        //    return (totalFlota - reservasSolapadas) > 0;
+        //}
+
+        public List<BE.RESERVA> ObtenerReservasConfirmadasPorDNI(int dni)
+        {
+            if (dni <= 0)
+                throw new Exception("Ingrese un número de DNI válido.");
+
+            var reservas = mapper.ListarConfirmadasPorDNI(dni);
+
+            if (reservas.Count == 0)
+                throw new Exception("No se encontraron reservas en estado 'Confirmada' para el DNI ingresado.");
+
+            return reservas;
+        }
+
         private void ValidarFechas(DateTime inicio, DateTime fin)
         {
             if (inicio.Date < DateTime.Now.Date)

@@ -87,7 +87,62 @@ namespace DAL
                 reserva.FechaInicio = Convert.ToDateTime(fila["FECHA_INICIO"]);
                 reserva.FechaFin = Convert.ToDateTime(fila["FECHA_FIN"]);
 
-                // Hidratamos el objeto compuesto CLIENTE
+                reserva.Cliente = new BE.CLIENTE
+                {
+                    Id = Convert.ToInt32(fila["ID_CLIENTE"]),
+                    Nombre = fila["CLIENTE_NOMBRE"].ToString(),
+                    Apellido = fila["CLIENTE_APELLIDO"].ToString(),
+                    DNI = Convert.ToInt32(fila["DNI"])
+                };
+
+                reserva.Categoria = new BE.CATEGORIA
+                {
+                    Id = Convert.ToInt32(fila["ID_CATEGORIA"]),
+                    Nombre = fila["CATEGORIA_NOMBRE"].ToString()
+                };
+
+                reserva.Estado = new BE.ESTADO
+                {
+                    IdEstado = Convert.ToInt32(fila["ID_ESTADO"]),
+                    Nombre = fila["ESTADO_NOMBRE"].ToString()
+                };
+
+                reserva.SucursalRetiro = new BE.SUCURSAL
+                {
+                    Id = Convert.ToInt32(fila["ID_SUCURSAL_RETIRO"]),
+                    Nombre = fila["SUCURSAL_RETIRO_NOMBRE"].ToString()
+                };
+
+                reserva.SucursalDevolucion = new BE.SUCURSAL
+                {
+                    Id = Convert.ToInt32(fila["ID_SUCURSAL_DEVOLUCION"]),
+                    Nombre = fila["SUCURSAL_DEVOLUCION_NOMBRE"].ToString()
+                };
+
+                listaReservas.Add(reserva);
+            }
+
+            return listaReservas;
+        }
+
+        public List<BE.RESERVA> ListarConfirmadasPorDNI(int dni)
+        {
+            acceso.Abrir();
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("@dni", dni));
+
+            DataTable tabla = acceso.Leer("BUSCAR_RESERVAS_CONFIRMADAS_POR_DNI", parametros);
+            acceso.Cerrar();
+
+            List<BE.RESERVA> listaReservas = new List<BE.RESERVA>();
+
+            foreach (DataRow fila in tabla.Rows)
+            {
+                BE.RESERVA reserva = new BE.RESERVA();
+                reserva.Id = Convert.ToInt32(fila["ID_RESERVA"]);
+                reserva.FechaInicio = Convert.ToDateTime(fila["FECHA_INICIO"]);
+                reserva.FechaFin = Convert.ToDateTime(fila["FECHA_FIN"]);
+
                 reserva.Cliente = new BE.CLIENTE
                 {
                     Id = Convert.ToInt32(fila["ID_CLIENTE"]),

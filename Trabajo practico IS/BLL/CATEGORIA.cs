@@ -26,7 +26,7 @@ namespace BLL
             //}
 
             mapper.Alta(categoria);
-            GestorBitacora.RegistrarEvento("Flota", $"Se dio de alta la categoría: {categoria.Nombre}",2);
+            GestorBitacora.RegistrarEvento("Flota", $"Se dio de alta la categoría: {categoria.Nombre}", 2);
         }
 
         public void Borrar(BE.CATEGORIA categoria)
@@ -55,6 +55,11 @@ namespace BLL
         public BE.CATEGORIA ObtenerInactivoDuplicado(BE.CATEGORIA categoria)
         {
             return null;
+        }
+
+        public List<BE.CATEGORIA> ConsultarDisponibles(DateTime inicio, DateTime fin, int idSucursalRetiro)
+        {
+            return mapper.ListarDisponibles(inicio, fin, idSucursalRetiro);
         }
     }
 }
