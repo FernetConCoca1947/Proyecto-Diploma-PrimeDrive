@@ -127,7 +127,8 @@ namespace DAL
                 lista.Add(new BE.CATEGORIA
                 {
                     Id = Convert.ToInt32(fila["ID_CATEGORIA"]),
-                    Nombre = fila["NOMBRE"].ToString()
+                    Nombre = fila["NOMBRE"].ToString(),
+                    TarifaDiaria = Convert.ToDecimal(fila["TARIFA_DIARIA"])
                 });
             }
             return lista;

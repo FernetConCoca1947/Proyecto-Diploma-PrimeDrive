@@ -106,12 +106,15 @@
             // 
             this.checkoutToolStripMenuItem.Name = "checkoutToolStripMenuItem";
             this.checkoutToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.checkoutToolStripMenuItem.Tag = "CHECKOUT";
             this.checkoutToolStripMenuItem.Text = "Check-out";
+            this.checkoutToolStripMenuItem.Click += new System.EventHandler(this.checkoutToolStripMenuItem_Click);
             // 
             // checkinToolStripMenuItem
             // 
             this.checkinToolStripMenuItem.Name = "checkinToolStripMenuItem";
             this.checkinToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.checkinToolStripMenuItem.Tag = "CHECKIN";
             this.checkinToolStripMenuItem.Text = "Check-in";
             // 
             // gestionDeFlotaToolStripMenuItem
@@ -126,7 +129,7 @@
             // vehiculosToolStripMenuItem
             // 
             this.vehiculosToolStripMenuItem.Name = "vehiculosToolStripMenuItem";
-            this.vehiculosToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.vehiculosToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
             this.vehiculosToolStripMenuItem.Tag = "ABM_VEHICULOS";
             this.vehiculosToolStripMenuItem.Text = "Vehículos";
             this.vehiculosToolStripMenuItem.Click += new System.EventHandler(this.vehiculosToolStripMenuItem_Click);
@@ -134,7 +137,7 @@
             // categoriasToolStripMenuItem
             // 
             this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
             this.categoriasToolStripMenuItem.Tag = "ABM_CATEGORIAS";
             this.categoriasToolStripMenuItem.Text = "Categorías";
             this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);

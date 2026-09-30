@@ -41,7 +41,6 @@ namespace DAL
             try
             {
                 acceso.Abrir();
-                // Esto pasará el ID_ESTADO a 4 (Baja) como definimos en el SP
                 acceso.Escribir("BORRAR_VEHICULO", parametros);
             }
             finally
@@ -77,7 +76,8 @@ namespace DAL
                     veh.Categoria = new BE.CATEGORIA
                     {
                         Id = Convert.ToInt32(fila["ID_CATEGORIA"]),
-                        Nombre = fila["CATEGORIA_NOMBRE"].ToString()
+                        Nombre = fila["CATEGORIA_NOMBRE"].ToString(),
+                        TarifaDiaria = Convert.ToDecimal(fila["TARIFA_DIARIA"])
                     };
 
                     veh.Sucursal = new BE.SUCURSAL
@@ -169,6 +169,56 @@ namespace DAL
             {
                 acceso.Cerrar();
             }
+        }
+
+        public List<BE.VEHICULO> ListarDisponiblesPorSucursalYCategoria(int idSucursal, int idCategoria)
+        {
+            acceso.Abrir();
+            List<SqlParameter> parametros = new List<SqlParameter>
+            {
+                acceso.CrearParametro("@idSucursal", idSucursal),
+                acceso.CrearParametro("@idCategoria", idCategoria)
+            };
+
+            DataTable tabla = acceso.Leer("LISTAR_VEHICULOS_DISPONIBLES_SUCURSAL_CATEGORIA", parametros);
+            acceso.Cerrar();
+
+            List<BE.VEHICULO> listaVehiculos = new List<BE.VEHICULO>();
+
+            foreach (DataRow fila in tabla.Rows)
+            {
+                BE.VEHICULO vehiculo = new BE.VEHICULO
+                {
+                    Id = Convert.ToInt32(fila["ID_VEHICULO"]),
+                    Patente = fila["PATENTE"].ToString(),
+                    Marca = fila["MARCA"].ToString(),
+                    Modelo = fila["MODELO"].ToString(),
+                    KmActual = Convert.ToInt32(fila["KM_ACTUAL"]),
+
+                    Estado = new BE.ESTADO
+                    {
+                        IdEstado = Convert.ToInt32(fila["ID_ESTADO"])
+                        //Nombre = fila["ESTADO_NOMBRE"].ToString()
+                    },
+
+                    Categoria = new BE.CATEGORIA
+                    {
+                        Id = Convert.ToInt32(fila["ID_CATEGORIA"])
+                        //Nombre = fila["CATEGORIA_NOMBRE"].ToString(),
+                        //TarifaDiaria = Convert.ToDecimal(fila["TARIFA_DIARIA"])
+                    },
+
+                    Sucursal = new BE.SUCURSAL
+                    {
+                        Id = Convert.ToInt32(fila["ID_SUCURSAL"])
+                        //Nombre = fila["SUCURSAL_NOMBRE"].ToString()
+                    }
+                };
+
+                listaVehiculos.Add(vehiculo);
+            }
+
+            return listaVehiculos;
         }
 
         public override bool Verificar(BE.VEHICULO vehiculo)

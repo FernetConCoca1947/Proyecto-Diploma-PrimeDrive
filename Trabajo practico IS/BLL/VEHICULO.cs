@@ -53,7 +53,7 @@ namespace BLL
             mapper.Reactivar(vehiculo);
         }
 
-        // Regla de Negocio Core de Prime Drive
+
         public void ActualizarKilometraje(BE.VEHICULO vehiculo, int nuevoKilometraje)
         {
             BE.USUARIO usr = SeguridadBLL.ValidarPermiso("ABM_VEHICULOS");
@@ -66,7 +66,6 @@ namespace BLL
                 vehiculo.Estado = new BE.ESTADO { IdEstado = 3, Nombre = "Mantenimiento Preventivo" };
             }
 
-            // Actualiza el registro físico a través de la DAL
             mapper.Modificar(vehiculo);
         }
 
@@ -75,9 +74,19 @@ namespace BLL
             return mapper.ObtenerInactivoDuplicado(patente);
         }
 
+        public List<BE.VEHICULO> ListarDisponiblesPorSucursalYCategoria(int idSucursal, int idCategoria)
+        {
+            if (idSucursal <= 0)
+                throw new Exception("La sucursal seleccionada no es válida.");
+
+            if (idCategoria <= 0)
+                throw new Exception("La categoría seleccionada no es válida.");
+
+            return mapper.ListarDisponiblesPorSucursalYCategoria(idSucursal, idCategoria);
+        }
+
         private void ValidarDatosObligatorios(BE.VEHICULO vehiculo)
         {
-            // 1. Validación de cadenas de texto (Textos en blanco)
             if (string.IsNullOrWhiteSpace(vehiculo.Patente))
                 throw new Exception("La patente es obligatoria.");
 
@@ -92,7 +101,6 @@ namespace BLL
             if (string.IsNullOrWhiteSpace(vehiculo.Modelo))
                 throw new Exception("El modelo del vehículo es obligatorio.");
 
-            // 2. Validación de objetos compuestos (Desplegables nulos en la GUI)
             if (vehiculo.Categoria == null || vehiculo.Categoria.Id <= 0)
                 throw new Exception("Debe asignar una categoría al vehículo.");
 

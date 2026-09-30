@@ -266,6 +266,14 @@ namespace Trabajo_practico_IS
             frmReservas.ShowDialog();
             this.Show();
         }
+
+        private void checkoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FrmCTRLCheckOut frmCheckOut = new FrmCTRLCheckOut();
+            frmCheckOut.ShowDialog();
+            this.Show();
+        }
     }
 }
 

@@ -48,6 +48,17 @@
             this.TXT_CtrlChkOutKmAct = new System.Windows.Forms.TextBox();
             this.LBLreservasCliente = new System.Windows.Forms.Label();
             this.CBX_ReservasCliente = new System.Windows.Forms.ComboBox();
+            this.BTNCCtrlChkOutGenerar = new System.Windows.Forms.Button();
+            this.LBLTarifaDiaria = new System.Windows.Forms.Label();
+            this.LBLDiasEstimado = new System.Windows.Forms.Label();
+            this.LBLDATOSTarifaDiaria = new System.Windows.Forms.Label();
+            this.LBLDATOSDiasEstimado = new System.Windows.Forms.Label();
+            this.LBLMontoGarantia = new System.Windows.Forms.Label();
+            this.TXT_CtrlChkOutGarantia = new System.Windows.Forms.TextBox();
+            this.LBLObservaciones = new System.Windows.Forms.Label();
+            this.TXT_CtrlChkOutObservaciones = new System.Windows.Forms.TextBox();
+            this.LBLMetodoPago = new System.Windows.Forms.Label();
+            this.CBX_MetodoPago = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // BTNvolveralmenu
@@ -97,6 +108,7 @@
             this.BTNCCtrlChkOutBuscar.Tag = "";
             this.BTNCCtrlChkOutBuscar.Text = "Buscar";
             this.BTNCCtrlChkOutBuscar.UseVisualStyleBackColor = false;
+            this.BTNCCtrlChkOutBuscar.Click += new System.EventHandler(this.BTNCCtrlChkOutBuscar_Click);
             // 
             // TXT_CtrlChkOutDNI
             // 
@@ -215,6 +227,7 @@
             this.CBX_VehiculosDisponibles.Name = "CBX_VehiculosDisponibles";
             this.CBX_VehiculosDisponibles.Size = new System.Drawing.Size(264, 25);
             this.CBX_VehiculosDisponibles.TabIndex = 49;
+            this.CBX_VehiculosDisponibles.SelectedIndexChanged += new System.EventHandler(this.CBX_VehiculosDisponibles_SelectedIndexChanged);
             // 
             // LBLvehiculos
             // 
@@ -266,12 +279,145 @@
             this.CBX_ReservasCliente.Name = "CBX_ReservasCliente";
             this.CBX_ReservasCliente.Size = new System.Drawing.Size(264, 25);
             this.CBX_ReservasCliente.TabIndex = 53;
+            this.CBX_ReservasCliente.SelectedIndexChanged += new System.EventHandler(this.CBX_ReservasCliente_SelectedIndexChanged);
+            // 
+            // BTNCCtrlChkOutGenerar
+            // 
+            this.BTNCCtrlChkOutGenerar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNCCtrlChkOutGenerar.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.BTNCCtrlChkOutGenerar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTNCCtrlChkOutGenerar.Location = new System.Drawing.Point(861, 592);
+            this.BTNCCtrlChkOutGenerar.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNCCtrlChkOutGenerar.Name = "BTNCCtrlChkOutGenerar";
+            this.BTNCCtrlChkOutGenerar.Size = new System.Drawing.Size(145, 33);
+            this.BTNCCtrlChkOutGenerar.TabIndex = 55;
+            this.BTNCCtrlChkOutGenerar.Tag = "";
+            this.BTNCCtrlChkOutGenerar.Text = "Generar contrato";
+            this.BTNCCtrlChkOutGenerar.UseVisualStyleBackColor = false;
+            this.BTNCCtrlChkOutGenerar.Click += new System.EventHandler(this.BTNCCtrlChkOutGenerar_Click);
+            // 
+            // LBLTarifaDiaria
+            // 
+            this.LBLTarifaDiaria.AutoSize = true;
+            this.LBLTarifaDiaria.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.LBLTarifaDiaria.Location = new System.Drawing.Point(702, 85);
+            this.LBLTarifaDiaria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLTarifaDiaria.Name = "LBLTarifaDiaria";
+            this.LBLTarifaDiaria.Size = new System.Drawing.Size(176, 17);
+            this.LBLTarifaDiaria.TabIndex = 56;
+            this.LBLTarifaDiaria.Text = "Tarifa diaria de categoría:";
+            // 
+            // LBLDiasEstimado
+            // 
+            this.LBLDiasEstimado.AutoSize = true;
+            this.LBLDiasEstimado.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.LBLDiasEstimado.Location = new System.Drawing.Point(702, 159);
+            this.LBLDiasEstimado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLDiasEstimado.Name = "LBLDiasEstimado";
+            this.LBLDiasEstimado.Size = new System.Drawing.Size(109, 17);
+            this.LBLDiasEstimado.TabIndex = 57;
+            this.LBLDiasEstimado.Text = "Días estimados:";
+            // 
+            // LBLDATOSTarifaDiaria
+            // 
+            this.LBLDATOSTarifaDiaria.AutoSize = true;
+            this.LBLDATOSTarifaDiaria.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.LBLDATOSTarifaDiaria.Location = new System.Drawing.Point(702, 102);
+            this.LBLDATOSTarifaDiaria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLDATOSTarifaDiaria.Name = "LBLDATOSTarifaDiaria";
+            this.LBLDATOSTarifaDiaria.Size = new System.Drawing.Size(45, 17);
+            this.LBLDATOSTarifaDiaria.TabIndex = 58;
+            this.LBLDATOSTarifaDiaria.Text = "datos";
+            // 
+            // LBLDATOSDiasEstimado
+            // 
+            this.LBLDATOSDiasEstimado.AutoSize = true;
+            this.LBLDATOSDiasEstimado.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.LBLDATOSDiasEstimado.Location = new System.Drawing.Point(702, 176);
+            this.LBLDATOSDiasEstimado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLDATOSDiasEstimado.Name = "LBLDATOSDiasEstimado";
+            this.LBLDATOSDiasEstimado.Size = new System.Drawing.Size(45, 17);
+            this.LBLDATOSDiasEstimado.TabIndex = 59;
+            this.LBLDATOSDiasEstimado.Text = "datos";
+            // 
+            // LBLMontoGarantia
+            // 
+            this.LBLMontoGarantia.AutoSize = true;
+            this.LBLMontoGarantia.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.LBLMontoGarantia.Location = new System.Drawing.Point(702, 229);
+            this.LBLMontoGarantia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLMontoGarantia.Name = "LBLMontoGarantia";
+            this.LBLMontoGarantia.Size = new System.Drawing.Size(197, 17);
+            this.LBLMontoGarantia.TabIndex = 60;
+            this.LBLMontoGarantia.Text = "Monto de garantia a retener:";
+            // 
+            // TXT_CtrlChkOutGarantia
+            // 
+            this.TXT_CtrlChkOutGarantia.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TXT_CtrlChkOutGarantia.Location = new System.Drawing.Point(705, 250);
+            this.TXT_CtrlChkOutGarantia.Margin = new System.Windows.Forms.Padding(4);
+            this.TXT_CtrlChkOutGarantia.Name = "TXT_CtrlChkOutGarantia";
+            this.TXT_CtrlChkOutGarantia.Size = new System.Drawing.Size(264, 23);
+            this.TXT_CtrlChkOutGarantia.TabIndex = 61;
+            // 
+            // LBLObservaciones
+            // 
+            this.LBLObservaciones.AutoSize = true;
+            this.LBLObservaciones.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.LBLObservaciones.Location = new System.Drawing.Point(698, 381);
+            this.LBLObservaciones.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLObservaciones.Name = "LBLObservaciones";
+            this.LBLObservaciones.Size = new System.Drawing.Size(263, 17);
+            this.LBLObservaciones.TabIndex = 62;
+            this.LBLObservaciones.Text = "Observaciones del estado del vehiculo:";
+            // 
+            // TXT_CtrlChkOutObservaciones
+            // 
+            this.TXT_CtrlChkOutObservaciones.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TXT_CtrlChkOutObservaciones.Location = new System.Drawing.Point(701, 402);
+            this.TXT_CtrlChkOutObservaciones.Margin = new System.Windows.Forms.Padding(4);
+            this.TXT_CtrlChkOutObservaciones.Multiline = true;
+            this.TXT_CtrlChkOutObservaciones.Name = "TXT_CtrlChkOutObservaciones";
+            this.TXT_CtrlChkOutObservaciones.Size = new System.Drawing.Size(268, 182);
+            this.TXT_CtrlChkOutObservaciones.TabIndex = 63;
+            // 
+            // LBLMetodoPago
+            // 
+            this.LBLMetodoPago.AutoSize = true;
+            this.LBLMetodoPago.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.LBLMetodoPago.Location = new System.Drawing.Point(702, 301);
+            this.LBLMetodoPago.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLMetodoPago.Name = "LBLMetodoPago";
+            this.LBLMetodoPago.Size = new System.Drawing.Size(124, 17);
+            this.LBLMetodoPago.TabIndex = 65;
+            this.LBLMetodoPago.Text = "Metodo de pago:";
+            // 
+            // CBX_MetodoPago
+            // 
+            this.CBX_MetodoPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBX_MetodoPago.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBX_MetodoPago.FormattingEnabled = true;
+            this.CBX_MetodoPago.Location = new System.Drawing.Point(705, 321);
+            this.CBX_MetodoPago.Name = "CBX_MetodoPago";
+            this.CBX_MetodoPago.Size = new System.Drawing.Size(264, 25);
+            this.CBX_MetodoPago.TabIndex = 64;
             // 
             // FrmCTRLCheckOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1233, 638);
+            this.Controls.Add(this.LBLMetodoPago);
+            this.Controls.Add(this.CBX_MetodoPago);
+            this.Controls.Add(this.TXT_CtrlChkOutObservaciones);
+            this.Controls.Add(this.LBLObservaciones);
+            this.Controls.Add(this.TXT_CtrlChkOutGarantia);
+            this.Controls.Add(this.LBLMontoGarantia);
+            this.Controls.Add(this.LBLDATOSDiasEstimado);
+            this.Controls.Add(this.LBLDATOSTarifaDiaria);
+            this.Controls.Add(this.LBLDiasEstimado);
+            this.Controls.Add(this.LBLTarifaDiaria);
+            this.Controls.Add(this.BTNCCtrlChkOutGenerar);
             this.Controls.Add(this.LBLreservasCliente);
             this.Controls.Add(this.CBX_ReservasCliente);
             this.Controls.Add(this.TXT_CtrlChkOutKmAct);
@@ -293,8 +439,9 @@
             this.Controls.Add(this.LBLidiomas);
             this.Controls.Add(this.CBXidiomas);
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmCTRLCheckOut";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCTRLCheckOut";
             this.Load += new System.EventHandler(this.FrmCTRLCheckOut_Load);
             this.ResumeLayout(false);
@@ -324,5 +471,16 @@
         private System.Windows.Forms.TextBox TXT_CtrlChkOutKmAct;
         private System.Windows.Forms.Label LBLreservasCliente;
         private System.Windows.Forms.ComboBox CBX_ReservasCliente;
+        private System.Windows.Forms.Button BTNCCtrlChkOutGenerar;
+        private System.Windows.Forms.Label LBLTarifaDiaria;
+        private System.Windows.Forms.Label LBLDiasEstimado;
+        private System.Windows.Forms.Label LBLDATOSTarifaDiaria;
+        private System.Windows.Forms.Label LBLDATOSDiasEstimado;
+        private System.Windows.Forms.Label LBLMontoGarantia;
+        private System.Windows.Forms.TextBox TXT_CtrlChkOutGarantia;
+        private System.Windows.Forms.Label LBLObservaciones;
+        private System.Windows.Forms.TextBox TXT_CtrlChkOutObservaciones;
+        private System.Windows.Forms.Label LBLMetodoPago;
+        private System.Windows.Forms.ComboBox CBX_MetodoPago;
     }
 }

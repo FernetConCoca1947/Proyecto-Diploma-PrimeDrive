@@ -98,7 +98,8 @@ namespace DAL
                 reserva.Categoria = new BE.CATEGORIA
                 {
                     Id = Convert.ToInt32(fila["ID_CATEGORIA"]),
-                    Nombre = fila["CATEGORIA_NOMBRE"].ToString()
+                    Nombre = fila["CATEGORIA_NOMBRE"].ToString(),
+                    TarifaDiaria = Convert.ToDecimal(fila["TARIFA_DIARIA"])
                 };
 
                 reserva.Estado = new BE.ESTADO
@@ -154,7 +155,8 @@ namespace DAL
                 reserva.Categoria = new BE.CATEGORIA
                 {
                     Id = Convert.ToInt32(fila["ID_CATEGORIA"]),
-                    Nombre = fila["CATEGORIA_NOMBRE"].ToString()
+                    Nombre = fila["CATEGORIA_NOMBRE"].ToString(),
+                    TarifaDiaria = Convert.ToDecimal(fila["TARIFA_DIARIA"])
                 };
 
                 reserva.Estado = new BE.ESTADO
