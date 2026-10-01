@@ -10,16 +10,20 @@ namespace BE
     {
         public int Id { get; set; }
         public DateTime FechaHoraRetiro { get; set; }
-        public DateTime? FechaHoraDevolucion { get; set; } // Anulable (?) porque se completa en el Check-in
+        public DateTime? FechaHoraDevolucion { get; set; }
         public int KmSalida { get; set; }
-        public int? KmEntrada { get; set; } // Anulable (?) porque se completa en el Check-in[cite: 2]
+        public int? KmEntrada { get; set; }
         public decimal GarantiaRetenida { get; set; }
-        public decimal? MontoFinal { get; set; } // Anulable (?) porque se completa en el Check-in[cite: 2]
+        public decimal? MontoFinal { get; set; }
         public string Observaciones { get; set; }
         public ESTADO Estado { get; set; }
         public RESERVA Reserva { get; set; }
         public VEHICULO Vehiculo { get; set; }
         //public SUCURSAL SucursalDevolucionReal { get; set; }
+        public string InfoVehiculoMultiple
+        {
+            get { return $"Patente: {Vehiculo.Patente} - {Reserva.Categoria.Nombre}"; }
+        }
 
     }
 }

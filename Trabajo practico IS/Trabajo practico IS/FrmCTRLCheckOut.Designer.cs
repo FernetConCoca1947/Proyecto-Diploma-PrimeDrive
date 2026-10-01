@@ -254,7 +254,7 @@
             // TXT_CtrlChkOutKmAct
             // 
             this.TXT_CtrlChkOutKmAct.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.TXT_CtrlChkOutKmAct.Location = new System.Drawing.Point(33, 478);
+            this.TXT_CtrlChkOutKmAct.Location = new System.Drawing.Point(32, 468);
             this.TXT_CtrlChkOutKmAct.Name = "TXT_CtrlChkOutKmAct";
             this.TXT_CtrlChkOutKmAct.Size = new System.Drawing.Size(265, 23);
             this.TXT_CtrlChkOutKmAct.TabIndex = 52;

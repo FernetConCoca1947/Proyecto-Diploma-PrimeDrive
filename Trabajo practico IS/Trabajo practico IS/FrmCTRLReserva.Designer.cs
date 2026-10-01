@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.GB_DatosNuevaReserva = new System.Windows.Forms.GroupBox();
+            this.BTNCtrlResVerificar = new System.Windows.Forms.Button();
             this.CBX_SucursalDevolucion = new System.Windows.Forms.ComboBox();
             this.LBLSucursalDevolucion = new System.Windows.Forms.Label();
             this.CBX_SucursalRetiro = new System.Windows.Forms.ComboBox();
@@ -52,7 +53,6 @@
             this.DGV_CtrlResReservas = new System.Windows.Forms.DataGridView();
             this.BTNCtrlResCancelar = new System.Windows.Forms.Button();
             this.BTNCtrlResConfirmar = new System.Windows.Forms.Button();
-            this.BTNCtrlResVerificar = new System.Windows.Forms.Button();
             this.GB_DatosNuevaReserva.SuspendLayout();
             this.GB_Reservas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_CtrlResReservas)).BeginInit();
@@ -78,18 +78,36 @@
             this.GB_DatosNuevaReserva.Controls.Add(this.TXT_CtrlResDNI);
             this.GB_DatosNuevaReserva.Controls.Add(this.LBLdniCliente);
             this.GB_DatosNuevaReserva.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GB_DatosNuevaReserva.Location = new System.Drawing.Point(12, 34);
+            this.GB_DatosNuevaReserva.Location = new System.Drawing.Point(12, 33);
+            this.GB_DatosNuevaReserva.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.GB_DatosNuevaReserva.Name = "GB_DatosNuevaReserva";
+            this.GB_DatosNuevaReserva.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.GB_DatosNuevaReserva.Size = new System.Drawing.Size(472, 561);
             this.GB_DatosNuevaReserva.TabIndex = 0;
             this.GB_DatosNuevaReserva.TabStop = false;
             this.GB_DatosNuevaReserva.Text = "Nueva reserva";
+            // 
+            // BTNCtrlResVerificar
+            // 
+            this.BTNCtrlResVerificar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNCtrlResVerificar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNCtrlResVerificar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTNCtrlResVerificar.Location = new System.Drawing.Point(10, 385);
+            this.BTNCtrlResVerificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTNCtrlResVerificar.Name = "BTNCtrlResVerificar";
+            this.BTNCtrlResVerificar.Size = new System.Drawing.Size(145, 33);
+            this.BTNCtrlResVerificar.TabIndex = 43;
+            this.BTNCtrlResVerificar.Tag = "";
+            this.BTNCtrlResVerificar.Text = "Verificar";
+            this.BTNCtrlResVerificar.UseVisualStyleBackColor = false;
+            this.BTNCtrlResVerificar.Click += new System.EventHandler(this.BTNCtrlResVerificar_Click);
             // 
             // CBX_SucursalDevolucion
             // 
             this.CBX_SucursalDevolucion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBX_SucursalDevolucion.FormattingEnabled = true;
             this.CBX_SucursalDevolucion.Location = new System.Drawing.Point(12, 353);
+            this.CBX_SucursalDevolucion.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.CBX_SucursalDevolucion.Name = "CBX_SucursalDevolucion";
             this.CBX_SucursalDevolucion.Size = new System.Drawing.Size(264, 25);
             this.CBX_SucursalDevolucion.TabIndex = 42;
@@ -97,7 +115,7 @@
             // LBLSucursalDevolucion
             // 
             this.LBLSucursalDevolucion.AutoSize = true;
-            this.LBLSucursalDevolucion.Location = new System.Drawing.Point(12, 331);
+            this.LBLSucursalDevolucion.Location = new System.Drawing.Point(12, 332);
             this.LBLSucursalDevolucion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBLSucursalDevolucion.Name = "LBLSucursalDevolucion";
             this.LBLSucursalDevolucion.Size = new System.Drawing.Size(157, 17);
@@ -109,6 +127,7 @@
             this.CBX_SucursalRetiro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBX_SucursalRetiro.FormattingEnabled = true;
             this.CBX_SucursalRetiro.Location = new System.Drawing.Point(12, 303);
+            this.CBX_SucursalRetiro.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.CBX_SucursalRetiro.Name = "CBX_SucursalRetiro";
             this.CBX_SucursalRetiro.Size = new System.Drawing.Size(264, 25);
             this.CBX_SucursalRetiro.TabIndex = 40;
@@ -116,7 +135,7 @@
             // LBLSucursalRetiro
             // 
             this.LBLSucursalRetiro.AutoSize = true;
-            this.LBLSucursalRetiro.Location = new System.Drawing.Point(12, 283);
+            this.LBLSucursalRetiro.Location = new System.Drawing.Point(12, 284);
             this.LBLSucursalRetiro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBLSucursalRetiro.Name = "LBLSucursalRetiro";
             this.LBLSucursalRetiro.Size = new System.Drawing.Size(117, 17);
@@ -128,10 +147,10 @@
             this.BTNCtrlResGenerar.BackColor = System.Drawing.SystemColors.HotTrack;
             this.BTNCtrlResGenerar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCtrlResGenerar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCtrlResGenerar.Location = new System.Drawing.Point(11, 498);
-            this.BTNCtrlResGenerar.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNCtrlResGenerar.Location = new System.Drawing.Point(10, 497);
+            this.BTNCtrlResGenerar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BTNCtrlResGenerar.Name = "BTNCtrlResGenerar";
-            this.BTNCtrlResGenerar.Size = new System.Drawing.Size(145, 51);
+            this.BTNCtrlResGenerar.Size = new System.Drawing.Size(145, 50);
             this.BTNCtrlResGenerar.TabIndex = 38;
             this.BTNCtrlResGenerar.Tag = "";
             this.BTNCtrlResGenerar.Text = "Validar y generar reserva";
@@ -142,14 +161,16 @@
             // 
             this.CBX_Categoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBX_Categoria.FormattingEnabled = true;
-            this.CBX_Categoria.Location = new System.Drawing.Point(11, 464);
+            this.CBX_Categoria.Location = new System.Drawing.Point(10, 464);
+            this.CBX_Categoria.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.CBX_Categoria.Name = "CBX_Categoria";
             this.CBX_Categoria.Size = new System.Drawing.Size(264, 25);
             this.CBX_Categoria.TabIndex = 37;
             // 
             // dateTimeDevolucion
             // 
-            this.dateTimeDevolucion.Location = new System.Drawing.Point(12, 248);
+            this.dateTimeDevolucion.Location = new System.Drawing.Point(12, 247);
+            this.dateTimeDevolucion.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.dateTimeDevolucion.Name = "dateTimeDevolucion";
             this.dateTimeDevolucion.Size = new System.Drawing.Size(263, 23);
             this.dateTimeDevolucion.TabIndex = 36;
@@ -157,6 +178,7 @@
             // dateTimeRetiro
             // 
             this.dateTimeRetiro.Location = new System.Drawing.Point(12, 193);
+            this.dateTimeRetiro.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.dateTimeRetiro.Name = "dateTimeRetiro";
             this.dateTimeRetiro.Size = new System.Drawing.Size(263, 23);
             this.dateTimeRetiro.TabIndex = 35;
@@ -164,7 +186,7 @@
             // LBLCategoriaRes
             // 
             this.LBLCategoriaRes.AutoSize = true;
-            this.LBLCategoriaRes.Location = new System.Drawing.Point(11, 444);
+            this.LBLCategoriaRes.Location = new System.Drawing.Point(10, 444);
             this.LBLCategoriaRes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBLCategoriaRes.Name = "LBLCategoriaRes";
             this.LBLCategoriaRes.Size = new System.Drawing.Size(136, 17);
@@ -184,7 +206,7 @@
             // LBLFechaRetiro
             // 
             this.LBLFechaRetiro.AutoSize = true;
-            this.LBLFechaRetiro.Location = new System.Drawing.Point(12, 173);
+            this.LBLFechaRetiro.Location = new System.Drawing.Point(12, 174);
             this.LBLFechaRetiro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBLFechaRetiro.Name = "LBLFechaRetiro";
             this.LBLFechaRetiro.Size = new System.Drawing.Size(105, 17);
@@ -216,8 +238,8 @@
             this.BTNCtrlResBuscar.BackColor = System.Drawing.SystemColors.HotTrack;
             this.BTNCtrlResBuscar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCtrlResBuscar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCtrlResBuscar.Location = new System.Drawing.Point(298, 56);
-            this.BTNCtrlResBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNCtrlResBuscar.Location = new System.Drawing.Point(298, 55);
+            this.BTNCtrlResBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BTNCtrlResBuscar.Name = "BTNCtrlResBuscar";
             this.BTNCtrlResBuscar.Size = new System.Drawing.Size(145, 33);
             this.BTNCtrlResBuscar.TabIndex = 29;
@@ -228,8 +250,8 @@
             // 
             // TXT_CtrlResDNI
             // 
-            this.TXT_CtrlResDNI.Location = new System.Drawing.Point(13, 61);
-            this.TXT_CtrlResDNI.Margin = new System.Windows.Forms.Padding(4);
+            this.TXT_CtrlResDNI.Location = new System.Drawing.Point(13, 62);
+            this.TXT_CtrlResDNI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TXT_CtrlResDNI.Name = "TXT_CtrlResDNI";
             this.TXT_CtrlResDNI.Size = new System.Drawing.Size(264, 23);
             this.TXT_CtrlResDNI.TabIndex = 27;
@@ -249,8 +271,8 @@
             this.BTNvolveralmenu.BackColor = System.Drawing.SystemColors.HotTrack;
             this.BTNvolveralmenu.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNvolveralmenu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNvolveralmenu.Location = new System.Drawing.Point(1119, 562);
-            this.BTNvolveralmenu.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNvolveralmenu.Location = new System.Drawing.Point(1119, 561);
+            this.BTNvolveralmenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BTNvolveralmenu.Name = "BTNvolveralmenu";
             this.BTNvolveralmenu.Size = new System.Drawing.Size(145, 33);
             this.BTNvolveralmenu.TabIndex = 34;
@@ -273,7 +295,8 @@
             // 
             this.CBXidiomas.Font = new System.Drawing.Font("Century Gothic", 9F);
             this.CBXidiomas.FormattingEnabled = true;
-            this.CBXidiomas.Location = new System.Drawing.Point(1130, 34);
+            this.CBXidiomas.Location = new System.Drawing.Point(1130, 33);
+            this.CBXidiomas.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.CBXidiomas.Name = "CBXidiomas";
             this.CBXidiomas.Size = new System.Drawing.Size(135, 25);
             this.CBXidiomas.TabIndex = 32;
@@ -283,9 +306,11 @@
             // 
             this.GB_Reservas.Controls.Add(this.DGV_CtrlResReservas);
             this.GB_Reservas.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.GB_Reservas.Location = new System.Drawing.Point(514, 75);
+            this.GB_Reservas.Location = new System.Drawing.Point(514, 76);
+            this.GB_Reservas.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.GB_Reservas.Name = "GB_Reservas";
-            this.GB_Reservas.Size = new System.Drawing.Size(750, 379);
+            this.GB_Reservas.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.GB_Reservas.Size = new System.Drawing.Size(750, 380);
             this.GB_Reservas.TabIndex = 35;
             this.GB_Reservas.TabStop = false;
             this.GB_Reservas.Text = "Reservas";
@@ -294,7 +319,8 @@
             // 
             this.DGV_CtrlResReservas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_CtrlResReservas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_CtrlResReservas.Location = new System.Drawing.Point(12, 30);
+            this.DGV_CtrlResReservas.Location = new System.Drawing.Point(12, 31);
+            this.DGV_CtrlResReservas.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.DGV_CtrlResReservas.Name = "DGV_CtrlResReservas";
             this.DGV_CtrlResReservas.Size = new System.Drawing.Size(720, 332);
             this.DGV_CtrlResReservas.TabIndex = 0;
@@ -305,10 +331,10 @@
             this.BTNCtrlResCancelar.BackColor = System.Drawing.SystemColors.HotTrack;
             this.BTNCtrlResCancelar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCtrlResCancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCtrlResCancelar.Location = new System.Drawing.Point(514, 472);
-            this.BTNCtrlResCancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNCtrlResCancelar.Location = new System.Drawing.Point(514, 471);
+            this.BTNCtrlResCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BTNCtrlResCancelar.Name = "BTNCtrlResCancelar";
-            this.BTNCtrlResCancelar.Size = new System.Drawing.Size(145, 51);
+            this.BTNCtrlResCancelar.Size = new System.Drawing.Size(145, 50);
             this.BTNCtrlResCancelar.TabIndex = 39;
             this.BTNCtrlResCancelar.Tag = "";
             this.BTNCtrlResCancelar.Text = "Cancelar reserva";
@@ -320,36 +346,21 @@
             this.BTNCtrlResConfirmar.BackColor = System.Drawing.SystemColors.HotTrack;
             this.BTNCtrlResConfirmar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCtrlResConfirmar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCtrlResConfirmar.Location = new System.Drawing.Point(678, 472);
-            this.BTNCtrlResConfirmar.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNCtrlResConfirmar.Location = new System.Drawing.Point(678, 471);
+            this.BTNCtrlResConfirmar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BTNCtrlResConfirmar.Name = "BTNCtrlResConfirmar";
-            this.BTNCtrlResConfirmar.Size = new System.Drawing.Size(145, 51);
+            this.BTNCtrlResConfirmar.Size = new System.Drawing.Size(145, 50);
             this.BTNCtrlResConfirmar.TabIndex = 40;
             this.BTNCtrlResConfirmar.Tag = "";
             this.BTNCtrlResConfirmar.Text = "Confirmar reserva";
             this.BTNCtrlResConfirmar.UseVisualStyleBackColor = false;
             this.BTNCtrlResConfirmar.Click += new System.EventHandler(this.BTNCtrlResConfirmar_Click);
             // 
-            // BTNCtrlResVerificar
-            // 
-            this.BTNCtrlResVerificar.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.BTNCtrlResVerificar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNCtrlResVerificar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCtrlResVerificar.Location = new System.Drawing.Point(11, 385);
-            this.BTNCtrlResVerificar.Margin = new System.Windows.Forms.Padding(4);
-            this.BTNCtrlResVerificar.Name = "BTNCtrlResVerificar";
-            this.BTNCtrlResVerificar.Size = new System.Drawing.Size(145, 33);
-            this.BTNCtrlResVerificar.TabIndex = 43;
-            this.BTNCtrlResVerificar.Tag = "";
-            this.BTNCtrlResVerificar.Text = "Verificar";
-            this.BTNCtrlResVerificar.UseVisualStyleBackColor = false;
-            this.BTNCtrlResVerificar.Click += new System.EventHandler(this.BTNCtrlResVerificar_Click);
-            // 
             // FrmCTRLReserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1277, 608);
+            this.ClientSize = new System.Drawing.Size(1278, 608);
             this.Controls.Add(this.BTNCtrlResConfirmar);
             this.Controls.Add(this.BTNCtrlResCancelar);
             this.Controls.Add(this.GB_Reservas);
@@ -358,7 +369,7 @@
             this.Controls.Add(this.CBXidiomas);
             this.Controls.Add(this.GB_DatosNuevaReserva);
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmCTRLReserva";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCTRLReserva";

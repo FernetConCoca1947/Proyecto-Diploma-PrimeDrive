@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Trabajo_practico_IS
 {
-    public partial class FrmCTRLCheckOut : Form , BE.IObserver
+    public partial class FrmCTRLCheckOut : Form, BE.IObserver
     {
         BLL.IDIOMA gestorIdioma = new BLL.IDIOMA();
         BLL.CONTRATO GestorContrato = new BLL.CONTRATO();

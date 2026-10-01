@@ -116,6 +116,7 @@
             this.checkinToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.checkinToolStripMenuItem.Tag = "CHECKIN";
             this.checkinToolStripMenuItem.Text = "Check-in";
+            this.checkinToolStripMenuItem.Click += new System.EventHandler(this.checkinToolStripMenuItem_Click);
             // 
             // gestionDeFlotaToolStripMenuItem
             // 

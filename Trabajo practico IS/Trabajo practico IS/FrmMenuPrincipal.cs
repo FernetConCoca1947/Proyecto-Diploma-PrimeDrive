@@ -274,6 +274,14 @@ namespace Trabajo_practico_IS
             frmCheckOut.ShowDialog();
             this.Show();
         }
+
+        private void checkinToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FrmCTRLCheckIn frmCheckIn = new FrmCTRLCheckIn();
+            frmCheckIn.ShowDialog();
+            this.Show();
+        }
     }
 }
 
