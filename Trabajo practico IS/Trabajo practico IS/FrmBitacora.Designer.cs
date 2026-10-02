@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BTN_CargarBitacora = new System.Windows.Forms.Button();
             this.GB_Bitacora = new System.Windows.Forms.GroupBox();
             this.DGV_BITACORA = new System.Windows.Forms.DataGridView();
@@ -53,11 +54,11 @@
             // 
             // BTN_CargarBitacora
             // 
-            this.BTN_CargarBitacora.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTN_CargarBitacora.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTN_CargarBitacora.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTN_CargarBitacora.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTN_CargarBitacora.Location = new System.Drawing.Point(357, 181);
-            this.BTN_CargarBitacora.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTN_CargarBitacora.Location = new System.Drawing.Point(467, 180);
+            this.BTN_CargarBitacora.Margin = new System.Windows.Forms.Padding(4);
             this.BTN_CargarBitacora.Name = "BTN_CargarBitacora";
             this.BTN_CargarBitacora.Size = new System.Drawing.Size(145, 33);
             this.BTN_CargarBitacora.TabIndex = 5;
@@ -69,10 +70,11 @@
             // 
             this.GB_Bitacora.Controls.Add(this.DGV_BITACORA);
             this.GB_Bitacora.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.GB_Bitacora.ForeColor = System.Drawing.SystemColors.Window;
             this.GB_Bitacora.Location = new System.Drawing.Point(14, 15);
-            this.GB_Bitacora.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GB_Bitacora.Margin = new System.Windows.Forms.Padding(4);
             this.GB_Bitacora.Name = "GB_Bitacora";
-            this.GB_Bitacora.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GB_Bitacora.Padding = new System.Windows.Forms.Padding(4);
             this.GB_Bitacora.Size = new System.Drawing.Size(929, 320);
             this.GB_Bitacora.TabIndex = 4;
             this.GB_Bitacora.TabStop = false;
@@ -82,8 +84,16 @@
             // 
             this.DGV_BITACORA.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_BITACORA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGV_BITACORA.DefaultCellStyle = dataGridViewCellStyle3;
             this.DGV_BITACORA.Location = new System.Drawing.Point(12, 30);
-            this.DGV_BITACORA.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DGV_BITACORA.Margin = new System.Windows.Forms.Padding(4);
             this.DGV_BITACORA.Name = "DGV_BITACORA";
             this.DGV_BITACORA.Size = new System.Drawing.Size(904, 274);
             this.DGV_BITACORA.TabIndex = 1;
@@ -91,7 +101,7 @@
             // DTPBitacoraDesde
             // 
             this.DTPBitacoraDesde.Location = new System.Drawing.Point(271, 80);
-            this.DTPBitacoraDesde.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DTPBitacoraDesde.Margin = new System.Windows.Forms.Padding(4);
             this.DTPBitacoraDesde.Name = "DTPBitacoraDesde";
             this.DTPBitacoraDesde.Size = new System.Drawing.Size(269, 23);
             this.DTPBitacoraDesde.TabIndex = 6;
@@ -99,7 +109,7 @@
             // DTPBitacoraHasta
             // 
             this.DTPBitacoraHasta.Location = new System.Drawing.Point(563, 80);
-            this.DTPBitacoraHasta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DTPBitacoraHasta.Margin = new System.Windows.Forms.Padding(4);
             this.DTPBitacoraHasta.Name = "DTPBitacoraHasta";
             this.DTPBitacoraHasta.Size = new System.Drawing.Size(269, 23);
             this.DTPBitacoraHasta.TabIndex = 7;
@@ -109,7 +119,7 @@
             this.CBXBitacoraUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBXBitacoraUsuario.FormattingEnabled = true;
             this.CBXBitacoraUsuario.Location = new System.Drawing.Point(50, 56);
-            this.CBXBitacoraUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CBXBitacoraUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.CBXBitacoraUsuario.Name = "CBXBitacoraUsuario";
             this.CBXBitacoraUsuario.Size = new System.Drawing.Size(140, 25);
             this.CBXBitacoraUsuario.TabIndex = 8;
@@ -129,10 +139,11 @@
             this.GBfiltros.Controls.Add(this.CBXBitacoraCriticidad);
             this.GBfiltros.Controls.Add(this.CBXBitacoraUsuario);
             this.GBfiltros.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.GBfiltros.ForeColor = System.Drawing.SystemColors.Window;
             this.GBfiltros.Location = new System.Drawing.Point(14, 347);
-            this.GBfiltros.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GBfiltros.Margin = new System.Windows.Forms.Padding(4);
             this.GBfiltros.Name = "GBfiltros";
-            this.GBfiltros.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GBfiltros.Padding = new System.Windows.Forms.Padding(4);
             this.GBfiltros.Size = new System.Drawing.Size(873, 239);
             this.GBfiltros.TabIndex = 9;
             this.GBfiltros.TabStop = false;
@@ -143,7 +154,7 @@
             this.CKXincluirfechas.AutoSize = true;
             this.CKXincluirfechas.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.CKXincluirfechas.Location = new System.Drawing.Point(428, 28);
-            this.CKXincluirfechas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CKXincluirfechas.Margin = new System.Windows.Forms.Padding(4);
             this.CKXincluirfechas.Name = "CKXincluirfechas";
             this.CKXincluirfechas.Size = new System.Drawing.Size(112, 21);
             this.CKXincluirfechas.TabIndex = 16;
@@ -211,7 +222,7 @@
             this.CBXBitacoraModulo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBXBitacoraModulo.FormattingEnabled = true;
             this.CBXBitacoraModulo.Location = new System.Drawing.Point(50, 122);
-            this.CBXBitacoraModulo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CBXBitacoraModulo.Margin = new System.Windows.Forms.Padding(4);
             this.CBXBitacoraModulo.Name = "CBXBitacoraModulo";
             this.CBXBitacoraModulo.Size = new System.Drawing.Size(140, 25);
             this.CBXBitacoraModulo.TabIndex = 10;
@@ -221,18 +232,18 @@
             this.CBXBitacoraCriticidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBXBitacoraCriticidad.FormattingEnabled = true;
             this.CBXBitacoraCriticidad.Location = new System.Drawing.Point(50, 188);
-            this.CBXBitacoraCriticidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CBXBitacoraCriticidad.Margin = new System.Windows.Forms.Padding(4);
             this.CBXBitacoraCriticidad.Name = "CBXBitacoraCriticidad";
             this.CBXBitacoraCriticidad.Size = new System.Drawing.Size(140, 25);
             this.CBXBitacoraCriticidad.TabIndex = 9;
             // 
             // BTN_BitacoraVolverAlMenu
             // 
-            this.BTN_BitacoraVolverAlMenu.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTN_BitacoraVolverAlMenu.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTN_BitacoraVolverAlMenu.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTN_BitacoraVolverAlMenu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BTN_BitacoraVolverAlMenu.Location = new System.Drawing.Point(1032, 553);
-            this.BTN_BitacoraVolverAlMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTN_BitacoraVolverAlMenu.Margin = new System.Windows.Forms.Padding(4);
             this.BTN_BitacoraVolverAlMenu.Name = "BTN_BitacoraVolverAlMenu";
             this.BTN_BitacoraVolverAlMenu.Size = new System.Drawing.Size(145, 33);
             this.BTN_BitacoraVolverAlMenu.TabIndex = 10;
@@ -246,7 +257,7 @@
             this.CBXidiomas.Font = new System.Drawing.Font("Century Gothic", 9F);
             this.CBXidiomas.FormattingEnabled = true;
             this.CBXidiomas.Location = new System.Drawing.Point(1036, 34);
-            this.CBXidiomas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CBXidiomas.Margin = new System.Windows.Forms.Padding(4);
             this.CBXidiomas.Name = "CBXidiomas";
             this.CBXidiomas.Size = new System.Drawing.Size(140, 25);
             this.CBXidiomas.TabIndex = 11;
@@ -256,6 +267,7 @@
             // 
             this.LBLidiomas.AutoSize = true;
             this.LBLidiomas.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.LBLidiomas.ForeColor = System.Drawing.SystemColors.Window;
             this.LBLidiomas.Location = new System.Drawing.Point(1036, 15);
             this.LBLidiomas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBLidiomas.Name = "LBLidiomas";
@@ -267,7 +279,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(105)))));
             this.ClientSize = new System.Drawing.Size(1188, 603);
             this.Controls.Add(this.LBLidiomas);
             this.Controls.Add(this.CBXidiomas);
@@ -275,7 +287,7 @@
             this.Controls.Add(this.GBfiltros);
             this.Controls.Add(this.GB_Bitacora);
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmBitacora";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmBitacora";

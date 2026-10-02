@@ -102,7 +102,7 @@ namespace DAL
 
             try
             {
-                cmd.ExecuteNonQuery();
+                filas = cmd.ExecuteNonQuery();
             }
                 catch (Exception ex)
             {

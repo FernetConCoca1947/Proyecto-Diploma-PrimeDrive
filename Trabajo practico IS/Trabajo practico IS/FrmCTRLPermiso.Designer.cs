@@ -54,10 +54,10 @@
             // TV_RolesPermisos
             // 
             this.TV_RolesPermisos.HideSelection = false;
-            this.TV_RolesPermisos.Location = new System.Drawing.Point(24, 27);
-            this.TV_RolesPermisos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TV_RolesPermisos.Location = new System.Drawing.Point(20, 27);
+            this.TV_RolesPermisos.Margin = new System.Windows.Forms.Padding(4);
             this.TV_RolesPermisos.Name = "TV_RolesPermisos";
-            this.TV_RolesPermisos.Size = new System.Drawing.Size(213, 308);
+            this.TV_RolesPermisos.Size = new System.Drawing.Size(217, 308);
             this.TV_RolesPermisos.TabIndex = 0;
             this.TV_RolesPermisos.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TV_RolesPermisos_NodeMouseClick);
             // 
@@ -66,18 +66,18 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 17;
             this.listBox1.Location = new System.Drawing.Point(14, 27);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(4);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(231, 293);
+            this.listBox1.Size = new System.Drawing.Size(231, 310);
             this.listBox1.TabIndex = 1;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // BTNCtrlPermisoCrearRol
             // 
-            this.BTNCtrlPermisoCrearRol.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNCtrlPermisoCrearRol.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNCtrlPermisoCrearRol.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.BTNCtrlPermisoCrearRol.Location = new System.Drawing.Point(10, 80);
-            this.BTNCtrlPermisoCrearRol.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTNCtrlPermisoCrearRol.Margin = new System.Windows.Forms.Padding(4);
             this.BTNCtrlPermisoCrearRol.Name = "BTNCtrlPermisoCrearRol";
             this.BTNCtrlPermisoCrearRol.Size = new System.Drawing.Size(145, 33);
             this.BTNCtrlPermisoCrearRol.TabIndex = 2;
@@ -88,7 +88,7 @@
             // TXTCtrlPermisoNombre
             // 
             this.TXTCtrlPermisoNombre.Location = new System.Drawing.Point(10, 48);
-            this.TXTCtrlPermisoNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TXTCtrlPermisoNombre.Margin = new System.Windows.Forms.Padding(4);
             this.TXTCtrlPermisoNombre.Name = "TXTCtrlPermisoNombre";
             this.TXTCtrlPermisoNombre.Size = new System.Drawing.Size(196, 23);
             this.TXTCtrlPermisoNombre.TabIndex = 4;
@@ -105,11 +105,11 @@
             // 
             // BTNCtrlPermisoAsignar
             // 
-            this.BTNCtrlPermisoAsignar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNCtrlPermisoAsignar.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNCtrlPermisoAsignar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCtrlPermisoAsignar.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.BTNCtrlPermisoAsignar.Location = new System.Drawing.Point(575, 153);
-            this.BTNCtrlPermisoAsignar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTNCtrlPermisoAsignar.Margin = new System.Windows.Forms.Padding(4);
             this.BTNCtrlPermisoAsignar.Name = "BTNCtrlPermisoAsignar";
             this.BTNCtrlPermisoAsignar.Size = new System.Drawing.Size(145, 33);
             this.BTNCtrlPermisoAsignar.TabIndex = 6;
@@ -119,11 +119,11 @@
             // 
             // BTNCtrlPermisoDesasignar
             // 
-            this.BTNCtrlPermisoDesasignar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNCtrlPermisoDesasignar.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNCtrlPermisoDesasignar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCtrlPermisoDesasignar.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.BTNCtrlPermisoDesasignar.Location = new System.Drawing.Point(575, 193);
-            this.BTNCtrlPermisoDesasignar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTNCtrlPermisoDesasignar.Margin = new System.Windows.Forms.Padding(4);
             this.BTNCtrlPermisoDesasignar.Name = "BTNCtrlPermisoDesasignar";
             this.BTNCtrlPermisoDesasignar.Size = new System.Drawing.Size(145, 33);
             this.BTNCtrlPermisoDesasignar.TabIndex = 7;
@@ -135,10 +135,11 @@
             // 
             this.GB_ListRoles.Controls.Add(this.listBox1);
             this.GB_ListRoles.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.GB_ListRoles.ForeColor = System.Drawing.SystemColors.Window;
             this.GB_ListRoles.Location = new System.Drawing.Point(14, 15);
-            this.GB_ListRoles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GB_ListRoles.Margin = new System.Windows.Forms.Padding(4);
             this.GB_ListRoles.Name = "GB_ListRoles";
-            this.GB_ListRoles.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GB_ListRoles.Padding = new System.Windows.Forms.Padding(4);
             this.GB_ListRoles.Size = new System.Drawing.Size(262, 354);
             this.GB_ListRoles.TabIndex = 8;
             this.GB_ListRoles.TabStop = false;
@@ -148,10 +149,11 @@
             // 
             this.GB_TreeViewRoles.Controls.Add(this.TV_RolesPermisos);
             this.GB_TreeViewRoles.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.GB_TreeViewRoles.ForeColor = System.Drawing.SystemColors.Window;
             this.GB_TreeViewRoles.Location = new System.Drawing.Point(727, 15);
-            this.GB_TreeViewRoles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GB_TreeViewRoles.Margin = new System.Windows.Forms.Padding(4);
             this.GB_TreeViewRoles.Name = "GB_TreeViewRoles";
-            this.GB_TreeViewRoles.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GB_TreeViewRoles.Padding = new System.Windows.Forms.Padding(4);
             this.GB_TreeViewRoles.Size = new System.Drawing.Size(255, 354);
             this.GB_TreeViewRoles.TabIndex = 9;
             this.GB_TreeViewRoles.TabStop = false;
@@ -165,10 +167,11 @@
             this.GB_NuevoRol.Controls.Add(this.BTNCtrlPermisoCrearRol);
             this.GB_NuevoRol.Controls.Add(this.LBLnombre);
             this.GB_NuevoRol.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GB_NuevoRol.ForeColor = System.Drawing.SystemColors.Window;
             this.GB_NuevoRol.Location = new System.Drawing.Point(1022, 165);
-            this.GB_NuevoRol.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GB_NuevoRol.Margin = new System.Windows.Forms.Padding(4);
             this.GB_NuevoRol.Name = "GB_NuevoRol";
-            this.GB_NuevoRol.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GB_NuevoRol.Padding = new System.Windows.Forms.Padding(4);
             this.GB_NuevoRol.Size = new System.Drawing.Size(226, 204);
             this.GB_NuevoRol.TabIndex = 10;
             this.GB_NuevoRol.TabStop = false;
@@ -176,10 +179,10 @@
             // 
             // BTNCtrlPermisoModifRol
             // 
-            this.BTNCtrlPermisoModifRol.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNCtrlPermisoModifRol.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNCtrlPermisoModifRol.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.BTNCtrlPermisoModifRol.Location = new System.Drawing.Point(10, 119);
-            this.BTNCtrlPermisoModifRol.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTNCtrlPermisoModifRol.Margin = new System.Windows.Forms.Padding(4);
             this.BTNCtrlPermisoModifRol.Name = "BTNCtrlPermisoModifRol";
             this.BTNCtrlPermisoModifRol.Size = new System.Drawing.Size(145, 33);
             this.BTNCtrlPermisoModifRol.TabIndex = 12;
@@ -189,10 +192,10 @@
             // 
             // BTNCtrlPermisoBorrarRol
             // 
-            this.BTNCtrlPermisoBorrarRol.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNCtrlPermisoBorrarRol.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNCtrlPermisoBorrarRol.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.BTNCtrlPermisoBorrarRol.Location = new System.Drawing.Point(10, 159);
-            this.BTNCtrlPermisoBorrarRol.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTNCtrlPermisoBorrarRol.Margin = new System.Windows.Forms.Padding(4);
             this.BTNCtrlPermisoBorrarRol.Name = "BTNCtrlPermisoBorrarRol";
             this.BTNCtrlPermisoBorrarRol.Size = new System.Drawing.Size(145, 33);
             this.BTNCtrlPermisoBorrarRol.TabIndex = 11;
@@ -206,7 +209,7 @@
             this.CBXidiomas.Font = new System.Drawing.Font("Century Gothic", 9F);
             this.CBXidiomas.FormattingEnabled = true;
             this.CBXidiomas.Location = new System.Drawing.Point(1308, 34);
-            this.CBXidiomas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CBXidiomas.Margin = new System.Windows.Forms.Padding(4);
             this.CBXidiomas.Name = "CBXidiomas";
             this.CBXidiomas.Size = new System.Drawing.Size(140, 25);
             this.CBXidiomas.TabIndex = 11;
@@ -216,6 +219,7 @@
             // 
             this.LBLidiomas.AutoSize = true;
             this.LBLidiomas.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBLidiomas.ForeColor = System.Drawing.SystemColors.Window;
             this.LBLidiomas.Location = new System.Drawing.Point(1308, 15);
             this.LBLidiomas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBLidiomas.Name = "LBLidiomas";
@@ -227,10 +231,11 @@
             // 
             this.GB_ListPermisos.Controls.Add(this.listBox2);
             this.GB_ListPermisos.Font = new System.Drawing.Font("Century Gothic", 8.75F);
+            this.GB_ListPermisos.ForeColor = System.Drawing.SystemColors.Window;
             this.GB_ListPermisos.Location = new System.Drawing.Point(306, 15);
-            this.GB_ListPermisos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GB_ListPermisos.Margin = new System.Windows.Forms.Padding(4);
             this.GB_ListPermisos.Name = "GB_ListPermisos";
-            this.GB_ListPermisos.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GB_ListPermisos.Padding = new System.Windows.Forms.Padding(4);
             this.GB_ListPermisos.Size = new System.Drawing.Size(262, 354);
             this.GB_ListPermisos.TabIndex = 9;
             this.GB_ListPermisos.TabStop = false;
@@ -241,19 +246,19 @@
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 17;
             this.listBox2.Location = new System.Drawing.Point(14, 27);
-            this.listBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBox2.Margin = new System.Windows.Forms.Padding(4);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(231, 293);
+            this.listBox2.Size = new System.Drawing.Size(231, 310);
             this.listBox2.TabIndex = 1;
             this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
             // 
             // BTNvolveralmenu
             // 
-            this.BTNvolveralmenu.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNvolveralmenu.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNvolveralmenu.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNvolveralmenu.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.BTNvolveralmenu.Location = new System.Drawing.Point(1308, 336);
-            this.BTNvolveralmenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTNvolveralmenu.Margin = new System.Windows.Forms.Padding(4);
             this.BTNvolveralmenu.Name = "BTNvolveralmenu";
             this.BTNvolveralmenu.Size = new System.Drawing.Size(145, 33);
             this.BTNvolveralmenu.TabIndex = 14;
@@ -265,7 +270,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(105)))));
             this.ClientSize = new System.Drawing.Size(1463, 378);
             this.Controls.Add(this.BTNvolveralmenu);
             this.Controls.Add(this.GB_ListPermisos);
@@ -277,7 +282,7 @@
             this.Controls.Add(this.BTNCtrlPermisoAsignar);
             this.Controls.Add(this.GB_TreeViewRoles);
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmCTRLPermiso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCTRLPermiso";

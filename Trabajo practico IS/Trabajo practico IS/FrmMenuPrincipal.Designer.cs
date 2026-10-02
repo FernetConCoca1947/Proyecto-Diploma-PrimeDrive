@@ -38,6 +38,7 @@
             this.gestionDeFlotaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vehiculosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mantenimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdministracionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.controlDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,13 +52,12 @@
             this.LBLbienvenida = new System.Windows.Forms.Label();
             this.CBXidiomas = new System.Windows.Forms.ComboBox();
             this.LBLidioma = new System.Windows.Forms.Label();
-            this.mantenimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnCerrarSesion
             // 
-            this.BtnCerrarSesion.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BtnCerrarSesion.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BtnCerrarSesion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCerrarSesion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BtnCerrarSesion.Location = new System.Drawing.Point(606, 386);
@@ -145,6 +145,14 @@
             this.categoriasToolStripMenuItem.Text = "Categorías";
             this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);
             // 
+            // mantenimientosToolStripMenuItem
+            // 
+            this.mantenimientosToolStripMenuItem.Name = "mantenimientosToolStripMenuItem";
+            this.mantenimientosToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
+            this.mantenimientosToolStripMenuItem.Tag = "MANTENIMIENTOS";
+            this.mantenimientosToolStripMenuItem.Text = "Mantenimientos";
+            this.mantenimientosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientosToolStripMenuItem_Click);
+            // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
@@ -231,6 +239,7 @@
             // 
             this.LBLbienvenida.AutoSize = true;
             this.LBLbienvenida.Font = new System.Drawing.Font("Century Gothic", 30F);
+            this.LBLbienvenida.ForeColor = System.Drawing.SystemColors.Window;
             this.LBLbienvenida.Location = new System.Drawing.Point(4, 44);
             this.LBLbienvenida.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBLbienvenida.Name = "LBLbienvenida";
@@ -254,6 +263,7 @@
             // 
             this.LBLidioma.AutoSize = true;
             this.LBLidioma.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBLidioma.ForeColor = System.Drawing.SystemColors.Window;
             this.LBLidioma.Location = new System.Drawing.Point(603, 44);
             this.LBLidioma.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBLidioma.Name = "LBLidioma";
@@ -261,19 +271,11 @@
             this.LBLidioma.TabIndex = 11;
             this.LBLidioma.Text = "Idiomas";
             // 
-            // mantenimientosToolStripMenuItem
-            // 
-            this.mantenimientosToolStripMenuItem.Name = "mantenimientosToolStripMenuItem";
-            this.mantenimientosToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
-            this.mantenimientosToolStripMenuItem.Tag = "MANTENIMIENTOS";
-            this.mantenimientosToolStripMenuItem.Text = "Mantenimientos";
-            this.mantenimientosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientosToolStripMenuItem_Click);
-            // 
             // FrmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(105)))));
             this.ClientSize = new System.Drawing.Size(762, 428);
             this.Controls.Add(this.LBLidioma);
             this.Controls.Add(this.CBXidiomas);

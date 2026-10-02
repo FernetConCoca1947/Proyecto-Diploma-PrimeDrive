@@ -283,6 +283,7 @@ namespace DAL
             };
 
             int filasAfectadas = acceso.Escribir("RESOLVER_REVISION_VEHICULO", parametros);
+            //int filasAfectadas = acceso.LeerEscalar("RESOLVER_REVISION_VEHICULO", parametros);
             acceso.Cerrar();
 
             return filasAfectadas > 0;

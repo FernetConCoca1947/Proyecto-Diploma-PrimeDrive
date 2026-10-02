@@ -31,6 +31,8 @@ namespace Trabajo_practico_IS
             CBXidiomas.SelectedIndexChanged += CBXidiomas_SelectedIndexChanged;
             ActualizarIdioma();
             CargarVehiculosRevision();
+            CargarVehiculosMantenimiento();
+            GB_DatosRemito.Enabled = false;
         }
 
         public void ActualizarIdioma()
@@ -89,6 +91,13 @@ namespace Trabajo_practico_IS
             DGV_VehiculosRevision.Columns["ObservacionRevision"].Visible = false; 
         }
 
+        private void CargarVehiculosMantenimiento()
+        {
+            DGV_VehiculosMantenimiento.DataSource = null;
+            // 3 = ID del estado "Mantenimiento"
+            DGV_VehiculosMantenimiento.DataSource = GestorVehiculos.ListarVehiculosPorEstado(3);
+        }
+
         private void DGV_VehiculosRevision_SelectionChanged(object sender, EventArgs e)
         {
             if (DGV_VehiculosRevision.CurrentRow != null)
@@ -104,6 +113,24 @@ namespace Trabajo_practico_IS
             }
         }
 
+        private void DGV_VehiculosMantenimiento_SelectionChanged(object sender, EventArgs e)
+        {
+            if (DGV_VehiculosMantenimiento.CurrentRow != null)
+            {
+                BE.VEHICULO autoSeleccionado = (BE.VEHICULO)DGV_VehiculosMantenimiento.CurrentRow.DataBoundItem;
+
+                // Autocompletamos el kilometraje para acelerar la carga de datos
+                NUM_KmReal.Value = autoSeleccionado.KmActual;
+
+                // Desbloqueamos el panel de carga de datos
+                GB_DatosRemito.Enabled = true;
+            }
+            else
+            {
+                //LimpiarControlesTaller();
+                GB_DatosRemito.Enabled = false; // Bloqueamos si no hay auto seleccionado
+            }
+        }
         private void BTNCtrlMantDesestimar_Click(object sender, EventArgs e)
         {
             try
@@ -139,10 +166,61 @@ namespace Trabajo_practico_IS
                     GestorVehiculos.DerivarATaller(autoSeleccionado);
                     MessageBox.Show("Vehículo derivado a Mantenimiento. Ya puede gestionarlo desde la pestaña de Control de Taller.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarVehiculosRevision();
-                    // CargarGrillaTaller(); -> Si tenés un método para recargar la Pestaña 2, llamalo acá
+                    CargarVehiculosMantenimiento();
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+
+        private void LimpiarControlesTaller()
+        {
+            NUM_KmReal.Value = 0;
+            TXT_CtrlMantCosto.Clear();
+            TXT_CtrlMantDetalleMantenimiento.Clear();
+            DTP_FechaEntrada.Value = DateTime.Now;
+            DTP_FechaSalida.Value = DateTime.Now;
+        }
+
+        private void BTNCtrlMantRetorno_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1. Validaciones visuales básicas
+                if (DGV_VehiculosMantenimiento.CurrentRow == null)
+                    throw new Exception("Debe seleccionar un vehículo de la grilla para reincorporarlo.");
+
+                if (string.IsNullOrWhiteSpace(TXT_CtrlMantCosto.Text) || string.IsNullOrWhiteSpace(NUM_KmReal.Text))
+                    throw new Exception("Debe completar el costo y el kilometraje real.");
+
+                // 2. Ensamblaje de la entidad con su vehículo anidado
+                BE.MANTENIMIENTO remito = new BE.MANTENIMIENTO
+                {
+                    Vehiculo = (BE.VEHICULO)DGV_VehiculosMantenimiento.CurrentRow.DataBoundItem,
+                    FechaEntrada = DTP_FechaEntrada.Value,
+                    FechaSalida = DTP_FechaSalida.Value,
+                    KmService = Convert.ToInt32(NUM_KmReal.Text),
+                    Costo = Convert.ToDecimal(TXT_CtrlMantCosto.Text),
+                    TareasRealizadas = TXT_CtrlMantDetalleMantenimiento.Text
+                };
+
+                // 3. Ejecutamos la regla de negocio (validaciones lógicas e impacto en SQL)
+                GestorMantenimiento.RegistrarRetornoTaller(remito);
+
+                MessageBox.Show($"¡Operación exitosa!\nEl vehículo {remito.Vehiculo.Patente} ha sido reincorporado y ya está DISPONIBLE en el mostrador.", "Alta de Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // 4. Refrescamos la pantalla
+                CargarVehiculosMantenimiento();
+                LimpiarControlesTaller();
+            }
+            catch (FormatException)
+            {
+                // Captura específica por si el usuario escribe letras en el costo o los kilómetros
+                MessageBox.Show("El costo y el kilometraje deben ser valores numéricos válidos.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

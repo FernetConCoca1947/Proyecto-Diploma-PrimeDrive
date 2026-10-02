@@ -379,5 +379,10 @@ namespace Trabajo_practico_IS
         {
             ActualizarEstadoBotonRestaurar();
         }
+
+        private void DGVHistorial_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

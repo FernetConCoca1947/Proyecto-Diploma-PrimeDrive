@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.GB_DatosCategoria = new System.Windows.Forms.GroupBox();
             this.TXT_CtrlCatNombre = new System.Windows.Forms.TextBox();
             this.TXT_CtrlCatTarifa = new System.Windows.Forms.TextBox();
@@ -44,7 +45,6 @@
             this.CBXidiomas = new System.Windows.Forms.ComboBox();
             this.BTNvolveralmenu = new System.Windows.Forms.Button();
             this.GB_DatosCategoria.SuspendLayout();
-            this.GB_Categorias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Categorias)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,36 +55,37 @@
             this.GB_DatosCategoria.Controls.Add(this.LBLnombre);
             this.GB_DatosCategoria.Controls.Add(this.LBLtarifaDiaria);
             this.GB_DatosCategoria.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GB_DatosCategoria.Location = new System.Drawing.Point(13, 33);
-            this.GB_DatosCategoria.Margin = new System.Windows.Forms.Padding(4);
+            this.GB_DatosCategoria.ForeColor = System.Drawing.SystemColors.Window;
+            this.GB_DatosCategoria.Location = new System.Drawing.Point(17, 15);
+            this.GB_DatosCategoria.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.GB_DatosCategoria.Name = "GB_DatosCategoria";
-            this.GB_DatosCategoria.Padding = new System.Windows.Forms.Padding(4);
-            this.GB_DatosCategoria.Size = new System.Drawing.Size(300, 148);
+            this.GB_DatosCategoria.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.GB_DatosCategoria.Size = new System.Drawing.Size(271, 157);
             this.GB_DatosCategoria.TabIndex = 26;
             this.GB_DatosCategoria.TabStop = false;
             this.GB_DatosCategoria.Text = "Datos de la categoria";
             // 
             // TXT_CtrlCatNombre
             // 
-            this.TXT_CtrlCatNombre.Location = new System.Drawing.Point(12, 48);
-            this.TXT_CtrlCatNombre.Margin = new System.Windows.Forms.Padding(4);
+            this.TXT_CtrlCatNombre.Location = new System.Drawing.Point(14, 51);
+            this.TXT_CtrlCatNombre.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.TXT_CtrlCatNombre.Name = "TXT_CtrlCatNombre";
-            this.TXT_CtrlCatNombre.Size = new System.Drawing.Size(264, 23);
+            this.TXT_CtrlCatNombre.Size = new System.Drawing.Size(240, 23);
             this.TXT_CtrlCatNombre.TabIndex = 0;
             // 
             // TXT_CtrlCatTarifa
             // 
-            this.TXT_CtrlCatTarifa.Location = new System.Drawing.Point(12, 103);
-            this.TXT_CtrlCatTarifa.Margin = new System.Windows.Forms.Padding(4);
+            this.TXT_CtrlCatTarifa.Location = new System.Drawing.Point(14, 109);
+            this.TXT_CtrlCatTarifa.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.TXT_CtrlCatTarifa.Name = "TXT_CtrlCatTarifa";
-            this.TXT_CtrlCatTarifa.Size = new System.Drawing.Size(264, 23);
+            this.TXT_CtrlCatTarifa.Size = new System.Drawing.Size(240, 23);
             this.TXT_CtrlCatTarifa.TabIndex = 1;
             // 
             // LBLnombre
             // 
             this.LBLnombre.AutoSize = true;
-            this.LBLnombre.Location = new System.Drawing.Point(8, 28);
-            this.LBLnombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLnombre.Location = new System.Drawing.Point(9, 30);
+            this.LBLnombre.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLnombre.Name = "LBLnombre";
             this.LBLnombre.Size = new System.Drawing.Size(61, 17);
             this.LBLnombre.TabIndex = 5;
@@ -93,8 +94,8 @@
             // LBLtarifaDiaria
             // 
             this.LBLtarifaDiaria.AutoSize = true;
-            this.LBLtarifaDiaria.Location = new System.Drawing.Point(8, 84);
-            this.LBLtarifaDiaria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLtarifaDiaria.Location = new System.Drawing.Point(9, 89);
+            this.LBLtarifaDiaria.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLtarifaDiaria.Name = "LBLtarifaDiaria";
             this.LBLtarifaDiaria.Size = new System.Drawing.Size(83, 17);
             this.LBLtarifaDiaria.TabIndex = 6;
@@ -104,8 +105,9 @@
             // 
             this.CKXmostrarInactivos.AutoSize = true;
             this.CKXmostrarInactivos.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CKXmostrarInactivos.Location = new System.Drawing.Point(15, 201);
-            this.CKXmostrarInactivos.Margin = new System.Windows.Forms.Padding(4);
+            this.CKXmostrarInactivos.ForeColor = System.Drawing.SystemColors.Window;
+            this.CKXmostrarInactivos.Location = new System.Drawing.Point(17, 190);
+            this.CKXmostrarInactivos.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.CKXmostrarInactivos.Name = "CKXmostrarInactivos";
             this.CKXmostrarInactivos.Size = new System.Drawing.Size(136, 21);
             this.CKXmostrarInactivos.TabIndex = 36;
@@ -115,13 +117,13 @@
             // 
             // BTNCategoriaReactivar
             // 
-            this.BTNCategoriaReactivar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNCategoriaReactivar.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNCategoriaReactivar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCategoriaReactivar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCategoriaReactivar.Location = new System.Drawing.Point(168, 274);
-            this.BTNCategoriaReactivar.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNCategoriaReactivar.Location = new System.Drawing.Point(158, 267);
+            this.BTNCategoriaReactivar.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.BTNCategoriaReactivar.Name = "BTNCategoriaReactivar";
-            this.BTNCategoriaReactivar.Size = new System.Drawing.Size(145, 33);
+            this.BTNCategoriaReactivar.Size = new System.Drawing.Size(128, 35);
             this.BTNCategoriaReactivar.TabIndex = 35;
             this.BTNCategoriaReactivar.Text = "Reactivar";
             this.BTNCategoriaReactivar.UseVisualStyleBackColor = false;
@@ -129,13 +131,13 @@
             // 
             // BTNCategoriaModificar
             // 
-            this.BTNCategoriaModificar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNCategoriaModificar.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNCategoriaModificar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCategoriaModificar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCategoriaModificar.Location = new System.Drawing.Point(15, 274);
-            this.BTNCategoriaModificar.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNCategoriaModificar.Location = new System.Drawing.Point(14, 267);
+            this.BTNCategoriaModificar.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.BTNCategoriaModificar.Name = "BTNCategoriaModificar";
-            this.BTNCategoriaModificar.Size = new System.Drawing.Size(145, 33);
+            this.BTNCategoriaModificar.Size = new System.Drawing.Size(128, 35);
             this.BTNCategoriaModificar.TabIndex = 34;
             this.BTNCategoriaModificar.Text = "Modificar";
             this.BTNCategoriaModificar.UseVisualStyleBackColor = false;
@@ -143,13 +145,13 @@
             // 
             // BTNCategoriaBaja
             // 
-            this.BTNCategoriaBaja.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNCategoriaBaja.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNCategoriaBaja.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCategoriaBaja.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCategoriaBaja.Location = new System.Drawing.Point(168, 233);
-            this.BTNCategoriaBaja.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNCategoriaBaja.Location = new System.Drawing.Point(158, 224);
+            this.BTNCategoriaBaja.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.BTNCategoriaBaja.Name = "BTNCategoriaBaja";
-            this.BTNCategoriaBaja.Size = new System.Drawing.Size(145, 33);
+            this.BTNCategoriaBaja.Size = new System.Drawing.Size(128, 35);
             this.BTNCategoriaBaja.TabIndex = 33;
             this.BTNCategoriaBaja.Text = "Baja";
             this.BTNCategoriaBaja.UseVisualStyleBackColor = false;
@@ -157,13 +159,13 @@
             // 
             // BTNCategoriaAlta
             // 
-            this.BTNCategoriaAlta.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNCategoriaAlta.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNCategoriaAlta.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCategoriaAlta.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCategoriaAlta.Location = new System.Drawing.Point(15, 233);
-            this.BTNCategoriaAlta.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNCategoriaAlta.Location = new System.Drawing.Point(15, 224);
+            this.BTNCategoriaAlta.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.BTNCategoriaAlta.Name = "BTNCategoriaAlta";
-            this.BTNCategoriaAlta.Size = new System.Drawing.Size(145, 33);
+            this.BTNCategoriaAlta.Size = new System.Drawing.Size(128, 35);
             this.BTNCategoriaAlta.TabIndex = 32;
             this.BTNCategoriaAlta.Text = "Alta";
             this.BTNCategoriaAlta.UseVisualStyleBackColor = false;
@@ -171,11 +173,11 @@
             // 
             // GB_Categorias
             // 
-            this.GB_Categorias.Controls.Add(this.DGV_Categorias);
             this.GB_Categorias.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.GB_Categorias.Location = new System.Drawing.Point(343, 81);
+            this.GB_Categorias.ForeColor = System.Drawing.SystemColors.Window;
+            this.GB_Categorias.Location = new System.Drawing.Point(310, 15);
             this.GB_Categorias.Name = "GB_Categorias";
-            this.GB_Categorias.Size = new System.Drawing.Size(389, 320);
+            this.GB_Categorias.Size = new System.Drawing.Size(445, 340);
             this.GB_Categorias.TabIndex = 31;
             this.GB_Categorias.TabStop = false;
             this.GB_Categorias.Text = "Categorias";
@@ -184,9 +186,17 @@
             // 
             this.DGV_Categorias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_Categorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_Categorias.Location = new System.Drawing.Point(12, 30);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGV_Categorias.DefaultCellStyle = dataGridViewCellStyle1;
+            this.DGV_Categorias.Location = new System.Drawing.Point(323, 42);
             this.DGV_Categorias.Name = "DGV_Categorias";
-            this.DGV_Categorias.Size = new System.Drawing.Size(365, 274);
+            this.DGV_Categorias.Size = new System.Drawing.Size(417, 291);
             this.DGV_Categorias.TabIndex = 0;
             this.DGV_Categorias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Categorias_CellClick);
             // 
@@ -194,8 +204,9 @@
             // 
             this.LBLidiomas.AutoSize = true;
             this.LBLidiomas.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBLidiomas.Location = new System.Drawing.Point(676, 14);
-            this.LBLidiomas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLidiomas.ForeColor = System.Drawing.SystemColors.Window;
+            this.LBLidiomas.Location = new System.Drawing.Point(773, 15);
+            this.LBLidiomas.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLidiomas.Name = "LBLidiomas";
             this.LBLidiomas.Size = new System.Drawing.Size(74, 17);
             this.LBLidiomas.TabIndex = 38;
@@ -205,21 +216,21 @@
             // 
             this.CBXidiomas.Font = new System.Drawing.Font("Century Gothic", 9F);
             this.CBXidiomas.FormattingEnabled = true;
-            this.CBXidiomas.Location = new System.Drawing.Point(676, 33);
+            this.CBXidiomas.Location = new System.Drawing.Point(776, 35);
             this.CBXidiomas.Name = "CBXidiomas";
-            this.CBXidiomas.Size = new System.Drawing.Size(135, 25);
+            this.CBXidiomas.Size = new System.Drawing.Size(128, 25);
             this.CBXidiomas.TabIndex = 37;
             this.CBXidiomas.SelectedIndexChanged += new System.EventHandler(this.CBXidiomas_SelectedIndexChanged);
             // 
             // BTNvolveralmenu
             // 
-            this.BTNvolveralmenu.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNvolveralmenu.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNvolveralmenu.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNvolveralmenu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNvolveralmenu.Location = new System.Drawing.Point(665, 424);
-            this.BTNvolveralmenu.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNvolveralmenu.Location = new System.Drawing.Point(776, 360);
+            this.BTNvolveralmenu.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.BTNvolveralmenu.Name = "BTNvolveralmenu";
-            this.BTNvolveralmenu.Size = new System.Drawing.Size(145, 33);
+            this.BTNvolveralmenu.Size = new System.Drawing.Size(128, 35);
             this.BTNvolveralmenu.TabIndex = 39;
             this.BTNvolveralmenu.Text = "Volver al menu";
             this.BTNvolveralmenu.UseVisualStyleBackColor = false;
@@ -227,9 +238,11 @@
             // 
             // FrmCategoria
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 470);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(105)))));
+            this.ClientSize = new System.Drawing.Size(912, 404);
+            this.Controls.Add(this.DGV_Categorias);
             this.Controls.Add(this.BTNvolveralmenu);
             this.Controls.Add(this.LBLidiomas);
             this.Controls.Add(this.CBXidiomas);
@@ -240,8 +253,8 @@
             this.Controls.Add(this.BTNCategoriaAlta);
             this.Controls.Add(this.GB_Categorias);
             this.Controls.Add(this.GB_DatosCategoria);
-            this.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "FrmCategoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmCategoria";
@@ -249,7 +262,6 @@
             this.Load += new System.EventHandler(this.FrmCategoria_Load);
             this.GB_DatosCategoria.ResumeLayout(false);
             this.GB_DatosCategoria.PerformLayout();
-            this.GB_Categorias.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Categorias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
