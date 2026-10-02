@@ -29,7 +29,7 @@ namespace Trabajo_practico_IS
             CBXidiomas.ValueMember = "Id";
             CBXidiomas.SelectedValue = Servicios.IDIOMAS.GetInstancia().IdIdiomaActual;
             CBXidiomas.SelectedIndexChanged += CBXidiomas_SelectedIndexChanged;
-
+            ActualizarIdioma();
             CBX_BuscarPor.Items.AddRange(new string[] { "DNI Cliente", "Patente Vehículo" });
             CBX_BuscarPor.SelectedIndex = 0;
 
@@ -160,16 +160,32 @@ namespace Trabajo_practico_IS
         {
             try
             {
-                // Control operativo cruzado
                 if (!CHK_GarantiaLiberada.Checked)
                     throw new Exception("Debe confirmar la liberación de la garantía en el posnet físico antes de cerrar el contrato en el sistema.");
 
-                // Cambiamos el estado de la entidad Contrato a "Cerrado" (ID 2)
-                ContratoSeleccionado.Estado = new BE.ESTADO { IdEstado = 9, Nombre = "Cerrado" };
-                ContratoSeleccionado.Observaciones += $" | Check-in Ok. Garantía liberada.";
+                if (!string.IsNullOrWhiteSpace(TXT_CtrlCheckInObservacionContrato.Text))
+                {
+                    ContratoSeleccionado.Observaciones += $" | [CHECK-IN]: {TXT_CtrlCheckInObservacionContrato.Text}";
+                }
 
-                // Ejecutamos la Transacción Dual en la Capa de Negocio
-                // Este método internamente actualizará el Contrato y derivará el Vehículo a "Disponible" o "Mantenimiento"
+                if (CHK_RequiereRevision.Checked)
+                {
+                    if (string.IsNullOrWhiteSpace(TXT_CtrlCheckInRevisionVehiculo.Text))
+                    {
+                        MessageBox.Show("Debe detallar el daño o falla en las observaciones para solicitar la revisión técnica.", "Validación de Novedades", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    ContratoSeleccionado.Vehiculo.ObservacionRevision = TXT_CtrlCheckInRevisionVehiculo.Text;
+                    ContratoSeleccionado.Observaciones += " | [SISTEMA]: Check-in con alerta técnica generada.";
+                }
+                else
+                {
+                    ContratoSeleccionado.Vehiculo.ObservacionRevision = null;
+                }
+
+                ContratoSeleccionado.Estado = new BE.ESTADO { IdEstado = 9, Nombre = "Cerrado" };
+
                 GestorContrato.CerrarContratoCheckIn(ContratoSeleccionado);
 
                 MessageBox.Show($"¡Check-in finalizado correctamente!\nContrato #{ContratoSeleccionado.Id} cerrado.\nLiquidación Total: $ {ContratoSeleccionado.MontoFinal:N2}", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);

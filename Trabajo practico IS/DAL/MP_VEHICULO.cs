@@ -221,6 +221,73 @@ namespace DAL
             return listaVehiculos;
         }
 
+        public List<BE.VEHICULO> ListarVehiculosPorEstado(int idEstado)
+        {
+            acceso.Abrir();
+
+            List<SqlParameter> parametros = new List<SqlParameter>
+            {
+                acceso.CrearParametro("@IdEstado", idEstado)
+            };
+
+            // Leemos la base de datos
+            DataTable tabla = acceso.Leer("OBTENER_VEHICULOS_POR_ESTADO", parametros);
+            acceso.Cerrar();
+
+            List<BE.VEHICULO> listaVehiculos = new List<BE.VEHICULO>();
+
+            foreach (DataRow fila in tabla.Rows)
+            {
+                BE.VEHICULO vehiculo = new BE.VEHICULO
+                {
+                    Id = Convert.ToInt32(fila["ID_VEHICULO"]),
+                    Patente = fila["PATENTE"].ToString(),
+
+                    // Asumo que tu entidad vehículo tiene marca o modelo. Ajustalo a tus propiedades reales.
+                    Marca = fila["MARCA"].ToString(),
+                    Modelo = fila["MODELO"].ToString(),
+
+                    KmActual = Convert.ToInt32(fila["KM_ACTUAL"]),
+
+                    // LECTURA SEGURA DE NULLS: Si SQL Server devuelve NULL, lo mapeamos a null en C#. 
+                    // Si tiene texto, lo convertimos a string.
+                    ObservacionRevision = fila["OBSERVACION_REVISION"] == DBNull.Value
+                                            ? null
+                                            : fila["OBSERVACION_REVISION"].ToString(),
+
+                    // Ensamblaje del objeto anidado ESTADO
+                    Estado = new BE.ESTADO
+                    {
+                        IdEstado = Convert.ToInt32(fila["ID_ESTADO"]),
+                        Nombre = fila["ESTADO_NOMBRE"].ToString()
+                    }
+                };
+
+                listaVehiculos.Add(vehiculo);
+            }
+
+            return listaVehiculos;
+        }
+
+        public bool ResolverRevision(BE.VEHICULO vehiculo)
+        {
+            acceso.Abrir();
+            List<SqlParameter> parametros = new List<SqlParameter>
+            {
+                acceso.CrearParametro("@IdVehiculo", vehiculo.Id),
+                acceso.CrearParametro("@IdEstado", vehiculo.Estado.IdEstado),
+        
+                new SqlParameter("@ObservacionRevision", string.IsNullOrWhiteSpace(vehiculo.ObservacionRevision)
+                                                ? (object)DBNull.Value
+                                                : vehiculo.ObservacionRevision)
+            };
+
+            int filasAfectadas = acceso.Escribir("RESOLVER_REVISION_VEHICULO", parametros);
+            acceso.Cerrar();
+
+            return filasAfectadas > 0;
+        }
+
         public override bool Verificar(BE.VEHICULO vehiculo)
         {
             throw new NotImplementedException();

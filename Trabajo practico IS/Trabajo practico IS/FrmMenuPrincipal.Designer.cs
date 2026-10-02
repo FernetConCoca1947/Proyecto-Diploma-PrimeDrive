@@ -51,6 +51,7 @@
             this.LBLbienvenida = new System.Windows.Forms.Label();
             this.CBXidiomas = new System.Windows.Forms.ComboBox();
             this.LBLidioma = new System.Windows.Forms.Label();
+            this.mantenimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,7 +98,7 @@
             // reservasToolStripMenuItem
             // 
             this.reservasToolStripMenuItem.Name = "reservasToolStripMenuItem";
-            this.reservasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.reservasToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
             this.reservasToolStripMenuItem.Tag = "RESERVAS";
             this.reservasToolStripMenuItem.Text = "Reservas";
             this.reservasToolStripMenuItem.Click += new System.EventHandler(this.reservasToolStripMenuItem_Click);
@@ -105,7 +106,7 @@
             // checkoutToolStripMenuItem
             // 
             this.checkoutToolStripMenuItem.Name = "checkoutToolStripMenuItem";
-            this.checkoutToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.checkoutToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
             this.checkoutToolStripMenuItem.Tag = "CHECKOUT";
             this.checkoutToolStripMenuItem.Text = "Check-out";
             this.checkoutToolStripMenuItem.Click += new System.EventHandler(this.checkoutToolStripMenuItem_Click);
@@ -113,7 +114,7 @@
             // checkinToolStripMenuItem
             // 
             this.checkinToolStripMenuItem.Name = "checkinToolStripMenuItem";
-            this.checkinToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.checkinToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
             this.checkinToolStripMenuItem.Tag = "CHECKIN";
             this.checkinToolStripMenuItem.Text = "Check-in";
             this.checkinToolStripMenuItem.Click += new System.EventHandler(this.checkinToolStripMenuItem_Click);
@@ -122,7 +123,8 @@
             // 
             this.gestionDeFlotaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.vehiculosToolStripMenuItem,
-            this.categoriasToolStripMenuItem});
+            this.categoriasToolStripMenuItem,
+            this.mantenimientosToolStripMenuItem});
             this.gestionDeFlotaToolStripMenuItem.Name = "gestionDeFlotaToolStripMenuItem";
             this.gestionDeFlotaToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
             this.gestionDeFlotaToolStripMenuItem.Text = "Gestión de flota";
@@ -130,7 +132,7 @@
             // vehiculosToolStripMenuItem
             // 
             this.vehiculosToolStripMenuItem.Name = "vehiculosToolStripMenuItem";
-            this.vehiculosToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
+            this.vehiculosToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
             this.vehiculosToolStripMenuItem.Tag = "ABM_VEHICULOS";
             this.vehiculosToolStripMenuItem.Text = "Vehículos";
             this.vehiculosToolStripMenuItem.Click += new System.EventHandler(this.vehiculosToolStripMenuItem_Click);
@@ -138,7 +140,7 @@
             // categoriasToolStripMenuItem
             // 
             this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
             this.categoriasToolStripMenuItem.Tag = "ABM_CATEGORIAS";
             this.categoriasToolStripMenuItem.Text = "Categorías";
             this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);
@@ -259,6 +261,14 @@
             this.LBLidioma.TabIndex = 11;
             this.LBLidioma.Text = "Idiomas";
             // 
+            // mantenimientosToolStripMenuItem
+            // 
+            this.mantenimientosToolStripMenuItem.Name = "mantenimientosToolStripMenuItem";
+            this.mantenimientosToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
+            this.mantenimientosToolStripMenuItem.Tag = "MANTENIMIENTOS";
+            this.mantenimientosToolStripMenuItem.Text = "Mantenimientos";
+            this.mantenimientosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientosToolStripMenuItem_Click);
+            // 
             // FrmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -310,6 +320,7 @@
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vehiculosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mantenimientosToolStripMenuItem;
     }
 }
 

@@ -9,10 +9,11 @@ namespace BE
     public class MANTENIMIENTO
     {
         public int Id { get; set; }
-        public DateTime FechaIngreso { get; set; }
+        public VEHICULO Vehiculo { get; set; }
+        public DateTime FechaEntrada { get; set; }
         public DateTime FechaSalida { get; set; }
         public int KmService { get; set; }
-        public string Motivo { get; set; }
-        public VEHICULO Vehiculo { get; set; }
+        public decimal Costo { get; set; }
+        public string TareasRealizadas { get; set; }
     }
 }

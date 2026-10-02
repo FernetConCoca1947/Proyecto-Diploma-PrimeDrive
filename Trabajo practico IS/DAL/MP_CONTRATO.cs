@@ -103,16 +103,22 @@ namespace DAL
                 acceso.CrearParametro("@IdContrato", contrato.Id),
                 acceso.CrearParametro("@KmEntrada", contrato.KmEntrada.Value),
                 acceso.CrearParametro("@MontoFinal", contrato.MontoFinal.Value),
-                acceso.CrearParametro("@Observaciones", contrato.Observaciones),
                 acceso.CrearParametro("@IdVehiculo", contrato.Vehiculo.Id),
-                acceso.CrearParametro("@IdEstadoVehiculo", contrato.Vehiculo.Estado.IdEstado)
+                acceso.CrearParametro("@IdEstadoVehiculo", contrato.Vehiculo.Estado.IdEstado),
+
+                new SqlParameter("@Observaciones", string.IsNullOrWhiteSpace(contrato.Observaciones)
+                                            ? (object)DBNull.Value
+                                            : contrato.Observaciones),
+
+                new SqlParameter("@ObsVehiculo", string.IsNullOrWhiteSpace(contrato.Vehiculo.ObservacionRevision)
+                                            ? (object)DBNull.Value
+                                            : contrato.Vehiculo.ObservacionRevision)
+
             };
 
-            // Ejecuta el comando (Retorna la cantidad de filas afectadas)
             int filasAfectadas = acceso.Escribir("CERRAR_CONTRATO_CHECKIN", parametros);
             acceso.Cerrar();
 
-            // Si se actualizaron correctamente las 2 tablas (CONTRATO y VEHICULO), retorna true
             return filasAfectadas >= 2;
         }
     }

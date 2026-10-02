@@ -282,6 +282,14 @@ namespace Trabajo_practico_IS
             frmCheckIn.ShowDialog();
             this.Show();
         }
+
+        private void mantenimientosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FrmCTRLMantenimiento frmMantenimiento = new FrmCTRLMantenimiento();
+            frmMantenimiento.ShowDialog();
+            this.Show();
+        }
     }
 }
 

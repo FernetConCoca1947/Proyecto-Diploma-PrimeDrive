@@ -98,35 +98,33 @@ namespace BLL
 
         public void CerrarContratoCheckIn(BE.CONTRATO contrato)
         {
-            // 1. Validaciones de integridad
+
             if (contrato.MontoFinal == null || contrato.MontoFinal <= 0)
                 throw new Exception("Error: No se puede cerrar el contrato sin una liquidación final calculada.");
 
             if (contrato.KmEntrada == null)
                 throw new Exception("Error: Faltan los datos de la auditoría de kilometraje.");
 
-            // 2. Regla de Negocio: Mantenimiento Preventivo Automático
-            // Evaluamos si el vehículo cruzó la barrera de los 10.000 km durante este alquiler
             int intervaloService = 10000;
             int servicePrevio = contrato.KmSalida / intervaloService;
             int serviceActual = contrato.KmEntrada.Value / intervaloService;
 
-            // Actualizamos el kilometraje del vehículo en memoria
             contrato.Vehiculo.KmActual = contrato.KmEntrada.Value;
 
             if (serviceActual > servicePrevio)
             {
-                // El cliente cruzó la barrera (ej. pasó de 9.800 km a 10.150 km). Va al taller.
                 contrato.Vehiculo.Estado = new BE.ESTADO { IdEstado = 3, Nombre = "Mantenimiento" };
-                contrato.Observaciones += " | NOTA AUTOMÁTICA: Vehículo derivado a service preventivo.";
+                contrato.Observaciones += " | [SISTEMA]: Vehículo derivado a service preventivo automático.";
+            }
+            else if (!string.IsNullOrWhiteSpace(contrato.Vehiculo.ObservacionRevision))
+            {
+                contrato.Vehiculo.Estado = new BE.ESTADO { IdEstado = 10, Nombre = "En Revisión" };
             }
             else
             {
-                // El vehículo no requiere service. Se lava y vuelve a la oferta comercial.
                 contrato.Vehiculo.Estado = new BE.ESTADO { IdEstado = 1, Nombre = "Disponible" };
             }
 
-            // 3. Delegación a la Capa de Datos
             bool exito = mapper.CerrarContratoCheckIn(contrato);
 
             if (!exito)

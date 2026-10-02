@@ -53,6 +53,7 @@
     <Compile Include="MP_HISTORIAL_PRODUCTO.cs" />
     <Compile Include="MP_HISTORIAL_USUARIO.cs" />
     <Compile Include="MP_IDIOMA.cs" />
+    <Compile Include="MP_MANTENIMIENTO.cs" />
     <Compile Include="MP_PERMISO.cs" />
     <Compile Include="MP_PRODUCTO.cs" />
     <Compile Include="MP_PROMOCION.cs" />

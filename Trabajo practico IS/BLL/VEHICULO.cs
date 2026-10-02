@@ -85,6 +85,34 @@ namespace BLL
             return mapper.ListarDisponiblesPorSucursalYCategoria(idSucursal, idCategoria);
         }
 
+        public List<BE.VEHICULO> ListarVehiculosPorEstado(int idEstado)
+        {
+            if (idEstado <= 0)
+                throw new Exception("El ID de estado proporcionado no es válido.");
+
+            return mapper.ListarVehiculosPorEstado(idEstado);
+        }
+
+        public void DesestimarRevision(BE.VEHICULO vehiculo)
+        {
+            // Regla de Negocio: Si se desestima, el auto vuelve a estar disponible y se borra la alerta
+            vehiculo.Estado = new BE.ESTADO { IdEstado = 1, Nombre = "Disponible" };
+            vehiculo.ObservacionRevision = null;
+
+            bool exito = mapper.ResolverRevision(vehiculo);
+            if (!exito) throw new Exception("Error en la base de datos al liberar el vehículo.");
+        }
+
+        public void DerivarATaller(BE.VEHICULO vehiculo)
+        {
+            // Regla de Negocio: Si se deriva, pasa a Mantenimiento. 
+            // NO borramos la ObservacionRevision para que el mecánico sepa qué arreglar.
+            vehiculo.Estado = new BE.ESTADO { IdEstado = 3, Nombre = "Mantenimiento" };
+
+            bool exito = mapper.ResolverRevision(vehiculo);
+            if (!exito) throw new Exception("Error en la base de datos al derivar el vehículo.");
+        }
+
         private void ValidarDatosObligatorios(BE.VEHICULO vehiculo)
         {
             if (string.IsNullOrWhiteSpace(vehiculo.Patente))

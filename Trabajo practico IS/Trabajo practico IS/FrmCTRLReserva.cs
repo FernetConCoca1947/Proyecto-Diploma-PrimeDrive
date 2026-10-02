@@ -36,10 +36,11 @@ namespace Trabajo_practico_IS
             CBXidiomas.ValueMember = "Id";
             CBXidiomas.SelectedValue = Servicios.IDIOMAS.GetInstancia().IdIdiomaActual;
             CBXidiomas.SelectedIndexChanged += CBXidiomas_SelectedIndexChanged;
+            ActualizarIdioma();
             //CBX_Categoria.DataSource = GestorCategorias.Listar();
             //CBX_Categoria.DisplayMember = "Nombre";
             //CBX_Categoria.ValueMember = "Id";
-            
+
             CBX_Categoria.Enabled = false;
             BTNCtrlResGenerar.Enabled = false;
 

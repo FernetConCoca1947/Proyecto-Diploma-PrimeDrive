@@ -13,6 +13,7 @@ namespace BE
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public int KmActual { get; set; }
+        public string ObservacionRevision { get; set; }
         public ESTADO Estado { get; set; }
         public CATEGORIA Categoria { get; set; }
         public SUCURSAL Sucursal { get; set; }

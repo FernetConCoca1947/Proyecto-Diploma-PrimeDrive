@@ -30,7 +30,7 @@ namespace Trabajo_practico_IS
             CBXidiomas.ValueMember = "Id";
             CBXidiomas.SelectedValue = Servicios.IDIOMAS.GetInstancia().IdIdiomaActual;
             CBXidiomas.SelectedIndexChanged += CBXidiomas_SelectedIndexChanged;
-
+            ActualizarIdioma();
             EnlazarCategorias();
         }
 
