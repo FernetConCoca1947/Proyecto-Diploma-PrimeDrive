@@ -15,12 +15,10 @@ namespace DAL
         public void AltaTransaccional(BE.CONTRATO contrato)
         {
             acceso.Abrir();
-            // Iniciamos la transacción en la base de datos
             SqlTransaction transaccion = acceso.Conexion.BeginTransaction();
 
             try
             {
-                // OPERACIÓN 1: Insertar el contrato y obtener el ID
                 List<SqlParameter> paramContrato = new List<SqlParameter>();
                 paramContrato.Add(acceso.CrearParametro("@idReserva", contrato.Reserva.Id));
                 paramContrato.Add(acceso.CrearParametro("@idVehiculo", contrato.Vehiculo.Id));
@@ -28,9 +26,11 @@ namespace DAL
                 paramContrato.Add(acceso.CrearParametro("@kmSalida", contrato.KmSalida));
                 paramContrato.Add(acceso.CrearParametro("@garantiaRetenida", contrato.GarantiaRetenida));
                 paramContrato.Add(acceso.CrearParametro("@idEstado", contrato.Estado.IdEstado));
+                new SqlParameter("@Observaciones", string.IsNullOrWhiteSpace(contrato.Observaciones)
+                            ? (object)DBNull.Value
+                            : contrato.Observaciones);
                 contrato.Id = acceso.LeerEscalarTransaccional("INSERTAR_CONTRATO", paramContrato, transaccion);
 
-                // OPERACIÓN 2: Cambiar el estado del vehículo a "Alquilado" (ID = 2)
                 List<SqlParameter> paramVehiculo = new List<SqlParameter>();
                 paramVehiculo.Add(acceso.CrearParametro("@idVehiculo", contrato.Vehiculo.Id));
                 paramVehiculo.Add(acceso.CrearParametro("@idEstado", 2));
@@ -41,7 +41,6 @@ namespace DAL
                 paramReserva.Add(acceso.CrearParametro("@idEstado", 5));
                 acceso.EscribirTransaccional("MODIFICAR_ESTADO_RESERVA", paramReserva, transaccion);
 
-                // Si llegó hasta aquí, confirmamos ambas operaciones
                 transaccion.Commit();
             }
             catch (Exception ex)
@@ -71,13 +70,11 @@ namespace DAL
 
             foreach (DataRow fila in tabla.Rows)
             {
-                // Ensamblaje de entidades anidadas
                 BE.CLIENTE cliente = new BE.CLIENTE { DNI = Convert.ToInt32(fila["DNI"].ToString()), Nombre = fila["NOMBRE"].ToString(), Apellido = fila["APELLIDO"].ToString() };
                 BE.CATEGORIA categoria = new BE.CATEGORIA { Nombre = fila["CATEGORIA_NOMBRE"].ToString(), TarifaDiaria = Convert.ToDecimal(fila["TARIFA_DIARIA"]) };
                 BE.RESERVA reserva = new BE.RESERVA { Id = Convert.ToInt32(fila["ID_RESERVA"]), Cliente = cliente, Categoria = categoria };
                 BE.VEHICULO vehiculo = new BE.VEHICULO { Id = Convert.ToInt32(fila["ID_VEHICULO"]), Patente = fila["PATENTE"].ToString() };
 
-                // Ensamblaje del Contrato
                 BE.CONTRATO contrato = new BE.CONTRATO
                 {
                     Id = Convert.ToInt32(fila["ID_CONTRATO"]),

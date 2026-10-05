@@ -32,6 +32,7 @@ namespace Trabajo_practico_IS
             ActualizarIdioma();
             CargarVehiculosRevision();
             CargarVehiculosMantenimiento();
+            CargarBuscadorHistorial();
             GB_DatosRemito.Enabled = false;
         }
 
@@ -88,6 +89,9 @@ namespace Trabajo_practico_IS
             DGV_VehiculosRevision.DataSource = GestorVehiculos.ListarVehiculosPorEstado(10);
 
             // Ocultar columnas irrelevantes si es necesario
+            DGV_VehiculosRevision.Columns["Id"].Visible = false;
+            DGV_VehiculosRevision.Columns["Sucursal"].Visible = false;
+            DGV_VehiculosRevision.Columns["Categoria"].Visible = false;
             DGV_VehiculosRevision.Columns["ObservacionRevision"].Visible = false; 
         }
 
@@ -96,6 +100,26 @@ namespace Trabajo_practico_IS
             DGV_VehiculosMantenimiento.DataSource = null;
             // 3 = ID del estado "Mantenimiento"
             DGV_VehiculosMantenimiento.DataSource = GestorVehiculos.ListarVehiculosPorEstado(3);
+            DGV_VehiculosMantenimiento.Columns["Id"].Visible = false;
+            DGV_VehiculosMantenimiento.Columns["Sucursal"].Visible = false;
+            DGV_VehiculosMantenimiento.Columns["Categoria"].Visible = false;
+            //DGV_VehiculosMantenimiento.Columns["ObservacionRevision"].Visible = false;
+        }
+
+        private void CargarBuscadorHistorial()
+        {
+            try
+            {
+                CBXVehiculoHistorial.DataSource = null;
+                CBXVehiculoHistorial.DataSource = GestorVehiculos.Listar();
+
+                CBXVehiculoHistorial.DisplayMember = "ToString";
+                CBXVehiculoHistorial.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el buscador: " + ex.Message);
+            }
         }
 
         private void DGV_VehiculosRevision_SelectionChanged(object sender, EventArgs e)
@@ -220,6 +244,59 @@ namespace Trabajo_practico_IS
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void BTNCtrlMantBuscarHist_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1. Validación
+                if (CBXVehiculoHistorial.SelectedItem == null)
+                {
+                    MessageBox.Show("Por favor, seleccione un vehículo para auditar su historial.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                BE.VEHICULO autoSeleccionado = (BE.VEHICULO)CBXVehiculoHistorial.SelectedItem;
+
+                List<BE.MANTENIMIENTO> historialMantenimientos = GestorMantenimiento.ObtenerHistorial(autoSeleccionado.Id);
+
+                DGV_HistorialMantenimiento.DataSource = null;
+                DGV_HistorialMantenimiento.DataSource = historialMantenimientos;
+
+                if (DGV_HistorialMantenimiento.Columns["Id"] != null)
+                    DGV_HistorialMantenimiento.Columns["Id"].Visible = false;
+                if (DGV_HistorialMantenimiento.Columns["Vehiculo"] != null)
+                    DGV_HistorialMantenimiento.Columns["Vehiculo"].Visible = false;
+
+                // =========================================================
+                // 4. CÁLCULO DE MÉTRICAS USANDO LINQ
+                // =========================================================
+
+                if (historialMantenimientos.Count > 0)
+                {
+                    // Cantidad de ingresos (simplemente contamos los elementos de la lista)
+                    int cantidadIngresos = historialMantenimientos.Count;
+
+                    // Gasto acumulado (Sumamos la propiedad 'Costo' de todos los objetos en la lista)[cite: 3]
+                    decimal gastoTotal = historialMantenimientos.Sum(remito => remito.Costo);
+
+                    // Reflejamos en la interfaz gráfica
+                    LBLDATOSCantidadIngresos.Text = cantidadIngresos.ToString();
+                    LBLDATOSGastoAcumulado.Text = $"$ {gastoTotal:N2}";
+                }
+                else
+                {
+                    // Si el auto nunca fue al taller, mostramos la grilla vacía y las métricas en cero
+                    LBLDATOSCantidadIngresos.Text = "0";
+                    LBLDATOSGastoAcumulado.Text = "$ 0.00";
+                    MessageBox.Show("Este vehículo no registra mantenimientos previos en su legajo histórico.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al consultar el historial: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

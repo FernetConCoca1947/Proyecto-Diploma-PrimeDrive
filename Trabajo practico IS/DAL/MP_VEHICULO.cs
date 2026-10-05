@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -99,15 +100,20 @@ namespace DAL
 
         public override void Modificar(BE.VEHICULO vehiculo)
         {
-            List<SqlParameter> parametros = new List<SqlParameter>();
-            parametros.Add(acceso.CrearParametro("@idVehiculo", vehiculo.Id));
-            parametros.Add(acceso.CrearParametro("@patente", vehiculo.Patente));
-            parametros.Add(acceso.CrearParametro("@marca", vehiculo.Marca));
-            parametros.Add(acceso.CrearParametro("@modelo", vehiculo.Modelo));
-            parametros.Add(acceso.CrearParametro("@kmActual", vehiculo.KmActual));
-            parametros.Add(acceso.CrearParametro("@idEstado", vehiculo.Estado.IdEstado));
-            parametros.Add(acceso.CrearParametro("@idCategoria", vehiculo.Categoria.Id));
-            parametros.Add(acceso.CrearParametro("@idSucursal", vehiculo.Sucursal.Id));
+            List<SqlParameter> parametros = new List<SqlParameter>()
+            {
+                acceso.CrearParametro("@idVehiculo", vehiculo.Id),
+                acceso.CrearParametro("@marca", vehiculo.Marca),
+                acceso.CrearParametro("@patente", vehiculo.Patente),
+                acceso.CrearParametro("@modelo", vehiculo.Modelo),
+                acceso.CrearParametro("@kmActual", vehiculo.KmActual),
+                acceso.CrearParametro("@idEstado", vehiculo.Estado.IdEstado),
+                acceso.CrearParametro("@idCategoria", vehiculo.Categoria.Id),
+                acceso.CrearParametro("@idSucursal", vehiculo.Sucursal.Id),
+                new SqlParameter("@ObsVehiculo", string.IsNullOrWhiteSpace(vehiculo.ObservacionRevision)
+                            ? (object)DBNull.Value
+                            : vehiculo.ObservacionRevision)
+            };
 
             try
             {

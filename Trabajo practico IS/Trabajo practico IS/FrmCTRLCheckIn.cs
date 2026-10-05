@@ -34,7 +34,7 @@ namespace Trabajo_practico_IS
             CBX_BuscarPor.SelectedIndex = 0;
 
             CBX_NivelCombustible.Items.AddRange(new string[] { "Lleno", "3/4", "Medio", "Reserva" });
-
+            LimpiarTodo();
             BloquearPanelesOperativos(false);
         }
         public void ActualizarIdioma()
@@ -161,7 +161,7 @@ namespace Trabajo_practico_IS
             try
             {
                 if (!CHK_GarantiaLiberada.Checked)
-                    throw new Exception("Debe confirmar la liberación de la garantía en el posnet físico antes de cerrar el contrato en el sistema.");
+                    throw new Exception("Debe confirmar la liberación de la garantía antes de cerrar el contrato en el sistema.");
 
                 if (!string.IsNullOrWhiteSpace(TXT_CtrlCheckInObservacionContrato.Text))
                 {
@@ -224,10 +224,12 @@ namespace Trabajo_practico_IS
             TXT_CtrlCheckInKmDevolucion.Enabled = estado;
             CBX_NivelCombustible.Enabled = estado;
             TXT_CargosExtrasDaños.Enabled = estado;
-            BTNCtrlCheckInCalcular.Enabled = estado;
+            CHK_RequiereRevision.Enabled = estado;
+            TXT_CtrlCheckInRevisionVehiculo.Enabled = estado;
 
             // Panel 3
             CHK_GarantiaLiberada.Enabled = estado;
+            BTNCtrlCheckInCalcular.Enabled = estado;
         }
 
         private void LimpiarTodo()
@@ -239,6 +241,7 @@ namespace Trabajo_practico_IS
             LBLDATOSVehiculo.Text = "-";
             LBLDATOSRetiro.Text = "-";
             LBLDATOSGarantia.Text = "$ 0.00";
+            LBLDATOSKilometrajeSalida.Text = "-";
 
             TXT_CtrlCheckInKmDevolucion.Clear();
             TXT_CargosExtrasDaños.Clear();
@@ -260,6 +263,22 @@ namespace Trabajo_practico_IS
             {
                 CargarDatosAuditoria(contratoSeleccionado);
             }
+        }
+
+        private void BTNvolveralmenu_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("¿Desea volver al menu principal?", "Atención",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void FrmCTRLCheckIn_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Servicios.IDIOMAS.GetInstancia().Desuscribir(this);
         }
     }
 }

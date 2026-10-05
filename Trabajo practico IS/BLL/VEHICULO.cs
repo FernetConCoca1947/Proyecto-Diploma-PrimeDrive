@@ -137,6 +137,14 @@ namespace BLL
 
             if (vehiculo.Estado == null || vehiculo.Estado.IdEstado <= 0)
                 throw new Exception("El vehículo debe tener un estado operativo asignado.");
+
+            if (vehiculo.Estado != null && vehiculo.Estado.IdEstado == 10)
+            {
+                if (string.IsNullOrWhiteSpace(vehiculo.ObservacionRevision))
+                {
+                    throw new Exception("Error de Negocio: El vehículo no puede pasar al estado 'En Revisión' sin una observación técnica detallada.");
+                }
+            }
         }
     }
 }

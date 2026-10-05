@@ -53,50 +53,62 @@
             this.DGV_VehiculosMantenimiento = new System.Windows.Forms.DataGridView();
             this.LBLidiomas = new System.Windows.Forms.Label();
             this.CBXidiomas = new System.Windows.Forms.ComboBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.DGV_HistorialMantenimiento = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CBXVehiculoHistorial = new System.Windows.Forms.ComboBox();
+            this.BTNCtrlMantBuscarHist = new System.Windows.Forms.Button();
+            this.LBLCantidadIngresos = new System.Windows.Forms.Label();
+            this.LBLGastoAcumulado = new System.Windows.Forms.Label();
+            this.LBLDATOSCantidadIngresos = new System.Windows.Forms.Label();
+            this.LBLDATOSGastoAcumulado = new System.Windows.Forms.Label();
             this.TAB_CTRLMantenimientos.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.GB_VehiculosRevision.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_VehiculosRevision)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.GB_DatosRemito.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_KmReal)).BeginInit();
-            this.GB_VehiculosMantenimiento.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_VehiculosMantenimiento)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_HistorialMantenimiento)).BeginInit();
             this.SuspendLayout();
             // 
             // TAB_CTRLMantenimientos
             // 
             this.TAB_CTRLMantenimientos.Controls.Add(this.tabPage1);
             this.TAB_CTRLMantenimientos.Controls.Add(this.tabPage2);
+            this.TAB_CTRLMantenimientos.Controls.Add(this.tabPage3);
             this.TAB_CTRLMantenimientos.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.TAB_CTRLMantenimientos.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TAB_CTRLMantenimientos.Location = new System.Drawing.Point(0, 57);
+            this.TAB_CTRLMantenimientos.Location = new System.Drawing.Point(0, 39);
             this.TAB_CTRLMantenimientos.Name = "TAB_CTRLMantenimientos";
             this.TAB_CTRLMantenimientos.SelectedIndex = 0;
-            this.TAB_CTRLMantenimientos.Size = new System.Drawing.Size(1097, 521);
+            this.TAB_CTRLMantenimientos.Size = new System.Drawing.Size(1097, 539);
             this.TAB_CTRLMantenimientos.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(105)))));
+            this.tabPage1.Controls.Add(this.DGV_VehiculosRevision);
             this.tabPage1.Controls.Add(this.BTNCtrlMantDerivar);
             this.tabPage1.Controls.Add(this.BTNCtrlMantDesestimar);
             this.tabPage1.Controls.Add(this.LBLReporteRevision);
-            this.tabPage1.Controls.Add(this.TXT_CtrlMantReporteRevision);
             this.tabPage1.Controls.Add(this.GB_VehiculosRevision);
+            this.tabPage1.Controls.Add(this.TXT_CtrlMantReporteRevision);
+            this.tabPage1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1089, 491);
+            this.tabPage1.Size = new System.Drawing.Size(1089, 509);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // BTNCtrlMantDerivar
             // 
-            this.BTNCtrlMantDerivar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNCtrlMantDerivar.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNCtrlMantDerivar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCtrlMantDerivar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCtrlMantDerivar.Location = new System.Drawing.Point(175, 440);
+            this.BTNCtrlMantDerivar.Location = new System.Drawing.Point(175, 455);
             this.BTNCtrlMantDerivar.Margin = new System.Windows.Forms.Padding(4);
             this.BTNCtrlMantDerivar.Name = "BTNCtrlMantDerivar";
             this.BTNCtrlMantDerivar.Size = new System.Drawing.Size(145, 33);
@@ -107,10 +119,10 @@
             // 
             // BTNCtrlMantDesestimar
             // 
-            this.BTNCtrlMantDesestimar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNCtrlMantDesestimar.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNCtrlMantDesestimar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCtrlMantDesestimar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCtrlMantDesestimar.Location = new System.Drawing.Point(22, 440);
+            this.BTNCtrlMantDesestimar.Location = new System.Drawing.Point(22, 455);
             this.BTNCtrlMantDesestimar.Margin = new System.Windows.Forms.Padding(4);
             this.BTNCtrlMantDesestimar.Name = "BTNCtrlMantDesestimar";
             this.BTNCtrlMantDesestimar.Size = new System.Drawing.Size(145, 33);
@@ -122,7 +134,8 @@
             // LBLReporteRevision
             // 
             this.LBLReporteRevision.AutoSize = true;
-            this.LBLReporteRevision.Location = new System.Drawing.Point(20, 320);
+            this.LBLReporteRevision.ForeColor = System.Drawing.SystemColors.Window;
+            this.LBLReporteRevision.Location = new System.Drawing.Point(22, 311);
             this.LBLReporteRevision.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBLReporteRevision.Name = "LBLReporteRevision";
             this.LBLReporteRevision.Size = new System.Drawing.Size(136, 17);
@@ -131,19 +144,20 @@
             // 
             // TXT_CtrlMantReporteRevision
             // 
-            this.TXT_CtrlMantReporteRevision.Location = new System.Drawing.Point(23, 340);
+            this.TXT_CtrlMantReporteRevision.Location = new System.Drawing.Point(22, 331);
             this.TXT_CtrlMantReporteRevision.Multiline = true;
             this.TXT_CtrlMantReporteRevision.Name = "TXT_CtrlMantReporteRevision";
-            this.TXT_CtrlMantReporteRevision.Size = new System.Drawing.Size(581, 80);
+            this.TXT_CtrlMantReporteRevision.ReadOnly = true;
+            this.TXT_CtrlMantReporteRevision.Size = new System.Drawing.Size(581, 117);
             this.TXT_CtrlMantReporteRevision.TabIndex = 43;
             // 
             // GB_VehiculosRevision
             // 
-            this.GB_VehiculosRevision.Controls.Add(this.DGV_VehiculosRevision);
             this.GB_VehiculosRevision.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.GB_VehiculosRevision.Location = new System.Drawing.Point(23, 25);
+            this.GB_VehiculosRevision.ForeColor = System.Drawing.SystemColors.Window;
+            this.GB_VehiculosRevision.Location = new System.Drawing.Point(22, 21);
             this.GB_VehiculosRevision.Name = "GB_VehiculosRevision";
-            this.GB_VehiculosRevision.Size = new System.Drawing.Size(581, 278);
+            this.GB_VehiculosRevision.Size = new System.Drawing.Size(975, 278);
             this.GB_VehiculosRevision.TabIndex = 42;
             this.GB_VehiculosRevision.TabStop = false;
             this.GB_VehiculosRevision.Text = "Vehiculos en revisión";
@@ -152,15 +166,17 @@
             // 
             this.DGV_VehiculosRevision.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_VehiculosRevision.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_VehiculosRevision.Location = new System.Drawing.Point(12, 30);
+            this.DGV_VehiculosRevision.Location = new System.Drawing.Point(35, 50);
             this.DGV_VehiculosRevision.Name = "DGV_VehiculosRevision";
             this.DGV_VehiculosRevision.ReadOnly = true;
-            this.DGV_VehiculosRevision.Size = new System.Drawing.Size(550, 236);
+            this.DGV_VehiculosRevision.Size = new System.Drawing.Size(944, 236);
             this.DGV_VehiculosRevision.TabIndex = 0;
             this.DGV_VehiculosRevision.SelectionChanged += new System.EventHandler(this.DGV_VehiculosRevision_SelectionChanged);
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(105)))));
+            this.tabPage2.Controls.Add(this.DGV_VehiculosMantenimiento);
             this.tabPage2.Controls.Add(this.BTNCtrlMantRetorno);
             this.tabPage2.Controls.Add(this.LBLDetalleMantenimientoRealizado);
             this.tabPage2.Controls.Add(this.TXT_CtrlMantDetalleMantenimiento);
@@ -169,17 +185,16 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1089, 491);
+            this.tabPage2.Size = new System.Drawing.Size(1089, 509);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // BTNCtrlMantRetorno
             // 
-            this.BTNCtrlMantRetorno.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNCtrlMantRetorno.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNCtrlMantRetorno.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNCtrlMantRetorno.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNCtrlMantRetorno.Location = new System.Drawing.Point(20, 430);
+            this.BTNCtrlMantRetorno.Location = new System.Drawing.Point(22, 455);
             this.BTNCtrlMantRetorno.Margin = new System.Windows.Forms.Padding(4);
             this.BTNCtrlMantRetorno.Name = "BTNCtrlMantRetorno";
             this.BTNCtrlMantRetorno.Size = new System.Drawing.Size(145, 33);
@@ -191,7 +206,8 @@
             // LBLDetalleMantenimientoRealizado
             // 
             this.LBLDetalleMantenimientoRealizado.AutoSize = true;
-            this.LBLDetalleMantenimientoRealizado.Location = new System.Drawing.Point(17, 311);
+            this.LBLDetalleMantenimientoRealizado.ForeColor = System.Drawing.SystemColors.Window;
+            this.LBLDetalleMantenimientoRealizado.Location = new System.Drawing.Point(22, 311);
             this.LBLDetalleMantenimientoRealizado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBLDetalleMantenimientoRealizado.Name = "LBLDetalleMantenimientoRealizado";
             this.LBLDetalleMantenimientoRealizado.Size = new System.Drawing.Size(263, 17);
@@ -200,10 +216,10 @@
             // 
             // TXT_CtrlMantDetalleMantenimiento
             // 
-            this.TXT_CtrlMantDetalleMantenimiento.Location = new System.Drawing.Point(20, 331);
+            this.TXT_CtrlMantDetalleMantenimiento.Location = new System.Drawing.Point(22, 331);
             this.TXT_CtrlMantDetalleMantenimiento.Multiline = true;
             this.TXT_CtrlMantDetalleMantenimiento.Name = "TXT_CtrlMantDetalleMantenimiento";
-            this.TXT_CtrlMantDetalleMantenimiento.Size = new System.Drawing.Size(581, 80);
+            this.TXT_CtrlMantDetalleMantenimiento.Size = new System.Drawing.Size(581, 117);
             this.TXT_CtrlMantDetalleMantenimiento.TabIndex = 49;
             // 
             // GB_DatosRemito
@@ -217,32 +233,33 @@
             this.GB_DatosRemito.Controls.Add(this.LBLCosto);
             this.GB_DatosRemito.Controls.Add(this.LBLkmReal);
             this.GB_DatosRemito.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GB_DatosRemito.Location = new System.Drawing.Point(638, 39);
+            this.GB_DatosRemito.ForeColor = System.Drawing.SystemColors.Window;
+            this.GB_DatosRemito.Location = new System.Drawing.Point(790, 21);
             this.GB_DatosRemito.Margin = new System.Windows.Forms.Padding(4);
             this.GB_DatosRemito.Name = "GB_DatosRemito";
             this.GB_DatosRemito.Padding = new System.Windows.Forms.Padding(4);
-            this.GB_DatosRemito.Size = new System.Drawing.Size(300, 249);
+            this.GB_DatosRemito.Size = new System.Drawing.Size(292, 278);
             this.GB_DatosRemito.TabIndex = 48;
             this.GB_DatosRemito.TabStop = false;
             this.GB_DatosRemito.Text = "Registro de remito";
             // 
             // DTP_FechaSalida
             // 
-            this.DTP_FechaSalida.Location = new System.Drawing.Point(12, 104);
+            this.DTP_FechaSalida.Location = new System.Drawing.Point(10, 112);
             this.DTP_FechaSalida.Name = "DTP_FechaSalida";
             this.DTP_FechaSalida.Size = new System.Drawing.Size(264, 23);
             this.DTP_FechaSalida.TabIndex = 33;
             // 
             // DTP_FechaEntrada
             // 
-            this.DTP_FechaEntrada.Location = new System.Drawing.Point(12, 49);
+            this.DTP_FechaEntrada.Location = new System.Drawing.Point(10, 48);
             this.DTP_FechaEntrada.Name = "DTP_FechaEntrada";
             this.DTP_FechaEntrada.Size = new System.Drawing.Size(264, 23);
             this.DTP_FechaEntrada.TabIndex = 32;
             // 
             // NUM_KmReal
             // 
-            this.NUM_KmReal.Location = new System.Drawing.Point(12, 215);
+            this.NUM_KmReal.Location = new System.Drawing.Point(10, 240);
             this.NUM_KmReal.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -254,7 +271,7 @@
             // 
             // TXT_CtrlMantCosto
             // 
-            this.TXT_CtrlMantCosto.Location = new System.Drawing.Point(12, 159);
+            this.TXT_CtrlMantCosto.Location = new System.Drawing.Point(10, 176);
             this.TXT_CtrlMantCosto.Margin = new System.Windows.Forms.Padding(4);
             this.TXT_CtrlMantCosto.Name = "TXT_CtrlMantCosto";
             this.TXT_CtrlMantCosto.Size = new System.Drawing.Size(264, 23);
@@ -263,7 +280,7 @@
             // LBLFechaIngreso
             // 
             this.LBLFechaIngreso.AutoSize = true;
-            this.LBLFechaIngreso.Location = new System.Drawing.Point(8, 28);
+            this.LBLFechaIngreso.Location = new System.Drawing.Point(10, 28);
             this.LBLFechaIngreso.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBLFechaIngreso.Name = "LBLFechaIngreso";
             this.LBLFechaIngreso.Size = new System.Drawing.Size(174, 17);
@@ -273,7 +290,7 @@
             // LBLFechaSalida
             // 
             this.LBLFechaSalida.AutoSize = true;
-            this.LBLFechaSalida.Location = new System.Drawing.Point(8, 84);
+            this.LBLFechaSalida.Location = new System.Drawing.Point(10, 92);
             this.LBLFechaSalida.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBLFechaSalida.Name = "LBLFechaSalida";
             this.LBLFechaSalida.Size = new System.Drawing.Size(166, 17);
@@ -283,7 +300,7 @@
             // LBLCosto
             // 
             this.LBLCosto.AutoSize = true;
-            this.LBLCosto.Location = new System.Drawing.Point(8, 139);
+            this.LBLCosto.Location = new System.Drawing.Point(10, 156);
             this.LBLCosto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBLCosto.Name = "LBLCosto";
             this.LBLCosto.Size = new System.Drawing.Size(147, 17);
@@ -293,7 +310,7 @@
             // LBLkmReal
             // 
             this.LBLkmReal.AutoSize = true;
-            this.LBLkmReal.Location = new System.Drawing.Point(8, 194);
+            this.LBLkmReal.Location = new System.Drawing.Point(10, 220);
             this.LBLkmReal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBLkmReal.Name = "LBLkmReal";
             this.LBLkmReal.Size = new System.Drawing.Size(113, 17);
@@ -302,11 +319,11 @@
             // 
             // GB_VehiculosMantenimiento
             // 
-            this.GB_VehiculosMantenimiento.Controls.Add(this.DGV_VehiculosMantenimiento);
             this.GB_VehiculosMantenimiento.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.GB_VehiculosMantenimiento.Location = new System.Drawing.Point(8, 22);
+            this.GB_VehiculosMantenimiento.ForeColor = System.Drawing.SystemColors.Window;
+            this.GB_VehiculosMantenimiento.Location = new System.Drawing.Point(22, 21);
             this.GB_VehiculosMantenimiento.Name = "GB_VehiculosMantenimiento";
-            this.GB_VehiculosMantenimiento.Size = new System.Drawing.Size(581, 278);
+            this.GB_VehiculosMantenimiento.Size = new System.Drawing.Size(744, 278);
             this.GB_VehiculosMantenimiento.TabIndex = 43;
             this.GB_VehiculosMantenimiento.TabStop = false;
             this.GB_VehiculosMantenimiento.Text = "Vehiculos en mantenimiento";
@@ -315,10 +332,10 @@
             // 
             this.DGV_VehiculosMantenimiento.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_VehiculosMantenimiento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_VehiculosMantenimiento.Location = new System.Drawing.Point(12, 30);
+            this.DGV_VehiculosMantenimiento.Location = new System.Drawing.Point(35, 50);
             this.DGV_VehiculosMantenimiento.Name = "DGV_VehiculosMantenimiento";
             this.DGV_VehiculosMantenimiento.ReadOnly = true;
-            this.DGV_VehiculosMantenimiento.Size = new System.Drawing.Size(550, 236);
+            this.DGV_VehiculosMantenimiento.Size = new System.Drawing.Size(717, 236);
             this.DGV_VehiculosMantenimiento.TabIndex = 0;
             this.DGV_VehiculosMantenimiento.SelectionChanged += new System.EventHandler(this.DGV_VehiculosMantenimiento_SelectionChanged);
             // 
@@ -326,7 +343,8 @@
             // 
             this.LBLidiomas.AutoSize = true;
             this.LBLidiomas.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBLidiomas.Location = new System.Drawing.Point(798, 7);
+            this.LBLidiomas.ForeColor = System.Drawing.SystemColors.Window;
+            this.LBLidiomas.Location = new System.Drawing.Point(955, 11);
             this.LBLidiomas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBLidiomas.Name = "LBLidiomas";
             this.LBLidiomas.Size = new System.Drawing.Size(74, 17);
@@ -337,16 +355,126 @@
             // 
             this.CBXidiomas.Font = new System.Drawing.Font("Century Gothic", 9F);
             this.CBXidiomas.FormattingEnabled = true;
-            this.CBXidiomas.Location = new System.Drawing.Point(798, 26);
+            this.CBXidiomas.Location = new System.Drawing.Point(955, 30);
             this.CBXidiomas.Name = "CBXidiomas";
             this.CBXidiomas.Size = new System.Drawing.Size(135, 25);
             this.CBXidiomas.TabIndex = 52;
             this.CBXidiomas.SelectedIndexChanged += new System.EventHandler(this.CBXidiomas_SelectedIndexChanged);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(105)))));
+            this.tabPage3.Controls.Add(this.LBLDATOSGastoAcumulado);
+            this.tabPage3.Controls.Add(this.LBLDATOSCantidadIngresos);
+            this.tabPage3.Controls.Add(this.LBLGastoAcumulado);
+            this.tabPage3.Controls.Add(this.LBLCantidadIngresos);
+            this.tabPage3.Controls.Add(this.BTNCtrlMantBuscarHist);
+            this.tabPage3.Controls.Add(this.CBXVehiculoHistorial);
+            this.tabPage3.Controls.Add(this.DGV_HistorialMantenimiento);
+            this.tabPage3.Controls.Add(this.groupBox1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 26);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1089, 509);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            // 
+            // DGV_HistorialMantenimiento
+            // 
+            this.DGV_HistorialMantenimiento.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGV_HistorialMantenimiento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_HistorialMantenimiento.Location = new System.Drawing.Point(28, 96);
+            this.DGV_HistorialMantenimiento.Name = "DGV_HistorialMantenimiento";
+            this.DGV_HistorialMantenimiento.ReadOnly = true;
+            this.DGV_HistorialMantenimiento.Size = new System.Drawing.Size(1024, 236);
+            this.DGV_HistorialMantenimiento.TabIndex = 44;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Location = new System.Drawing.Point(15, 67);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1047, 278);
+            this.groupBox1.TabIndex = 45;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Historial de mantenimientos";
+            // 
+            // CBXVehiculoHistorial
+            // 
+            this.CBXVehiculoHistorial.FormattingEnabled = true;
+            this.CBXVehiculoHistorial.Location = new System.Drawing.Point(15, 22);
+            this.CBXVehiculoHistorial.Name = "CBXVehiculoHistorial";
+            this.CBXVehiculoHistorial.Size = new System.Drawing.Size(318, 25);
+            this.CBXVehiculoHistorial.TabIndex = 46;
+            // 
+            // BTNCtrlMantBuscarHist
+            // 
+            this.BTNCtrlMantBuscarHist.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.BTNCtrlMantBuscarHist.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTNCtrlMantBuscarHist.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTNCtrlMantBuscarHist.Location = new System.Drawing.Point(340, 17);
+            this.BTNCtrlMantBuscarHist.Margin = new System.Windows.Forms.Padding(4);
+            this.BTNCtrlMantBuscarHist.Name = "BTNCtrlMantBuscarHist";
+            this.BTNCtrlMantBuscarHist.Size = new System.Drawing.Size(145, 33);
+            this.BTNCtrlMantBuscarHist.TabIndex = 47;
+            this.BTNCtrlMantBuscarHist.Text = "Buscar";
+            this.BTNCtrlMantBuscarHist.UseVisualStyleBackColor = false;
+            this.BTNCtrlMantBuscarHist.Click += new System.EventHandler(this.BTNCtrlMantBuscarHist_Click);
+            // 
+            // LBLCantidadIngresos
+            // 
+            this.LBLCantidadIngresos.AutoSize = true;
+            this.LBLCantidadIngresos.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBLCantidadIngresos.ForeColor = System.Drawing.SystemColors.Window;
+            this.LBLCantidadIngresos.Location = new System.Drawing.Point(15, 370);
+            this.LBLCantidadIngresos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLCantidadIngresos.Name = "LBLCantidadIngresos";
+            this.LBLCantidadIngresos.Size = new System.Drawing.Size(152, 16);
+            this.LBLCantidadIngresos.TabIndex = 48;
+            this.LBLCantidadIngresos.Text = "Cantidad de ingresos:";
+            // 
+            // LBLGastoAcumulado
+            // 
+            this.LBLGastoAcumulado.AutoSize = true;
+            this.LBLGastoAcumulado.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBLGastoAcumulado.ForeColor = System.Drawing.SystemColors.Window;
+            this.LBLGastoAcumulado.Location = new System.Drawing.Point(15, 425);
+            this.LBLGastoAcumulado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLGastoAcumulado.Name = "LBLGastoAcumulado";
+            this.LBLGastoAcumulado.Size = new System.Drawing.Size(128, 16);
+            this.LBLGastoAcumulado.TabIndex = 49;
+            this.LBLGastoAcumulado.Text = "Gasto acumulado:";
+            // 
+            // LBLDATOSCantidadIngresos
+            // 
+            this.LBLDATOSCantidadIngresos.AutoSize = true;
+            this.LBLDATOSCantidadIngresos.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBLDATOSCantidadIngresos.ForeColor = System.Drawing.SystemColors.Window;
+            this.LBLDATOSCantidadIngresos.Location = new System.Drawing.Point(15, 387);
+            this.LBLDATOSCantidadIngresos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLDATOSCantidadIngresos.Name = "LBLDATOSCantidadIngresos";
+            this.LBLDATOSCantidadIngresos.Size = new System.Drawing.Size(43, 16);
+            this.LBLDATOSCantidadIngresos.TabIndex = 50;
+            this.LBLDATOSCantidadIngresos.Text = "datos";
+            // 
+            // LBLDATOSGastoAcumulado
+            // 
+            this.LBLDATOSGastoAcumulado.AutoSize = true;
+            this.LBLDATOSGastoAcumulado.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBLDATOSGastoAcumulado.ForeColor = System.Drawing.SystemColors.Window;
+            this.LBLDATOSGastoAcumulado.Location = new System.Drawing.Point(15, 442);
+            this.LBLDATOSGastoAcumulado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLDATOSGastoAcumulado.Name = "LBLDATOSGastoAcumulado";
+            this.LBLDATOSGastoAcumulado.Size = new System.Drawing.Size(43, 16);
+            this.LBLDATOSGastoAcumulado.TabIndex = 51;
+            this.LBLDATOSGastoAcumulado.Text = "datos";
+            // 
             // FrmCTRLMantenimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(105)))));
             this.ClientSize = new System.Drawing.Size(1097, 578);
             this.Controls.Add(this.LBLidiomas);
             this.Controls.Add(this.CBXidiomas);
@@ -360,15 +488,16 @@
             this.TAB_CTRLMantenimientos.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.GB_VehiculosRevision.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_VehiculosRevision)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.GB_DatosRemito.ResumeLayout(false);
             this.GB_DatosRemito.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUM_KmReal)).EndInit();
-            this.GB_VehiculosMantenimiento.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_VehiculosMantenimiento)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_HistorialMantenimiento)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -401,5 +530,14 @@
         private System.Windows.Forms.Button BTNCtrlMantRetorno;
         private System.Windows.Forms.DateTimePicker DTP_FechaSalida;
         private System.Windows.Forms.DateTimePicker DTP_FechaEntrada;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView DGV_HistorialMantenimiento;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox CBXVehiculoHistorial;
+        private System.Windows.Forms.Button BTNCtrlMantBuscarHist;
+        private System.Windows.Forms.Label LBLGastoAcumulado;
+        private System.Windows.Forms.Label LBLCantidadIngresos;
+        private System.Windows.Forms.Label LBLDATOSGastoAcumulado;
+        private System.Windows.Forms.Label LBLDATOSCantidadIngresos;
     }
 }

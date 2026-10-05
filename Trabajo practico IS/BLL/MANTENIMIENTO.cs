@@ -41,5 +41,10 @@ namespace BLL
             if (!exito)
                 throw new Exception("Ocurrió un error en la base de datos al intentar registrar el mantenimiento y reincorporar el vehículo.");
         }
+
+        public List<BE.MANTENIMIENTO> ObtenerHistorial(int idVehiculo)
+        {
+            return mapper.ListarHistorialPorVehiculo(idVehiculo);
+        }
     }
 }

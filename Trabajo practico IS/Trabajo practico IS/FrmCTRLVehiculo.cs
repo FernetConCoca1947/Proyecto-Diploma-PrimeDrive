@@ -49,7 +49,7 @@ namespace Trabajo_practico_IS
                 AplicarFiltros();
 
                 if (DGV_Vehiculos.Columns["Id"] != null) DGV_Vehiculos.Columns["Id"].Visible = false;
-                if (DGV_Vehiculos.Columns["Activo"] != null) DGV_Vehiculos.Columns["Activo"].Visible = false;
+                if (DGV_Vehiculos.Columns["ObservacionRevision"] != null) DGV_Vehiculos.Columns["ObservacionRevision"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -85,6 +85,8 @@ namespace Trabajo_practico_IS
             DGV_Vehiculos.DataSource = listaFiltrada.ToList();
 
             DGV_Vehiculos.ClearSelection();
+            if (DGV_Vehiculos.Columns["Id"] != null) DGV_Vehiculos.Columns["Id"].Visible = false;
+            if (DGV_Vehiculos.Columns["ObservacionRevision"] != null) DGV_Vehiculos.Columns["ObservacionRevision"].Visible = false;
             ActualizarEstadoBotones();
         }
 
@@ -241,13 +243,22 @@ namespace Trabajo_practico_IS
                     return;
                 }
 
-                vehiculoSeleccionado.Patente = TXT_CtrlVehPatente.Text;
+                BE.ESTADO estadoElegido = (BE.ESTADO)CBX_Estado.SelectedItem;
+
+                if (estadoElegido.IdEstado == 10 && string.IsNullOrWhiteSpace(TXT_CtrlVehObservacion.Text))
+                {
+                    MessageBox.Show("Debe ingresar el motivo en las observaciones para mandar el auto a revisión.");
+                    return;
+                }
+
+                vehiculoSeleccionado.Patente = TXT_CtrlVehPatente.Text.Trim();
                 vehiculoSeleccionado.Marca = TXT_CtrlVehMarca.Text.Trim();
                 vehiculoSeleccionado.Modelo = TXT_CtrlVehModelo.Text.Trim();
                 vehiculoSeleccionado.KmActual = (int)NUM_KmActual.Value;
                 vehiculoSeleccionado.Categoria = (BE.CATEGORIA)CBX_Categoria.SelectedItem;
                 vehiculoSeleccionado.Sucursal = (BE.SUCURSAL)CBX_Sucursal.SelectedItem;
                 vehiculoSeleccionado.Estado = (BE.ESTADO)CBX_Estado.SelectedItem;
+                vehiculoSeleccionado.ObservacionRevision = TXT_CtrlVehObservacion.Text;
 
                 GestorVehiculos.Modificar(vehiculoSeleccionado);
 
@@ -401,6 +412,26 @@ namespace Trabajo_practico_IS
             if (result == DialogResult.Yes)
             {
                 this.Close();
+            }
+        }
+
+        private void CBX_Estado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CBX_Estado.SelectedItem != null)
+            {
+                BE.ESTADO estadoSeleccionado = (BE.ESTADO)CBX_Estado.SelectedItem;
+
+                if (estadoSeleccionado.IdEstado == 10)
+                {
+                    TXT_CtrlVehObservacion.Enabled = true;
+                    TXT_CtrlVehObservacion.BackColor = Color.LightYellow;
+                }
+                else
+                {
+                    TXT_CtrlVehObservacion.Enabled = false;
+                    TXT_CtrlVehObservacion.Clear();
+                    TXT_CtrlVehObservacion.BackColor = SystemColors.Window;
+                }
             }
         }
     }

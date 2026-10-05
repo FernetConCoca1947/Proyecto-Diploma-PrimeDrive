@@ -45,6 +45,7 @@
             // 
             this.LBMensajeError.AutoSize = true;
             this.LBMensajeError.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.LBMensajeError.ForeColor = System.Drawing.SystemColors.Window;
             this.LBMensajeError.Location = new System.Drawing.Point(14, 31);
             this.LBMensajeError.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBMensajeError.Name = "LBMensajeError";
@@ -54,11 +55,11 @@
             // 
             // BTNHacerBackUp
             // 
-            this.BTNHacerBackUp.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNHacerBackUp.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNHacerBackUp.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.BTNHacerBackUp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BTNHacerBackUp.Location = new System.Drawing.Point(14, 192);
-            this.BTNHacerBackUp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTNHacerBackUp.Margin = new System.Windows.Forms.Padding(4);
             this.BTNHacerBackUp.Name = "BTNHacerBackUp";
             this.BTNHacerBackUp.Size = new System.Drawing.Size(145, 33);
             this.BTNHacerBackUp.TabIndex = 2;
@@ -70,7 +71,7 @@
             // 
             this.TXTRutaBackUp.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TXTRutaBackUp.Location = new System.Drawing.Point(14, 236);
-            this.TXTRutaBackUp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TXTRutaBackUp.Margin = new System.Windows.Forms.Padding(4);
             this.TXTRutaBackUp.Name = "TXTRutaBackUp";
             this.TXTRutaBackUp.ReadOnly = true;
             this.TXTRutaBackUp.Size = new System.Drawing.Size(396, 23);
@@ -78,11 +79,11 @@
             // 
             // BTNRestaurarBase
             // 
-            this.BTNRestaurarBase.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNRestaurarBase.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNRestaurarBase.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.BTNRestaurarBase.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BTNRestaurarBase.Location = new System.Drawing.Point(569, 231);
-            this.BTNRestaurarBase.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTNRestaurarBase.Margin = new System.Windows.Forms.Padding(4);
             this.BTNRestaurarBase.Name = "BTNRestaurarBase";
             this.BTNRestaurarBase.Size = new System.Drawing.Size(145, 33);
             this.BTNRestaurarBase.TabIndex = 4;
@@ -92,11 +93,11 @@
             // 
             // BTNRecalcularDigito
             // 
-            this.BTNRecalcularDigito.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNRecalcularDigito.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNRecalcularDigito.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.BTNRecalcularDigito.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BTNRecalcularDigito.Location = new System.Drawing.Point(14, 272);
-            this.BTNRecalcularDigito.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTNRecalcularDigito.Margin = new System.Windows.Forms.Padding(4);
             this.BTNRecalcularDigito.Name = "BTNRecalcularDigito";
             this.BTNRecalcularDigito.Size = new System.Drawing.Size(212, 33);
             this.BTNRecalcularDigito.TabIndex = 5;
@@ -106,11 +107,11 @@
             // 
             // BTNRestauracionVolverMenu
             // 
-            this.BTNRestauracionVolverMenu.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNRestauracionVolverMenu.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNRestauracionVolverMenu.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.BTNRestauracionVolverMenu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BTNRestauracionVolverMenu.Location = new System.Drawing.Point(746, 348);
-            this.BTNRestauracionVolverMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTNRestauracionVolverMenu.Margin = new System.Windows.Forms.Padding(4);
             this.BTNRestauracionVolverMenu.Name = "BTNRestauracionVolverMenu";
             this.BTNRestauracionVolverMenu.Size = new System.Drawing.Size(145, 33);
             this.BTNRestauracionVolverMenu.TabIndex = 6;
@@ -120,11 +121,11 @@
             // 
             // BTNExaminarBackUp
             // 
-            this.BTNExaminarBackUp.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BTNExaminarBackUp.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNExaminarBackUp.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.BTNExaminarBackUp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BTNExaminarBackUp.Location = new System.Drawing.Point(418, 231);
-            this.BTNExaminarBackUp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTNExaminarBackUp.Margin = new System.Windows.Forms.Padding(4);
             this.BTNExaminarBackUp.Name = "BTNExaminarBackUp";
             this.BTNExaminarBackUp.Size = new System.Drawing.Size(145, 33);
             this.BTNExaminarBackUp.TabIndex = 7;
@@ -138,7 +139,7 @@
             this.CBXidiomas.Font = new System.Drawing.Font("Century Gothic", 9F);
             this.CBXidiomas.FormattingEnabled = true;
             this.CBXidiomas.Location = new System.Drawing.Point(749, 47);
-            this.CBXidiomas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CBXidiomas.Margin = new System.Windows.Forms.Padding(4);
             this.CBXidiomas.Name = "CBXidiomas";
             this.CBXidiomas.Size = new System.Drawing.Size(140, 25);
             this.CBXidiomas.TabIndex = 8;
@@ -148,6 +149,7 @@
             // 
             this.LBLidiomas.AutoSize = true;
             this.LBLidiomas.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.LBLidiomas.ForeColor = System.Drawing.SystemColors.Window;
             this.LBLidiomas.Location = new System.Drawing.Point(749, 27);
             this.LBLidiomas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBLidiomas.Name = "LBLidiomas";
@@ -159,7 +161,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(105)))));
             this.ClientSize = new System.Drawing.Size(901, 395);
             this.Controls.Add(this.LBLidiomas);
             this.Controls.Add(this.CBXidiomas);
@@ -171,7 +173,7 @@
             this.Controls.Add(this.BTNHacerBackUp);
             this.Controls.Add(this.LBMensajeError);
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmRestauracionBase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmRestauracionBase";

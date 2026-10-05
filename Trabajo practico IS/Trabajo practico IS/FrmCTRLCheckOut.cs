@@ -165,7 +165,6 @@ namespace Trabajo_practico_IS
         {
             try
             {
-                // 1. Validaciones de Interfaz
                 if (ReservaSeleccionada == null)
                     throw new Exception("Debe seleccionar una reserva válida.");
 
@@ -187,7 +186,7 @@ namespace Trabajo_practico_IS
                     KmSalida = kmSalida,
                     GarantiaRetenida = garantia,
                     Observaciones = TXT_CtrlChkOutObservaciones.Text.Trim(),
-                    Estado = new BE.ESTADO { IdEstado = 8, Nombre = "Abierto" } // Estado del contrato
+                    Estado = new BE.ESTADO { IdEstado = 8, Nombre = "Abierto" }
                 };
 
                 // 3. Ejecución a través de la Capa de Negocio (Dispara la Transacción Dual)
@@ -231,6 +230,22 @@ namespace Trabajo_practico_IS
             TXT_CtrlChkOutKmAct.Clear();
             TXT_CtrlChkOutGarantia.Clear();
             TXT_CtrlChkOutObservaciones.Clear();
+        }
+
+        private void BTNvolveralmenu_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("¿Desea volver al menu principal?", "Atención",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void FrmCTRLCheckOut_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Servicios.IDIOMAS.GetInstancia().Desuscribir(this);
         }
     }
 }
