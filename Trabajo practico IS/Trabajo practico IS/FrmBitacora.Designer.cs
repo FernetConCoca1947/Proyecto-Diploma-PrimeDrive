@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BTN_CargarBitacora = new System.Windows.Forms.Button();
             this.GB_Bitacora = new System.Windows.Forms.GroupBox();
             this.DGV_BITACORA = new System.Windows.Forms.DataGridView();
@@ -47,7 +47,6 @@
             this.BTN_BitacoraVolverAlMenu = new System.Windows.Forms.Button();
             this.CBXidiomas = new System.Windows.Forms.ComboBox();
             this.LBLidiomas = new System.Windows.Forms.Label();
-            this.GB_Bitacora.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_BITACORA)).BeginInit();
             this.GBfiltros.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +67,6 @@
             // 
             // GB_Bitacora
             // 
-            this.GB_Bitacora.Controls.Add(this.DGV_BITACORA);
             this.GB_Bitacora.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.GB_Bitacora.ForeColor = System.Drawing.SystemColors.Window;
             this.GB_Bitacora.Location = new System.Drawing.Point(14, 15);
@@ -84,15 +82,15 @@
             // 
             this.DGV_BITACORA.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_BITACORA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGV_BITACORA.DefaultCellStyle = dataGridViewCellStyle3;
-            this.DGV_BITACORA.Location = new System.Drawing.Point(12, 30);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGV_BITACORA.DefaultCellStyle = dataGridViewCellStyle1;
+            this.DGV_BITACORA.Location = new System.Drawing.Point(27, 45);
             this.DGV_BITACORA.Margin = new System.Windows.Forms.Padding(4);
             this.DGV_BITACORA.Name = "DGV_BITACORA";
             this.DGV_BITACORA.Size = new System.Drawing.Size(904, 274);
@@ -242,7 +240,7 @@
             this.BTN_BitacoraVolverAlMenu.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTN_BitacoraVolverAlMenu.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTN_BitacoraVolverAlMenu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTN_BitacoraVolverAlMenu.Location = new System.Drawing.Point(1032, 553);
+            this.BTN_BitacoraVolverAlMenu.Location = new System.Drawing.Point(970, 552);
             this.BTN_BitacoraVolverAlMenu.Margin = new System.Windows.Forms.Padding(4);
             this.BTN_BitacoraVolverAlMenu.Name = "BTN_BitacoraVolverAlMenu";
             this.BTN_BitacoraVolverAlMenu.Size = new System.Drawing.Size(145, 33);
@@ -256,7 +254,7 @@
             this.CBXidiomas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBXidiomas.Font = new System.Drawing.Font("Century Gothic", 9F);
             this.CBXidiomas.FormattingEnabled = true;
-            this.CBXidiomas.Location = new System.Drawing.Point(1036, 34);
+            this.CBXidiomas.Location = new System.Drawing.Point(974, 33);
             this.CBXidiomas.Margin = new System.Windows.Forms.Padding(4);
             this.CBXidiomas.Name = "CBXidiomas";
             this.CBXidiomas.Size = new System.Drawing.Size(140, 25);
@@ -268,7 +266,7 @@
             this.LBLidiomas.AutoSize = true;
             this.LBLidiomas.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.LBLidiomas.ForeColor = System.Drawing.SystemColors.Window;
-            this.LBLidiomas.Location = new System.Drawing.Point(1036, 15);
+            this.LBLidiomas.Location = new System.Drawing.Point(974, 14);
             this.LBLidiomas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LBLidiomas.Name = "LBLidiomas";
             this.LBLidiomas.Size = new System.Drawing.Size(74, 17);
@@ -280,7 +278,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(105)))));
-            this.ClientSize = new System.Drawing.Size(1188, 603);
+            this.ClientSize = new System.Drawing.Size(1125, 603);
+            this.Controls.Add(this.DGV_BITACORA);
             this.Controls.Add(this.LBLidiomas);
             this.Controls.Add(this.CBXidiomas);
             this.Controls.Add(this.BTN_BitacoraVolverAlMenu);
@@ -293,7 +292,6 @@
             this.Text = "FrmBitacora";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmBitacora_FormClosed);
             this.Load += new System.EventHandler(this.FrmBitacora_Load);
-            this.GB_Bitacora.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_BITACORA)).EndInit();
             this.GBfiltros.ResumeLayout(false);
             this.GBfiltros.PerformLayout();

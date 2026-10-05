@@ -96,11 +96,10 @@ namespace Trabajo_practico_IS
                     throw new Exception("Ingrese un número de DNI válido para buscar reservas.");
                 }
 
-                // Consumimos el método de la BLL que filtra por DNI y estado "Confirmada" (ID 6)
                 List<BE.RESERVA> reservasConfirmadas = GestorReserva.ObtenerReservasConfirmadasPorDNI(dni);
 
                 CBX_ReservasCliente.DataSource = reservasConfirmadas;
-                CBX_ReservasCliente.DisplayMember = "ToString"; // Muestra el formato amigable de la entidad
+                CBX_ReservasCliente.DisplayMember = "ToString";
                 CBX_ReservasCliente.SelectedIndex = -1;
 
                 MessageBox.Show($"Se encontraron {reservasConfirmadas.Count} reserva(s) confirmada(s).", "Búsqueda Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -128,7 +127,6 @@ namespace Trabajo_practico_IS
                 int diasEstimados = diferenciaFechas.Days > 0 ? diferenciaFechas.Days : 1;
                 LBLDATOSDiasEstimado.Text = diasEstimados.ToString();
 
-                // Habilitamos el Panel 2 y cargamos la flota física disponible
                 CargarFlotaDisponible(reserva.SucursalRetiro.Id, reserva.Categoria.Id);
                 BloquearControlesOperativos(true);
             }
@@ -138,11 +136,10 @@ namespace Trabajo_practico_IS
         {
             try
             {
-                // Buscamos vehículos físicos en esa sucursal, de esa categoría, con Estado = 1 (Disponible)
                 List<BE.VEHICULO> vehiculosDisponibles = GestorVehiculo.ListarDisponiblesPorSucursalYCategoria(idSucursalRetiro, idCategoria);
 
                 CBX_VehiculosDisponibles.DataSource = vehiculosDisponibles;
-                CBX_VehiculosDisponibles.DisplayMember = "ToString"; // Muestra la patente en el combo
+                CBX_VehiculosDisponibles.DisplayMember = "ToString";
                 CBX_VehiculosDisponibles.SelectedIndex = -1;
                 TXT_CtrlChkOutKmAct.Clear();
             }
@@ -177,7 +174,6 @@ namespace Trabajo_practico_IS
                 if (!int.TryParse(TXT_CtrlChkOutKmAct.Text.Trim(), out int kmSalida))
                     throw new Exception("El kilometraje de salida no es válido.");
 
-                // 2. Construcción de la Entidad Contrato
                 BE.CONTRATO nuevoContrato = new BE.CONTRATO
                 {
                     Reserva = ReservaSeleccionada,
@@ -189,12 +185,10 @@ namespace Trabajo_practico_IS
                     Estado = new BE.ESTADO { IdEstado = 8, Nombre = "Abierto" }
                 };
 
-                // 3. Ejecución a través de la Capa de Negocio (Dispara la Transacción Dual)
                 GestorContrato.GenerarContrato(nuevoContrato);
 
                 MessageBox.Show($"¡Check-out exitoso!\nContrato #{nuevoContrato.Id} generado correctamente.\nVehículo {VehiculoSeleccionado.Patente} marcado como Alquilado.", "Operación Completada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // 4. Limpieza de pantalla para el próximo cliente
                 LimpiarTodo();
             }
             catch (Exception ex)

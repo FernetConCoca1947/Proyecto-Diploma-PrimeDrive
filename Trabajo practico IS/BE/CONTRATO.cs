@@ -19,7 +19,6 @@ namespace BE
         public ESTADO Estado { get; set; }
         public RESERVA Reserva { get; set; }
         public VEHICULO Vehiculo { get; set; }
-        //public SUCURSAL SucursalDevolucionReal { get; set; }
         public string InfoVehiculoMultiple
         {
             get { return $"Patente: {Vehiculo.Patente} - {Reserva.Categoria.Nombre}"; }

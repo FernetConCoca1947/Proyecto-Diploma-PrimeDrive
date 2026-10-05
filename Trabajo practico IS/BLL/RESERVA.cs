@@ -25,7 +25,6 @@ namespace BLL
                 throw new Exception($"La categoría {reserva.Categoria.Nombre} acaba de ser reservada por otro usuario. Vuelva a verificar disponibilidad.");
             }
 
-            //reserva.Estado = new BE.ESTADO { IdEstado = 6, Nombre = "Pendiente" };
             mapper.Alta(reserva);
 
             GestorBitacora.RegistrarEvento("Reservas", $"Nueva reserva generada para el cliente DNI {reserva.Cliente.DNI}", 2);
@@ -61,14 +60,6 @@ namespace BLL
             ValidarFechas(inicio, fin);
             return GestorCategoria.ConsultarDisponibles(inicio, fin, idSucursalRetiro);
         }
-
-        //private bool ValidarDisponibilidad(int idCategoria, DateTime inicio, DateTime fin,int idSucursalRetiro)
-        //{
-        //    int totalFlota = mapper.ContarVehiculosPorCategoria(idCategoria,idSucursalRetiro);
-        //    int reservasSolapadas = mapper.ContarReservasActivas(idCategoria, inicio, fin,idSucursalRetiro);
-
-        //    return (totalFlota - reservasSolapadas) > 0;
-        //}
 
         public List<BE.RESERVA> ObtenerReservasConfirmadasPorDNI(int dni)
         {

@@ -16,14 +16,11 @@ namespace BLL
         public void Insertar(BE.VEHICULO vehiculo)
         {
             BE.USUARIO usr = SeguridadBLL.ValidarPermiso("ABM_VEHICULOS");
-            // 1. Validaciones de negocio (Ej: Patente obligatoria, unicidad)
 
             ValidarDatosObligatorios(vehiculo);
 
-            // 2. Persistencia en la base de datos
             mapper.Alta(vehiculo);
 
-            // 3. Registro de auditoría (Módulo de Seguridad Base)
             GestorBitacora.RegistrarEvento("Flota", $"Se dio de alta el vehículo: {vehiculo.Patente}",2);
         }
 
@@ -59,10 +56,8 @@ namespace BLL
             BE.USUARIO usr = SeguridadBLL.ValidarPermiso("ABM_VEHICULOS");
             vehiculo.KmActual = nuevoKilometraje;
 
-            // Evalúa si el nuevo kilometraje supera el umbral establecido (ej. 10.000 km)
             if (vehiculo.KmActual >= 10000)
             {
-                // Cambia automáticamente el estado del vehículo a "Mantenimiento Preventivo" o "Baja"
                 vehiculo.Estado = new BE.ESTADO { IdEstado = 3, Nombre = "Mantenimiento Preventivo" };
             }
 
@@ -95,7 +90,6 @@ namespace BLL
 
         public void DesestimarRevision(BE.VEHICULO vehiculo)
         {
-            // Regla de Negocio: Si se desestima, el auto vuelve a estar disponible y se borra la alerta
             vehiculo.Estado = new BE.ESTADO { IdEstado = 1, Nombre = "Disponible" };
             vehiculo.ObservacionRevision = null;
 
@@ -105,8 +99,6 @@ namespace BLL
 
         public void DerivarATaller(BE.VEHICULO vehiculo)
         {
-            // Regla de Negocio: Si se deriva, pasa a Mantenimiento. 
-            // NO borramos la ObservacionRevision para que el mecánico sepa qué arreglar.
             vehiculo.Estado = new BE.ESTADO { IdEstado = 3, Nombre = "Mantenimiento" };
 
             bool exito = mapper.ResolverRevision(vehiculo);

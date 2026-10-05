@@ -90,30 +90,22 @@ namespace Trabajo_practico_IS
                 string valorBusqueda = TXT_CtrlCheckInBuscar.Text.Trim();
                 string criterio = CBX_BuscarPor.SelectedItem.ToString();
 
-                // 1. Obtenemos la lista de contratos desde la BLL
                 List<BE.CONTRATO> contratosEncontrados = GestorContrato.ObtenerContratosAbiertos(criterio, valorBusqueda);
 
-                // 2. Evaluamos la cantidad de alquileres en curso
                 if (contratosEncontrados.Count == 1)
                 {
-                    // Ocultamos el selector por si estaba visible de una búsqueda anterior
                     LBLSeleccionarVehiculo.Visible = false;
                     CBX_Contratos.Visible = false;
-
-                    // Cargamos directamente el único contrato disponible
                     CargarDatosAuditoria(contratosEncontrados[0]);
                 }
                 else if (contratosEncontrados.Count > 1)
                 {
-                    // Encendemos los controles del selector en el Panel 1
                     LBLSeleccionarVehiculo.Visible = true;
                     CBX_Contratos.Visible = true;
-
-                    // Poblamos el ComboBox
                     CBX_Contratos.DataSource = null;
                     CBX_Contratos.DataSource = contratosEncontrados;
-                    CBX_Contratos.DisplayMember = "InfoVehiculoMultiple"; // Usa la propiedad que creamos en la BE
-                    CBX_Contratos.SelectedIndex = -1; // Lo dejamos en blanco para obligar a seleccionar
+                    CBX_Contratos.DisplayMember = "InfoVehiculoMultiple";
+                    CBX_Contratos.SelectedIndex = -1;
 
                     MessageBox.Show("El cliente posee múltiples alquileres en curso.\nPor favor, seleccione la patente del vehículo que está ingresando.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -138,10 +130,8 @@ namespace Trabajo_practico_IS
                 int diasReales = tiempoUso.Days > 0 ? tiempoUso.Days : 1;
                 decimal tarifaBaseCalculada = diasReales * ContratoSeleccionado.Reserva.Categoria.TarifaDiaria;
 
-                // Deducción para mostrar el recargo de combustible separado
                 decimal recargoCombustibleVisual = totalACobrar - tarifaBaseCalculada - daños;
 
-                // Hidratación de pantalla
                 LBLDATOSDiasUso.Text = diasReales.ToString();
                 LBLDATOSTarifaTotal.Text = $"$ {tarifaBaseCalculada:N2}";
                 LBLDATOSRecargoCombustible.Text = $"$ {recargoCombustibleVisual:N2}";
@@ -202,32 +192,28 @@ namespace Trabajo_practico_IS
         {
             ContratoSeleccionado = contrato;
 
-            // Hidratamos el Panel 1
             LBLDatosCliente.Text = $"{ContratoSeleccionado.Reserva.Cliente.Apellido}, {ContratoSeleccionado.Reserva.Cliente.Nombre} (DNI: {ContratoSeleccionado.Reserva.Cliente.DNI})";
             LBLDATOSVehiculo.Text = $"{ContratoSeleccionado.Vehiculo.Patente} - {ContratoSeleccionado.Reserva.Categoria.Nombre}";
             LBLDATOSRetiro.Text = ContratoSeleccionado.FechaHoraRetiro.ToString("dd/MM/yyyy HH:mm");
             LBLDATOSGarantia.Text = $"$ {ContratoSeleccionado.GarantiaRetenida:N2}";
 
-            // Preparamos el Panel 2 (Auditoría)
             LBLDATOSKilometrajeSalida.Text = ContratoSeleccionado.KmSalida.ToString();
             CBX_NivelCombustible.SelectedIndex = 0;
             TXT_CargosExtrasDaños.Text = "0.00";
 
-            BloquearPanelesOperativos(true); // Habilitamos los controles para cargar kilometraje
+            BloquearPanelesOperativos(true);
             BTNCtrlCheckInCerrarCont.Enabled = false;
             CHK_GarantiaLiberada.Checked = false;
         }
 
         private void BloquearPanelesOperativos(bool estado)
         {
-            // Panel 2
             TXT_CtrlCheckInKmDevolucion.Enabled = estado;
             CBX_NivelCombustible.Enabled = estado;
             TXT_CargosExtrasDaños.Enabled = estado;
             CHK_RequiereRevision.Enabled = estado;
             TXT_CtrlCheckInRevisionVehiculo.Enabled = estado;
 
-            // Panel 3
             CHK_GarantiaLiberada.Enabled = estado;
             BTNCtrlCheckInCalcular.Enabled = estado;
         }

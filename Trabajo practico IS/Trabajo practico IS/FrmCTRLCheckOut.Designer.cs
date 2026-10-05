@@ -95,6 +95,7 @@
             // 
             // CBXidiomas
             // 
+            this.CBXidiomas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBXidiomas.Font = new System.Drawing.Font("Century Gothic", 9F);
             this.CBXidiomas.FormattingEnabled = true;
             this.CBXidiomas.Location = new System.Drawing.Point(790, 29);
@@ -189,9 +190,8 @@
             this.LBLDATOSCliente.Location = new System.Drawing.Point(10, 154);
             this.LBLDATOSCliente.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLDATOSCliente.Name = "LBLDATOSCliente";
-            this.LBLDATOSCliente.Size = new System.Drawing.Size(43, 16);
+            this.LBLDATOSCliente.Size = new System.Drawing.Size(0, 16);
             this.LBLDATOSCliente.TabIndex = 45;
-            this.LBLDATOSCliente.Text = "datos";
             // 
             // LBLDATOSRetiro
             // 
@@ -200,9 +200,8 @@
             this.LBLDATOSRetiro.Location = new System.Drawing.Point(10, 192);
             this.LBLDATOSRetiro.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLDATOSRetiro.Name = "LBLDATOSRetiro";
-            this.LBLDATOSRetiro.Size = new System.Drawing.Size(43, 16);
+            this.LBLDATOSRetiro.Size = new System.Drawing.Size(0, 16);
             this.LBLDATOSRetiro.TabIndex = 46;
-            this.LBLDATOSRetiro.Text = "datos";
             // 
             // LBLDATOSDevolucion
             // 
@@ -211,9 +210,8 @@
             this.LBLDATOSDevolucion.Location = new System.Drawing.Point(10, 234);
             this.LBLDATOSDevolucion.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLDATOSDevolucion.Name = "LBLDATOSDevolucion";
-            this.LBLDATOSDevolucion.Size = new System.Drawing.Size(43, 16);
+            this.LBLDATOSDevolucion.Size = new System.Drawing.Size(0, 16);
             this.LBLDATOSDevolucion.TabIndex = 47;
-            this.LBLDATOSDevolucion.Text = "datos";
             // 
             // LBLDATOScategoria
             // 
@@ -222,9 +220,8 @@
             this.LBLDATOScategoria.Location = new System.Drawing.Point(10, 274);
             this.LBLDATOScategoria.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLDATOScategoria.Name = "LBLDATOScategoria";
-            this.LBLDATOScategoria.Size = new System.Drawing.Size(43, 16);
+            this.LBLDATOScategoria.Size = new System.Drawing.Size(0, 16);
             this.LBLDATOScategoria.TabIndex = 48;
-            this.LBLDATOScategoria.Text = "datos";
             // 
             // CBX_VehiculosDisponibles
             // 
@@ -334,9 +331,8 @@
             this.LBLDATOSTarifaDiaria.Location = new System.Drawing.Point(13, 44);
             this.LBLDATOSTarifaDiaria.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLDATOSTarifaDiaria.Name = "LBLDATOSTarifaDiaria";
-            this.LBLDATOSTarifaDiaria.Size = new System.Drawing.Size(43, 16);
+            this.LBLDATOSTarifaDiaria.Size = new System.Drawing.Size(0, 16);
             this.LBLDATOSTarifaDiaria.TabIndex = 58;
-            this.LBLDATOSTarifaDiaria.Text = "datos";
             // 
             // LBLDATOSDiasEstimado
             // 
@@ -345,9 +341,8 @@
             this.LBLDATOSDiasEstimado.Location = new System.Drawing.Point(13, 94);
             this.LBLDATOSDiasEstimado.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLDATOSDiasEstimado.Name = "LBLDATOSDiasEstimado";
-            this.LBLDATOSDiasEstimado.Size = new System.Drawing.Size(43, 16);
+            this.LBLDATOSDiasEstimado.Size = new System.Drawing.Size(0, 16);
             this.LBLDATOSDiasEstimado.TabIndex = 59;
-            this.LBLDATOSDiasEstimado.Text = "datos";
             // 
             // LBLMontoGarantia
             // 

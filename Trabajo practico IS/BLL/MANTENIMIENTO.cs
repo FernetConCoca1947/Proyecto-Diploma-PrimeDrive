@@ -13,7 +13,6 @@ namespace BLL
 
         public void RegistrarRetornoTaller(BE.MANTENIMIENTO remito)
         {
-            // 1. Validaciones de Integridad y Lógica Temporal
             if (remito.Vehiculo == null || remito.Vehiculo.Id == 0)
                 throw new Exception("El remito debe estar asociado a un vehículo válido.");
 
@@ -23,7 +22,6 @@ namespace BLL
             if (remito.FechaSalida > DateTime.Now)
                 throw new Exception("La fecha de salida no puede ser una fecha futura.");
 
-            // 2. Validaciones Financieras y Físicas
             if (remito.Costo < 0)
                 throw new Exception("El costo de la reparación no puede ser un valor negativo.");
 
@@ -32,9 +30,6 @@ namespace BLL
 
             if (string.IsNullOrWhiteSpace(remito.TareasRealizadas))
                 throw new Exception("Debe detallar obligatoriamente las tareas realizadas por el mecánico en el remito.");
-
-            // 3. Delegación a la Capa de Acceso a Datos (DAL)
-            // Instanciamos el mapper correspondiente (MP_MANTENIMIENTO)
 
             bool exito = mapper.RegistrarRemito(remito);
 

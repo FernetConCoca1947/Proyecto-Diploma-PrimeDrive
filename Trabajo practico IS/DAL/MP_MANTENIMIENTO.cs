@@ -26,12 +26,8 @@ namespace DAL
                 acceso.CrearParametro("@TareasRealizadas", remito.TareasRealizadas)
             };
 
-            // Ejecuta la transacción dual en SQL Server
             int filasAfectadas = acceso.Escribir("REGISTRAR_MANTENIMIENTO", parametros);
-
             acceso.Cerrar();
-
-            // Validamos que se hayan afectado al menos 2 filas (1 inserción en MANTENIMIENTO + 1 actualización en VEHICULO)
             return filasAfectadas >= 2;
         }
 
@@ -48,7 +44,6 @@ namespace DAL
 
             List<BE.MANTENIMIENTO> historial = new List<BE.MANTENIMIENTO>();
 
-            // 3. Mapeamos los resultados a objetos
             foreach (DataRow fila in tabla.Rows)
             {
                 BE.MANTENIMIENTO remito = new BE.MANTENIMIENTO
@@ -60,7 +55,6 @@ namespace DAL
                     Costo = Convert.ToDecimal(fila["COSTO"]),
                     TareasRealizadas = fila["TAREAS_REALIZADAS"].ToString(),
 
-                    // Instanciamos el objeto compuesto del vehículo solo con su ID para mantener la referencia
                     Vehiculo = new BE.VEHICULO { Id = Convert.ToInt32(fila["ID_VEHICULO"]) }
                 };
 

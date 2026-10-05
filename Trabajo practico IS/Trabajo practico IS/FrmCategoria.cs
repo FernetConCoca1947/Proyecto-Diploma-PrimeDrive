@@ -84,24 +84,6 @@ namespace Trabajo_practico_IS
                     return;
                 }
 
-                //if (!Regex.IsMatch(TXT_CtrlCliDNI.Text, @"^\d{8}$"))
-                //{
-                //    MessageBox.Show("DNI inválido. Ingrese 8 números.");
-                //    return;
-                //}
-
-                //if (!Regex.IsMatch(TXT_CtrlCliEmail.Text, @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"))
-                //{
-                //    MessageBox.Show("Email inválido.");
-                //    return;
-                //}
-
-                //if (!Regex.IsMatch(TXT_CtrlCliTelefono.Text, @"^\d+$"))
-                //{
-                //    MessageBox.Show("El teléfono solo debe contener números.");
-                //    return;
-                //}
-
                 BE.CATEGORIA nuevaCategoria = new BE.CATEGORIA();
                 nuevaCategoria.Nombre = TXT_CtrlCatNombre.Text;
                 nuevaCategoria.TarifaDiaria = decimal.Parse(TXT_CtrlCatTarifa.Text.ToString());

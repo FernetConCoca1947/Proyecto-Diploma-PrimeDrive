@@ -236,7 +236,6 @@ namespace DAL
                 acceso.CrearParametro("@IdEstado", idEstado)
             };
 
-            // Leemos la base de datos
             DataTable tabla = acceso.Leer("OBTENER_VEHICULOS_POR_ESTADO", parametros);
             acceso.Cerrar();
 
@@ -249,19 +248,14 @@ namespace DAL
                     Id = Convert.ToInt32(fila["ID_VEHICULO"]),
                     Patente = fila["PATENTE"].ToString(),
 
-                    // Asumo que tu entidad vehículo tiene marca o modelo. Ajustalo a tus propiedades reales.
                     Marca = fila["MARCA"].ToString(),
                     Modelo = fila["MODELO"].ToString(),
 
                     KmActual = Convert.ToInt32(fila["KM_ACTUAL"]),
-
-                    // LECTURA SEGURA DE NULLS: Si SQL Server devuelve NULL, lo mapeamos a null en C#. 
-                    // Si tiene texto, lo convertimos a string.
                     ObservacionRevision = fila["OBSERVACION_REVISION"] == DBNull.Value
                                             ? null
                                             : fila["OBSERVACION_REVISION"].ToString(),
 
-                    // Ensamblaje del objeto anidado ESTADO
                     Estado = new BE.ESTADO
                     {
                         IdEstado = Convert.ToInt32(fila["ID_ESTADO"]),
@@ -289,7 +283,6 @@ namespace DAL
             };
 
             int filasAfectadas = acceso.Escribir("RESOLVER_REVISION_VEHICULO", parametros);
-            //int filasAfectadas = acceso.LeerEscalar("RESOLVER_REVISION_VEHICULO", parametros);
             acceso.Cerrar();
 
             return filasAfectadas > 0;

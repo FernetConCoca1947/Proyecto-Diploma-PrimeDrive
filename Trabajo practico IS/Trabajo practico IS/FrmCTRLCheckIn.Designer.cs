@@ -31,10 +31,6 @@
             this.GB_BuscarContrato = new System.Windows.Forms.GroupBox();
             this.LBLSeleccionarVehiculo = new System.Windows.Forms.Label();
             this.CBX_Contratos = new System.Windows.Forms.ComboBox();
-            this.TXT_CargosExtrasDaños = new System.Windows.Forms.TextBox();
-            this.LBLCargosExtras = new System.Windows.Forms.Label();
-            this.TXT_CtrlCheckInKmDevolucion = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.LBLDATOSKilometrajeSalida = new System.Windows.Forms.Label();
             this.LBLKilometrajeSalida = new System.Windows.Forms.Label();
             this.LBLDATOSGarantia = new System.Windows.Forms.Label();
@@ -45,12 +41,16 @@
             this.LBLDATOSVehiculo = new System.Windows.Forms.Label();
             this.CBX_BuscarPor = new System.Windows.Forms.ComboBox();
             this.LBLCliente = new System.Windows.Forms.Label();
-            this.CBX_NivelCombustible = new System.Windows.Forms.ComboBox();
-            this.LBLNivelCombustible = new System.Windows.Forms.Label();
             this.BTNCtrlCheckInBuscar = new System.Windows.Forms.Button();
             this.TXT_CtrlCheckInBuscar = new System.Windows.Forms.TextBox();
             this.LBLdniCliente = new System.Windows.Forms.Label();
             this.LBLDatosCliente = new System.Windows.Forms.Label();
+            this.TXT_CargosExtrasDaños = new System.Windows.Forms.TextBox();
+            this.LBLCargosExtras = new System.Windows.Forms.Label();
+            this.TXT_CtrlCheckInKmDevolucion = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.CBX_NivelCombustible = new System.Windows.Forms.ComboBox();
+            this.LBLNivelCombustible = new System.Windows.Forms.Label();
             this.BTNCtrlCheckInCalcular = new System.Windows.Forms.Button();
             this.BTNCtrlCheckInCerrarCont = new System.Windows.Forms.Button();
             this.BTNvolveralmenu = new System.Windows.Forms.Button();
@@ -131,44 +131,6 @@
             this.CBX_Contratos.Visible = false;
             this.CBX_Contratos.SelectedIndexChanged += new System.EventHandler(this.CBX_Contratos_SelectedIndexChanged);
             // 
-            // TXT_CargosExtrasDaños
-            // 
-            this.TXT_CargosExtrasDaños.Location = new System.Drawing.Point(14, 153);
-            this.TXT_CargosExtrasDaños.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.TXT_CargosExtrasDaños.Name = "TXT_CargosExtrasDaños";
-            this.TXT_CargosExtrasDaños.Size = new System.Drawing.Size(258, 23);
-            this.TXT_CargosExtrasDaños.TabIndex = 59;
-            // 
-            // LBLCargosExtras
-            // 
-            this.LBLCargosExtras.AutoSize = true;
-            this.LBLCargosExtras.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.LBLCargosExtras.Location = new System.Drawing.Point(14, 132);
-            this.LBLCargosExtras.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.LBLCargosExtras.Name = "LBLCargosExtras";
-            this.LBLCargosExtras.Size = new System.Drawing.Size(170, 17);
-            this.LBLCargosExtras.TabIndex = 58;
-            this.LBLCargosExtras.Text = "Cargos extras por daños:";
-            // 
-            // TXT_CtrlCheckInKmDevolucion
-            // 
-            this.TXT_CtrlCheckInKmDevolucion.Location = new System.Drawing.Point(14, 43);
-            this.TXT_CtrlCheckInKmDevolucion.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.TXT_CtrlCheckInKmDevolucion.Name = "TXT_CtrlCheckInKmDevolucion";
-            this.TXT_CtrlCheckInKmDevolucion.Size = new System.Drawing.Size(258, 23);
-            this.TXT_CtrlCheckInKmDevolucion.TabIndex = 57;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.label1.Location = new System.Drawing.Point(14, 22);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 17);
-            this.label1.TabIndex = 56;
-            this.label1.Text = "Kilometraje de devolución:";
-            // 
             // LBLDATOSKilometrajeSalida
             // 
             this.LBLDATOSKilometrajeSalida.AutoSize = true;
@@ -176,9 +138,8 @@
             this.LBLDATOSKilometrajeSalida.Location = new System.Drawing.Point(11, 321);
             this.LBLDATOSKilometrajeSalida.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLDATOSKilometrajeSalida.Name = "LBLDATOSKilometrajeSalida";
-            this.LBLDATOSKilometrajeSalida.Size = new System.Drawing.Size(43, 16);
+            this.LBLDATOSKilometrajeSalida.Size = new System.Drawing.Size(0, 16);
             this.LBLDATOSKilometrajeSalida.TabIndex = 55;
-            this.LBLDATOSKilometrajeSalida.Text = "datos";
             // 
             // LBLKilometrajeSalida
             // 
@@ -198,9 +159,8 @@
             this.LBLDATOSGarantia.Location = new System.Drawing.Point(11, 273);
             this.LBLDATOSGarantia.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLDATOSGarantia.Name = "LBLDATOSGarantia";
-            this.LBLDATOSGarantia.Size = new System.Drawing.Size(43, 16);
+            this.LBLDATOSGarantia.Size = new System.Drawing.Size(0, 16);
             this.LBLDATOSGarantia.TabIndex = 53;
-            this.LBLDATOSGarantia.Text = "datos";
             // 
             // LBLGarantia
             // 
@@ -220,9 +180,8 @@
             this.LBLDATOSRetiro.Location = new System.Drawing.Point(11, 225);
             this.LBLDATOSRetiro.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLDATOSRetiro.Name = "LBLDATOSRetiro";
-            this.LBLDATOSRetiro.Size = new System.Drawing.Size(43, 16);
+            this.LBLDATOSRetiro.Size = new System.Drawing.Size(0, 16);
             this.LBLDATOSRetiro.TabIndex = 51;
-            this.LBLDATOSRetiro.Text = "datos";
             // 
             // LBLRetiro
             // 
@@ -253,9 +212,8 @@
             this.LBLDATOSVehiculo.Location = new System.Drawing.Point(11, 176);
             this.LBLDATOSVehiculo.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLDATOSVehiculo.Name = "LBLDATOSVehiculo";
-            this.LBLDATOSVehiculo.Size = new System.Drawing.Size(47, 16);
+            this.LBLDATOSVehiculo.Size = new System.Drawing.Size(0, 16);
             this.LBLDATOSVehiculo.TabIndex = 48;
-            this.LBLDATOSVehiculo.Text = "datos ";
             // 
             // CBX_BuscarPor
             // 
@@ -277,26 +235,6 @@
             this.LBLCliente.Size = new System.Drawing.Size(57, 16);
             this.LBLCliente.TabIndex = 47;
             this.LBLCliente.Text = "Cliente:";
-            // 
-            // CBX_NivelCombustible
-            // 
-            this.CBX_NivelCombustible.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBX_NivelCombustible.FormattingEnabled = true;
-            this.CBX_NivelCombustible.Location = new System.Drawing.Point(14, 96);
-            this.CBX_NivelCombustible.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
-            this.CBX_NivelCombustible.Name = "CBX_NivelCombustible";
-            this.CBX_NivelCombustible.Size = new System.Drawing.Size(258, 25);
-            this.CBX_NivelCombustible.TabIndex = 37;
-            // 
-            // LBLNivelCombustible
-            // 
-            this.LBLNivelCombustible.AutoSize = true;
-            this.LBLNivelCombustible.Location = new System.Drawing.Point(14, 77);
-            this.LBLNivelCombustible.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.LBLNivelCombustible.Name = "LBLNivelCombustible";
-            this.LBLNivelCombustible.Size = new System.Drawing.Size(255, 17);
-            this.LBLNivelCombustible.TabIndex = 34;
-            this.LBLNivelCombustible.Text = "Nivel de combustible a la devolucion:";
             // 
             // BTNCtrlCheckInBuscar
             // 
@@ -338,9 +276,66 @@
             this.LBLDatosCliente.Location = new System.Drawing.Point(11, 130);
             this.LBLDatosCliente.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLDatosCliente.Name = "LBLDatosCliente";
-            this.LBLDatosCliente.Size = new System.Drawing.Size(43, 16);
+            this.LBLDatosCliente.Size = new System.Drawing.Size(0, 16);
             this.LBLDatosCliente.TabIndex = 31;
-            this.LBLDatosCliente.Text = "datos";
+            // 
+            // TXT_CargosExtrasDaños
+            // 
+            this.TXT_CargosExtrasDaños.Location = new System.Drawing.Point(14, 153);
+            this.TXT_CargosExtrasDaños.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.TXT_CargosExtrasDaños.Name = "TXT_CargosExtrasDaños";
+            this.TXT_CargosExtrasDaños.Size = new System.Drawing.Size(258, 23);
+            this.TXT_CargosExtrasDaños.TabIndex = 59;
+            // 
+            // LBLCargosExtras
+            // 
+            this.LBLCargosExtras.AutoSize = true;
+            this.LBLCargosExtras.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.LBLCargosExtras.Location = new System.Drawing.Point(14, 132);
+            this.LBLCargosExtras.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.LBLCargosExtras.Name = "LBLCargosExtras";
+            this.LBLCargosExtras.Size = new System.Drawing.Size(170, 17);
+            this.LBLCargosExtras.TabIndex = 58;
+            this.LBLCargosExtras.Text = "Cargos extras por daños:";
+            // 
+            // TXT_CtrlCheckInKmDevolucion
+            // 
+            this.TXT_CtrlCheckInKmDevolucion.Location = new System.Drawing.Point(14, 43);
+            this.TXT_CtrlCheckInKmDevolucion.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.TXT_CtrlCheckInKmDevolucion.Name = "TXT_CtrlCheckInKmDevolucion";
+            this.TXT_CtrlCheckInKmDevolucion.Size = new System.Drawing.Size(258, 23);
+            this.TXT_CtrlCheckInKmDevolucion.TabIndex = 57;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.label1.Location = new System.Drawing.Point(14, 22);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(183, 17);
+            this.label1.TabIndex = 56;
+            this.label1.Text = "Kilometraje de devolución:";
+            // 
+            // CBX_NivelCombustible
+            // 
+            this.CBX_NivelCombustible.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBX_NivelCombustible.FormattingEnabled = true;
+            this.CBX_NivelCombustible.Location = new System.Drawing.Point(14, 96);
+            this.CBX_NivelCombustible.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
+            this.CBX_NivelCombustible.Name = "CBX_NivelCombustible";
+            this.CBX_NivelCombustible.Size = new System.Drawing.Size(258, 25);
+            this.CBX_NivelCombustible.TabIndex = 37;
+            // 
+            // LBLNivelCombustible
+            // 
+            this.LBLNivelCombustible.AutoSize = true;
+            this.LBLNivelCombustible.Location = new System.Drawing.Point(14, 77);
+            this.LBLNivelCombustible.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.LBLNivelCombustible.Name = "LBLNivelCombustible";
+            this.LBLNivelCombustible.Size = new System.Drawing.Size(255, 17);
+            this.LBLNivelCombustible.TabIndex = 34;
+            this.LBLNivelCombustible.Text = "Nivel de combustible a la devolucion:";
             // 
             // BTNCtrlCheckInCalcular
             // 
@@ -428,9 +423,8 @@
             this.LBLDATOSDiasUso.Location = new System.Drawing.Point(16, 47);
             this.LBLDATOSDiasUso.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLDATOSDiasUso.Name = "LBLDATOSDiasUso";
-            this.LBLDATOSDiasUso.Size = new System.Drawing.Size(43, 16);
+            this.LBLDATOSDiasUso.Size = new System.Drawing.Size(0, 16);
             this.LBLDATOSDiasUso.TabIndex = 48;
-            this.LBLDATOSDiasUso.Text = "datos";
             // 
             // LBLTarifaTotal
             // 
@@ -450,9 +444,8 @@
             this.LBLDATOSTarifaTotal.Location = new System.Drawing.Point(16, 94);
             this.LBLDATOSTarifaTotal.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLDATOSTarifaTotal.Name = "LBLDATOSTarifaTotal";
-            this.LBLDATOSTarifaTotal.Size = new System.Drawing.Size(43, 16);
+            this.LBLDATOSTarifaTotal.Size = new System.Drawing.Size(0, 16);
             this.LBLDATOSTarifaTotal.TabIndex = 50;
-            this.LBLDATOSTarifaTotal.Text = "datos";
             // 
             // LBLRecargoCombustible
             // 
@@ -472,9 +465,8 @@
             this.LBLDATOSRecargoCombustible.Location = new System.Drawing.Point(16, 142);
             this.LBLDATOSRecargoCombustible.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLDATOSRecargoCombustible.Name = "LBLDATOSRecargoCombustible";
-            this.LBLDATOSRecargoCombustible.Size = new System.Drawing.Size(43, 16);
+            this.LBLDATOSRecargoCombustible.Size = new System.Drawing.Size(0, 16);
             this.LBLDATOSRecargoCombustible.TabIndex = 52;
-            this.LBLDATOSRecargoCombustible.Text = "datos";
             // 
             // LBLCargosDaños
             // 
@@ -494,31 +486,29 @@
             this.LBLDATOSCargosDaños.Location = new System.Drawing.Point(16, 190);
             this.LBLDATOSCargosDaños.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLDATOSCargosDaños.Name = "LBLDATOSCargosDaños";
-            this.LBLDATOSCargosDaños.Size = new System.Drawing.Size(43, 16);
+            this.LBLDATOSCargosDaños.Size = new System.Drawing.Size(0, 16);
             this.LBLDATOSCargosDaños.TabIndex = 54;
-            this.LBLDATOSCargosDaños.Text = "datos";
             // 
             // LBLMontoFinal
             // 
             this.LBLMontoFinal.AutoSize = true;
-            this.LBLMontoFinal.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBLMontoFinal.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBLMontoFinal.Location = new System.Drawing.Point(16, 225);
             this.LBLMontoFinal.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLMontoFinal.Name = "LBLMontoFinal";
-            this.LBLMontoFinal.Size = new System.Drawing.Size(174, 16);
+            this.LBLMontoFinal.Size = new System.Drawing.Size(195, 18);
             this.LBLMontoFinal.TabIndex = 57;
             this.LBLMontoFinal.Text = "MONTO FINAL A COBRAR:";
             // 
             // LBLDATOSMontoFinal
             // 
             this.LBLDATOSMontoFinal.AutoSize = true;
-            this.LBLDATOSMontoFinal.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBLDATOSMontoFinal.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBLDATOSMontoFinal.Location = new System.Drawing.Point(16, 243);
             this.LBLDATOSMontoFinal.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLDATOSMontoFinal.Name = "LBLDATOSMontoFinal";
-            this.LBLDATOSMontoFinal.Size = new System.Drawing.Size(43, 16);
+            this.LBLDATOSMontoFinal.Size = new System.Drawing.Size(0, 18);
             this.LBLDATOSMontoFinal.TabIndex = 56;
-            this.LBLDATOSMontoFinal.Text = "datos";
             // 
             // CHK_GarantiaLiberada
             // 

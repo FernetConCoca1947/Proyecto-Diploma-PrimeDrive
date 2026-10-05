@@ -37,9 +37,6 @@ namespace Trabajo_practico_IS
             CBXidiomas.SelectedValue = Servicios.IDIOMAS.GetInstancia().IdIdiomaActual;
             CBXidiomas.SelectedIndexChanged += CBXidiomas_SelectedIndexChanged;
             ActualizarIdioma();
-            //CBX_Categoria.DataSource = GestorCategorias.Listar();
-            //CBX_Categoria.DisplayMember = "Nombre";
-            //CBX_Categoria.ValueMember = "Id";
 
             CBX_Categoria.Enabled = false;
             BTNCtrlResGenerar.Enabled = false;
@@ -328,14 +325,12 @@ namespace Trabajo_practico_IS
                 {
                     MessageBox.Show("No hay disponibilidad de ninguna categoría para las fechas y sucursal solicitadas. Intente con otras fechas.", "Sin Stock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                    // Apagamos los controles
                     CBX_Categoria.DataSource = null;
                     CBX_Categoria.Enabled = false;
                     BTNCtrlResGenerar.Enabled = false;
                 }
                 else
                 {
-                    // Encendemos y cargamos solo lo disponible
                     CBX_Categoria.DataSource = categoriasLibres;
                     CBX_Categoria.DisplayMember = "Nombre";
                     CBX_Categoria.ValueMember = "Id";

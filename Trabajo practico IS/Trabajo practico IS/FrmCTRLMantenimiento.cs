@@ -88,7 +88,6 @@ namespace Trabajo_practico_IS
             DGV_VehiculosRevision.DataSource = null;
             DGV_VehiculosRevision.DataSource = GestorVehiculos.ListarVehiculosPorEstado(10);
 
-            // Ocultar columnas irrelevantes si es necesario
             DGV_VehiculosRevision.Columns["Id"].Visible = false;
             DGV_VehiculosRevision.Columns["Sucursal"].Visible = false;
             DGV_VehiculosRevision.Columns["Categoria"].Visible = false;
@@ -98,7 +97,6 @@ namespace Trabajo_practico_IS
         private void CargarVehiculosMantenimiento()
         {
             DGV_VehiculosMantenimiento.DataSource = null;
-            // 3 = ID del estado "Mantenimiento"
             DGV_VehiculosMantenimiento.DataSource = GestorVehiculos.ListarVehiculosPorEstado(3);
             DGV_VehiculosMantenimiento.Columns["Id"].Visible = false;
             DGV_VehiculosMantenimiento.Columns["Sucursal"].Visible = false;
@@ -128,7 +126,6 @@ namespace Trabajo_practico_IS
             {
                 BE.VEHICULO autoSeleccionado = (BE.VEHICULO)DGV_VehiculosRevision.CurrentRow.DataBoundItem;
 
-                // Rellenamos el cuadro de texto de solo lectura con el reporte del mostrador
                 TXT_CtrlMantReporteRevision.Text = autoSeleccionado.ObservacionRevision;
             }
             else
@@ -143,16 +140,14 @@ namespace Trabajo_practico_IS
             {
                 BE.VEHICULO autoSeleccionado = (BE.VEHICULO)DGV_VehiculosMantenimiento.CurrentRow.DataBoundItem;
 
-                // Autocompletamos el kilometraje para acelerar la carga de datos
                 NUM_KmReal.Value = autoSeleccionado.KmActual;
 
-                // Desbloqueamos el panel de carga de datos
                 GB_DatosRemito.Enabled = true;
             }
             else
             {
-                //LimpiarControlesTaller();
-                GB_DatosRemito.Enabled = false; // Bloqueamos si no hay auto seleccionado
+                LimpiarControlesTaller();
+                GB_DatosRemito.Enabled = false;
             }
         }
         private void BTNCtrlMantDesestimar_Click(object sender, EventArgs e)
@@ -209,14 +204,12 @@ namespace Trabajo_practico_IS
         {
             try
             {
-                // 1. Validaciones visuales básicas
                 if (DGV_VehiculosMantenimiento.CurrentRow == null)
                     throw new Exception("Debe seleccionar un vehículo de la grilla para reincorporarlo.");
 
                 if (string.IsNullOrWhiteSpace(TXT_CtrlMantCosto.Text) || string.IsNullOrWhiteSpace(NUM_KmReal.Text))
                     throw new Exception("Debe completar el costo y el kilometraje real.");
 
-                // 2. Ensamblaje de la entidad con su vehículo anidado
                 BE.MANTENIMIENTO remito = new BE.MANTENIMIENTO
                 {
                     Vehiculo = (BE.VEHICULO)DGV_VehiculosMantenimiento.CurrentRow.DataBoundItem,
@@ -227,18 +220,15 @@ namespace Trabajo_practico_IS
                     TareasRealizadas = TXT_CtrlMantDetalleMantenimiento.Text
                 };
 
-                // 3. Ejecutamos la regla de negocio (validaciones lógicas e impacto en SQL)
                 GestorMantenimiento.RegistrarRetornoTaller(remito);
 
                 MessageBox.Show($"¡Operación exitosa!\nEl vehículo {remito.Vehiculo.Patente} ha sido reincorporado y ya está DISPONIBLE en el mostrador.", "Alta de Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // 4. Refrescamos la pantalla
                 CargarVehiculosMantenimiento();
                 LimpiarControlesTaller();
             }
             catch (FormatException)
             {
-                // Captura específica por si el usuario escribe letras en el costo o los kilómetros
                 MessageBox.Show("El costo y el kilometraje deben ser valores numéricos válidos.", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
@@ -251,7 +241,6 @@ namespace Trabajo_practico_IS
         {
             try
             {
-                // 1. Validación
                 if (CBXVehiculoHistorial.SelectedItem == null)
                 {
                     MessageBox.Show("Por favor, seleccione un vehículo para auditar su historial.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -270,25 +259,17 @@ namespace Trabajo_practico_IS
                 if (DGV_HistorialMantenimiento.Columns["Vehiculo"] != null)
                     DGV_HistorialMantenimiento.Columns["Vehiculo"].Visible = false;
 
-                // =========================================================
-                // 4. CÁLCULO DE MÉTRICAS USANDO LINQ
-                // =========================================================
-
                 if (historialMantenimientos.Count > 0)
                 {
-                    // Cantidad de ingresos (simplemente contamos los elementos de la lista)
                     int cantidadIngresos = historialMantenimientos.Count;
 
-                    // Gasto acumulado (Sumamos la propiedad 'Costo' de todos los objetos en la lista)[cite: 3]
                     decimal gastoTotal = historialMantenimientos.Sum(remito => remito.Costo);
 
-                    // Reflejamos en la interfaz gráfica
                     LBLDATOSCantidadIngresos.Text = cantidadIngresos.ToString();
                     LBLDATOSGastoAcumulado.Text = $"$ {gastoTotal:N2}";
                 }
                 else
                 {
-                    // Si el auto nunca fue al taller, mostramos la grilla vacía y las métricas en cero
                     LBLDATOSCantidadIngresos.Text = "0";
                     LBLDATOSGastoAcumulado.Text = "$ 0.00";
                     MessageBox.Show("Este vehículo no registra mantenimientos previos en su legajo histórico.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);

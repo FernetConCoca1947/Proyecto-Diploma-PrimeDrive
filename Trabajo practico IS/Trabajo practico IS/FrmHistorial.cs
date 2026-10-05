@@ -309,7 +309,6 @@ namespace Trabajo_practico_IS
 
         private void ActualizarEstadoBotonRestaurar()
         {
-            // 1. Si no hay nada seleccionado, apagamos el botón por seguridad
             if (DGVHistorial.CurrentRow == null || DGVHistorial.CurrentRow.DataBoundItem == null || CBX_Entidad.SelectedItem == null)
             {
                 BTNrestaurar.Enabled = false;

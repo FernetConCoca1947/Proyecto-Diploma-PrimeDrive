@@ -15,7 +15,7 @@ namespace BLL
 
         public void GenerarContrato(BE.CONTRATO nuevoContrato)
         {
-            // 1. Reglas de negocio restrictivas
+
             if (nuevoContrato.Reserva.Estado.IdEstado != 6)
                 throw new Exception("La reserva debe estar 'Confirmada' para proceder al Check-out.");
 
@@ -25,11 +25,9 @@ namespace BLL
             if (nuevoContrato.GarantiaRetenida <= 0)
                 throw new Exception("Debe registrar un monto de retención de garantía válido.");
 
-            // 2. Configuración automática de sistema
             nuevoContrato.FechaHoraRetiro = DateTime.Now;
             nuevoContrato.Estado = new BE.ESTADO { IdEstado = 8, Nombre = "Abierto" };
 
-            // 3. Ejecución en la base de datos
             mapper.AltaTransaccional(nuevoContrato);
 
             GestorBitacora.RegistrarEvento("Contrato", $"Check-out generado. Contrato ID: {nuevoContrato.Id} - Vehículo: {nuevoContrato.Vehiculo.Patente}", 2);
@@ -37,25 +35,19 @@ namespace BLL
 
         public decimal CalcularLiquidacionFinal(BE.CONTRATO contrato, string nivelCombustible, decimal recargoDanosManual)
         {
-            // 1. Validaciones de Integridad
             if (contrato.KmEntrada == null)
                 throw new Exception("Debe registrar el kilometraje de entrada del vehículo.");
 
             if (contrato.KmEntrada < contrato.KmSalida)
                 throw new Exception($"Error de auditoría: El kilometraje actual ({contrato.KmEntrada}) no puede ser menor al de salida ({contrato.KmSalida}).");
 
-            // 2. Cálculo de Días Reales de Uso
             contrato.FechaHoraDevolucion = DateTime.Now;
             TimeSpan tiempoUso = contrato.FechaHoraDevolucion.Value - contrato.FechaHoraRetiro;
 
-            // Regla comercial: Todo alquiler cobra un mínimo de 1 día, incluso si se devuelve a las pocas horas.
             int diasReales = tiempoUso.Days > 0 ? tiempoUso.Days : 1;
 
-            // 3. Cálculo de Tarifa Base
             decimal tarifaBase = diasReales * contrato.Reserva.Categoria.TarifaDiaria;
 
-
-            // 5. Auditoría de Combustible (Penalidad escalonada por tanque incompleto)
             decimal multaCombustible = 0;
             switch (nivelCombustible)
             {
@@ -74,7 +66,6 @@ namespace BLL
                     break;
             }
 
-            // 6. Consolidación del Monto Final
             contrato.MontoFinal = tarifaBase + multaCombustible + recargoDanosManual;
 
             return contrato.MontoFinal.Value;
