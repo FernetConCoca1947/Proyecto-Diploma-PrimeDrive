@@ -26,9 +26,10 @@ namespace DAL
                 paramContrato.Add(acceso.CrearParametro("@kmSalida", contrato.KmSalida));
                 paramContrato.Add(acceso.CrearParametro("@garantiaRetenida", contrato.GarantiaRetenida));
                 paramContrato.Add(acceso.CrearParametro("@idEstado", contrato.Estado.IdEstado));
-                new SqlParameter("@Observaciones", string.IsNullOrWhiteSpace(contrato.Observaciones)
+                paramContrato.Add(new SqlParameter("@Observaciones", string.IsNullOrWhiteSpace(contrato.Observaciones)
                             ? (object)DBNull.Value
-                            : contrato.Observaciones);
+                            : contrato.Observaciones));
+
                 contrato.Id = acceso.LeerEscalarTransaccional("INSERTAR_CONTRATO", paramContrato, transaccion);
 
                 List<SqlParameter> paramVehiculo = new List<SqlParameter>();
