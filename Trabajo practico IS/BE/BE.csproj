@@ -56,6 +56,7 @@
     <Compile Include="PERMISO_COMPUESTO.cs" />
     <Compile Include="PERMISO_SIMPLE.cs" />
     <Compile Include="PRODUCTO.cs" />
+    <Compile Include="PROMOCION.cs" />
     <Compile Include="RESERVA.cs" />
     <Compile Include="SUCURSAL.cs" />
     <Compile Include="TRADUCCION.cs" />
