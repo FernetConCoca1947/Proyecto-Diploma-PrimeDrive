@@ -52,6 +52,7 @@
             this.LBLbienvenida = new System.Windows.Forms.Label();
             this.CBXidiomas = new System.Windows.Forms.ComboBox();
             this.LBLidioma = new System.Windows.Forms.Label();
+            this.inteligenciaComercialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,10 +61,10 @@
             this.BtnCerrarSesion.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BtnCerrarSesion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCerrarSesion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnCerrarSesion.Location = new System.Drawing.Point(606, 386);
-            this.BtnCerrarSesion.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnCerrarSesion.Location = new System.Drawing.Point(693, 410);
+            this.BtnCerrarSesion.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.BtnCerrarSesion.Name = "BtnCerrarSesion";
-            this.BtnCerrarSesion.Size = new System.Drawing.Size(145, 33);
+            this.BtnCerrarSesion.Size = new System.Drawing.Size(166, 35);
             this.BtnCerrarSesion.TabIndex = 0;
             this.BtnCerrarSesion.Text = "Cerrar Sesion";
             this.BtnCerrarSesion.UseVisualStyleBackColor = false;
@@ -76,12 +77,13 @@
             this.alquileresToolStripMenuItem,
             this.gestionDeFlotaToolStripMenuItem,
             this.clientesToolStripMenuItem,
+            this.inteligenciaComercialToolStripMenuItem,
             this.AdministracionMenuItem,
             this.BitacoraToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(762, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(871, 28);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -240,8 +242,8 @@
             this.LBLbienvenida.AutoSize = true;
             this.LBLbienvenida.Font = new System.Drawing.Font("Century Gothic", 30F);
             this.LBLbienvenida.ForeColor = System.Drawing.SystemColors.Window;
-            this.LBLbienvenida.Location = new System.Drawing.Point(4, 44);
-            this.LBLbienvenida.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLbienvenida.Location = new System.Drawing.Point(5, 47);
+            this.LBLbienvenida.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLbienvenida.Name = "LBLbienvenida";
             this.LBLbienvenida.Size = new System.Drawing.Size(239, 49);
             this.LBLbienvenida.TabIndex = 9;
@@ -252,10 +254,10 @@
             this.CBXidiomas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBXidiomas.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBXidiomas.FormattingEnabled = true;
-            this.CBXidiomas.Location = new System.Drawing.Point(607, 64);
-            this.CBXidiomas.Margin = new System.Windows.Forms.Padding(4);
+            this.CBXidiomas.Location = new System.Drawing.Point(693, 68);
+            this.CBXidiomas.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.CBXidiomas.Name = "CBXidiomas";
-            this.CBXidiomas.Size = new System.Drawing.Size(140, 25);
+            this.CBXidiomas.Size = new System.Drawing.Size(166, 25);
             this.CBXidiomas.TabIndex = 10;
             this.CBXidiomas.SelectedIndexChanged += new System.EventHandler(this.CBXidiomas_SelectedIndexChanged);
             // 
@@ -264,27 +266,35 @@
             this.LBLidioma.AutoSize = true;
             this.LBLidioma.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBLidioma.ForeColor = System.Drawing.SystemColors.Window;
-            this.LBLidioma.Location = new System.Drawing.Point(603, 44);
-            this.LBLidioma.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LBLidioma.Location = new System.Drawing.Point(690, 47);
+            this.LBLidioma.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLidioma.Name = "LBLidioma";
             this.LBLidioma.Size = new System.Drawing.Size(59, 17);
             this.LBLidioma.TabIndex = 11;
             this.LBLidioma.Text = "Idiomas";
             // 
+            // inteligenciaComercialToolStripMenuItem
+            // 
+            this.inteligenciaComercialToolStripMenuItem.Name = "inteligenciaComercialToolStripMenuItem";
+            this.inteligenciaComercialToolStripMenuItem.Size = new System.Drawing.Size(186, 24);
+            this.inteligenciaComercialToolStripMenuItem.Tag = "PROMOCIONES";
+            this.inteligenciaComercialToolStripMenuItem.Text = "Inteligencia comercial";
+            this.inteligenciaComercialToolStripMenuItem.Click += new System.EventHandler(this.inteligenciaComercialToolStripMenuItem_Click);
+            // 
             // FrmMenuPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(105)))));
-            this.ClientSize = new System.Drawing.Size(762, 428);
+            this.ClientSize = new System.Drawing.Size(871, 455);
             this.Controls.Add(this.LBLidioma);
             this.Controls.Add(this.CBXidiomas);
             this.Controls.Add(this.LBLbienvenida);
             this.Controls.Add(this.BtnCerrarSesion);
             this.Controls.Add(this.menuStrip1);
-            this.Font = new System.Drawing.Font("Century Gothic", 8.25F);
+            this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "FrmMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prime Drive";
@@ -323,6 +333,7 @@
         private System.Windows.Forms.ToolStripMenuItem vehiculosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inteligenciaComercialToolStripMenuItem;
     }
 }
 

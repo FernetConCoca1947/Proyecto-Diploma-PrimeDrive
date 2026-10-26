@@ -48,7 +48,7 @@ namespace Trabajo_practico_IS
             CBX_SucursalRetiro.DisplayMember = "Nombre";
             CBX_SucursalDevolucion.DataSource = new List<BE.SUCURSAL>(listaSucursales);
             CBX_SucursalDevolucion.DisplayMember = "Nombre";
-            ActualizarIdioma();
+            //ActualizarIdioma();
 
             EnlazarReservas();
             ActualizarEstadoBotones();

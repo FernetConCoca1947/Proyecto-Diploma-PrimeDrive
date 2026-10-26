@@ -290,6 +290,14 @@ namespace Trabajo_practico_IS
             frmMantenimiento.ShowDialog();
             this.Show();
         }
+
+        private void inteligenciaComercialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FrmPromociones frmPromociones = new FrmPromociones();
+            frmPromociones.ShowDialog();
+            this.Show();
+        }
     }
 }
 
