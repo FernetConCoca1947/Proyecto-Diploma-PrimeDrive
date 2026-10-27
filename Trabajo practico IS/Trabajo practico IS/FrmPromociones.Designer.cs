@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LBLidiomas = new System.Windows.Forms.Label();
             this.CBXidiomas = new System.Windows.Forms.ComboBox();
             this.BTNvolveralmenu = new System.Windows.Forms.Button();
@@ -58,10 +58,17 @@
             this.GB_PromocionesVigentes = new System.Windows.Forms.GroupBox();
             this.DGV_PromosDiagnosticos = new System.Windows.Forms.DataGridView();
             this.DGV_PromocionesVigentes = new System.Windows.Forms.DataGridView();
+            this.LBL_DatosTipoAccion = new System.Windows.Forms.Label();
+            this.LBL_DatosValorCatOrigen = new System.Windows.Forms.Label();
+            this.LBL_DatosValorCatObjetivo = new System.Windows.Forms.Label();
+            this.LBL_DatosTarifaPromo = new System.Windows.Forms.Label();
+            this.BTN_AprobarPromocion = new System.Windows.Forms.Button();
+            this.BTN_DesactivarPromocion = new System.Windows.Forms.Button();
             this.GB_ParametrosAnalisis.SuspendLayout();
             this.GB_Diagnostico.SuspendLayout();
             this.GB_AprobacionPromo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Descuento)).BeginInit();
+            this.GB_PromocionesVigentes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_PromosDiagnosticos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_PromocionesVigentes)).BeginInit();
             this.SuspendLayout();
@@ -194,9 +201,9 @@
             this.GB_Diagnostico.Controls.Add(this.LBL_DetalleDiagnostico);
             this.GB_Diagnostico.Controls.Add(this.TXT_PromosDetalleAlerta);
             this.GB_Diagnostico.ForeColor = System.Drawing.SystemColors.Window;
-            this.GB_Diagnostico.Location = new System.Drawing.Point(23, 117);
+            this.GB_Diagnostico.Location = new System.Drawing.Point(23, 98);
             this.GB_Diagnostico.Name = "GB_Diagnostico";
-            this.GB_Diagnostico.Size = new System.Drawing.Size(574, 422);
+            this.GB_Diagnostico.Size = new System.Drawing.Size(794, 441);
             this.GB_Diagnostico.TabIndex = 38;
             this.GB_Diagnostico.TabStop = false;
             this.GB_Diagnostico.Text = "Diagnóstico";
@@ -221,6 +228,11 @@
             // 
             // GB_AprobacionPromo
             // 
+            this.GB_AprobacionPromo.Controls.Add(this.BTN_AprobarPromocion);
+            this.GB_AprobacionPromo.Controls.Add(this.LBL_DatosTarifaPromo);
+            this.GB_AprobacionPromo.Controls.Add(this.LBL_DatosValorCatObjetivo);
+            this.GB_AprobacionPromo.Controls.Add(this.LBL_DatosValorCatOrigen);
+            this.GB_AprobacionPromo.Controls.Add(this.LBL_DatosTipoAccion);
             this.GB_AprobacionPromo.Controls.Add(this.NUD_Descuento);
             this.GB_AprobacionPromo.Controls.Add(this.TXT_MotivoPromo);
             this.GB_AprobacionPromo.Controls.Add(this.LBL_MotivoPromo);
@@ -232,7 +244,7 @@
             this.GB_AprobacionPromo.Controls.Add(this.TXT_NombrePromo);
             this.GB_AprobacionPromo.Controls.Add(this.LBLNombrePromo);
             this.GB_AprobacionPromo.ForeColor = System.Drawing.SystemColors.Window;
-            this.GB_AprobacionPromo.Location = new System.Drawing.Point(628, 104);
+            this.GB_AprobacionPromo.Location = new System.Drawing.Point(842, 98);
             this.GB_AprobacionPromo.Name = "GB_AprobacionPromo";
             this.GB_AprobacionPromo.Size = new System.Drawing.Size(512, 460);
             this.GB_AprobacionPromo.TabIndex = 39;
@@ -261,6 +273,7 @@
             0,
             0,
             0});
+            this.NUD_Descuento.ValueChanged += new System.EventHandler(this.NUD_Descuento_ValueChanged);
             // 
             // TXT_MotivoPromo
             // 
@@ -350,10 +363,11 @@
             // 
             // GB_PromocionesVigentes
             // 
+            this.GB_PromocionesVigentes.Controls.Add(this.BTN_DesactivarPromocion);
             this.GB_PromocionesVigentes.ForeColor = System.Drawing.SystemColors.Window;
             this.GB_PromocionesVigentes.Location = new System.Drawing.Point(23, 564);
             this.GB_PromocionesVigentes.Name = "GB_PromocionesVigentes";
-            this.GB_PromocionesVigentes.Size = new System.Drawing.Size(832, 274);
+            this.GB_PromocionesVigentes.Size = new System.Drawing.Size(1117, 305);
             this.GB_PromocionesVigentes.TabIndex = 40;
             this.GB_PromocionesVigentes.TabStop = false;
             this.GB_PromocionesVigentes.Text = "Promociones y upgrades activos";
@@ -362,45 +376,114 @@
             // 
             this.DGV_PromosDiagnosticos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_PromosDiagnosticos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGV_PromosDiagnosticos.DefaultCellStyle = dataGridViewCellStyle1;
-            this.DGV_PromosDiagnosticos.Location = new System.Drawing.Point(47, 149);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGV_PromosDiagnosticos.DefaultCellStyle = dataGridViewCellStyle3;
+            this.DGV_PromosDiagnosticos.Location = new System.Drawing.Point(47, 125);
             this.DGV_PromosDiagnosticos.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.DGV_PromosDiagnosticos.Name = "DGV_PromosDiagnosticos";
-            this.DGV_PromosDiagnosticos.Size = new System.Drawing.Size(520, 214);
+            this.DGV_PromosDiagnosticos.Size = new System.Drawing.Size(744, 238);
             this.DGV_PromosDiagnosticos.TabIndex = 41;
+            this.DGV_PromosDiagnosticos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGV_PromosDiagnosticos_CellFormatting);
             this.DGV_PromosDiagnosticos.SelectionChanged += new System.EventHandler(this.DGV_PromosDiagnosticos_SelectionChanged);
             // 
             // DGV_PromocionesVigentes
             // 
             this.DGV_PromocionesVigentes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_PromocionesVigentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGV_PromocionesVigentes.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DGV_PromocionesVigentes.Location = new System.Drawing.Point(47, 600);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGV_PromocionesVigentes.DefaultCellStyle = dataGridViewCellStyle4;
+            this.DGV_PromocionesVigentes.Location = new System.Drawing.Point(41, 589);
             this.DGV_PromocionesVigentes.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.DGV_PromocionesVigentes.Name = "DGV_PromocionesVigentes";
-            this.DGV_PromocionesVigentes.Size = new System.Drawing.Size(774, 214);
+            this.DGV_PromocionesVigentes.Size = new System.Drawing.Size(1085, 214);
             this.DGV_PromocionesVigentes.TabIndex = 42;
+            // 
+            // LBL_DatosTipoAccion
+            // 
+            this.LBL_DatosTipoAccion.AutoSize = true;
+            this.LBL_DatosTipoAccion.Location = new System.Drawing.Point(8, 105);
+            this.LBL_DatosTipoAccion.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.LBL_DatosTipoAccion.Name = "LBL_DatosTipoAccion";
+            this.LBL_DatosTipoAccion.Size = new System.Drawing.Size(104, 17);
+            this.LBL_DatosTipoAccion.TabIndex = 39;
+            this.LBL_DatosTipoAccion.Text = "Tipo de Acción";
+            // 
+            // LBL_DatosValorCatOrigen
+            // 
+            this.LBL_DatosValorCatOrigen.AutoSize = true;
+            this.LBL_DatosValorCatOrigen.Location = new System.Drawing.Point(9, 149);
+            this.LBL_DatosValorCatOrigen.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.LBL_DatosValorCatOrigen.Name = "LBL_DatosValorCatOrigen";
+            this.LBL_DatosValorCatOrigen.Size = new System.Drawing.Size(99, 17);
+            this.LBL_DatosValorCatOrigen.TabIndex = 40;
+            this.LBL_DatosValorCatOrigen.Text = "Cat. saturada";
+            // 
+            // LBL_DatosValorCatObjetivo
+            // 
+            this.LBL_DatosValorCatObjetivo.AutoSize = true;
+            this.LBL_DatosValorCatObjetivo.Location = new System.Drawing.Point(9, 191);
+            this.LBL_DatosValorCatObjetivo.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.LBL_DatosValorCatObjetivo.Name = "LBL_DatosValorCatObjetivo";
+            this.LBL_DatosValorCatObjetivo.Size = new System.Drawing.Size(95, 17);
+            this.LBL_DatosValorCatObjetivo.TabIndex = 41;
+            this.LBL_DatosValorCatObjetivo.Text = "Cat. objetivo";
+            // 
+            // LBL_DatosTarifaPromo
+            // 
+            this.LBL_DatosTarifaPromo.AutoSize = true;
+            this.LBL_DatosTarifaPromo.Location = new System.Drawing.Point(9, 297);
+            this.LBL_DatosTarifaPromo.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.LBL_DatosTarifaPromo.Name = "LBL_DatosTarifaPromo";
+            this.LBL_DatosTarifaPromo.Size = new System.Drawing.Size(89, 17);
+            this.LBL_DatosTarifaPromo.TabIndex = 42;
+            this.LBL_DatosTarifaPromo.Text = "Tarifa Promo";
+            // 
+            // BTN_AprobarPromocion
+            // 
+            this.BTN_AprobarPromocion.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.BTN_AprobarPromocion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_AprobarPromocion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTN_AprobarPromocion.Location = new System.Drawing.Point(325, 326);
+            this.BTN_AprobarPromocion.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.BTN_AprobarPromocion.Name = "BTN_AprobarPromocion";
+            this.BTN_AprobarPromocion.Size = new System.Drawing.Size(154, 35);
+            this.BTN_AprobarPromocion.TabIndex = 47;
+            this.BTN_AprobarPromocion.Text = "Aprobar promocion";
+            this.BTN_AprobarPromocion.UseVisualStyleBackColor = false;
+            this.BTN_AprobarPromocion.Click += new System.EventHandler(this.BTN_AprobarPromocion_Click);
+            // 
+            // BTN_DesactivarPromocion
+            // 
+            this.BTN_DesactivarPromocion.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.BTN_DesactivarPromocion.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_DesactivarPromocion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTN_DesactivarPromocion.Location = new System.Drawing.Point(949, 245);
+            this.BTN_DesactivarPromocion.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.BTN_DesactivarPromocion.Name = "BTN_DesactivarPromocion";
+            this.BTN_DesactivarPromocion.Size = new System.Drawing.Size(154, 48);
+            this.BTN_DesactivarPromocion.TabIndex = 48;
+            this.BTN_DesactivarPromocion.Text = "Desactivar promocion";
+            this.BTN_DesactivarPromocion.UseVisualStyleBackColor = false;
+            this.BTN_DesactivarPromocion.Click += new System.EventHandler(this.BTN_DesactivarPromocion_Click);
             // 
             // FrmPromociones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(105)))));
-            this.ClientSize = new System.Drawing.Size(1368, 850);
+            this.ClientSize = new System.Drawing.Size(1368, 881);
             this.Controls.Add(this.DGV_PromocionesVigentes);
             this.Controls.Add(this.DGV_PromosDiagnosticos);
             this.Controls.Add(this.GB_PromocionesVigentes);
@@ -413,6 +496,7 @@
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmPromociones";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmPromociones";
             this.Load += new System.EventHandler(this.FrmPromociones_Load);
             this.GB_ParametrosAnalisis.ResumeLayout(false);
@@ -422,6 +506,7 @@
             this.GB_AprobacionPromo.ResumeLayout(false);
             this.GB_AprobacionPromo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Descuento)).EndInit();
+            this.GB_PromocionesVigentes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_PromosDiagnosticos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_PromocionesVigentes)).EndInit();
             this.ResumeLayout(false);
@@ -459,5 +544,11 @@
         private System.Windows.Forms.DataGridView DGV_PromocionesVigentes;
         private System.Windows.Forms.Label LBL_DetalleDiagnostico;
         private System.Windows.Forms.Button BTN_AnalizarDemanda;
+        private System.Windows.Forms.Button BTN_AprobarPromocion;
+        private System.Windows.Forms.Label LBL_DatosTarifaPromo;
+        private System.Windows.Forms.Label LBL_DatosValorCatObjetivo;
+        private System.Windows.Forms.Label LBL_DatosValorCatOrigen;
+        private System.Windows.Forms.Label LBL_DatosTipoAccion;
+        private System.Windows.Forms.Button BTN_DesactivarPromocion;
     }
 }

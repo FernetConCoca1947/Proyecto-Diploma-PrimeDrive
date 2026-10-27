@@ -40,7 +40,7 @@ namespace Trabajo_practico_IS
             dateTimeHasta.Value = DateTime.Today.AddDays(7);
 
             GB_AprobacionPromo.Enabled = false;
-            //CargarGrillaPromocionesVigentes();
+            CargarGrillaPromocionesVigentes();
             ActualizarIdioma();
         }
 
@@ -155,17 +155,17 @@ namespace Trabajo_practico_IS
                 {
                     GB_AprobacionPromo.Enabled = true;
 
-                    //LBL_ValorTipoAccion.Text = item.TipoAccionSugerida.ToUpper();
-                    LBL_ValorCatObjetivo.Text = $"{item.Categoria.Nombre} ($ {item.Categoria.TarifaDiaria:N2})";
+                    LBL_DatosTipoAccion.Text = item.TipoAccionSugerida.ToUpper();
+                    LBL_DatosValorCatObjetivo.Text = $"{item.Categoria.Nombre} ($ {item.Categoria.TarifaDiaria:N2})";
 
                     if (item.TipoAccionSugerida == "Upgrade Estratégico" && item.CategoriaOrigenSaturada != null)
                     {
-                        LBL_ValorCatOrigen.Text = $"{item.CategoriaOrigenSaturada.Nombre} ($ {item.CategoriaOrigenSaturada.TarifaDiaria:N2})";
+                        LBL_DatosValorCatOrigen.Text = $"{item.CategoriaOrigenSaturada.Nombre} ($ {item.CategoriaOrigenSaturada.TarifaDiaria:N2})";
                         TXT_NombrePromo.Text = $"Upgrade {item.CategoriaOrigenSaturada.Nombre} a {item.Categoria.Nombre}";
                     }
                     else
                     {
-                        LBL_ValorCatOrigen.Text = "N/A (Descuento Directo)";
+                        LBL_DatosValorCatOrigen.Text = "N/A (Descuento Directo)";
                         TXT_NombrePromo.Text = $"Promo Baja Demanda - {item.Categoria.Nombre}";
                     }
 
@@ -174,17 +174,160 @@ namespace Trabajo_practico_IS
                     NUD_Descuento.Value = descSugerido;
 
                     TXT_MotivoPromo.Text = item.ExplicacionDetallada;
-                    //RecalcularTarifaEnVivo();
+                    RecalcularTarifaEnVivo();
                 }
                 else
                 {
-                    //LimpiarPanelConfiguracion();
+                    LimpiarPanelAprobacion();
                 }
             }
             else
             {
                 TXT_PromosDetalleAlerta.Clear();
-                //LimpiarPanelConfiguracion();
+                LimpiarPanelAprobacion();
+            }
+        }
+
+        private void DGV_PromosDiagnosticos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && DGV_PromosDiagnosticos.Rows[e.RowIndex].DataBoundItem is BE.DIAGNOSTICO_OCUPACION item)
+            {
+                if (item.TipoAccionSugerida == "Upgrade Estratégico")
+                    DGV_PromosDiagnosticos.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(212, 237, 218); // Verde suave
+                else if (item.TipoAccionSugerida == "Baja Demanda")
+                    DGV_PromosDiagnosticos.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(255, 243, 205); // Amarillo suave
+                else if (item.PorcentajeOcupacion >= 80)
+                    DGV_PromosDiagnosticos.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(248, 215, 218); // Rojo suave
+            }
+        }
+
+        private void RecalcularTarifaEnVivo()
+        {
+            if (DiagnosticoSeleccionado != null && DiagnosticoSeleccionado.Categoria != null)
+            {
+                decimal tarifaBase = DiagnosticoSeleccionado.Categoria.TarifaDiaria;
+                decimal porcentaje = NUD_Descuento.Value;
+                decimal tarifaFinal = Math.Round(tarifaBase * (1 - (porcentaje / 100m)), 2);
+
+                LBL_DatosTarifaPromo.Text = $"$ {tarifaFinal:N2} / día";
+            }
+        }
+
+        private void NUD_Descuento_ValueChanged(object sender, EventArgs e)
+        {
+            RecalcularTarifaEnVivo();
+        }
+
+        private void BTN_AprobarPromocion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DiagnosticoSeleccionado == null || DiagnosticoSeleccionado.TipoAccionSugerida == "Ninguna")
+                    throw new Exception("Debe seleccionar una alerta de Baja Demanda o Upgrade Estratégico en la grilla.");
+
+                if (string.IsNullOrWhiteSpace(TXT_NombrePromo.Text))
+                    throw new Exception("Debe ingresar un nombre identificatorio para la promoción.");
+
+                BE.SUCURSAL sucursalElegida = (BE.SUCURSAL)CBX_Sucursal.SelectedItem;
+
+                BE.PROMOCION nuevaPromo = new BE.PROMOCION
+                {
+                    Nombre = TXT_NombrePromo.Text.Trim(),
+                    TipoPromocion = DiagnosticoSeleccionado.TipoAccionSugerida,
+                    Sucursal = sucursalElegida,
+                    CategoriaObjetivo = DiagnosticoSeleccionado.Categoria,
+                    CategoriaOrigenUpgrade = DiagnosticoSeleccionado.CategoriaOrigenSaturada,
+                    PorcentajeDescuento = NUD_Descuento.Value,
+                    FechaDesde = dateTimeDesde.Value.Date,
+                    FechaHasta = dateTimeHasta.Value.Date,
+                    Motivo = TXT_MotivoPromo.Text.Trim(),
+                    Activa = true
+                };
+
+                // La BLL valida fechas, rentabilidad y solapamiento (Flujo Alternativo 4.1) e inserta en BD
+                GestorPromociones.AprobarPromocion(nuevaPromo);
+
+                GestorBitacora.RegistrarEvento(
+                    "Inteligencia Comercial",
+                    $"Se lanzó {nuevaPromo.TipoPromocion}: {nuevaPromo.Nombre} ({nuevaPromo.PorcentajeDescuento}% OFF)",
+                    2);
+
+                MessageBox.Show(
+                    $"¡{nuevaPromo.TipoPromocion} activada con éxito!\nLa tarifa bonificada de {nuevaPromo.CategoriaObjetivo.Nombre} ya se encuentra vigente en el mostrador de {nuevaPromo.Sucursal.Nombre}.",
+                    "Promoción Publicada",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                CargarGrillaPromocionesVigentes();
+                LimpiarPanelAprobacion();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Validación Comercial", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void LimpiarPanelAprobacion()
+        {
+            GB_AprobacionPromo.Enabled = false;
+            TXT_NombrePromo.Clear();
+            LBL_DatosTipoAccion.Text = "-";
+            LBL_DatosValorCatOrigen.Text = "-";
+            LBL_DatosValorCatObjetivo.Text = "-";
+            LBL_DatosTarifaPromo.Text = "$ 0.00 / día";
+            TXT_MotivoPromo.Clear();
+        }
+
+        private void CargarGrillaPromocionesVigentes()
+        {
+            try
+            {
+                DGV_PromocionesVigentes.DataSource = null;
+                DGV_PromocionesVigentes.DataSource = GestorPromociones.ListarPromocionesActivas();
+                DGV_PromocionesVigentes.ReadOnly = true;
+                DGV_PromocionesVigentes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                DGV_PromocionesVigentes.MultiSelect = false;
+
+                if (DGV_PromocionesVigentes.Columns["Activa"] != null)
+                    DGV_PromocionesVigentes.Columns["Activa"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar promociones vigentes: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BTN_DesactivarPromocion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DGV_PromocionesVigentes.CurrentRow == null)
+                    throw new Exception("Seleccione una promoción vigente de la grilla inferior para desactivarla.");
+
+                BE.PROMOCION promoSeleccionada = (BE.PROMOCION)DGV_PromocionesVigentes.CurrentRow.DataBoundItem;
+
+                DialogResult confirmacion = MessageBox.Show(
+                    $"¿Está seguro de que desea desactivar la promoción '{promoSeleccionada.Nombre}'?",
+                    "Confirmar Baja Comercial",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirmacion == DialogResult.Yes)
+                {
+                    GestorPromociones.DesactivarPromocion(promoSeleccionada.IdPromocion);
+
+                    GestorBitacora.RegistrarEvento(
+                        "Inteligencia Comercial",
+                        $"Se desactivó la promoción ID #{promoSeleccionada.IdPromocion}: {promoSeleccionada.Nombre}",
+                        2);
+
+                    MessageBox.Show("La promoción fue desactivada y dejó de aplicarse en mostrador.", "Baja Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarGrillaPromocionesVigentes();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
