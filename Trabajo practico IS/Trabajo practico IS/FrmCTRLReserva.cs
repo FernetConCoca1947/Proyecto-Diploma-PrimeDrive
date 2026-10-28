@@ -334,7 +334,7 @@ namespace Trabajo_practico_IS
                 {
                     CBX_Categoria.DataSource = categoriasLibres;
                     //CBX_Categoria.DisplayMember = "Nombre";
-                    CBX_Categoria.ValueMember = "Id";
+                    //CBX_Categoria.ValueMember = "Id";
 
                     CBX_Categoria.Enabled = true;
                     BTNCtrlResGenerar.Enabled = true;

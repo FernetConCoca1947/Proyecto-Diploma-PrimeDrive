@@ -130,6 +130,14 @@ namespace Trabajo_practico_IS
             DGV_PromosDiagnosticos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGV_PromosDiagnosticos.MultiSelect = false;
 
+            if (DGV_PromosDiagnosticos.Columns["LucroCesante"] != null)
+            {
+                DGV_PromosDiagnosticos.Columns["LucroCesante"].HeaderText = "Lucro Cesante ($)";
+                DGV_PromosDiagnosticos.Columns["LucroCesante"].DefaultCellStyle.Format = "C2";
+            }
+            if (DGV_PromosDiagnosticos.Columns["UnidadesOciosas"] != null)
+                DGV_PromosDiagnosticos.Columns["UnidadesOciosas"].Visible = false;
+
             // Ocultamos las columnas técnicas auxiliares que ya se ven en el panel derecho
             if (DGV_PromosDiagnosticos.Columns["TipoAccionSugerida"] != null)
                 DGV_PromosDiagnosticos.Columns["TipoAccionSugerida"].Visible = false;
@@ -210,6 +218,11 @@ namespace Trabajo_practico_IS
                 decimal tarifaFinal = Math.Round(tarifaBase * (1 - (porcentaje / 100m)), 2);
 
                 LBL_DatosTarifaPromo.Text = $"$ {tarifaFinal:N2} / día";
+
+                // NUEVO: Simulador de Ingreso Recuperable en vivo
+                int diasAuditados = Math.Max(1, (dateTimeHasta.Value.Date - dateTimeDesde.Value.Date).Days + 1);
+                decimal ingresoRecuperable = DiagnosticoSeleccionado.UnidadesOciosas * tarifaFinal * diasAuditados;
+                LBL_DatosIngresoRecuperable.Text = $"$ {ingresoRecuperable:N2} ({DiagnosticoSeleccionado.UnidadesOciosas} unid. x {diasAuditados} días)";
             }
         }
 
@@ -275,6 +288,7 @@ namespace Trabajo_practico_IS
             LBL_DatosValorCatOrigen.Text = "-";
             LBL_DatosValorCatObjetivo.Text = "-";
             LBL_DatosTarifaPromo.Text = "$ 0.00 / día";
+            LBL_DatosIngresoRecuperable.Text = "$ 0.00";
             TXT_MotivoPromo.Clear();
         }
 
@@ -292,6 +306,8 @@ namespace Trabajo_practico_IS
                     DGV_PromocionesVigentes.Columns["IdPromocion"].Visible = false;
                 if (DGV_PromocionesVigentes.Columns["Activa"] != null)
                     DGV_PromocionesVigentes.Columns["Activa"].Visible = false;
+                if (DGV_PromocionesVigentes.Columns["ReservasCaptadas"] != null)
+                    DGV_PromocionesVigentes.Columns["ReservasCaptadas"].HeaderText = "Reservas Captadas";
             }
             catch (Exception ex)
             {

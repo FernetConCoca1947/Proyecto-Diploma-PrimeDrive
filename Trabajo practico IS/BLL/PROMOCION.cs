@@ -24,11 +24,17 @@ namespace BLL
             if (desde.Date > hasta.Date)
                 throw new Exception("La fecha de inicio no puede ser posterior a la fecha de fin.");
 
+            int diasAuditados = (hasta.Date - desde.Date).Days + 1;
+
             List<BE.DIAGNOSTICO_OCUPACION> metricas = mapper.ObtenerMetricasOcupacion(idSucursal, desde.Date, hasta.Date);
 
             // Primera pasada: Calcular porcentajes de ocupación real por categoría
             foreach (var item in metricas)
             {
+
+                item.UnidadesOciosas = Math.Max(0, item.TotalFlota - item.VehiculosReservados);
+                item.LucroCesante = item.UnidadesOciosas * item.Categoria.TarifaDiaria * diasAuditados;
+
                 if (item.TotalFlota == 0)
                 {
                     item.PorcentajeOcupacion = 0;

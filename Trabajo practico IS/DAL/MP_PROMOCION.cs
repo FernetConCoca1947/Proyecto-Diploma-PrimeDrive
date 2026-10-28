@@ -130,18 +130,21 @@ namespace DAL
                         CategoriaObjetivo = new BE.CATEGORIA
                         {
                             Id = Convert.ToInt32(fila["ID_CATEGORIA_OBJETIVO"]),
-                            Nombre = fila["CATEGORIA_OBJETIVO_NOMBRE"].ToString()
+                            Nombre = fila["CATEGORIA_OBJETIVO_NOMBRE"].ToString(),
+                            TarifaDiaria = Convert.ToDecimal(fila["CATEGORIA_OBJETIVO_TARIFA"])
                         },
                         // Hidratación segura de la categoría de origen (solo viene si es Upgrade)
                         CategoriaOrigenUpgrade = fila["ID_CATEGORIA_ORIGEN_UPGRADE"] == DBNull.Value? null : new BE.CATEGORIA
                             {
                                 Id = Convert.ToInt32(fila["ID_CATEGORIA_ORIGEN_UPGRADE"]),
-                                Nombre = fila["CATEGORIA_ORIGEN_NOMBRE"].ToString()
-                            },
+                                Nombre = fila["CATEGORIA_ORIGEN_NOMBRE"].ToString(),
+                                TarifaDiaria = Convert.ToDecimal(fila["CATEGORIA_ORIGEN_TARIFA"])
+                        },
                         PorcentajeDescuento = Convert.ToDecimal(fila["PORCENTAJE_DESCUENTO"]),
                         FechaDesde = Convert.ToDateTime(fila["FECHA_DESDE"]),
                         FechaHasta = Convert.ToDateTime(fila["FECHA_HASTA"]),
                         Motivo = fila["MOTIVO"].ToString(),
+                        ReservasCaptadas = Convert.ToInt32(fila["RESERVAS_CAPTADAS"]),
                         Activa = Convert.ToBoolean(fila["ACTIVA"])
                     };
 

@@ -19,5 +19,6 @@ namespace BE
         public DateTime FechaHasta { get; set; }
         public string Motivo { get; set; } // Justificación arrojada por el algoritmo estadístico
         public bool Activa { get; set; } // Estado de vigencia comercial
+        public int ReservasCaptadas { get; set; }
     }
 }

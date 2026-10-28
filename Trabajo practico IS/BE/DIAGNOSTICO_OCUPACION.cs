@@ -20,5 +20,7 @@ namespace BE
         public decimal DescuentoSugerido { get; set; }
         public decimal TarifaFinalSugerida { get; set; }
         public string ExplicacionDetallada { get; set; }
+        public int UnidadesOciosas { get; set; }
+        public decimal LucroCesante { get; set; }
     }
 }

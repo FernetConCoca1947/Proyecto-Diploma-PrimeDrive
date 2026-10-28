@@ -64,6 +64,8 @@
             this.BTN_DesactivarPromocion = new System.Windows.Forms.Button();
             this.DGV_PromosDiagnosticos = new System.Windows.Forms.DataGridView();
             this.DGV_PromocionesVigentes = new System.Windows.Forms.DataGridView();
+            this.LBL_IngresoRecuperable = new System.Windows.Forms.Label();
+            this.LBL_DatosIngresoRecuperable = new System.Windows.Forms.Label();
             this.GB_ParametrosAnalisis.SuspendLayout();
             this.GB_Diagnostico.SuspendLayout();
             this.GB_AprobacionPromo.SuspendLayout();
@@ -87,6 +89,7 @@
             // 
             // CBXidiomas
             // 
+            this.CBXidiomas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBXidiomas.Font = new System.Drawing.Font("Century Gothic", 9F);
             this.CBXidiomas.FormattingEnabled = true;
             this.CBXidiomas.Location = new System.Drawing.Point(1200, 38);
@@ -230,6 +233,8 @@
             // 
             // GB_AprobacionPromo
             // 
+            this.GB_AprobacionPromo.Controls.Add(this.LBL_DatosIngresoRecuperable);
+            this.GB_AprobacionPromo.Controls.Add(this.LBL_IngresoRecuperable);
             this.GB_AprobacionPromo.Controls.Add(this.BTN_AprobarPromocion);
             this.GB_AprobacionPromo.Controls.Add(this.LBL_DatosTarifaPromo);
             this.GB_AprobacionPromo.Controls.Add(this.LBL_DatosValorCatObjetivo);
@@ -481,6 +486,24 @@
             this.DGV_PromocionesVigentes.Size = new System.Drawing.Size(1402, 214);
             this.DGV_PromocionesVigentes.TabIndex = 42;
             // 
+            // LBL_IngresoRecuperable
+            // 
+            this.LBL_IngresoRecuperable.AutoSize = true;
+            this.LBL_IngresoRecuperable.Location = new System.Drawing.Point(241, 268);
+            this.LBL_IngresoRecuperable.Name = "LBL_IngresoRecuperable";
+            this.LBL_IngresoRecuperable.Size = new System.Drawing.Size(136, 17);
+            this.LBL_IngresoRecuperable.TabIndex = 48;
+            this.LBL_IngresoRecuperable.Text = "Ingreso recuperable";
+            // 
+            // LBL_DatosIngresoRecuperable
+            // 
+            this.LBL_DatosIngresoRecuperable.AutoSize = true;
+            this.LBL_DatosIngresoRecuperable.Location = new System.Drawing.Point(241, 285);
+            this.LBL_DatosIngresoRecuperable.Name = "LBL_DatosIngresoRecuperable";
+            this.LBL_DatosIngresoRecuperable.Size = new System.Drawing.Size(163, 17);
+            this.LBL_DatosIngresoRecuperable.TabIndex = 49;
+            this.LBL_DatosIngresoRecuperable.Text = "Ingreso recuperable dat";
+            // 
             // FrmPromociones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -554,5 +577,7 @@
         private System.Windows.Forms.Label LBL_DatosValorCatOrigen;
         private System.Windows.Forms.Label LBL_DatosTipoAccion;
         private System.Windows.Forms.Button BTN_DesactivarPromocion;
+        private System.Windows.Forms.Label LBL_DatosIngresoRecuperable;
+        private System.Windows.Forms.Label LBL_IngresoRecuperable;
     }
 }

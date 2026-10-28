@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.GB_DatosNuevaReserva = new System.Windows.Forms.GroupBox();
             this.BTNCtrlResVerificar = new System.Windows.Forms.Button();
             this.CBX_SucursalDevolucion = new System.Windows.Forms.ComboBox();
@@ -273,7 +273,7 @@
             this.BTNvolveralmenu.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BTNvolveralmenu.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNvolveralmenu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTNvolveralmenu.Location = new System.Drawing.Point(1311, 596);
+            this.BTNvolveralmenu.Location = new System.Drawing.Point(1515, 593);
             this.BTNvolveralmenu.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.BTNvolveralmenu.Name = "BTNvolveralmenu";
             this.BTNvolveralmenu.Size = new System.Drawing.Size(166, 35);
@@ -287,7 +287,7 @@
             this.LBLidiomas.AutoSize = true;
             this.LBLidiomas.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBLidiomas.ForeColor = System.Drawing.SystemColors.Window;
-            this.LBLidiomas.Location = new System.Drawing.Point(1323, 9);
+            this.LBLidiomas.Location = new System.Drawing.Point(1527, 6);
             this.LBLidiomas.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LBLidiomas.Name = "LBLidiomas";
             this.LBLidiomas.Size = new System.Drawing.Size(74, 17);
@@ -296,9 +296,10 @@
             // 
             // CBXidiomas
             // 
+            this.CBXidiomas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBXidiomas.Font = new System.Drawing.Font("Century Gothic", 9F);
             this.CBXidiomas.FormattingEnabled = true;
-            this.CBXidiomas.Location = new System.Drawing.Point(1323, 28);
+            this.CBXidiomas.Location = new System.Drawing.Point(1527, 25);
             this.CBXidiomas.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.CBXidiomas.Name = "CBXidiomas";
             this.CBXidiomas.Size = new System.Drawing.Size(154, 25);
@@ -313,7 +314,7 @@
             this.GB_Reservas.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.GB_Reservas.Name = "GB_Reservas";
             this.GB_Reservas.Padding = new System.Windows.Forms.Padding(5, 2, 5, 2);
-            this.GB_Reservas.Size = new System.Drawing.Size(923, 476);
+            this.GB_Reservas.Size = new System.Drawing.Size(1127, 476);
             this.GB_Reservas.TabIndex = 35;
             this.GB_Reservas.TabStop = false;
             this.GB_Reservas.Text = "Reservas";
@@ -322,18 +323,18 @@
             // 
             this.DGV_CtrlResReservas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_CtrlResReservas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGV_CtrlResReservas.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGV_CtrlResReservas.DefaultCellStyle = dataGridViewCellStyle2;
             this.DGV_CtrlResReservas.Location = new System.Drawing.Point(571, 104);
             this.DGV_CtrlResReservas.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.DGV_CtrlResReservas.Name = "DGV_CtrlResReservas";
-            this.DGV_CtrlResReservas.Size = new System.Drawing.Size(895, 422);
+            this.DGV_CtrlResReservas.Size = new System.Drawing.Size(1100, 422);
             this.DGV_CtrlResReservas.TabIndex = 0;
             this.DGV_CtrlResReservas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_CtrlResReservas_CellClick);
             // 
@@ -373,7 +374,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(105)))));
-            this.ClientSize = new System.Drawing.Size(1491, 646);
+            this.ClientSize = new System.Drawing.Size(1695, 646);
             this.Controls.Add(this.DGV_CtrlResReservas);
             this.Controls.Add(this.BTNCtrlResConfirmar);
             this.Controls.Add(this.BTNCtrlResCancelar);
