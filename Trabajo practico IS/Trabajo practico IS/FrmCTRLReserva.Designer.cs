@@ -165,7 +165,7 @@
             this.CBX_Categoria.Location = new System.Drawing.Point(12, 480);
             this.CBX_Categoria.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.CBX_Categoria.Name = "CBX_Categoria";
-            this.CBX_Categoria.Size = new System.Drawing.Size(301, 25);
+            this.CBX_Categoria.Size = new System.Drawing.Size(490, 25);
             this.CBX_Categoria.TabIndex = 37;
             // 
             // dateTimeDevolucion

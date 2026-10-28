@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -332,7 +333,7 @@ namespace Trabajo_practico_IS
                 else
                 {
                     CBX_Categoria.DataSource = categoriasLibres;
-                    CBX_Categoria.DisplayMember = "Nombre";
+                    //CBX_Categoria.DisplayMember = "Nombre";
                     CBX_Categoria.ValueMember = "Id";
 
                     CBX_Categoria.Enabled = true;

@@ -288,6 +288,8 @@ namespace Trabajo_practico_IS
                 DGV_PromocionesVigentes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 DGV_PromocionesVigentes.MultiSelect = false;
 
+                if (DGV_PromocionesVigentes.Columns["IdPromocion"] != null)
+                    DGV_PromocionesVigentes.Columns["IdPromocion"].Visible = false;
                 if (DGV_PromocionesVigentes.Columns["Activa"] != null)
                     DGV_PromocionesVigentes.Columns["Activa"].Visible = false;
             }
@@ -329,6 +331,22 @@ namespace Trabajo_practico_IS
             {
                 MessageBox.Show(ex.Message, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void BTNvolveralmenu_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("¿Desea volver al menu principal?", "Atención",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void FrmPromociones_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Servicios.IDIOMAS.GetInstancia().Desuscribir(this);
         }
     }
 }
