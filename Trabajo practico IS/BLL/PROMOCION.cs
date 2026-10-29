@@ -9,6 +9,7 @@ namespace BLL
     public class PROMOCION
     {
         private DAL.MP_PROMOCION mapper = new DAL.MP_PROMOCION();
+        private BLL.SUCURSAL gestorSucursales = new BLL.SUCURSAL();
 
         // =========================================================================
         // 1. CU07: MOTOR ALGORÍTMICO DE DIAGNÓSTICO DE OCUPACIÓN Y ALERTAS
@@ -179,6 +180,58 @@ namespace BLL
             bool exito = mapper.DesactivarPromocion(idPromocion);
             if (!exito)
                 throw new Exception("No se pudo desactivar la promoción seleccionada en la base de datos.");
+        }
+
+        public string EjecutarMonitoreoAutomatico(out int idSucursalAfectada)
+        {
+            idSucursalAfectada = 0;
+            DateTime desde = DateTime.Today;
+            DateTime hasta = DateTime.Today.AddDays(7);
+
+            int totalUpgrades = 0;
+            int totalBajaDemanda = 0;
+            decimal lucroCesanteTotal = 0;
+            List<string> sucursalesConAlerta = new List<string>();
+
+            var sucursales = gestorSucursales.Listar().Where(s => s.Activo).ToList();
+
+            foreach (var suc in sucursales)
+            {
+                var diagnostico = AnalizarOcupacionSucursal(suc.Id, desde, hasta);
+
+                foreach (var item in diagnostico)
+                {
+                    if (item.TipoAccionSugerida == "Upgrade Estratégico" || item.TipoAccionSugerida == "Baja Demanda")
+                    {
+                        // Filtro inteligente: Verificamos si el gerente YA lanzó una promoción para esta categoría y sucursal
+                        int yaTienePromo = mapper.ValidarSolapamiento(suc.Id, item.Categoria.Id, desde, hasta);
+                        if (yaTienePromo > 0)
+                            continue; // Ya está cubierta, no volvemos a alertar
+
+                        if (idSucursalAfectada == 0)
+                            idSucursalAfectada = suc.Id;
+
+                        if (!sucursalesConAlerta.Contains(suc.Nombre))
+                            sucursalesConAlerta.Add(suc.Nombre);
+
+                        if (item.TipoAccionSugerida == "Upgrade Estratégico")
+                            totalUpgrades++;
+                        else
+                            totalBajaDemanda++;
+
+                        lucroCesanteTotal += item.LucroCesante;
+                    }
+                }
+            }
+
+            // Si no hay oportunidades pendientes sin cubrir, devolvemos vacío para no mostrar notificación
+            if (totalUpgrades == 0 && totalBajaDemanda == 0)
+                return string.Empty;
+
+            return $"Se detectaron {totalUpgrades} oportunidad(es) de Upgrade y {totalBajaDemanda} de Baja Demanda sin cubrir " +
+                   $"({string.Join(", ", sucursalesConAlerta)}).\n" +
+                   $"Capital ocioso en riesgo (7 días): $ {lucroCesanteTotal:N2}.\n" +
+                   $"Haga clic aquí para auditar y activar promociones.";
         }
     }
 }

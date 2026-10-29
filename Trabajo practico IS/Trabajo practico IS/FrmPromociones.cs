@@ -17,11 +17,15 @@ namespace Trabajo_practico_IS
         private BLL.IDIOMA gestorIdioma = new BLL.IDIOMA();
         private BLL.BITACORA GestorBitacora = new BLL.BITACORA();
         private BE.DIAGNOSTICO_OCUPACION DiagnosticoSeleccionado = null;
+        private int IdSucursalPreseleccionada = 0;
         public FrmPromociones()
         {
             InitializeComponent();
         }
-
+        public FrmPromociones(int idSucursalInicial) : this()
+        {
+            IdSucursalPreseleccionada = idSucursalInicial;
+        }
         private void FrmPromociones_Load(object sender, EventArgs e)
         {
             Servicios.IDIOMAS.GetInstancia().Suscribir(this);
@@ -39,9 +43,19 @@ namespace Trabajo_practico_IS
             dateTimeDesde.Value = DateTime.Today;
             dateTimeHasta.Value = DateTime.Today.AddDays(7);
 
+            if (IdSucursalPreseleccionada > 0)
+            {
+                CBX_Sucursal.SelectedValue = IdSucursalPreseleccionada;
+            }
+
             GB_AprobacionPromo.Enabled = false;
             CargarGrillaPromocionesVigentes();
             ActualizarIdioma();
+
+            if (CBX_Sucursal.SelectedItem != null)
+            {
+                BTN_AnalizarDemanda_Click(null, EventArgs.Empty);
+            }
         }
 
         public void ActualizarIdioma()

@@ -19,7 +19,9 @@ namespace Trabajo_practico_IS
         BLL.USUARIO GestorUsuario = new BLL.USUARIO();
         BLL.BITACORA GestorBitacora = new BLL.BITACORA();
         BLL.IDIOMA GestorIdioma=new BLL.IDIOMA();
-
+        private Timer tmrMonitoreoComercial;
+        private NotifyIcon iconoAlertaComercial;
+        private int idSucursalAlertaActual = 0;
         public FrmMenuPrincipal()
         {
             InitializeComponent();
@@ -37,6 +39,7 @@ namespace Trabajo_practico_IS
             CBXidiomas.SelectedIndexChanged += CBXidiomas_SelectedIndexChanged;
             ActualizarIdioma();
             Utilidades.GES_PERMISOS_GUI.AplicarPermisos(this);
+            InicializarMonitoreoComercial();
         }
         private void BtnCerrarSesion_Click(object sender, EventArgs e)
         {
@@ -74,6 +77,8 @@ namespace Trabajo_practico_IS
                 SESION.GetInstancia().Desasignar();
             }
 
+            tmrMonitoreoComercial?.Stop();
+            if (iconoAlertaComercial != null) iconoAlertaComercial.Visible = false;
         }
 
         private void BitacoraToolStripMenuItem_Click(object sender, EventArgs e)
@@ -204,6 +209,70 @@ namespace Trabajo_practico_IS
             CBXidiomas.SelectedIndexChanged += CBXidiomas_SelectedIndexChanged;
             this.Show();
 
+        }
+
+        private void InicializarMonitoreoComercial()
+        {
+            BE.USUARIO usuarioActual = Servicios.SESION.GetInstancia().usuactual;
+
+            // Solo activamos el monitor en segundo plano si el usuario tiene permiso comercial o es Admin
+            if (usuarioActual == null || (!usuarioActual.TienePermiso("PROMOCIONES") && !usuarioActual.TienePermiso("ADMIN")))
+                return;
+
+            // Configuramos el ícono de notificación en la bandeja de Windows
+            iconoAlertaComercial = new NotifyIcon
+            {
+                Icon = System.Drawing.SystemIcons.Information,
+                Text = "Prime Drive - Monitor de Inteligencia Comercial",
+                Visible = true
+            };
+            iconoAlertaComercial.BalloonTipClicked += IconoAlertaComercial_BalloonTipClicked;
+
+            // Configuramos el Timer (Primera ejecución rápida a los 3 segundos para la demo)
+            tmrMonitoreoComercial = new Timer
+            {
+                Interval = 3000 // 3 segundos para la primera revisión al iniciar sesión
+            };
+            tmrMonitoreoComercial.Tick += TmrMonitoreoComercial_Tick;
+            tmrMonitoreoComercial.Start();
+        }
+
+        private void TmrMonitoreoComercial_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                // Después del primer disparo a los 3 seg, pasamos el intervalo a 5 minutos (300.000 ms)
+                // (Para probar en vivo podés dejarlo en 60000 = 1 minuto)
+                tmrMonitoreoComercial.Interval = 300000;
+
+                // Si la pantalla de promociones ya está abierta, no interrumpimos al usuario
+                foreach (Form frm in Application.OpenForms)
+                {
+                    if (frm is FrmPromociones) return;
+                }
+
+                BLL.PROMOCION gestorPromo = new BLL.PROMOCION();
+                string mensajeAlerta = gestorPromo.EjecutarMonitoreoAutomatico(out idSucursalAlertaActual);
+
+                if (!string.IsNullOrEmpty(mensajeAlerta))
+                {
+                    iconoAlertaComercial.BalloonTipTitle = "📊 Alerta de Inteligencia Comercial - Prime Drive";
+                    iconoAlertaComercial.BalloonTipText = mensajeAlerta;
+                    iconoAlertaComercial.BalloonTipIcon = ToolTipIcon.Warning;
+                    iconoAlertaComercial.ShowBalloonTip(8000); // Muestra el globo emergente durante 8 segundos
+                }
+            }
+            catch (Exception)
+            {
+                // Silenciamos errores de red en segundo plano para no bloquear el menú principal
+            }
+        }
+
+        // Si el Gerente hace clic en la notificación emergente de Windows, abre directo FrmCTRLPromocion en esa sucursal
+        private void IconoAlertaComercial_BalloonTipClicked(object sender, EventArgs e)
+        {
+            FrmPromociones frmPromo = new FrmPromociones(idSucursalAlertaActual);
+            frmPromo.ShowDialog();
         }
 
         private void restauracionDeBaseToolStripMenuItem_Click(object sender, EventArgs e)
