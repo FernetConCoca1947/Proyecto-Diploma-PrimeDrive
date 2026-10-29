@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LBLidiomas = new System.Windows.Forms.Label();
             this.CBXidiomas = new System.Windows.Forms.ComboBox();
             this.BTNvolveralmenu = new System.Windows.Forms.Button();
@@ -45,6 +45,8 @@
             this.LBL_DetalleDiagnostico = new System.Windows.Forms.Label();
             this.TXT_PromosDetalleAlerta = new System.Windows.Forms.TextBox();
             this.GB_AprobacionPromo = new System.Windows.Forms.GroupBox();
+            this.LBL_DatosIngresoRecuperable = new System.Windows.Forms.Label();
+            this.LBL_IngresoRecuperable = new System.Windows.Forms.Label();
             this.BTN_AprobarPromocion = new System.Windows.Forms.Button();
             this.LBL_DatosTarifaPromo = new System.Windows.Forms.Label();
             this.LBL_DatosValorCatObjetivo = new System.Windows.Forms.Label();
@@ -64,8 +66,7 @@
             this.BTN_DesactivarPromocion = new System.Windows.Forms.Button();
             this.DGV_PromosDiagnosticos = new System.Windows.Forms.DataGridView();
             this.DGV_PromocionesVigentes = new System.Windows.Forms.DataGridView();
-            this.LBL_IngresoRecuperable = new System.Windows.Forms.Label();
-            this.LBL_DatosIngresoRecuperable = new System.Windows.Forms.Label();
+            this.BTN_ExportarReporte = new System.Windows.Forms.Button();
             this.GB_ParametrosAnalisis.SuspendLayout();
             this.GB_Diagnostico.SuspendLayout();
             this.GB_AprobacionPromo.SuspendLayout();
@@ -258,6 +259,24 @@
             this.GB_AprobacionPromo.TabStop = false;
             this.GB_AprobacionPromo.Text = "Aprobación de promoción";
             // 
+            // LBL_DatosIngresoRecuperable
+            // 
+            this.LBL_DatosIngresoRecuperable.AutoSize = true;
+            this.LBL_DatosIngresoRecuperable.Location = new System.Drawing.Point(241, 285);
+            this.LBL_DatosIngresoRecuperable.Name = "LBL_DatosIngresoRecuperable";
+            this.LBL_DatosIngresoRecuperable.Size = new System.Drawing.Size(163, 17);
+            this.LBL_DatosIngresoRecuperable.TabIndex = 49;
+            this.LBL_DatosIngresoRecuperable.Text = "Ingreso recuperable dat";
+            // 
+            // LBL_IngresoRecuperable
+            // 
+            this.LBL_IngresoRecuperable.AutoSize = true;
+            this.LBL_IngresoRecuperable.Location = new System.Drawing.Point(241, 268);
+            this.LBL_IngresoRecuperable.Name = "LBL_IngresoRecuperable";
+            this.LBL_IngresoRecuperable.Size = new System.Drawing.Size(136, 17);
+            this.LBL_IngresoRecuperable.TabIndex = 48;
+            this.LBL_IngresoRecuperable.Text = "Ingreso recuperable";
+            // 
             // BTN_AprobarPromocion
             // 
             this.BTN_AprobarPromocion.BackColor = System.Drawing.Color.LightSeaGreen;
@@ -424,6 +443,7 @@
             // 
             // GB_PromocionesVigentes
             // 
+            this.GB_PromocionesVigentes.Controls.Add(this.BTN_ExportarReporte);
             this.GB_PromocionesVigentes.Controls.Add(this.BTN_DesactivarPromocion);
             this.GB_PromocionesVigentes.ForeColor = System.Drawing.SystemColors.Window;
             this.GB_PromocionesVigentes.Location = new System.Drawing.Point(12, 564);
@@ -452,14 +472,14 @@
             this.DGV_PromosDiagnosticos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_PromosDiagnosticos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(105)))));
             this.DGV_PromosDiagnosticos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGV_PromosDiagnosticos.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGV_PromosDiagnosticos.DefaultCellStyle = dataGridViewCellStyle1;
             this.DGV_PromosDiagnosticos.Location = new System.Drawing.Point(22, 126);
             this.DGV_PromosDiagnosticos.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.DGV_PromosDiagnosticos.Name = "DGV_PromosDiagnosticos";
@@ -472,37 +492,33 @@
             // 
             this.DGV_PromocionesVigentes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_PromocionesVigentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGV_PromocionesVigentes.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGV_PromocionesVigentes.DefaultCellStyle = dataGridViewCellStyle2;
             this.DGV_PromocionesVigentes.Location = new System.Drawing.Point(22, 589);
             this.DGV_PromocionesVigentes.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.DGV_PromocionesVigentes.Name = "DGV_PromocionesVigentes";
             this.DGV_PromocionesVigentes.Size = new System.Drawing.Size(1402, 214);
             this.DGV_PromocionesVigentes.TabIndex = 42;
             // 
-            // LBL_IngresoRecuperable
+            // BTN_ExportarReporte
             // 
-            this.LBL_IngresoRecuperable.AutoSize = true;
-            this.LBL_IngresoRecuperable.Location = new System.Drawing.Point(241, 268);
-            this.LBL_IngresoRecuperable.Name = "LBL_IngresoRecuperable";
-            this.LBL_IngresoRecuperable.Size = new System.Drawing.Size(136, 17);
-            this.LBL_IngresoRecuperable.TabIndex = 48;
-            this.LBL_IngresoRecuperable.Text = "Ingreso recuperable";
-            // 
-            // LBL_DatosIngresoRecuperable
-            // 
-            this.LBL_DatosIngresoRecuperable.AutoSize = true;
-            this.LBL_DatosIngresoRecuperable.Location = new System.Drawing.Point(241, 285);
-            this.LBL_DatosIngresoRecuperable.Name = "LBL_DatosIngresoRecuperable";
-            this.LBL_DatosIngresoRecuperable.Size = new System.Drawing.Size(163, 17);
-            this.LBL_DatosIngresoRecuperable.TabIndex = 49;
-            this.LBL_DatosIngresoRecuperable.Text = "Ingreso recuperable dat";
+            this.BTN_ExportarReporte.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.BTN_ExportarReporte.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_ExportarReporte.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTN_ExportarReporte.Location = new System.Drawing.Point(1094, 245);
+            this.BTN_ExportarReporte.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.BTN_ExportarReporte.Name = "BTN_ExportarReporte";
+            this.BTN_ExportarReporte.Size = new System.Drawing.Size(154, 48);
+            this.BTN_ExportarReporte.TabIndex = 49;
+            this.BTN_ExportarReporte.Text = "Exportar reporte";
+            this.BTN_ExportarReporte.UseVisualStyleBackColor = false;
+            this.BTN_ExportarReporte.Click += new System.EventHandler(this.BTN_ExportarReporte_Click);
             // 
             // FrmPromociones
             // 
@@ -579,5 +595,6 @@
         private System.Windows.Forms.Button BTN_DesactivarPromocion;
         private System.Windows.Forms.Label LBL_DatosIngresoRecuperable;
         private System.Windows.Forms.Label LBL_IngresoRecuperable;
+        private System.Windows.Forms.Button BTN_ExportarReporte;
     }
 }

@@ -378,5 +378,86 @@ namespace Trabajo_practico_IS
         {
             Servicios.IDIOMAS.GetInstancia().Desuscribir(this);
         }
+
+        private void BTN_ExportarReporte_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BE.SUCURSAL sucursal = (BE.SUCURSAL)CBX_Sucursal.SelectedItem;
+                var diagnostico = GestorPromociones.AnalizarOcupacionSucursal(sucursal.Id, dateTimeDesde.Value.Date, dateTimeHasta.Value.Date);
+
+                // 1. Armamos la plantilla HTML con diseño profesional (CSS inline)
+                string htmlTemplate = $@"
+        <html>
+            <head>
+                <style>
+                    body {{ font-family: 'Segoe UI', Arial, sans-serif; color: #333; margin: 30px; }}
+                    h2 {{ color: #006666; text-align: center; margin-bottom: 5px; }}
+                    .subtitle {{ text-align: center; color: #666; font-size: 13px; margin-bottom: 30px; }}
+                    table {{ width: 100%; border-collapse: collapse; margin-top: 10px; }}
+                    th {{ background-color: #008080; color: white; padding: 10px; font-size: 12px; text-align: left; }}
+                    td {{ padding: 8px; font-size: 11px; border-bottom: 1px solid #ddd; }}
+                    .right {{ text-align: right; }}
+                    .center {{ text-align: center; }}
+                    .footer {{ margin-top: 40px; text-align: right; font-size: 10px; color: #888; }}
+                </style>
+            </head>
+            <body>
+                <h2>PRIME DRIVE - REPORTE DE INTELIGENCIA COMERCIAL</h2>
+                <div class='subtitle'>Sucursal: <b>{sucursal.Nombre}</b> | Período: {dateTimeDesde.Value:dd/MM/yyyy} al {dateTimeHasta.Value:dd/MM/yyyy}</div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th class='center'>Flota Op.</th>
+                            <th class='center'>Reservas</th>
+                            <th class='right'>Ocupación</th>
+                            <th class='right'>Lucro Cesante ($)</th>
+                            <th>Diagnóstico Sugerido</th>
+                        </tr>
+                    </thead>
+                    <tbody>";
+
+                // 2. Inyectamos dinámicamente las filas de la grilla de diagnóstico
+                foreach (var item in diagnostico)
+                {
+                    htmlTemplate += $@"
+                        <tr>
+                            <td>{item.Categoria.Nombre}</td>
+                            <td class='center'>{item.TotalFlota}</td>
+                            <td class='center'>{item.VehiculosReservados}</td>
+                            <td class='right'>{item.PorcentajeOcupacion:N2} %</td>
+                            <td class='right'>$ {item.LucroCesante:N2}</td>
+                            <td>{item.DiagnosticoCorto}</td>
+                        </tr>";
+                }
+
+                htmlTemplate += $@"
+                    </tbody>
+                </table>
+
+                <div class='footer'>
+                    Sistema de Gestión y Alquiler de Vehículos - Prime Drive<br/>
+                    Documento generado automáticamente por el módulo gerencial.
+                </div>
+            </body>
+        </html>";
+
+                // 3. Guardamos el archivo utilizando el diálogo de Windows
+                using (SaveFileDialog sfd = new SaveFileDialog { Filter = "Archivo PDF (*.pdf)|*.pdf", FileName = $"Reporte_Comercial_{sucursal.Nombre}.pdf" })
+                {
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        Servicios.GestorPDF.GenerarPdfDesdeHtml(htmlTemplate, sfd.FileName);
+                        MessageBox.Show("Reporte PDF generado y estilizado con éxito.", "Exportación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar el reporte HTML/PDF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
