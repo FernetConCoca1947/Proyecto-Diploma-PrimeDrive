@@ -178,6 +178,68 @@ namespace Trabajo_practico_IS
 
                 GestorContrato.CerrarContratoCheckIn(ContratoSeleccionado);
 
+                #region GenerarPdf
+                string htmlCheckIn = $@"
+<html>
+    <head>
+        <style>
+            body {{ font-family: Arial, sans-serif; color: #333333; margin: 30px; }}
+            .header {{ background-color: #006666; color: white; padding: 15px; text-align: center; }}
+            .box {{ border: 1px solid #cccccc; padding: 12px; margin-top: 15px; font-size: 11px; line-height: 1.6; }}
+            table {{ width: 100%; border-collapse: collapse; margin-top: 20px; }}
+            th {{ background-color: #008080; color: white; padding: 8px; font-size: 11px; text-align: left; }}
+            td {{ padding: 8px; font-size: 11px; border-bottom: 1px solid #dddddd; }}
+            .total {{ font-size: 14px; font-weight: bold; color: #006666; text-align: right; margin-top: 20px; }}
+        </style>
+    </head>
+    <body>
+        <div class='header'>
+            <h2>PRIME DRIVE - COMPROBANTE DE LIQUIDACIÓN FINAL</h2>
+            <div>Contrato Nro: #{ContratoSeleccionado.Id} | Fecha: {DateTime.Now:dd/MM/yyyy HH:mm}</div>
+        </div>
+
+        <div class='box'>
+            <b>Cliente:</b> {ContratoSeleccionado.Reserva.Cliente.Apellido}, {ContratoSeleccionado.Reserva.Cliente.Nombre} (DNI: {ContratoSeleccionado.Reserva.Cliente.DNI})<br/>
+            <b>Vehículo:</b> {ContratoSeleccionado.Vehiculo.ToString()} - Categoría: {ContratoSeleccionado.Reserva.Categoria.Nombre}<br/>
+            <b>Fecha Retiro:</b> {ContratoSeleccionado.FechaHoraRetiro:dd/MM/yyyy HH:mm} (Km Salida: {ContratoSeleccionado.KmSalida})<br/>
+            <b>Fecha Devolución:</b> {ContratoSeleccionado.FechaHoraDevolucion:dd/MM/yyyy HH:mm} (Km Entrada: {ContratoSeleccionado.KmEntrada})
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Concepto</th>
+                    <th>Estado / Detalle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Garantía Retenida ($ {ContratoSeleccionado.GarantiaRetenida:N2})</td>
+                    <td><b>LIBERADA EN POSNET</b></td>
+                </tr>
+                <tr>
+                    <td>Observaciones de Cierre</td>
+                    <td>{ContratoSeleccionado.Observaciones}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class='total'>
+            MONTO FINAL COBRADO: $ {ContratoSeleccionado.MontoFinal:N2}
+        </div>
+    </body>
+</html>";
+
+                using (SaveFileDialog sfd = new SaveFileDialog { Filter = "Archivo PDF (*.pdf)|*.pdf", FileName = $"Comprobante_Contrato_{ContratoSeleccionado.Id}.pdf" })
+                {
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        Servicios.GestorPDF.GenerarPdfDesdeHtml(htmlCheckIn, sfd.FileName);
+                    }
+                }
+
+                #endregion
+
                 MessageBox.Show($"¡Check-in finalizado correctamente!\nContrato #{ContratoSeleccionado.Id} cerrado.\nLiquidación Total: $ {ContratoSeleccionado.MontoFinal:N2}", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 LimpiarTodo();

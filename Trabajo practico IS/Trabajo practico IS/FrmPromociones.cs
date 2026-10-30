@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Trabajo_practico_IS
 {
@@ -17,6 +19,7 @@ namespace Trabajo_practico_IS
         private BLL.IDIOMA gestorIdioma = new BLL.IDIOMA();
         private BLL.BITACORA GestorBitacora = new BLL.BITACORA();
         private BE.DIAGNOSTICO_OCUPACION DiagnosticoSeleccionado = null;
+        private BLL.CATEGORIA GestorCategorias = new BLL.CATEGORIA();
         private int IdSucursalPreseleccionada = 0;
         public FrmPromociones()
         {
@@ -115,7 +118,7 @@ namespace Trabajo_practico_IS
                 BE.SUCURSAL sucursalElegida = (BE.SUCURSAL)CBX_Sucursal.SelectedItem;
 
                 // Ejecutamos el motor algorítmico en la BLL
-                List<BE.DIAGNOSTICO_OCUPACION> diagnostico = GestorPromociones.AnalizarOcupacionSucursal(sucursalElegida.Id,dateTimeDesde.Value.Date,dateTimeHasta.Value.Date);
+                List<BE.DIAGNOSTICO_OCUPACION> diagnostico = GestorPromociones.AnalizarOcupacionSucursal(sucursalElegida.Id, dateTimeDesde.Value.Date, dateTimeHasta.Value.Date);
 
                 DGV_PromosDiagnosticos.DataSource = null;
                 DGV_PromosDiagnosticos.DataSource = diagnostico;
@@ -381,36 +384,63 @@ namespace Trabajo_practico_IS
 
         private void BTN_ExportarReporte_Click(object sender, EventArgs e)
         {
+            string img1 = Path.Combine(Path.GetTempPath(), "chart_ranking.png");
+            string img2 = Path.Combine(Path.GetTempPath(), "chart_efectividad.png");
+            string img3 = Path.Combine(Path.GetTempPath(), "chart_ocupacion.png");
+            string img4 = Path.Combine(Path.GetTempPath(), "chart_lucro.png");
+
             try
             {
-                BE.SUCURSAL sucursal = (BE.SUCURSAL)CBX_Sucursal.SelectedItem;
-                var diagnostico = GestorPromociones.AnalizarOcupacionSucursal(sucursal.Id, dateTimeDesde.Value.Date, dateTimeHasta.Value.Date);
+                if (CBX_Sucursal.SelectedItem == null)
+                    throw new Exception("Seleccione una sucursal para generar el reporte.");
 
-                // 1. Armamos la plantilla HTML con diseño profesional (CSS inline)
-                string htmlTemplate = $@"
+                BE.SUCURSAL sucursal = (BE.SUCURSAL)CBX_Sucursal.SelectedItem;
+                DateTime desde = dateTimeDesde.Value.Date;
+                DateTime hasta = dateTimeHasta.Value.Date;
+
+                // 1. Obtener datos de negocio
+                var diagnostico = GestorPromociones.AnalizarOcupacionSucursal(sucursal.Id, desde, hasta);
+                var categorias = GestorCategorias.Listar();
+                var historialPromos = GestorPromociones.ListarHistorialPromociones();
+
+                // 2. Generar las 4 imágenes temporales
+                GenerarGrafico1_RankingPromos(categorias, historialPromos, img1);
+                GenerarGrafico2_ReservasCaptadas(categorias, historialPromos, img2);
+                GenerarGrafico3_SemaforoOcupacion(diagnostico, sucursal.Nombre, img3);
+                GenerarGrafico4_AnilloLucroCesante(diagnostico, sucursal.Nombre, img4);
+
+                // 3. Construir plantilla HTML con tabla de diagnóstico y grilla 2x2 de gráficos
+                string html = $@"
         <html>
             <head>
                 <style>
-                    body {{ font-family: 'Segoe UI', Arial, sans-serif; color: #333; margin: 30px; }}
-                    h2 {{ color: #006666; text-align: center; margin-bottom: 5px; }}
-                    .subtitle {{ text-align: center; color: #666; font-size: 13px; margin-bottom: 30px; }}
-                    table {{ width: 100%; border-collapse: collapse; margin-top: 10px; }}
-                    th {{ background-color: #008080; color: white; padding: 10px; font-size: 12px; text-align: left; }}
-                    td {{ padding: 8px; font-size: 11px; border-bottom: 1px solid #ddd; }}
+                    body {{ font-family: Arial, sans-serif; color: #333333; margin: 15px; }}
+                    .header {{ background-color: #006666; color: white; padding: 10px; text-align: center; }}
+                    h2 {{ margin: 0; font-size: 15px; }}
+                    .sub {{ font-size: 10px; margin-top: 3px; color: #e0f2f1; }}
+                    h3 {{ color: #006666; font-size: 12px; border-bottom: 1px solid #006666; padding-bottom: 2px; margin-top: 12px; margin-bottom: 6px; }}
+                    table.datos {{ width: 100%; border-collapse: collapse; }}
+                    table.datos th {{ background-color: #008080; color: white; padding: 5px; font-size: 9px; text-align: left; }}
+                    table.datos td {{ padding: 5px; font-size: 9px; border-bottom: 1px solid #cccccc; }}
                     .right {{ text-align: right; }}
                     .center {{ text-align: center; }}
-                    .footer {{ margin-top: 40px; text-align: right; font-size: 10px; color: #888; }}
+                    table.grilla-graficos {{ width: 100%; border-collapse: collapse; margin-top: 5px; }}
+                    table.grilla-graficos td {{ width: 50%; text-align: center; padding: 4px; border: 1px solid #e0e0e0; }}
+                    .footer {{ margin-top: 10px; text-align: right; font-size: 8px; color: #777777; }}
                 </style>
             </head>
             <body>
-                <h2>PRIME DRIVE - REPORTE DE INTELIGENCIA COMERCIAL</h2>
-                <div class='subtitle'>Sucursal: <b>{sucursal.Nombre}</b> | Período: {dateTimeDesde.Value:dd/MM/yyyy} al {dateTimeHasta.Value:dd/MM/yyyy}</div>
+                <div class='header'>
+                    <h2>PRIME DRIVE - REPORTE EJECUTIVO DE INTELIGENCIA COMERCIAL</h2>
+                    <div class='sub'>Sucursal: {sucursal.Nombre} | Período auditado: {desde:dd/MM/yyyy} al {hasta:dd/MM/yyyy}</div>
+                </div>
 
-                <table>
+                <h3>1. Diagnóstico Operativo de Flota y Lucro Cesante</h3>
+                <table class='datos'>
                     <thead>
                         <tr>
                             <th>Categoría</th>
-                            <th class='center'>Flota Op.</th>
+                            <th class='center'>Flota</th>
                             <th class='center'>Reservas</th>
                             <th class='right'>Ocupación</th>
                             <th class='right'>Lucro Cesante ($)</th>
@@ -419,12 +449,11 @@ namespace Trabajo_practico_IS
                     </thead>
                     <tbody>";
 
-                // 2. Inyectamos dinámicamente las filas de la grilla de diagnóstico
                 foreach (var item in diagnostico)
                 {
-                    htmlTemplate += $@"
+                    html += $@"
                         <tr>
-                            <td>{item.Categoria.Nombre}</td>
+                            <td><b>{(item.Categoria != null ? item.Categoria.Nombre : "OBJETO NULO")}</b></td>
                             <td class='center'>{item.TotalFlota}</td>
                             <td class='center'>{item.VehiculosReservados}</td>
                             <td class='right'>{item.PorcentajeOcupacion:N2} %</td>
@@ -433,24 +462,36 @@ namespace Trabajo_practico_IS
                         </tr>";
                 }
 
-                htmlTemplate += $@"
+                html += $@"
                     </tbody>
                 </table>
 
+                <h3>2. Tablero Estadístico para Toma de Decisiones</h3>
+                <table class='grilla-graficos'>
+                    <tr>
+                        <td><img src='{img1}' width='255' height='180' /></td>
+                        <td><img src='{img2}' width='255' height='180' /></td>
+                    </tr>
+                    <tr>
+                        <td><img src='{img3}' width='255' height='180' /></td>
+                        <td><img src='{img4}' width='255' height='180' /></td>
+                    </tr>
+                </table>
+
                 <div class='footer'>
-                    Sistema de Gestión y Alquiler de Vehículos - Prime Drive<br/>
-                    Documento generado automáticamente por el módulo gerencial.
+                    Emitido el {DateTime.Now:dd/MM/yyyy HH:mm} - Prime Drive Sistema de Gestión de Alquiler de Vehículos
                 </div>
             </body>
         </html>";
 
-                // 3. Guardamos el archivo utilizando el diálogo de Windows
-                using (SaveFileDialog sfd = new SaveFileDialog { Filter = "Archivo PDF (*.pdf)|*.pdf", FileName = $"Reporte_Comercial_{sucursal.Nombre}.pdf" })
+                // 4. Guardar archivo PDF
+                using (SaveFileDialog sfd = new SaveFileDialog { Filter = "Archivo PDF (*.pdf)|*.pdf", FileName = $"Reporte_Comercial_{sucursal.Nombre}_{DateTime.Now:yyyyMMdd}.pdf" })
                 {
                     if (sfd.ShowDialog() == DialogResult.OK)
                     {
-                        Servicios.GestorPDF.GenerarPdfDesdeHtml(htmlTemplate, sfd.FileName);
-                        MessageBox.Show("Reporte PDF generado y estilizado con éxito.", "Exportación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Servicios.GestorPDF.GenerarPdfDesdeHtml(html, sfd.FileName);
+                        GestorBitacora.RegistrarEvento("Inteligencia Comercial", $"Se exportó reporte PDF de {sucursal.Nombre}", 1);
+                        MessageBox.Show("Reporte ejecutivo con los 4 gráficos exportado con éxito.", "Exportación PDF", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -458,6 +499,163 @@ namespace Trabajo_practico_IS
             {
                 MessageBox.Show("Error al generar el reporte HTML/PDF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                if (File.Exists(img1)) File.Delete(img1);
+                if (File.Exists(img2)) File.Delete(img2);
+                if (File.Exists(img3)) File.Delete(img3);
+                if (File.Exists(img4)) File.Delete(img4);
+            }
+        }
+
+        private void GenerarGrafico1_RankingPromos(List<BE.CATEGORIA> categorias, List<BE.PROMOCION> historial, string ruta)
+        {
+            using (Chart chart = CrearLienzoBase("1. Categorías con MÁS y MENOS Promociones"))
+            {
+                Series serie = new Series
+                {
+                    ChartType = SeriesChartType.Bar,
+                    IsValueShownAsLabel = true,
+                    Font = new Font("Arial", 8, FontStyle.Bold)
+                };
+
+                var ranking = categorias
+                    .Select(c => new { Nombre = c.Nombre, Cantidad = historial.Count(p => p.CategoriaObjetivo != null && p.CategoriaObjetivo.Id == c.Id) })
+                    .OrderBy(x => x.Cantidad)
+                    .ToList();
+
+                int maxCant = ranking.Count > 0 ? ranking.Max(x => x.Cantidad) : 0;
+
+                foreach (var item in ranking)
+                {
+                    int idx = serie.Points.AddXY(item.Nombre, item.Cantidad);
+                    if (item.Cantidad == 0)
+                        serie.Points[idx].Color = Color.FromArgb(40, 167, 69); // Verde: 0 promociones (se alquila sola)
+                    else if (item.Cantidad == maxCant)
+                        serie.Points[idx].Color = Color.FromArgb(220, 53, 69); // Rojo: la que más descuentos necesitó
+                    else
+                        serie.Points[idx].Color = Color.FromArgb(23, 162, 184); // Azul intermedio
+                }
+
+                chart.Series.Add(serie);
+                chart.SaveImage(ruta, ChartImageFormat.Png);
+            }
+        }
+
+        private void GenerarGrafico2_ReservasCaptadas(List<BE.CATEGORIA> categorias, List<BE.PROMOCION> historial, string ruta)
+        {
+            using (Chart chart = CrearLienzoBase("2. Efectividad: Reservas Captadas por Categoría"))
+            {
+                Series serie = new Series
+                {
+                    ChartType = SeriesChartType.Column,
+                    IsValueShownAsLabel = true,
+                    Color = Color.FromArgb(0, 128, 128),
+                    Font = new Font("Arial", 8, FontStyle.Bold)
+                };
+
+                foreach (var cat in categorias)
+                {
+                    int captadas = historial
+                        .Where(p => p.CategoriaObjetivo != null && p.CategoriaObjetivo.Id == cat.Id)
+                        .Sum(p => p.ReservasCaptadas);
+
+                    serie.Points.AddXY(cat.Nombre, captadas);
+                }
+
+                chart.Series.Add(serie);
+                chart.SaveImage(ruta, ChartImageFormat.Png);
+            }
+        }
+
+        private void GenerarGrafico3_SemaforoOcupacion(List<BE.DIAGNOSTICO_OCUPACION> diagnostico, string sucursal, string ruta)
+        {
+            using (Chart chart = CrearLienzoBase($"3. Semáforo de Ocupación (%) - {sucursal}"))
+            {
+                chart.ChartAreas[0].AxisY.Maximum = 100;
+
+                Series serie = new Series
+                {
+                    ChartType = SeriesChartType.Column,
+                    IsValueShownAsLabel = true,
+                    LabelFormat = "{0:0.#}%",
+                    Font = new Font("Arial", 8, FontStyle.Bold)
+                };
+
+                foreach (var item in diagnostico)
+                {
+                    int idx = serie.Points.AddXY(item.Categoria.Nombre, item.PorcentajeOcupacion);
+
+                    if (item.PorcentajeOcupacion >= 80)
+                        serie.Points[idx].Color = Color.FromArgb(220, 53, 69); // Rojo: Saturada (>= 80%)
+                    else if (item.PorcentajeOcupacion <= 30)
+                        serie.Points[idx].Color = Color.FromArgb(255, 193, 7); // Amarillo: Ociosa / Baja Demanda (<= 30%)
+                    else
+                        serie.Points[idx].Color = Color.FromArgb(40, 167, 69); // Verde: Demanda Equilibrada
+                }
+
+                chart.Series.Add(serie);
+                chart.SaveImage(ruta, ChartImageFormat.Png);
+            }
+        }
+
+        private void GenerarGrafico4_AnilloLucroCesante(List<BE.DIAGNOSTICO_OCUPACION> diagnostico, string sucursal, string ruta)
+        {
+            using (Chart chart = CrearLienzoBase($"4. Distribución de Lucro Cesante ($) - {sucursal}"))
+            {
+                chart.Legends.Add(new Legend("Leyenda") { Docking = Docking.Right, Font = new Font("Arial", 7) });
+
+                Series serie = new Series
+                {
+                    ChartType = SeriesChartType.Doughnut,
+                    IsValueShownAsLabel = true,
+                    Font = new Font("Arial", 8, FontStyle.Bold)
+                };
+
+                var ociosas = diagnostico.Where(d => d.LucroCesante > 0).ToList();
+
+                if (ociosas.Count == 0)
+                {
+                    int idx = serie.Points.AddXY("Sin Ociosidad ($0)", 1);
+                    serie.Points[idx].Color = Color.FromArgb(40, 167, 69);
+                }
+                else
+                {
+                    foreach (var item in ociosas)
+                    {
+                        int idx = serie.Points.AddXY(item.Categoria.Nombre, item.LucroCesante);
+                        serie.Points[idx].LegendText = $"{item.Categoria.Nombre} (${item.LucroCesante:N0})";
+                        serie.Points[idx].Label = "#PERCENT{P0}";
+                    }
+                }
+
+                chart.Series.Add(serie);
+                chart.SaveImage(ruta, ChartImageFormat.Png);
+            }
+        }
+
+        private Chart CrearLienzoBase(string titulo)
+        {
+            Chart chart = new Chart
+            {
+                Width = 510,
+                Height = 360,
+                BackColor = Color.White,
+                AntiAliasing = AntiAliasingStyles.All,
+                TextAntiAliasingQuality = TextAntiAliasingQuality.High
+            };
+
+            ChartArea area = new ChartArea { BackColor = Color.White };
+            area.AxisX.Interval = 1;
+            area.AxisX.MajorGrid.Enabled = false;
+            area.AxisX.LabelStyle.Font = new Font("Arial", 8);
+            area.AxisY.MajorGrid.LineColor = Color.LightGray;
+            area.AxisY.LabelStyle.Font = new Font("Arial", 8);
+
+            chart.ChartAreas.Add(area);
+            chart.Titles.Add(new Title(titulo, Docking.Top, new Font("Arial", 10, FontStyle.Bold), Color.FromArgb(0, 102, 102)));
+
+            return chart;
         }
     }
 }

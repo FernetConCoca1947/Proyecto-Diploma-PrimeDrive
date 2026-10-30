@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace DAL
     {
         public void RestaurarBaseDeDatos(string rutaBackup)
         {
-            string connectionStringMaster = "Initial Catalog=master;Data Source=.;Integrated Security=SSPI";
+            string connectionStringMaster = ConfigurationManager.ConnectionStrings["PrimeDriveDB"].ConnectionString;
 
             using (SqlConnection conexionMaster = new SqlConnection(connectionStringMaster))
             {
@@ -31,7 +32,7 @@ namespace DAL
 
         public void CrearBackup(string rutaDestino)
         {
-            string connectionStringMaster = "Initial Catalog=master;Data Source=.;Integrated Security=SSPI";
+            string connectionStringMaster = ConfigurationManager.ConnectionStrings["PrimeDriveDB"].ConnectionString;
 
             using (SqlConnection conexionMaster = new SqlConnection(connectionStringMaster))
             {

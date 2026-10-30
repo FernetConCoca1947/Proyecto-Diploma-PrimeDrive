@@ -166,6 +166,11 @@ namespace BLL
         // =========================================================================
         public List<BE.PROMOCION> ListarPromocionesActivas()
         {
+            return mapper.Listar().Where(p => p.Activa).ToList();
+        }
+
+        public List<BE.PROMOCION> ListarHistorialPromociones()
+        {
             return mapper.Listar();
         }
 

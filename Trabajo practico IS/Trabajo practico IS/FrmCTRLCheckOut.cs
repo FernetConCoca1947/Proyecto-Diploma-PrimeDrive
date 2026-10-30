@@ -181,7 +181,7 @@ namespace Trabajo_practico_IS
                     FechaHoraRetiro = DateTime.Now,
                     KmSalida = kmSalida,
                     GarantiaRetenida = garantia,
-                    Observaciones = TXT_CtrlChkOutObservaciones.Text.Trim(),
+                    Observaciones = $"[CHECK-OUT]: {TXT_CtrlChkOutObservaciones.Text.Trim()}",
                     Estado = new BE.ESTADO { IdEstado = 8, Nombre = "Abierto" }
                 };
 

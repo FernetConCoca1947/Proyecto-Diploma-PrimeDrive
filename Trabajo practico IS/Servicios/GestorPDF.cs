@@ -16,7 +16,7 @@ namespace Servicios
     {
         public static void GenerarPdfDesdeHtml(string contenidoHtml, string rutaArchivoDestino)
         {
-            var documentoPdf = PdfGenerator.GeneratePdf(contenidoHtml, PageSize.A4);
+            PdfDocument documentoPdf = PdfGenerator.GeneratePdf(contenidoHtml, PageSize.A4);
             documentoPdf.Save(rutaArchivoDestino);
         }
     }
