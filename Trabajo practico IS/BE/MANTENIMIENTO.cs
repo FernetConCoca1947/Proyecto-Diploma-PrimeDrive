@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
+    [Serializable]
     public class MANTENIMIENTO
     {
         public int Id { get; set; }
@@ -15,5 +16,7 @@ namespace BE
         public int KmService { get; set; }
         public decimal Costo { get; set; }
         public string TareasRealizadas { get; set; }
+
+        public MANTENIMIENTO() { }
     }
 }

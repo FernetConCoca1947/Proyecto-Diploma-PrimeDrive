@@ -63,10 +63,10 @@
             this.TXT_NombrePromo = new System.Windows.Forms.TextBox();
             this.LBLNombrePromo = new System.Windows.Forms.Label();
             this.GB_PromocionesVigentes = new System.Windows.Forms.GroupBox();
+            this.BTN_ExportarReporte = new System.Windows.Forms.Button();
             this.BTN_DesactivarPromocion = new System.Windows.Forms.Button();
             this.DGV_PromosDiagnosticos = new System.Windows.Forms.DataGridView();
             this.DGV_PromocionesVigentes = new System.Windows.Forms.DataGridView();
-            this.BTN_ExportarReporte = new System.Windows.Forms.Button();
             this.GB_ParametrosAnalisis.SuspendLayout();
             this.GB_Diagnostico.SuspendLayout();
             this.GB_AprobacionPromo.SuspendLayout();
@@ -203,6 +203,7 @@
             // 
             // GB_Diagnostico
             // 
+            this.GB_Diagnostico.Controls.Add(this.BTN_ExportarReporte);
             this.GB_Diagnostico.Controls.Add(this.LBL_DetalleDiagnostico);
             this.GB_Diagnostico.Controls.Add(this.TXT_PromosDetalleAlerta);
             this.GB_Diagnostico.ForeColor = System.Drawing.SystemColors.Window;
@@ -443,7 +444,6 @@
             // 
             // GB_PromocionesVigentes
             // 
-            this.GB_PromocionesVigentes.Controls.Add(this.BTN_ExportarReporte);
             this.GB_PromocionesVigentes.Controls.Add(this.BTN_DesactivarPromocion);
             this.GB_PromocionesVigentes.ForeColor = System.Drawing.SystemColors.Window;
             this.GB_PromocionesVigentes.Location = new System.Drawing.Point(12, 564);
@@ -452,6 +452,20 @@
             this.GB_PromocionesVigentes.TabIndex = 40;
             this.GB_PromocionesVigentes.TabStop = false;
             this.GB_PromocionesVigentes.Text = "Promociones y upgrades activos";
+            // 
+            // BTN_ExportarReporte
+            // 
+            this.BTN_ExportarReporte.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.BTN_ExportarReporte.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_ExportarReporte.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTN_ExportarReporte.Location = new System.Drawing.Point(743, 399);
+            this.BTN_ExportarReporte.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.BTN_ExportarReporte.Name = "BTN_ExportarReporte";
+            this.BTN_ExportarReporte.Size = new System.Drawing.Size(154, 48);
+            this.BTN_ExportarReporte.TabIndex = 49;
+            this.BTN_ExportarReporte.Text = "Exportar reporte";
+            this.BTN_ExportarReporte.UseVisualStyleBackColor = false;
+            this.BTN_ExportarReporte.Click += new System.EventHandler(this.BTN_ExportarReporte_Click);
             // 
             // BTN_DesactivarPromocion
             // 
@@ -505,20 +519,6 @@
             this.DGV_PromocionesVigentes.Name = "DGV_PromocionesVigentes";
             this.DGV_PromocionesVigentes.Size = new System.Drawing.Size(1402, 214);
             this.DGV_PromocionesVigentes.TabIndex = 42;
-            // 
-            // BTN_ExportarReporte
-            // 
-            this.BTN_ExportarReporte.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.BTN_ExportarReporte.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTN_ExportarReporte.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTN_ExportarReporte.Location = new System.Drawing.Point(1094, 245);
-            this.BTN_ExportarReporte.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.BTN_ExportarReporte.Name = "BTN_ExportarReporte";
-            this.BTN_ExportarReporte.Size = new System.Drawing.Size(154, 48);
-            this.BTN_ExportarReporte.TabIndex = 49;
-            this.BTN_ExportarReporte.Text = "Exportar reporte";
-            this.BTN_ExportarReporte.UseVisualStyleBackColor = false;
-            this.BTN_ExportarReporte.Click += new System.EventHandler(this.BTN_ExportarReporte_Click);
             // 
             // FrmPromociones
             // 

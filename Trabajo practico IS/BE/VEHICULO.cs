@@ -18,6 +18,7 @@ namespace BE
         public CATEGORIA Categoria { get; set; }
         public SUCURSAL Sucursal { get; set; }
 
+        public VEHICULO() {}
         public override string ToString()
         {
             return $"{Marca} {Modelo} - Patente: {Patente}";

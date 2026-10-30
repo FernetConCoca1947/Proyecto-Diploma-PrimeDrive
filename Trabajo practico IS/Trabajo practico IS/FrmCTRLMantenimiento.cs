@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Trabajo_practico_IS
 {
@@ -278,6 +279,88 @@ namespace Trabajo_practico_IS
             catch (Exception ex)
             {
                 MessageBox.Show("Error al consultar el historial: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BTN_ExportarRemito_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DGV_VehiculosMantenimiento.CurrentRow == null)
+                    throw new Exception("Seleccione un vehículo de la grilla de taller.");
+
+                BE.VEHICULO autoSeleccionado = (BE.VEHICULO)DGV_VehiculosMantenimiento.CurrentRow.DataBoundItem;
+
+                // Si ya escribiste datos en los TextBox los toma; si están vacíos, pone valores por defecto
+                //int km = int.TryParse(TXT_KmRealTaller.Text.Trim(), out int kmVal) ? kmVal : autoSeleccionado.KmActual;
+                int km = (int)NUM_KmReal.Value;
+                decimal costo = decimal.TryParse(TXT_CtrlMantCosto.Text.Trim(), out decimal costoVal) ? costoVal : 0m;
+                string tareas = string.IsNullOrWhiteSpace(TXT_CtrlMantDetalleMantenimiento.Text) ? "Pendiente de detalle técnico" : TXT_CtrlMantDetalleMantenimiento.Text.Trim();
+
+                BE.MANTENIMIENTO remitoParaExportar = new BE.MANTENIMIENTO
+                {
+                    Vehiculo = autoSeleccionado,
+                    FechaEntrada = DTP_FechaEntrada.Value,
+                    FechaSalida = DTP_FechaSalida.Value,
+                    KmService = km,
+                    Costo = costo,
+                    TareasRealizadas = tareas
+                };
+
+                using (SaveFileDialog sfd = new SaveFileDialog())
+                {
+                    sfd.Filter = "Archivo XML (*.xml)|*.xml";
+                    sfd.Title = "Exportar Remito de Mantenimiento (Serializar)";
+                    sfd.FileName = $"Remito_{autoSeleccionado.Patente}.xml";
+
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        Servicios.XmlSerializator<BE.MANTENIMIENTO> serializador = new Servicios.XmlSerializator<BE.MANTENIMIENTO>();
+                        string rutaGenerada = serializador.Serializar(remitoParaExportar, sfd.FileName);
+
+                        MessageBox.Show($"Remito serializado exitosamente en:\n{rutaGenerada}", "Serialización XML", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al serializar el mantenimiento: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void BTN_ImportarRemito_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OpenFileDialog ofd = new OpenFileDialog())
+                {
+                    ofd.Filter = "Archivo XML (*.xml)|*.xml";
+                    ofd.Title = "Importar Remito del Taller (Deserializar)";
+
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        using (FileStream fs = new FileStream(ofd.FileName, FileMode.Open))
+                        {
+                            Servicios.XmlSerializator<BE.MANTENIMIENTO> serializador = new Servicios.XmlSerializator<BE.MANTENIMIENTO>();
+
+                            // Reconstruimos el objeto BE.MANTENIMIENTO en memoria a partir del XML
+                            BE.MANTENIMIENTO remitoImportado = serializador.Deserializar(fs);
+
+                            // Volcamos los datos del objeto recuperado en los controles de la pantalla
+                            DTP_FechaEntrada.Value = remitoImportado.FechaEntrada;
+                            DTP_FechaSalida.Value = remitoImportado.FechaSalida;
+                            NUM_KmReal.Text = remitoImportado.KmService.ToString();
+                            TXT_CtrlMantCosto.Text = remitoImportado.Costo.ToString("0.00");
+                            TXT_CtrlMantDetalleMantenimiento.Text = remitoImportado.TareasRealizadas;
+
+                            MessageBox.Show("Remito deserializado correctamente. Verifique los datos autocompletados en pantalla antes de registrar el alta.", "Deserialización XML", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al deserializar el archivo XML: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

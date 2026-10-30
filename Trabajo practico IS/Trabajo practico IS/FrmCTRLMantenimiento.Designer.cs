@@ -62,6 +62,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.LBLidiomas = new System.Windows.Forms.Label();
             this.CBXidiomas = new System.Windows.Forms.ComboBox();
+            this.BTN_ExportarRemito = new System.Windows.Forms.Button();
+            this.BTN_ImportarRemito = new System.Windows.Forms.Button();
             this.TAB_CTRLMantenimientos.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_VehiculosRevision)).BeginInit();
@@ -177,6 +179,8 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(94)))), ((int)(((byte)(105)))));
+            this.tabPage2.Controls.Add(this.BTN_ImportarRemito);
+            this.tabPage2.Controls.Add(this.BTN_ExportarRemito);
             this.tabPage2.Controls.Add(this.DGV_VehiculosMantenimiento);
             this.tabPage2.Controls.Add(this.BTNCtrlMantRetorno);
             this.tabPage2.Controls.Add(this.LBLDetalleMantenimientoRealizado);
@@ -470,6 +474,34 @@
             this.CBXidiomas.TabIndex = 52;
             this.CBXidiomas.SelectedIndexChanged += new System.EventHandler(this.CBXidiomas_SelectedIndexChanged);
             // 
+            // BTN_ExportarRemito
+            // 
+            this.BTN_ExportarRemito.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.BTN_ExportarRemito.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_ExportarRemito.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTN_ExportarRemito.Location = new System.Drawing.Point(185, 455);
+            this.BTN_ExportarRemito.Margin = new System.Windows.Forms.Padding(4);
+            this.BTN_ExportarRemito.Name = "BTN_ExportarRemito";
+            this.BTN_ExportarRemito.Size = new System.Drawing.Size(145, 45);
+            this.BTN_ExportarRemito.TabIndex = 52;
+            this.BTN_ExportarRemito.Text = "Exportar remito (XML)";
+            this.BTN_ExportarRemito.UseVisualStyleBackColor = false;
+            this.BTN_ExportarRemito.Click += new System.EventHandler(this.BTN_ExportarRemito_Click);
+            // 
+            // BTN_ImportarRemito
+            // 
+            this.BTN_ImportarRemito.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.BTN_ImportarRemito.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_ImportarRemito.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTN_ImportarRemito.Location = new System.Drawing.Point(338, 455);
+            this.BTN_ImportarRemito.Margin = new System.Windows.Forms.Padding(4);
+            this.BTN_ImportarRemito.Name = "BTN_ImportarRemito";
+            this.BTN_ImportarRemito.Size = new System.Drawing.Size(145, 45);
+            this.BTN_ImportarRemito.TabIndex = 53;
+            this.BTN_ImportarRemito.Text = "Importar remito (XML)";
+            this.BTN_ImportarRemito.UseVisualStyleBackColor = false;
+            this.BTN_ImportarRemito.Click += new System.EventHandler(this.BTN_ImportarRemito_Click);
+            // 
             // FrmCTRLMantenimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -539,5 +571,7 @@
         private System.Windows.Forms.Label LBLCantidadIngresos;
         private System.Windows.Forms.Label LBLDATOSGastoAcumulado;
         private System.Windows.Forms.Label LBLDATOSCantidadIngresos;
+        private System.Windows.Forms.Button BTN_ImportarRemito;
+        private System.Windows.Forms.Button BTN_ExportarRemito;
     }
 }
