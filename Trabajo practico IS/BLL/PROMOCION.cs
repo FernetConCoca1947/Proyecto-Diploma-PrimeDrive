@@ -11,7 +11,7 @@ namespace BLL
         private DAL.MP_PROMOCION mapper = new DAL.MP_PROMOCION();
         private BLL.SUCURSAL gestorSucursales = new BLL.SUCURSAL();
 
-        // =========================================================================
+        // =========================    ================================================
         // 1. CU07: MOTOR ALGORÍTMICO DE DIAGNÓSTICO DE OCUPACIÓN Y ALERTAS
         // =========================================================================
         public List<BE.DIAGNOSTICO_OCUPACION> AnalizarOcupacionSucursal(int idSucursal, DateTime desde, DateTime hasta)
@@ -31,7 +31,7 @@ namespace BLL
 
             // Primera pasada: Calcular porcentajes de ocupación real por categoría
             foreach (var item in metricas)
-            {
+            {   
 
                 item.UnidadesOciosas = Math.Max(0, item.TotalFlota - item.VehiculosReservados);
                 item.LucroCesante = item.UnidadesOciosas * item.Categoria.TarifaDiaria * diasAuditados;

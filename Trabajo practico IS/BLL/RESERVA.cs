@@ -13,7 +13,7 @@ namespace BLL
         private BLL.BITACORA GestorBitacora = new BLL.BITACORA();
         private BLL.CATEGORIA GestorCategoria = new BLL.CATEGORIA();
 
-        public void GenerarReserva(BE.RESERVA reserva)
+        public void     GenerarReserva(BE.RESERVA reserva)
         {
             ValidarDatosObligatorios(reserva);
             ValidarFechas(reserva.FechaInicio, reserva.FechaFin);
