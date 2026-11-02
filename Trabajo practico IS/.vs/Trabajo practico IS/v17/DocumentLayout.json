@@ -3,23 +3,43 @@
   "WorkspaceRootPath": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|c:\\users\\usuario\\desktop\\proyecto diploma\\proyecto-diploma-primedrive\\trabajo practico is\\trabajo practico is\\frmctrlcheckin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|solutionrelative:trabajo practico is\\frmctrlcheckin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|c:\\users\\usuario\\desktop\\proyecto diploma\\proyecto-diploma-primedrive\\trabajo practico is\\trabajo practico is\\frmctrlcheckin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|solutionrelative:trabajo practico is\\frmctrlcheckin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|c:\\users\\usuario\\desktop\\proyecto diploma\\proyecto-diploma-primedrive\\trabajo practico is\\trabajo practico is\\frmctrlmantenimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|solutionrelative:trabajo practico is\\frmctrlmantenimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|c:\\users\\usuario\\desktop\\proyecto diploma\\proyecto-diploma-primedrive\\trabajo practico is\\trabajo practico is\\frmctrlmantenimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|solutionrelative:trabajo practico is\\frmctrlmantenimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60E06DBC-C563-402D-9C36-F066A6F42B05}|Servicios\\SERVICIOS.csproj|c:\\users\\usuario\\desktop\\proyecto diploma\\proyecto-diploma-primedrive\\trabajo practico is\\servicios\\gestorpdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60E06DBC-C563-402D-9C36-F066A6F42B05}|Servicios\\SERVICIOS.csproj|solutionrelative:servicios\\gestorpdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|c:\\users\\usuario\\desktop\\proyecto diploma\\proyecto-diploma-primedrive\\trabajo practico is\\trabajo practico is\\frmpromociones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|solutionrelative:trabajo practico is\\frmpromociones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|c:\\users\\usuario\\desktop\\proyecto diploma\\proyecto-diploma-primedrive\\trabajo practico is\\trabajo practico is\\frmpromociones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\trabajo practico is\\frmpromociones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|solutionrelative:trabajo practico is\\frmpromociones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{51B8901E-3BB8-4181-A9F2-1E91A4EBA7BA}|BLL\\BLL.csproj|c:\\users\\usuario\\desktop\\proyecto diploma\\proyecto-diploma-primedrive\\trabajo practico is\\bll\\promocion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{51B8901E-3BB8-4181-A9F2-1E91A4EBA7BA}|BLL\\BLL.csproj|C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\bll\\promocion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{51B8901E-3BB8-4181-A9F2-1E91A4EBA7BA}|BLL\\BLL.csproj|solutionrelative:bll\\promocion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|c:\\users\\usuario\\desktop\\proyecto diploma\\proyecto-diploma-primedrive\\trabajo practico is\\trabajo practico is\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\trabajo practico is\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|solutionrelative:trabajo practico is\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|c:\\users\\usuario\\desktop\\proyecto diploma\\proyecto-diploma-primedrive\\trabajo practico is\\trabajo practico is\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\trabajo practico is\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{4AD8818F-5276-4D5F-B67F-6AA2A4E43C6D}|Trabajo practico IS\\GUI.csproj|solutionrelative:trabajo practico is\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -30,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,7 +58,70 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GestorPDF.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\Servicios\\GestorPDF.cs",
+              "RelativeDocumentMoniker": "Servicios\\GestorPDF.cs",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\Servicios\\GestorPDF.cs",
+              "RelativeToolTip": "Servicios\\GestorPDF.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAiwLsAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-02T03:11:25.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FrmCTRLMantenimiento.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\Trabajo practico IS\\FrmCTRLMantenimiento.cs",
+              "RelativeDocumentMoniker": "Trabajo practico IS\\FrmCTRLMantenimiento.cs",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\Trabajo practico IS\\FrmCTRLMantenimiento.cs",
+              "RelativeToolTip": "Trabajo practico IS\\FrmCTRLMantenimiento.cs",
+              "ViewState": "AgIAAEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-02T03:00:25.996Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "FrmCTRLMantenimiento.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\Trabajo practico IS\\FrmCTRLMantenimiento.cs",
+              "RelativeDocumentMoniker": "Trabajo practico IS\\FrmCTRLMantenimiento.cs",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\Trabajo practico IS\\FrmCTRLMantenimiento.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Trabajo practico IS\\FrmCTRLMantenimiento.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-02T03:00:24.038Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FrmCTRLCheckIn.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\Trabajo practico IS\\FrmCTRLCheckIn.cs",
+              "RelativeDocumentMoniker": "Trabajo practico IS\\FrmCTRLCheckIn.cs",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\Trabajo practico IS\\FrmCTRLCheckIn.cs",
+              "RelativeToolTip": "Trabajo practico IS\\FrmCTRLCheckIn.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAPsAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-02T02:57:55.37Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmCTRLCheckIn.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\Trabajo practico IS\\FrmCTRLCheckIn.cs",
+              "RelativeDocumentMoniker": "Trabajo practico IS\\FrmCTRLCheckIn.cs",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\Trabajo practico IS\\FrmCTRLCheckIn.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Trabajo practico IS\\FrmCTRLCheckIn.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-02T02:57:52.74Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "PROMOCION.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\BLL\\PROMOCION.cs",
               "RelativeDocumentMoniker": "BLL\\PROMOCION.cs",
@@ -46,37 +129,35 @@
               "RelativeToolTip": "BLL\\PROMOCION.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAqwBAAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-01T04:53:27.698Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-01T04:53:27.698Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "FrmPromociones.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\Trabajo practico IS\\FrmPromociones.cs",
               "RelativeDocumentMoniker": "Trabajo practico IS\\FrmPromociones.cs",
               "ToolTip": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\Trabajo practico IS\\FrmPromociones.cs",
               "RelativeToolTip": "Trabajo practico IS\\FrmPromociones.cs",
-              "ViewState": "AgIAAAACAAAAAAAAAAAiwOsBAAA/AAAAAAAAAA==",
+              "ViewState": "AgIAAFYCAAAAAAAAAAAAAOsBAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-11-01T04:41:41.785Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "FrmPromociones.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\Trabajo practico IS\\FrmPromociones.cs",
               "RelativeDocumentMoniker": "Trabajo practico IS\\FrmPromociones.cs",
               "ToolTip": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\Trabajo practico IS\\FrmPromociones.cs [Dise\u00F1o]",
               "RelativeToolTip": "Trabajo practico IS\\FrmPromociones.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-01T04:41:37.226Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2026-11-01T04:41:37.226Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "FrmMenuPrincipal.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\Trabajo practico IS\\FrmMenuPrincipal.cs",
               "RelativeDocumentMoniker": "Trabajo practico IS\\FrmMenuPrincipal.cs",
@@ -84,20 +165,18 @@
               "RelativeToolTip": "Trabajo practico IS\\FrmMenuPrincipal.cs",
               "ViewState": "AgIAAFgBAAAAAAAAAAAswG4BAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-01T00:02:35.252Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-01T00:02:35.252Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "FrmMenuPrincipal.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\Trabajo practico IS\\FrmMenuPrincipal.cs",
               "RelativeDocumentMoniker": "Trabajo practico IS\\FrmMenuPrincipal.cs",
               "ToolTip": "C:\\Users\\Usuario\\Desktop\\Proyecto Diploma\\Proyecto-Diploma-PrimeDrive\\Trabajo practico IS\\Trabajo practico IS\\FrmMenuPrincipal.cs [Dise\u00F1o]",
               "RelativeToolTip": "Trabajo practico IS\\FrmMenuPrincipal.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-01T00:02:07.053Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2026-11-01T00:02:07.053Z"
             }
           ]
         }
