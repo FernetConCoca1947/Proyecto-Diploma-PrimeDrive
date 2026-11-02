@@ -283,7 +283,7 @@
             this.CBX_ReservasCliente.FormattingEnabled = true;
             this.CBX_ReservasCliente.Location = new System.Drawing.Point(10, 101);
             this.CBX_ReservasCliente.Name = "CBX_ReservasCliente";
-            this.CBX_ReservasCliente.Size = new System.Drawing.Size(226, 25);
+            this.CBX_ReservasCliente.Size = new System.Drawing.Size(390, 25);
             this.CBX_ReservasCliente.TabIndex = 53;
             this.CBX_ReservasCliente.SelectedIndexChanged += new System.EventHandler(this.CBX_ReservasCliente_SelectedIndexChanged);
             // 
