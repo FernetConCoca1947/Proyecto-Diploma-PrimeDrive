@@ -11,9 +11,6 @@ namespace BLL
         private DAL.MP_PROMOCION mapper = new DAL.MP_PROMOCION();
         private BLL.SUCURSAL gestorSucursales = new BLL.SUCURSAL();
 
-        // =========================    ================================================
-        // 1. CU07: MOTOR ALGORÍTMICO DE DIAGNÓSTICO DE OCUPACIÓN Y ALERTAS
-        // =========================================================================
         public List<BE.DIAGNOSTICO_OCUPACION> AnalizarOcupacionSucursal(int idSucursal, DateTime desde, DateTime hasta)
         {
             if (idSucursal <= 0)
@@ -29,7 +26,6 @@ namespace BLL
 
             List<BE.DIAGNOSTICO_OCUPACION> metricas = mapper.ObtenerMetricasOcupacion(idSucursal, desde.Date, hasta.Date);
 
-            // Primera pasada: Calcular porcentajes de ocupación real por categoría
             foreach (var item in metricas)
             {   
 
@@ -52,7 +48,6 @@ namespace BLL
                     item.PorcentajeOcupacion = 100;
             }
 
-            // Segunda pasada: Clasificar saturadas (>= 80%), ociosas (<= 30%) y cruzar para Upgrades
             foreach (var item in metricas.Where(x => x.TotalFlota > 0))
             {
                 if (item.PorcentajeOcupacion >= 80)
@@ -67,17 +62,15 @@ namespace BLL
                 }
                 else if (item.PorcentajeOcupacion <= 30)
                 {
-                    // Buscamos si existe una categoría de MENOR tarifa en la misma sucursal que esté saturada (>= 80%)
                     var catSaturadaInferior = metricas
                         .Where(x => x.TotalFlota > 0
                                  && x.PorcentajeOcupacion >= 80
                                  && x.Categoria.TarifaDiaria < item.Categoria.TarifaDiaria)
-                        .OrderByDescending(x => x.Categoria.TarifaDiaria) // La inmediata inferior más cercana en precio
+                        .OrderByDescending(x => x.Categoria.TarifaDiaria)
                         .FirstOrDefault();
 
                     if (catSaturadaInferior != null)
                     {
-                        // Caso CU09: UPGRADE ESTRATÉGICO (Desbloqueo de Stock)
                         decimal descuentoUpgrade = Math.Round((1 - (catSaturadaInferior.Categoria.TarifaDiaria / item.Categoria.TarifaDiaria)) * 100, 2);
 
                         item.DiagnosticoCorto = $"🟢 Upgrade desde {catSaturadaInferior.Categoria.Nombre}";
@@ -89,7 +82,6 @@ namespace BLL
                     }
                     else
                     {
-                        // Caso CU08: BAJA DEMANDA PURA (Estancamiento sin categoría inferior saturada)
                         decimal descuentoSugerido = 20.00m;
 
                         item.DiagnosticoCorto = "⚠️ Baja Demanda Pura";
@@ -114,9 +106,6 @@ namespace BLL
             return metricas;
         }
 
-        // =========================================================================
-        // 2. CU08 y CU09: VALIDACIÓN DE REGLAS DE NEGOCIO Y ALTA DE PROMOCIÓN
-        // =========================================================================
         public void AprobarPromocion(BE.PROMOCION promo)
         {
             if (promo == null)
@@ -131,21 +120,18 @@ namespace BLL
             if (promo.CategoriaObjetivo == null || promo.CategoriaObjetivo.Id <= 0)
                 throw new Exception("Debe especificar la categoría objetivo de la promoción.");
 
-            // Validaciones lógicas de fechas en memoria (evita viaje innecesario a la BD)
             if (promo.FechaDesde.Date < DateTime.Today)
                 throw new Exception("La promoción no puede iniciar en una fecha pasada.");
 
             if (promo.FechaDesde.Date > promo.FechaHasta.Date)
                 throw new Exception("La fecha de inicio no puede ser posterior a la fecha de fin.");
 
-            // Validación de políticas de rentabilidad (Flujo Alternativo 4.1 de CU09)
             if (promo.PorcentajeDescuento <= 0 || promo.PorcentajeDescuento > 50)
                 throw new Exception("Por políticas de rentabilidad, el porcentaje de descuento debe situarse entre el 1% y el 50%.");
 
             if (string.IsNullOrWhiteSpace(promo.Motivo))
                 throw new Exception("Debe especificar el motivo o justificación comercial de la promoción.");
 
-            // Validación de no superposición de ofertas (Flujo Alternativo 4.1 de CU08)
             int promocionesSolapadas = mapper.ValidarSolapamiento(
                 promo.Sucursal.Id,
                 promo.CategoriaObjetivo.Id,
@@ -161,9 +147,6 @@ namespace BLL
                 throw new Exception("Ocurrió un error en la base de datos al intentar activar la promoción.");
         }
 
-        // =========================================================================
-        // 3. LISTAR PROMOCIONES VIGENTES EN MOSTRADOR
-        // =========================================================================
         public List<BE.PROMOCION> ListarPromocionesActivas()
         {
             return mapper.Listar().Where(p => p.Activa).ToList();
@@ -174,9 +157,6 @@ namespace BLL
             return mapper.Listar();
         }
 
-        // =========================================================================
-        // 4. DESACTIVAR PROMOCIÓN (BAJA LÓGICA)
-        // =========================================================================
         public void DesactivarPromocion(int idPromocion)
         {
             if (idPromocion <= 0)
@@ -208,10 +188,9 @@ namespace BLL
                 {
                     if (item.TipoAccionSugerida == "Upgrade Estratégico" || item.TipoAccionSugerida == "Baja Demanda")
                     {
-                        // Filtro inteligente: Verificamos si el gerente YA lanzó una promoción para esta categoría y sucursal
                         int yaTienePromo = mapper.ValidarSolapamiento(suc.Id, item.Categoria.Id, desde, hasta);
                         if (yaTienePromo > 0)
-                            continue; // Ya está cubierta, no volvemos a alertar
+                            continue;
 
                         if (idSucursalAfectada == 0)
                             idSucursalAfectada = suc.Id;
@@ -229,7 +208,6 @@ namespace BLL
                 }
             }
 
-            // Si no hay oportunidades pendientes sin cubrir, devolvemos vacío para no mostrar notificación
             if (totalUpgrades == 0 && totalBajaDemanda == 0)
                 return string.Empty;
 

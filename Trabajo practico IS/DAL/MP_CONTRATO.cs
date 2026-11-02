@@ -73,7 +73,24 @@ namespace DAL
             {
                 BE.CLIENTE cliente = new BE.CLIENTE { DNI = Convert.ToInt32(fila["DNI"].ToString()), Nombre = fila["NOMBRE"].ToString(), Apellido = fila["APELLIDO"].ToString() };
                 BE.CATEGORIA categoria = new BE.CATEGORIA { Nombre = fila["CATEGORIA_NOMBRE"].ToString(), TarifaDiaria = Convert.ToDecimal(fila["TARIFA_DIARIA"]) };
-                BE.RESERVA reserva = new BE.RESERVA { Id = Convert.ToInt32(fila["ID_RESERVA"]), Cliente = cliente, Categoria = categoria };
+
+                BE.RESERVA reserva = new BE.RESERVA
+                {
+                    Id = Convert.ToInt32(fila["ID_RESERVA"]),
+                    Cliente = cliente,
+                    Categoria = categoria,
+                    SucursalRetiro = new BE.SUCURSAL
+                    {
+                        Id = Convert.ToInt32(fila["ID_SUCURSAL_RETIRO"]),
+                        Nombre = fila["SUCURSAL_RETIRO_NOMBRE"].ToString()
+                    },
+                    SucursalDevolucion = new BE.SUCURSAL
+                    {
+                        Id = Convert.ToInt32(fila["ID_SUCURSAL_DEVOLUCION"]),
+                        Nombre = fila["SUCURSAL_DEVOLUCION_NOMBRE"].ToString()
+                    }
+                };
+
                 BE.VEHICULO vehiculo = new BE.VEHICULO { Id = Convert.ToInt32(fila["ID_VEHICULO"]), Patente = fila["PATENTE"].ToString() };
 
                 BE.CONTRATO contrato = new BE.CONTRATO

@@ -16,7 +16,6 @@ namespace Servicios
 
     public class XmlSerializator<T> : AbstractSerializator<T>
     {
-        // 1. SERIALIZAR: Guarda el estado del objeto en un archivo físico .xml
         public override string Serializar(T que, string rutaArchivo)
         {
             using (FileStream fs = new FileStream(rutaArchivo, FileMode.Create))
@@ -28,7 +27,6 @@ namespace Servicios
             }
         }
 
-        // 2. DESERIALIZAR: Lee el archivo .xml y reconstruye la instancia en memoria
         public override T Deserializar(Stream str)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(T));

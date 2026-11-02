@@ -62,7 +62,6 @@ namespace DAL
                 acceso.CrearParametro("@IdSucursal", promo.Sucursal.Id),
                 acceso.CrearParametro("@IdCategoriaObjetivo", promo.CategoriaObjetivo.Id),
                 
-                // Si es Baja Demanda pura, CategoriaOrigenUpgrade es null y enviamos DBNull.Value
                 new SqlParameter("@IdCategoriaOrigenUpgrade", promo.CategoriaOrigenUpgrade == null
                                                                 ? (object)DBNull.Value
                                                                 : promo.CategoriaOrigenUpgrade.Id),
@@ -133,7 +132,6 @@ namespace DAL
                             Nombre = fila["CATEGORIA_OBJETIVO_NOMBRE"].ToString(),
                             TarifaDiaria = Convert.ToDecimal(fila["CATEGORIA_OBJETIVO_TARIFA"])
                         },
-                        // Hidratación segura de la categoría de origen (solo viene si es Upgrade)
                         CategoriaOrigenUpgrade = fila["ID_CATEGORIA_ORIGEN_UPGRADE"] == DBNull.Value? null : new BE.CATEGORIA
                             {
                                 Id = Convert.ToInt32(fila["ID_CATEGORIA_ORIGEN_UPGRADE"]),

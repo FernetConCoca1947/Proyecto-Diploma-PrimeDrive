@@ -34,27 +34,6 @@ namespace DAL
             conexion.Open();
         }
 
-        //public void Abrir()
-        //{
-        //    conexion = new SqlConnection();
-
-        //    // 1. Definimos la instancia por defecto para cuando programas en Visual Studio
-        //    string instancia = ".";
-
-        //    // 2. Buscamos el archivo que deja el instalador en la carpeta del .exe
-        //    string rutaArchivo = AppDomain.CurrentDomain.BaseDirectory + "conexion.txt";
-
-        //    if (System.IO.File.Exists(rutaArchivo))
-        //    {
-        //        // Si el archivo existe, sobrescribimos la instancia con la que detectó Inno Setup
-        //        instancia = System.IO.File.ReadAllText(rutaArchivo).Trim();
-        //    }
-
-        //    // 3. Inyectamos la variable dinámicamente en tu cadena de conexión original
-        //    conexion.ConnectionString = $"Initial Catalog=BASE;Data Source={instancia};Integrated Security=SSPI";
-
-        //    conexion.Open();
-        //}
         public void Cerrar()
         {
             conexion.Close();

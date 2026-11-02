@@ -20,11 +20,6 @@ namespace BLL
                 throw new Exception("La tarifa diaria debe ser mayor a cero.");
             }
 
-            //if (mapper.Verificar(categoria))
-            //{
-            //    throw new Exception("Ya existe una categoría registrada con el mismo nombre en el sistema.");
-            //}
-
             mapper.Alta(categoria);
             GestorBitacora.RegistrarEvento("Flota", $"Se dio de alta la categoría: {categoria.Nombre}", 2);
         }
