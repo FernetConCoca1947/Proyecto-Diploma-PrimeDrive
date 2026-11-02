@@ -117,14 +117,12 @@ namespace Trabajo_practico_IS
 
                 BE.SUCURSAL sucursalElegida = (BE.SUCURSAL)CBX_Sucursal.SelectedItem;
 
-                // Ejecutamos el motor algorítmico en la BLL
                 List<BE.DIAGNOSTICO_OCUPACION> diagnostico = GestorPromociones.AnalizarOcupacionSucursal(sucursalElegida.Id, dateTimeDesde.Value.Date, dateTimeHasta.Value.Date);
 
                 DGV_PromosDiagnosticos.DataSource = null;
                 DGV_PromosDiagnosticos.DataSource = diagnostico;
                 ConfigurarColumnasDiagnostico();
 
-                // Flujo Alternativo 5.1 del CU07: Verificar si hay al menos una alerta accionable
                 bool hayOportunidades = diagnostico.Exists(d => d.TipoAccionSugerida != "Ninguna");
                 if (!hayOportunidades)
                 {
@@ -155,7 +153,6 @@ namespace Trabajo_practico_IS
             if (DGV_PromosDiagnosticos.Columns["UnidadesOciosas"] != null)
                 DGV_PromosDiagnosticos.Columns["UnidadesOciosas"].Visible = false;
 
-            // Ocultamos las columnas técnicas auxiliares que ya se ven en el panel derecho
             if (DGV_PromosDiagnosticos.Columns["TipoAccionSugerida"] != null)
                 DGV_PromosDiagnosticos.Columns["TipoAccionSugerida"].Visible = false;
             if (DGV_PromosDiagnosticos.Columns["CategoriaOrigenSaturada"] != null)
@@ -175,7 +172,6 @@ namespace Trabajo_practico_IS
                 DiagnosticoSeleccionado = item;
                 TXT_PromosDetalleAlerta.Text = item.ExplicacionDetallada;
 
-                // Solo habilitamos el Panel 3 si es una alerta accionable (CU08 o CU09)
                 if (item.TipoAccionSugerida == "Upgrade Estratégico" || item.TipoAccionSugerida == "Baja Demanda")
                 {
                     GB_AprobacionPromo.Enabled = true;
@@ -194,7 +190,6 @@ namespace Trabajo_practico_IS
                         TXT_NombrePromo.Text = $"Promo Baja Demanda - {item.Categoria.Nombre}";
                     }
 
-                    // Ajustamos el porcentaje dentro de los límites del NumericUpDown (1% a 50%)
                     decimal descSugerido = Math.Min(Math.Max(item.DescuentoSugerido, NUD_Descuento.Minimum), NUD_Descuento.Maximum);
                     NUD_Descuento.Value = descSugerido;
 
@@ -218,11 +213,11 @@ namespace Trabajo_practico_IS
             if (e.RowIndex >= 0 && DGV_PromosDiagnosticos.Rows[e.RowIndex].DataBoundItem is BE.DIAGNOSTICO_OCUPACION item)
             {
                 if (item.TipoAccionSugerida == "Upgrade Estratégico")
-                    DGV_PromosDiagnosticos.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(212, 237, 218); // Verde suave
+                    DGV_PromosDiagnosticos.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(212, 237, 218);
                 else if (item.TipoAccionSugerida == "Baja Demanda")
-                    DGV_PromosDiagnosticos.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(255, 243, 205); // Amarillo suave
+                    DGV_PromosDiagnosticos.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(255, 243, 205);
                 else if (item.PorcentajeOcupacion >= 80)
-                    DGV_PromosDiagnosticos.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(248, 215, 218); // Rojo suave
+                    DGV_PromosDiagnosticos.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(248, 215, 218);
             }
         }
 
@@ -236,7 +231,6 @@ namespace Trabajo_practico_IS
 
                 LBL_DatosTarifaPromo.Text = $"$ {tarifaFinal:N2} / día";
 
-                // NUEVO: Simulador de Ingreso Recuperable en vivo
                 int diasAuditados = Math.Max(1, (dateTimeHasta.Value.Date - dateTimeDesde.Value.Date).Days + 1);
                 decimal ingresoRecuperable = DiagnosticoSeleccionado.UnidadesOciosas * tarifaFinal * diasAuditados;
                 LBL_DatosIngresoRecuperable.Text = $"$ {ingresoRecuperable:N2} ({DiagnosticoSeleccionado.UnidadesOciosas} unid. x {diasAuditados} días)";
@@ -274,7 +268,6 @@ namespace Trabajo_practico_IS
                     Activa = true
                 };
 
-                // La BLL valida fechas, rentabilidad y solapamiento (Flujo Alternativo 4.1) e inserta en BD
                 GestorPromociones.AprobarPromocion(nuevaPromo);
 
                 GestorBitacora.RegistrarEvento(
@@ -398,18 +391,15 @@ namespace Trabajo_practico_IS
                 DateTime desde = dateTimeDesde.Value.Date;
                 DateTime hasta = dateTimeHasta.Value.Date;
 
-                // 1. Obtener datos de negocio
                 var diagnostico = GestorPromociones.AnalizarOcupacionSucursal(sucursal.Id, desde, hasta);
                 var categorias = GestorCategorias.Listar();
                 var historialPromos = GestorPromociones.ListarHistorialPromociones();
 
-                // 2. Generar las 4 imágenes temporales
                 GenerarGrafico1_RankingPromos(categorias, historialPromos, img1);
                 GenerarGrafico2_ReservasCaptadas(categorias, historialPromos, img2);
                 GenerarGrafico3_SemaforoOcupacion(diagnostico, sucursal.Nombre, img3);
                 GenerarGrafico4_AnilloLucroCesante(diagnostico, sucursal.Nombre, img4);
 
-                // 3. Construir plantilla HTML con tabla de diagnóstico y grilla 2x2 de gráficos
                 string html = $@"
         <html>
             <head>
@@ -453,7 +443,7 @@ namespace Trabajo_practico_IS
                 {
                     html += $@"
                         <tr>
-                            <td><b>{(item.Categoria != null ? item.Categoria.Nombre : "OBJETO NULO")}</b></td>
+                            <td>{item.Categoria.Nombre}</td>
                             <td class='center'>{item.TotalFlota}</td>
                             <td class='center'>{item.VehiculosReservados}</td>
                             <td class='right'>{item.PorcentajeOcupacion:N2} %</td>
@@ -484,7 +474,7 @@ namespace Trabajo_practico_IS
             </body>
         </html>";
 
-                // 4. Guardar archivo PDF
+
                 using (SaveFileDialog sfd = new SaveFileDialog { Filter = "Archivo PDF (*.pdf)|*.pdf", FileName = $"Reporte_Comercial_{sucursal.Nombre}_{DateTime.Now:yyyyMMdd}.pdf" })
                 {
                     if (sfd.ShowDialog() == DialogResult.OK)
@@ -530,11 +520,11 @@ namespace Trabajo_practico_IS
                 {
                     int idx = serie.Points.AddXY(item.Nombre, item.Cantidad);
                     if (item.Cantidad == 0)
-                        serie.Points[idx].Color = Color.FromArgb(40, 167, 69); // Verde: 0 promociones (se alquila sola)
+                        serie.Points[idx].Color = Color.FromArgb(40, 167, 69);
                     else if (item.Cantidad == maxCant)
-                        serie.Points[idx].Color = Color.FromArgb(220, 53, 69); // Rojo: la que más descuentos necesitó
+                        serie.Points[idx].Color = Color.FromArgb(220, 53, 69);
                     else
-                        serie.Points[idx].Color = Color.FromArgb(23, 162, 184); // Azul intermedio
+                        serie.Points[idx].Color = Color.FromArgb(23, 162, 184);
                 }
 
                 chart.Series.Add(serie);
@@ -587,11 +577,11 @@ namespace Trabajo_practico_IS
                     int idx = serie.Points.AddXY(item.Categoria.Nombre, item.PorcentajeOcupacion);
 
                     if (item.PorcentajeOcupacion >= 80)
-                        serie.Points[idx].Color = Color.FromArgb(220, 53, 69); // Rojo: Saturada (>= 80%)
+                        serie.Points[idx].Color = Color.FromArgb(220, 53, 69);
                     else if (item.PorcentajeOcupacion <= 30)
-                        serie.Points[idx].Color = Color.FromArgb(255, 193, 7); // Amarillo: Ociosa / Baja Demanda (<= 30%)
+                        serie.Points[idx].Color = Color.FromArgb(255, 193, 7);
                     else
-                        serie.Points[idx].Color = Color.FromArgb(40, 167, 69); // Verde: Demanda Equilibrada
+                        serie.Points[idx].Color = Color.FromArgb(40, 167, 69);
                 }
 
                 chart.Series.Add(serie);

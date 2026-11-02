@@ -215,11 +215,9 @@ namespace Trabajo_practico_IS
         {
             BE.USUARIO usuarioActual = Servicios.SESION.GetInstancia().usuactual;
 
-            // Solo activamos el monitor en segundo plano si el usuario tiene permiso comercial o es Admin
             if (usuarioActual == null || (!usuarioActual.TienePermiso("PROMOCIONES") && !usuarioActual.TienePermiso("ADMIN")))
                 return;
 
-            // Configuramos el ícono de notificación en la bandeja de Windows
             iconoAlertaComercial = new NotifyIcon
             {
                 Icon = System.Drawing.SystemIcons.Information,
@@ -228,10 +226,9 @@ namespace Trabajo_practico_IS
             };
             iconoAlertaComercial.BalloonTipClicked += IconoAlertaComercial_BalloonTipClicked;
 
-            // Configuramos el Timer (Primera ejecución rápida a los 3 segundos para la demo)
             tmrMonitoreoComercial = new Timer
             {
-                Interval = 3000 // 3 segundos para la primera revisión al iniciar sesión
+                Interval = 3000
             };
             tmrMonitoreoComercial.Tick += TmrMonitoreoComercial_Tick;
             tmrMonitoreoComercial.Start();
@@ -241,11 +238,9 @@ namespace Trabajo_practico_IS
         {
             try
             {
-                // Después del primer disparo a los 3 seg, pasamos el intervalo a 5 minutos (300.000 ms)
-                // (Para probar en vivo podés dejarlo en 60000 = 1 minuto)
-                tmrMonitoreoComercial.Interval = 300000;
 
-                // Si la pantalla de promociones ya está abierta, no interrumpimos al usuario
+                tmrMonitoreoComercial.Interval = 60000;
+
                 foreach (Form frm in Application.OpenForms)
                 {
                     if (frm is FrmPromociones) return;
@@ -259,16 +254,16 @@ namespace Trabajo_practico_IS
                     iconoAlertaComercial.BalloonTipTitle = "📊 Alerta de Inteligencia Comercial - Prime Drive";
                     iconoAlertaComercial.BalloonTipText = mensajeAlerta;
                     iconoAlertaComercial.BalloonTipIcon = ToolTipIcon.Warning;
-                    iconoAlertaComercial.ShowBalloonTip(8000); // Muestra el globo emergente durante 8 segundos
+                    iconoAlertaComercial.ShowBalloonTip(8000);
                 }
             }
             catch (Exception)
             {
-                // Silenciamos errores de red en segundo plano para no bloquear el menú principal
+                
             }
         }
 
-        // Si el Gerente hace clic en la notificación emergente de Windows, abre directo FrmCTRLPromocion en esa sucursal
+
         private void IconoAlertaComercial_BalloonTipClicked(object sender, EventArgs e)
         {
             FrmPromociones frmPromo = new FrmPromociones(idSucursalAlertaActual);

@@ -291,7 +291,6 @@ namespace Trabajo_practico_IS
 
                 BE.VEHICULO autoSeleccionado = (BE.VEHICULO)DGV_VehiculosMantenimiento.CurrentRow.DataBoundItem;
 
-                // Si ya escribiste datos en los TextBox los toma; si están vacíos, pone valores por defecto
                 //int km = int.TryParse(TXT_KmRealTaller.Text.Trim(), out int kmVal) ? kmVal : autoSeleccionado.KmActual;
                 int km = (int)NUM_KmReal.Value;
                 decimal costo = decimal.TryParse(TXT_CtrlMantCosto.Text.Trim(), out decimal costoVal) ? costoVal : 0m;
@@ -343,10 +342,8 @@ namespace Trabajo_practico_IS
                         {
                             Servicios.XmlSerializator<BE.MANTENIMIENTO> serializador = new Servicios.XmlSerializator<BE.MANTENIMIENTO>();
 
-                            // Reconstruimos el objeto BE.MANTENIMIENTO en memoria a partir del XML
                             BE.MANTENIMIENTO remitoImportado = serializador.Deserializar(fs);
 
-                            // Volcamos los datos del objeto recuperado en los controles de la pantalla
                             DTP_FechaEntrada.Value = remitoImportado.FechaEntrada;
                             DTP_FechaSalida.Value = remitoImportado.FechaSalida;
                             NUM_KmReal.Text = remitoImportado.KmService.ToString();
